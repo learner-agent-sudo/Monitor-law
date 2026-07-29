@@ -29,8 +29,9 @@ jobs:
       - run: npm ci
       - name: Build static export
         env:
-          # Repo is served at /<repo-name> on a GitHub Pages project site.
-          NEXT_PUBLIC_BASE_PATH: /monitor-law
+          # Must match the canonical Pages URL casing exactly:
+          # https://learner-agent-sudo.github.io/Monitor-law/
+          NEXT_PUBLIC_BASE_PATH: /Monitor-law
         run: npm run build
       - name: Disable Jekyll processing
         run: touch out/.nojekyll
