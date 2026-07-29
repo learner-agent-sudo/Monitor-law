@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { laws, jurisdictionsById } from "@/lib/data";
 import { Disclaimer } from "./components/Disclaimer";
+import HomeExplorer from "./components/HomeExplorer";
 
 const STATUS_LABEL: Record<string, string> = {
   "in-force": "In force",
@@ -17,32 +18,12 @@ export default function HomePage() {
 
   return (
     <>
-      <span className="stage-tag">STAGE 1 · CURRENT LAWS</span>
-      <h1 className="page-title">Privacy Law Monitor</h1>
-      <p className="page-lead">
-        A browsable catalog of current privacy and data-protection laws. Each entry maps the law
-        against a shared taxonomy of {20} obligations, so you can compare regimes and run
-        cross-jurisdiction gap analysis.
-      </p>
+      <HomeExplorer />
 
-      <div className="stat-row">
-        <div className="stat">
-          <div className="num">{laws.length}</div>
-          <div className="lbl">Laws tracked</div>
-        </div>
-        <div className="stat">
-          <div className="num">{Object.keys(grouped).length}</div>
-          <div className="lbl">Regions</div>
-        </div>
-        <div className="stat">
-          <div className="num">20</div>
-          <div className="lbl">Mapped requirements</div>
-        </div>
-      </div>
-
+      <h2 className="section">All tracked laws</h2>
       {Object.entries(grouped).map(([region, regionLaws]) => (
-        <section key={region}>
-          <h2 className="section">{region}</h2>
+        <section key={region} style={{ marginBottom: 8 }}>
+          <h3 className="region-heading">{region}</h3>
           <div className="grid">
             {regionLaws.map((law) => {
               const j = jurisdictionsById[law.jurisdictionId];
