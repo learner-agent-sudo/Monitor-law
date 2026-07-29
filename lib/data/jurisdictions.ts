@@ -31,6 +31,12 @@ export const jurisdictions: Jurisdiction[] = [
     region: "Asia-Pacific",
     flag: "🇨🇳",
   },
+  {
+    id: "hk",
+    name: "Hong Kong SAR",
+    region: "Asia-Pacific",
+    flag: "🇭🇰",
+  },
 ];
 
 export const jurisdictionsById: Record<string, Jurisdiction> = Object.fromEntries(
