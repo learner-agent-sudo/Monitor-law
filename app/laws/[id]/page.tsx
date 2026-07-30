@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { laws, lawsById, jurisdictionsById, requirements, requirementCategories } from "@/lib/data";
 import { CoverageBadge } from "@/app/components/CoverageBadge";
 import { Disclaimer } from "@/app/components/Disclaimer";
+import { provenanceByLaw, STATUS_LABEL as VERIFY_LABEL } from "@/lib/data/verification";
 import type { Strictness } from "@/lib/types";
 
 const STATUS_LABEL: Record<string, string> = {
@@ -63,6 +64,8 @@ export default function LawDetailPage({ params }: { params: { id: string } }) {
 
       <div className="summary-box">{law.summary}</div>
 
+      <VerificationNotice lawId={law.id} />
+
       <h2 className="section">Obligation coverage</h2>
       <div className="table-wrap">
         <table>
@@ -87,6 +90,25 @@ export default function LawDetailPage({ params }: { params: { id: string } }) {
 
       <Disclaimer />
     </>
+  );
+}
+
+function VerificationNotice({ lawId }: { lawId: string }) {
+  const p = provenanceByLaw[lawId];
+  if (!p) return null;
+  return (
+    <div className="verify-strip">
+      <span className={`pill ${p.status === "human-verified" ? "pill-3" : p.status === "source-checked" ? "pill-2" : "pill-1"}`}>
+        {VERIFY_LABEL[p.status]}
+      </span>
+      <span className="verify-strip-text">
+        Reviewed {p.lastReviewed}. Check the citations below against{" "}
+        <a href={p.checkUrl} target="_blank" rel="noopener noreferrer">
+          {p.sourceRef} ↗
+        </a>{" "}
+        before relying on them — <Link href="/verify">how to verify</Link>.
+      </span>
+    </div>
   );
 }
 

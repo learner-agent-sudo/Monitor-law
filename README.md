@@ -51,3 +51,17 @@ npm run build    # production build
 ## Important
 
 This is **AI-curated legal information for monitoring purposes — not legal advice.** Summaries may be incomplete or out of date. Always verify against the linked primary sources.
+
+## Verifying the content
+
+All entries are **AI-drafted** and carry that status openly on `/verify`. Verification has two halves:
+
+**Automated** (`scripts/verify-sources.mjs`, run weekly by `.github/workflows/verify-sources.yml`):
+- link health — every primary-source URL is fetched
+- **change detection** — the source text is hashed and compared to `verification/snapshots.json`; a diff means the law likely changed and the summary may now be wrong
+- citation existence — confirms cited provisions actually appear in the source text
+- staleness — flags entries not reviewed in 180 days
+
+Run it locally with `node scripts/verify-sources.mjs` (`--update` accepts current text as the new baseline).
+
+**Manual** — the only thing that establishes legal reliability. `/verify` links each law to its primary source plus independent trackers for cross-checking. No automated check can confirm a summary correctly *interprets* the law.

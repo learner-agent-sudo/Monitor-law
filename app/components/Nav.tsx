@@ -12,6 +12,7 @@ export function Nav() {
           <Link href="/requirements">Requirements</Link>
           <Link href="/gap-analysis">Gap Analysis</Link>
           <Link href="/developments">Developments</Link>
+          <Link href="/verify">Verify</Link>
         </nav>
       </div>
     </header>

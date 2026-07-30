@@ -1,0 +1,38 @@
+name: Verify legal sources
+
+# Runs where the network actually works (GitHub's runners) and answers:
+#   - is every primary-source link still alive?
+#   - has any primary text CHANGED since we last looked? (i.e. law amended)
+#   - do the provisions we cite actually exist in the source?
+#   - which entries have gone stale and need re-review?
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays 06:00 UTC
+  workflow_dispatch:
+  push:
+    branches:
+      - claude/privacy-ai-law-monitor-lybwto
+    paths:
+      - "lib/data/verification.ts"
+      - "scripts/verify-sources.mjs"
+      - ".github/workflows/verify-sources.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check primary sources
+        run: node scripts/verify-sources.mjs
+      - name: Upload verification report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-report
+          path: verification/

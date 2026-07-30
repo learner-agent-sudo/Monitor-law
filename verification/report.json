@@ -1,0 +1,83 @@
+{
+  "generatedAt": "2026-07-30T02:57:40.207Z",
+  "results": [
+    {
+      "lawId": "gdpr",
+      "status": "ai-drafted",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679",
+      "http": 403,
+      "hash": null,
+      "previousHash": null,
+      "ageDays": 0,
+      "problems": [
+        "unreachable (HTTP 403)",
+        "not yet verified against primary source"
+      ]
+    },
+    {
+      "lawId": "ccpa",
+      "status": "ai-drafted",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?division=3.&part=4.&lawCode=CIV&title=1.81.5",
+      "http": 403,
+      "hash": null,
+      "previousHash": null,
+      "ageDays": 0,
+      "problems": [
+        "unreachable (HTTP 403)",
+        "not yet verified against primary source"
+      ]
+    },
+    {
+      "lawId": "pipeda",
+      "status": "ai-drafted",
+      "url": "https://laws-lois.justice.gc.ca/eng/acts/P-8.6/FullText.html",
+      "http": 403,
+      "hash": null,
+      "previousHash": null,
+      "ageDays": 0,
+      "problems": [
+        "unreachable (HTTP 403)",
+        "not yet verified against primary source"
+      ]
+    },
+    {
+      "lawId": "quebec-law25",
+      "status": "ai-drafted",
+      "url": "https://www.legisquebec.gouv.qc.ca/en/document/cs/p-39.1",
+      "http": 403,
+      "hash": null,
+      "previousHash": null,
+      "ageDays": 0,
+      "problems": [
+        "unreachable (HTTP 403)",
+        "not yet verified against primary source"
+      ]
+    },
+    {
+      "lawId": "pipl",
+      "status": "ai-drafted",
+      "url": "https://www.chinalawtranslate.com/en/personal-information-protection-law/",
+      "http": 403,
+      "hash": null,
+      "previousHash": null,
+      "ageDays": 0,
+      "problems": [
+        "unreachable (HTTP 403)",
+        "not yet verified against primary source"
+      ]
+    },
+    {
+      "lawId": "pdpo",
+      "status": "ai-drafted",
+      "url": "https://www.elegislation.gov.hk/hk/cap486",
+      "http": 403,
+      "hash": null,
+      "previousHash": null,
+      "ageDays": 0,
+      "problems": [
+        "unreachable (HTTP 403)",
+        "not yet verified against primary source"
+      ]
+    }
+  ]
+}
