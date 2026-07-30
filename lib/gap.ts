@@ -35,14 +35,14 @@ export interface GapResult {
   covered: RequirementComparison[];
 }
 
-interface AggregatedMapping {
+export interface AggregatedMapping {
   strictness: Strictness;
   obligation: string;
   citation: string;
 }
 
 /** For one jurisdiction, take the strictest mapping across its laws per requirement. */
-function aggregateByJurisdiction(jurisdictionId: string): Record<string, AggregatedMapping> {
+export function aggregateByJurisdiction(jurisdictionId: string): Record<string, AggregatedMapping> {
   const laws = lawsByJurisdiction(jurisdictionId);
   const out: Record<string, AggregatedMapping> = {};
 

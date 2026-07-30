@@ -1,16 +1,22 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { lawsById, jurisdictions, jurisdictionsById } from "@/lib/data";
-import { analyzeGap } from "@/lib/gap";
-import type { Role, MapMarker } from "./WorldMap";
+import { laws, lawsById, jurisdictionsById, requirements, requirementCategories } from "@/lib/data";
+import { analyzeGap, aggregateByJurisdiction } from "@/lib/gap";
+import { CoverageBadge } from "./CoverageBadge";
+import { FILL_BASE, FILL_COVERED, type MapMarker } from "./WorldMap";
+import type { Strictness } from "@/lib/types";
 
 const WorldMap = dynamic(() => import("./WorldMap"), {
   ssr: false,
   loading: () => <div className="map-loading">Loading map…</div>,
 });
+
+/** Distinct colors assigned in selection order. */
+const SELECTION_COLORS = ["#4c8dff", "#3fb950", "#d29922", "#a371f7"];
+const MAX_SELECTION = SELECTION_COLORS.length;
 
 const EU_MEMBERS = [
   "Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czechia", "Denmark",
@@ -19,31 +25,41 @@ const EU_MEMBERS = [
   "Portugal", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden",
 ];
 
-// Polygon countries -> laws.
-const COUNTRY_LAWS: Record<string, string[]> = {
-  "United States of America": ["ccpa"],
-  Canada: ["pipeda", "quebec-law25"],
-  China: ["pipl"],
-  ...Object.fromEntries(EU_MEMBERS.map((c) => [c, ["gdpr"]])),
+/** Map polygon -> the jurisdiction it selects. */
+const COUNTRY_JURISDICTION: Record<string, string> = {
+  "United States of America": "us-ca",
+  Canada: "ca",
+  China: "cn",
+  ...Object.fromEntries(EU_MEMBERS.map((c) => [c, "eu"])),
 };
 
-// Small / city jurisdictions shown as labeled pins rather than polygons.
-const MARKER_DEFS: { id: string; name: string; short: string; coordinates: [number, number]; laws: string[] }[] = [
-  { id: "hk", name: "Hong Kong SAR", short: "HK", coordinates: [114.17, 22.32], laws: ["pdpo"] },
-];
-const MARKER_LAWS: Record<string, string[]> = Object.fromEntries(MARKER_DEFS.map((m) => [m.id, m.laws]));
-
-// Jurisdiction id (used by gap analysis) -> the countries / markers it paints.
-const JUR_COUNTRIES: Record<string, string[]> = {
+/** Countries painted for a given jurisdiction. */
+const JURISDICTION_COUNTRIES: Record<string, string[]> = {
   eu: EU_MEMBERS,
   "us-ca": ["United States of America"],
   ca: ["Canada"],
-  "ca-qc": ["Canada"],
   cn: ["China"],
+  "ca-qc": [],
   hk: [],
 };
-const JUR_MARKERS: Record<string, string[]> = {
-  eu: [], "us-ca": [], ca: [], "ca-qc": [], cn: [], hk: ["hk"],
+
+/**
+ * Small or sub-national jurisdictions render as labeled pins — a city-state or
+ * province is invisible as a polygon next to a country like Canada.
+ */
+const MARKER_DEFS: { id: string; jurisdictionId: string; name: string; short: string; coordinates: [number, number] }[] = [
+  { id: "hk", jurisdictionId: "hk", name: "Hong Kong SAR", short: "HK", coordinates: [114.17, 22.32] },
+  { id: "qc", jurisdictionId: "ca-qc", name: "Québec", short: "QC", coordinates: [-71.5, 47.5] },
+];
+
+const NOTES: Record<string, string> = {
+  eu: "The GDPR applies across all EU/EEA member states.",
+  "us-ca":
+    "The United States has no comprehensive federal privacy law — protection is state-by-state. California is shown here; more states arrive in Phase 2.",
+  ca: "Canada's federal private-sector law. Québec has its own, stricter regime — select QC on the map.",
+  "ca-qc": "Québec's provincial regime, the most GDPR-like law in North America.",
+  cn: "China's national personal-information law, alongside the Cybersecurity and Data Security Laws.",
+  hk: "Special Administrative Region of China with its own, comparatively light-touch data-protection law.",
 };
 
 const STATUS_LABEL: Record<string, string> = {
@@ -52,203 +68,307 @@ const STATUS_LABEL: Record<string, string> = {
   repealed: "Repealed",
 };
 
-/** All countries sharing a country's exact law set (so the whole EU lights up together). */
-function groupFor(country: string): string[] {
-  const key = JSON.stringify(COUNTRY_LAWS[country] ?? []);
-  return Object.keys(COUNTRY_LAWS).filter((c) => JSON.stringify(COUNTRY_LAWS[c]) === key);
-}
-
-function exploreDescribe(sel: { type: "country" | "marker"; key: string }): {
-  title: string;
-  note: string;
-  lawIds: string[];
-} {
-  if (sel.type === "marker") {
-    if (sel.key === "hk")
-      return { title: "Hong Kong SAR", note: "Special Administrative Region of China with its own data-protection law (PDPO).", lawIds: MARKER_LAWS.hk };
-    return { title: sel.key, note: "", lawIds: MARKER_LAWS[sel.key] ?? [] };
-  }
-  const c = sel.key;
-  if (EU_MEMBERS.includes(c))
-    return { title: `${c} · European Union`, note: "GDPR applies across all EU/EEA member states.", lawIds: ["gdpr"] };
-  switch (c) {
-    case "United States of America":
-      return {
-        title: "United States",
-        note: "No comprehensive federal privacy law — protection is state-by-state. Showing California (CCPA/CPRA); more states in Phase 2.",
-        lawIds: ["ccpa"],
-      };
-    case "Canada":
-      return { title: "Canada", note: "Federal law (PIPEDA) plus the Québec provincial regime (Law 25).", lawIds: ["pipeda", "quebec-law25"] };
-    case "China":
-      return { title: "China", note: "National personal-information law (PIPL).", lawIds: ["pipl"] };
-    default:
-      return { title: c, note: "", lawIds: COUNTRY_LAWS[c] ?? [] };
-  }
-}
-
-type Mode = "explore" | "compare";
-
 export default function HomeExplorer() {
-  const [mode, setMode] = useState<Mode>("explore");
+  const [selected, setSelected] = useState<string[]>([]);
   const [hovered, setHovered] = useState<string | null>(null);
+  const detailRef = useRef<HTMLDivElement>(null);
 
-  // explore selection
-  const [selection, setSelection] = useState<{ type: "country" | "marker"; key: string } | null>(null);
+  function toggle(jurisdictionId: string) {
+    setSelected((prev) => {
+      if (prev.includes(jurisdictionId)) return prev.filter((id) => id !== jurisdictionId);
+      if (prev.length >= MAX_SELECTION) return prev;
+      return [...prev, jurisdictionId];
+    });
+  }
 
-  // compare selection
-  const [baseline, setBaseline] = useState("ca");
-  const [target, setTarget] = useState("cn");
+  const colorOf = (jurisdictionId: string): string | null => {
+    const i = selected.indexOf(jurisdictionId);
+    return i === -1 ? null : SELECTION_COLORS[i];
+  };
 
-  const { roleByCountry, markers } = useMemo(() => {
-    const rc: Record<string, Role> = {};
-    const mr: Record<string, Role> = {};
-    for (const c of Object.keys(COUNTRY_LAWS)) rc[c] = "covered";
-    for (const m of MARKER_DEFS) mr[m.id] = "covered";
-
-    if (mode === "explore" && selection) {
-      if (selection.type === "country") for (const c of groupFor(selection.key)) rc[c] = "selected";
-      else mr[selection.key] = "selected";
-    } else if (mode === "compare") {
-      for (const c of JUR_COUNTRIES[baseline] ?? []) rc[c] = "baseline";
-      for (const id of JUR_MARKERS[baseline] ?? []) mr[id] = "baseline";
-      for (const c of JUR_COUNTRIES[target] ?? []) rc[c] = "target";
-      for (const id of JUR_MARKERS[target] ?? []) mr[id] = "target";
+  const { fillByCountry, markers } = useMemo(() => {
+    const fills: Record<string, string> = {};
+    for (const [country, jid] of Object.entries(COUNTRY_JURISDICTION)) {
+      const i = selected.indexOf(jid);
+      fills[country] = i === -1 ? FILL_COVERED : SELECTION_COLORS[i];
     }
-    const markerList: MapMarker[] = MARKER_DEFS.map((m) => ({
-      id: m.id, name: m.name, short: m.short, coordinates: m.coordinates, role: mr[m.id],
-    }));
-    return { roleByCountry: rc, markers: markerList };
-  }, [mode, selection, baseline, target]);
+    const list: MapMarker[] = MARKER_DEFS.map((m) => {
+      const i = selected.indexOf(m.jurisdictionId);
+      return {
+        id: m.id,
+        name: m.name,
+        short: m.short,
+        coordinates: m.coordinates,
+        fill: i === -1 ? FILL_COVERED : SELECTION_COLORS[i],
+      };
+    });
+    return { fillByCountry: fills, markers: list };
+  }, [selected]);
 
   const gap = useMemo(
-    () => (mode === "compare" && baseline !== target ? analyzeGap(baseline, target) : null),
-    [mode, baseline, target],
+    () => (selected.length === 2 ? analyzeGap(selected[0], selected[1]) : null),
+    [selected],
   );
 
-  const explore = selection ? exploreDescribe(selection) : null;
+  const coverage = useMemo(
+    () => Object.fromEntries(selected.map((id) => [id, aggregateByJurisdiction(id)])),
+    [selected],
+  );
+
+  const scrollToDetail = () =>
+    detailRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 
   return (
-    <section className="map-hero">
-      <div className="map-heading">
-        <span className="stage-tag">PRIVACY LAW MONITOR</span>
-        <p>Explore data-protection laws by jurisdiction — click a highlighted region, or switch to Compare to see the gap between two regimes.</p>
+    <>
+      <div className="map-intro">
+        <h1 className="map-title">Privacy Law Monitor</h1>
+        <p>
+          Click a region to see its laws. Select two or more to compare them side by side.
+        </p>
       </div>
 
-      <div className="map-fill">
-        <WorldMap
-          roleByCountry={roleByCountry}
-          markers={markers}
-          clickable={mode === "explore"}
-          onSelectCountry={(c) => setSelection(c ? { type: "country", key: c } : null)}
-          onSelectMarker={(id) => setSelection({ type: "marker", key: id })}
-          onHover={setHovered}
-        />
-      </div>
-
-      <div className="map-legend-float">
-        <span className="legend-item"><span className="legend-swatch swatch-covered" /> Covered</span>
-        {mode === "explore" ? (
-          <span className="legend-item"><span className="legend-swatch swatch-selected" /> Selected</span>
-        ) : (
-          <>
-            <span className="legend-item"><span className="legend-swatch swatch-baseline" /> You comply</span>
-            <span className="legend-item"><span className="legend-swatch swatch-target" /> Target</span>
-          </>
-        )}
-        <span className="legend-item"><span className="legend-swatch swatch-none" /> Not covered</span>
-        {hovered && <span className="map-hint">▸ {hovered}</span>}
-      </div>
-
-      <aside className="map-panel">
-        <div className="mode-toggle">
-          <button className={mode === "explore" ? "on" : ""} onClick={() => setMode("explore")}>Explore</button>
-          <button className={mode === "compare" ? "on" : ""} onClick={() => setMode("compare")}>Compare</button>
+      <section className="map-hero">
+        <div className="map-fill">
+          <WorldMap
+            fillByCountry={fillByCountry}
+            markers={markers}
+            onSelectCountry={(c) => {
+              const jid = COUNTRY_JURISDICTION[c];
+              if (jid) toggle(jid);
+            }}
+            onSelectMarker={(id) => {
+              const m = MARKER_DEFS.find((d) => d.id === id);
+              if (m) toggle(m.jurisdictionId);
+            }}
+            onHover={setHovered}
+          />
         </div>
 
-        {mode === "explore" ? (
-          <>
-            <div className="quick-chips">
-              {[
-                { label: "🇪🇺 EU", sel: { type: "country", key: "France" } },
-                { label: "🇺🇸 US", sel: { type: "country", key: "United States of America" } },
-                { label: "🇨🇦 Canada", sel: { type: "country", key: "Canada" } },
-                { label: "🇨🇳 China", sel: { type: "country", key: "China" } },
-                { label: "🇭🇰 HK", sel: { type: "marker", key: "hk" } },
-              ].map((c) => (
-                <button key={c.label} className="chip" onClick={() => setSelection(c.sel as any)}>
-                  {c.label}
+        <div className="map-bar">
+          {selected.length === 0 ? (
+            <span className="bar-hint">
+              {hovered ? <strong>{hovered}</strong> : "Click a highlighted region or pin to begin"}
+            </span>
+          ) : (
+            <>
+              {selected.map((id) => (
+                <button key={id} className="sel-chip" onClick={() => toggle(id)} title="Remove">
+                  <span className="sel-dot" style={{ background: colorOf(id) ?? "" }} />
+                  {jurisdictionsById[id].flag} {jurisdictionsById[id].name}
+                  <span className="sel-x">×</span>
                 </button>
               ))}
-            </div>
-            {!explore ? (
-              <p className="panel-empty">Select a highlighted country or pin on the map to view its privacy laws.</p>
-            ) : (
-              <div className="panel-scroll">
-                <h2 className="panel-title">{explore.title}</h2>
-                {explore.note && <p className="panel-note">{explore.note}</p>}
-                {explore.lawIds.map((id) => {
-                  const law = lawsById[id];
-                  if (!law) return null;
-                  return (
-                    <Link key={id} href={`/laws/${id}`} className="card panel-card">
-                      <div className="card-title">{law.shortName}</div>
-                      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", margin: "6px 0" }}>
-                        <span className={`badge badge-status-${law.status}`}>{STATUS_LABEL[law.status]}</span>
-                        <span className="badge badge-region">Effective {law.effectiveDate}</span>
-                      </div>
-                      <span className="card-cta">View obligations →</span>
-                    </Link>
-                  );
-                })}
-              </div>
-            )}
-          </>
-        ) : (
-          <>
-            <div className="compare-controls">
-              <label>
-                <span>You comply with</span>
-                <select value={baseline} onChange={(e) => setBaseline(e.target.value)}>
-                  {jurisdictions.map((j) => (
-                    <option key={j.id} value={j.id}>{j.flag} {j.name}</option>
-                  ))}
-                </select>
-              </label>
-              <label>
-                <span>Target</span>
-                <select value={target} onChange={(e) => setTarget(e.target.value)}>
-                  {jurisdictions.map((j) => (
-                    <option key={j.id} value={j.id}>{j.flag} {j.name}</option>
-                  ))}
-                </select>
-              </label>
-            </div>
-            {baseline === target ? (
-              <p className="panel-empty">Pick two different jurisdictions to compare.</p>
-            ) : gap ? (
-              <div className="panel-scroll">
-                <div className="gap-count">
-                  <span className="gap-num">{gap.gaps.length}</span>
-                  <span> gap{gap.gaps.length === 1 ? "" : "s"} moving to {jurisdictionsById[target].name}</span>
+              <button className="bar-btn" onClick={() => setSelected([])}>
+                Clear
+              </button>
+              <button className="bar-btn primary" onClick={scrollToDetail}>
+                {selected.length === 1 ? "View laws ↓" : "Compare ↓"}
+              </button>
+            </>
+          )}
+        </div>
+      </section>
+
+      <div ref={detailRef} className="detail-anchor" />
+
+      {selected.length === 0 && <AllLaws />}
+      {selected.length === 1 && <SingleJurisdiction id={selected[0]} />}
+      {selected.length >= 2 && (
+        <Comparison ids={selected} colorOf={colorOf} coverage={coverage} gap={gap} onSwap={() => setSelected([selected[1], selected[0]])} />
+      )}
+    </>
+  );
+}
+
+function LawCard({ id }: { id: string }) {
+  const law = lawsById[id];
+  if (!law) return null;
+  return (
+    <Link href={`/laws/${id}`} className="card">
+      <div className="card-title">{law.shortName}</div>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", margin: "8px 0" }}>
+        <span className={`badge badge-status-${law.status}`}>{STATUS_LABEL[law.status]}</span>
+        <span className="badge badge-region">Effective {law.effectiveDate}</span>
+      </div>
+      <p className="card-summary">{law.summary}</p>
+      <span className="card-cta">View obligations →</span>
+    </Link>
+  );
+}
+
+function SingleJurisdiction({ id }: { id: string }) {
+  const j = jurisdictionsById[id];
+  const theseLaws = laws.filter((l) => l.jurisdictionId === id);
+  return (
+    <section className="detail-section">
+      <h2 className="detail-title">
+        <span className="detail-flag">{j.flag}</span> {j.name}
+      </h2>
+      {NOTES[id] && <p className="detail-note">{NOTES[id]}</p>}
+      <div className="grid">
+        {theseLaws.map((l) => (
+          <LawCard key={l.id} id={l.id} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Comparison({
+  ids,
+  colorOf,
+  coverage,
+  gap,
+  onSwap,
+}: {
+  ids: string[];
+  colorOf: (id: string) => string | null;
+  coverage: Record<string, ReturnType<typeof aggregateByJurisdiction>>;
+  gap: ReturnType<typeof analyzeGap> | null;
+  onSwap: () => void;
+}) {
+  return (
+    <section className="detail-section">
+      <h2 className="detail-title">Comparing {ids.length} jurisdictions</h2>
+      <div className="compare-heads">
+        {ids.map((id) => (
+          <span key={id} className="compare-head">
+            <span className="sel-dot" style={{ background: colorOf(id) ?? "" }} />
+            {jurisdictionsById[id].flag} {jurisdictionsById[id].name}
+          </span>
+        ))}
+      </div>
+
+      {gap && (
+        <div className="gap-callout">
+          <div className="gap-callout-head">
+            <span>
+              Moving from <strong>{gap.source.name}</strong> to <strong>{gap.target.name}</strong>:{" "}
+              <span className="gap-num-inline">{gap.gaps.length}</span> gap
+              {gap.gaps.length === 1 ? "" : "s"} to close
+            </span>
+            <button className="bar-btn" onClick={onSwap}>
+              ⇄ Swap direction
+            </button>
+          </div>
+          {gap.gaps.length > 0 ? (
+            <div className="gap-list">
+              {gap.gaps.map((g) => (
+                <div key={g.requirement.id} className="gap-row">
+                  <div className="gap-req">{g.requirement.name}</div>
+                  <div className="gap-oblig">{g.targetObligation}</div>
+                  <div className="citation">{g.targetCitation}</div>
                 </div>
-                {gap.gaps.slice(0, 6).map((g) => (
-                  <div key={g.requirement.id} className="gap-row">
-                    <div className="gap-req">{g.requirement.name}</div>
-                    <div className="gap-oblig">{g.targetObligation}</div>
+              ))}
+            </div>
+          ) : (
+            <p className="detail-note" style={{ margin: 0 }}>
+              Complying with {gap.source.name} already meets or exceeds {gap.target.name} across the
+              tracked requirements.
+            </p>
+          )}
+        </div>
+      )}
+
+      <h3 className="region-heading">Obligation coverage</h3>
+      <div className="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style={{ width: "28%" }}>Requirement</th>
+              {ids.map((id) => (
+                <th key={id}>
+                  <span className="sel-dot" style={{ background: colorOf(id) ?? "" }} />{" "}
+                  {jurisdictionsById[id].flag} {jurisdictionsById[id].name}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {requirementCategories.map((category) => (
+              <Fragment key={category}>
+                <tr>
+                  <td
+                    colSpan={1 + ids.length}
+                    style={{
+                      background: "var(--bg)",
+                      color: "var(--text-faint)",
+                      fontSize: 12,
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.05em",
+                    }}
+                  >
+                    {category}
+                  </td>
+                </tr>
+                {requirements
+                  .filter((r) => r.category === category)
+                  .map((req) => (
+                    <tr key={req.id}>
+                      <td>
+                        <div className="req-name">{req.name}</div>
+                      </td>
+                      {ids.map((id) => {
+                        const level = (coverage[id]?.[req.id]?.strictness ?? 0) as Strictness;
+                        return (
+                          <td key={id}>
+                            <CoverageBadge level={level} />
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  ))}
+              </Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <Link href="/gap-analysis" className="card-cta" style={{ marginTop: 16, display: "inline-block" }}>
+        Open full gap analysis →
+      </Link>
+    </section>
+  );
+}
+
+function AllLaws() {
+  const grouped = laws.reduce<Record<string, typeof laws>>((acc, law) => {
+    const j = jurisdictionsById[law.jurisdictionId];
+    (acc[j.region] ||= []).push(law);
+    return acc;
+  }, {});
+  return (
+    <section className="detail-section">
+      <h2 className="detail-title">All tracked laws</h2>
+      {Object.entries(grouped).map(([region, regionLaws]) => (
+        <div key={region}>
+          <h3 className="region-heading">{region}</h3>
+          <div className="grid">
+            {regionLaws.map((law) => {
+              const j = jurisdictionsById[law.jurisdictionId];
+              return (
+                <Link key={law.id} href={`/laws/${law.id}`} className="card">
+                  <div className="card-head">
+                    <span className="card-flag">{j.flag}</span>
+                    <div>
+                      <div className="card-title">{law.shortName}</div>
+                      <div className="card-sub">{j.name}</div>
+                    </div>
                   </div>
-                ))}
-                {gap.gaps.length === 0 && (
-                  <p className="panel-note">Complying with {jurisdictionsById[baseline].name} already meets or exceeds {jurisdictionsById[target].name} across the tracked requirements.</p>
-                )}
-                <Link href="/gap-analysis" className="card-cta" style={{ marginTop: 12, display: "inline-block" }}>
-                  Full gap analysis →
+                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                    <span className={`badge badge-status-${law.status}`}>
+                      {STATUS_LABEL[law.status]}
+                    </span>
+                    <span className="badge badge-region">Effective {law.effectiveDate}</span>
+                  </div>
+                  <p className="card-summary">{law.summary}</p>
                 </Link>
-              </div>
-            ) : null}
-          </>
-        )}
-      </aside>
+              );
+            })}
+          </div>
+        </div>
+      ))}
     </section>
   );
 }
