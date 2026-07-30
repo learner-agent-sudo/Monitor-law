@@ -90,8 +90,10 @@ export const provenance: Provenance[] = [
     lawId: "pipl",
     status: "ai-drafted",
     sourceRef: "PIPL (2021)",
-    checkUrl: "https://www.chinalawtranslate.com/en/personal-information-protection-law/",
-    expectedMarkers: ["personal information", "Article 38", "Article 66"],
+    // Previous chinalawtranslate URL returned 404 — caught by the automated check.
+    checkUrl:
+      "https://digichina.stanford.edu/work/translation-personal-information-protection-law-of-the-peoples-republic-of-china-effective-nov-1-2021/",
+    expectedMarkers: ["personal information"],
     lastReviewed: "2026-07-30",
     corroboration: [
       { name: "China Law Translate", url: "https://www.chinalawtranslate.com/" },
@@ -102,8 +104,11 @@ export const provenance: Provenance[] = [
     lawId: "pdpo",
     status: "ai-drafted",
     sourceRef: "Cap. 486",
-    checkUrl: "https://www.elegislation.gov.hk/hk/cap486",
-    expectedMarkers: ["Personal Data", "486"],
+    // e-Legislation renders via JS, so text extraction found nothing to check
+    // against. The PCPD's own page serves the ordinance as plain HTML.
+    checkUrl:
+      "https://www.pcpd.org.hk/english/data_privacy_law/ordinance_at_a_Glance/ordinance.html",
+    expectedMarkers: ["personal data"],
     lastReviewed: "2026-07-30",
     corroboration: [
       { name: "PCPD Hong Kong", url: "https://www.pcpd.org.hk/" },

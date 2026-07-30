@@ -99,16 +99,38 @@ for (const entry of entries) {
   const ageDays = Math.floor((now - new Date(entry.lastReviewed)) / 86_400_000);
   const problems = [];
 
-  if (!res.ok) {
+  // Distinguish "the citation is wrong" from "a bot-blocker got in the way".
+  // Conflating these makes the report untrustworthy: a 403 says nothing about
+  // whether the law is where we claim it is.
+  let severity = "ok";
+
+  if (res.status === 404 || res.status === 410) {
+    severity = "broken";
+    problems.push(`DEAD LINK (HTTP ${res.status}) — the cited source is not at this URL`);
+  } else if (res.status === 403 || res.status === 401 || res.status === 429) {
+    severity = "blocked";
+    problems.push(`blocked by the host (HTTP ${res.status}) — verify this one by hand`);
+  } else if (!res.ok) {
+    severity = "blocked";
     problems.push(`unreachable (HTTP ${res.status}${res.error ? `: ${res.error}` : ""})`);
+  } else if (res.text.length < 2000) {
+    // Almost certainly a JS-rendered shell; there is no text to check markers against.
+    severity = "blocked";
+    problems.push(
+      `only ${res.text.length} chars of text extracted (likely JS-rendered) — verify by hand`,
+    );
   } else {
     // Citation sanity: do the cited provisions actually appear in the source?
     const missing = entry.expectedMarkers.filter(
       (m) => !res.text.toLowerCase().includes(m.toLowerCase()),
     );
-    if (missing.length) problems.push(`markers not found in source: ${missing.join(", ")}`);
+    if (missing.length) {
+      severity = "suspect";
+      problems.push(`CITATION NOT FOUND in source text: ${missing.join(", ")}`);
+    }
 
     if (prev?.hash && prev.hash !== hash) {
+      severity = "changed";
       const delta = res.text.length - (prev.length ?? 0);
       problems.push(
         `PRIMARY SOURCE CHANGED (${delta >= 0 ? "+" : ""}${delta} chars) — re-check this entry`,
@@ -122,6 +144,7 @@ for (const entry of entries) {
   results.push({
     lawId: entry.lawId,
     status: entry.status,
+    severity,
     url: entry.checkUrl,
     http: res.status,
     hash,
@@ -154,10 +177,13 @@ for (const r of results) {
     `| \`${r.lawId}\` | ${r.http || "—"} | ${r.status} | ${r.problems.length ? r.problems.join("; ") : "no issues"} |`,
   );
 }
-const changed = results.filter((r) => r.problems.some((p) => p.includes("CHANGED")));
-const broken = results.filter((r) => r.problems.some((p) => p.startsWith("unreachable")));
+const changed = results.filter((r) => r.severity === "changed");
+const broken = results.filter((r) => r.severity === "broken");
+const suspect = results.filter((r) => r.severity === "suspect");
+const blocked = results.filter((r) => r.severity === "blocked");
 lines.push(
-  `\n**${changed.length}** source(s) changed · **${broken.length}** unreachable · ` +
+  `\n**${broken.length}** dead link(s) · **${suspect.length}** citation(s) not found · ` +
+    `**${changed.length}** source(s) changed · **${blocked.length}** need manual check · ` +
     `**${results.filter((r) => r.status === "ai-drafted").length}** still unverified.\n`,
 );
 lines.push(
@@ -171,6 +197,7 @@ if (process.env.GITHUB_STEP_SUMMARY) {
   writeFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
 }
 
-// Only fail the run for actionable problems, not for the standing "unverified" state.
-const actionable = changed.length + broken.length;
+// Fail only on problems we can actually act on. A bot-blocked host is not a
+// content error, and the standing "unverified" state is expected, not a regression.
+const actionable = changed.length + broken.length + suspect.length;
 process.exit(actionable > 0 && !UPDATE ? 1 : 0);
