@@ -124,3 +124,13 @@ Anchoring needs contiguous English. Three failure modes seen in real downloads:
 **When downloading, prefer a single-language HTML source over a bilingual PDF.**
 For Canada, `laws-lois.justice.gc.ca/eng/acts/P-8.6/` serves English-only HTML;
 the consolidated PDF is side-by-side bilingual and cannot be anchored.
+
+### Update after real downloads (2026-07-31)
+
+| Layout | Seen in | Anchorable? |
+|---|---|---|
+| Bilingual, **two-column PDF** | HK Cap. 486 | ❌ Mostly no — the Data Protection Principles sit on lines carrying both languages, so removing Chinese also removes their English. Needs an **English-only** edition. |
+
+Canada was fixed this way: the side-by-side EN/FR PDF was replaced with an
+English-only export and went from unanchorable to 15/15. The same fix applies
+to Hong Kong.

@@ -72,13 +72,13 @@ export const provenance: Provenance[] = [
   },
   {
     lawId: "ccpa",
-    status: "ai-drafted",
+    status: "source-checked",
     corpusFile: "corpus/ccpa.md",
     sourceRef: "Cal. Civ. Code §1798.100 et seq.",
     checkUrl:
       "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?division=3.&part=4.&lawCode=CIV&title=1.81.5",
     expectedMarkers: ["1798.100", "1798.120", "personal information"],
-    lastReviewed: "2026-07-30",
+    lastReviewed: "2026-07-31",
     corroboration: [
       { name: "CPPA regulations", url: "https://cppa.ca.gov/regulations/" },
       { name: "IAPP US State Privacy Tracker", url: "https://iapp.org/resources/article/us-state-privacy-legislation-tracker/" },
@@ -99,12 +99,12 @@ export const provenance: Provenance[] = [
   },
   {
     lawId: "quebec-law25",
-    status: "ai-drafted",
+    status: "source-checked",
     corpusFile: "corpus/quebec-law25.md",
-    sourceRef: "CQLR c. P-39.1",
+    sourceRef: "CQLR c. P-39.1 (operative Act, as amended by Law 25)",
     checkUrl: "https://www.legisquebec.gouv.qc.ca/en/document/cs/p-39.1",
     expectedMarkers: ["personal information", "P-39.1"],
-    lastReviewed: "2026-07-30",
+    lastReviewed: "2026-07-31",
     corroboration: [
       { name: "Commission d'accès à l'information", url: "https://www.cai.gouv.qc.ca/" },
     ],

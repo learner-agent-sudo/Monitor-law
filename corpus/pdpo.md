@@ -7,7 +7,7 @@ retrieved: 2026-07-31
 versionNote: Verified Copy under the Legislation Publication Ordinance (Cap. 614) s.5. Version date 1.10.2022.
 language: zh+en
 official: true
-textQuality: bilingual — English and Chinese alternate line by line; CJK-dominant lines are stripped before quote matching
+textQuality: "PARTIALLY UNUSABLE FOR ANCHORING — two-column bilingual PDF. Some lines alternate cleanly (those anchor fine), but the core Data Protection Principles sit on lines carrying BOTH languages, so stripping CJK lines also removes their English. Re-download an ENGLISH-ONLY edition: e-Legislation offers a single-language view, and the PCPD publishes an English PDF."
 ---
 
 C-1

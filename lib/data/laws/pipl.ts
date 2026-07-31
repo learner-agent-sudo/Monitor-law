@@ -132,7 +132,7 @@ export const pipl: Law = {
       strictness: 3,
       obligation:
         "Critical information infrastructure operators and high-volume handlers must store personal information within China.",
-      citation: "PIPL Art. 40; CSL Art. 37",
+      citation: "PIPL Art. 40",
       quote:
         "应当将在中华人民共和国境内收集和产生的个人信息存储在境内",
     },
