@@ -86,12 +86,12 @@ export const provenance: Provenance[] = [
   },
   {
     lawId: "pipeda",
-    status: "ai-drafted",
+    status: "source-checked",
     corpusFile: "corpus/pipeda.md",
     sourceRef: "S.C. 2000, c. 5",
     checkUrl: "https://laws-lois.justice.gc.ca/eng/acts/P-8.6/FullText.html",
     expectedMarkers: ["Personal Information Protection and Electronic Documents Act", "10.1"],
-    lastReviewed: "2026-07-30",
+    lastReviewed: "2026-07-31",
     corroboration: [
       { name: "OPC guidance", url: "https://www.priv.gc.ca/en/privacy-topics/" },
       { name: "DLA Piper — Canada", url: "https://www.dlapiperdataprotection.com/" },
