@@ -33,6 +33,30 @@ const LAWS_DIR = join(ROOT, "lib", "data", "laws");
  * raw strings would produce false failures that train you to ignore the check.
  * Whitespace and punctuation shape are normalized — wording is not.
  */
+/**
+ * Some official texts are published bilingually with the two languages on
+ * ALTERNATING LINES (Hong Kong's Cap. 486 interleaves Chinese and English).
+ * Dropping the CJK-dominant lines restores contiguous English so quotes can be
+ * matched. The stored corpus keeps the original bilingual text untouched — only
+ * the in-memory copy used for matching is filtered.
+ *
+ * This does NOT rescue texts where both languages share a line (Justice
+ * Canada's side-by-side EN/FR consolidations); those need an English-only
+ * download instead, and are flagged rather than silently half-matched.
+ */
+function stripCjkLines(text) {
+  const cjk = /[　-〿㐀-䶿一-鿿豈-﫿＀-￯]/g;
+  return text
+    .split("\n")
+    .filter((line) => {
+      const t = line.trim();
+      if (!t) return true;
+      const hits = (t.match(cjk) || []).length;
+      return hits / t.length < 0.2;
+    })
+    .join("\n");
+}
+
 function normalize(text) {
   return text
     .replace(/­/g, "")
@@ -105,7 +129,7 @@ for (const file of lawFiles) {
 
   const raw = readFileSync(corpusPath, "utf8");
   const meta = readFrontMatter(raw);
-  const haystack = normalize(stripFrontMatter(raw));
+  const haystack = normalize(stripCjkLines(stripFrontMatter(raw)));
   const quotes = extractQuotes(src);
 
   if (quotes.length === 0) {

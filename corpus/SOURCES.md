@@ -107,3 +107,20 @@ The corpus is **pinned, not permanent**. When
 law, re-download it here, replace the file, bump `retrieved` in the metadata
 block, and re-check the affected quotes. Laws change — that is the whole point
 of the monitor.
+
+---
+
+## Text quality: what breaks quote anchoring
+
+Anchoring needs contiguous English. Three failure modes seen in real downloads:
+
+| Layout | Example | Anchorable? |
+|---|---|---|
+| Single-language | EU GDPR (EUR-Lex) | ✅ Yes |
+| Bilingual, **alternating lines** | HK Cap. 486 (中文 / English) | ✅ Yes — CJK-dominant lines are stripped before matching |
+| Bilingual, **same line** | Justice Canada EN/FR consolidations | ❌ No — English sentences are fragmented by French |
+| PDF margin artifacts | Québec P-39.1 (stray `1`, `c`, `,` at line joins) | ⚠️ Partially — keep quotes within a single line |
+
+**When downloading, prefer a single-language HTML source over a bilingual PDF.**
+For Canada, `laws-lois.justice.gc.ca/eng/acts/P-8.6/` serves English-only HTML;
+the consolidated PDF is side-by-side bilingual and cannot be anchored.
