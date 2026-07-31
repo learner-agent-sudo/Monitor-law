@@ -27,6 +27,10 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      # Content integrity gate: a mapping that misquotes the statute must never
+      # reach the published site. Offline and deterministic, so it is safe to block on.
+      - name: Check quote anchoring
+        run: node scripts/check-quotes.mjs
       - name: Build static export
         env:
           # Must match the canonical Pages URL casing exactly:
