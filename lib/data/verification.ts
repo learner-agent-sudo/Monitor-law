@@ -8,10 +8,10 @@
 //   ai-drafted     Written by AI from training knowledge. NOT checked against
 //                  the primary text. Treat every figure and deadline as a lead
 //                  to verify, not as a fact.
-//   source-checked The automated checker fetched the primary source and
-//                  confirmed the cited provisions exist in it (see
-//                  scripts/verify-sources.mjs). Confirms the citation is real —
-//                  NOT that the summary's interpretation is correct.
+//   source-checked Every mapping quotes the statute text held in corpus/, and
+//                  scripts/check-quotes.mjs verifies each quote verbatim on
+//                  every build. Confirms the words are really the statute's —
+//                  NOT that the surrounding interpretation is correct.
 //   human-verified A person read the primary source and confirmed the summary.
 //                  This is the only status that implies legal reliability.
 // ---------------------------------------------------------------------------
@@ -25,6 +25,12 @@ export interface Provenance {
   sourceRef: string;
   /** Machine-checkable URL of the primary text (pinged by CI for change detection). */
   checkUrl: string;
+  /**
+   * Path to the statute text held in-repo, when one has been supplied. Once
+   * present, this file — not the model's training data — is the source of
+   * truth, and mappings must quote it verbatim.
+   */
+  corpusFile?: string;
   /** Strings that must appear in the primary text — a cheap citation sanity check. */
   expectedMarkers: string[];
   /** ISO date this entry was last touched by a drafting or verification pass. */
@@ -39,11 +45,12 @@ export const STALE_AFTER_DAYS = 180;
 export const provenance: Provenance[] = [
   {
     lawId: "gdpr",
-    status: "ai-drafted",
+    status: "source-checked",
     sourceRef: "CELEX:32016R0679",
     checkUrl: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679",
+    corpusFile: "corpus/gdpr.md",
     expectedMarkers: ["72 hours", "Article 33", "supervisory authority"],
-    lastReviewed: "2026-07-30",
+    lastReviewed: "2026-07-31",
     corroboration: [
       { name: "EDPB guidelines", url: "https://www.edpb.europa.eu/our-work-tools/general-guidance/guidelines-recommendations-best-practices_en" },
       { name: "DLA Piper — EU", url: "https://www.dlapiperdataprotection.com/" },
@@ -127,6 +134,6 @@ export function isStale(p: Provenance, now: Date = new Date()): boolean {
 
 export const STATUS_LABEL: Record<VerificationStatus, string> = {
   "ai-drafted": "AI-drafted — unverified",
-  "source-checked": "Citations checked against source",
+  "source-checked": "Quote-anchored to statute text",
   "human-verified": "Human-verified",
 };

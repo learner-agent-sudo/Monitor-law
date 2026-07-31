@@ -66,11 +66,16 @@ function readFrontMatter(md) {
 /** Pull { requirementId, quote, citation } triples out of a law's TS source. */
 function extractQuotes(src) {
   const out = [];
-  // Match each mapping block: "requirement-id": { ... }
-  const re = /"([a-z0-9-]+)":\s*\{([\s\S]*?)\n    \}/g;
+  // Match each mapping block. Keys appear both quoted ("rights-access") and as
+  // bare identifiers (consent, dpia, security) — missing the bare form silently
+  // skips those mappings, which is worse than a false failure. Anchoring to the
+  // 4-space mapping indent keeps the enclosing `mappings: {` from matching.
+  const re =
+    /\n {4}(?:"([a-z0-9-]+)"|([a-zA-Z_$][\w$]*))\s*:\s*\{([\s\S]*?)\n {4}\}/g;
   let m;
   while ((m = re.exec(src))) {
-    const [, requirementId, body] = m;
+    const requirementId = m[1] ?? m[2];
+    const body = m[3];
     // Match the string literal itself (handling escapes) rather than relying on
     // what follows it — a trailing comma or newline may fall outside the block.
     const rawQuote = body.match(/quote:\s*"((?:[^"\\]|\\.)*)"/)?.[1];

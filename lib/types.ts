@@ -43,6 +43,16 @@ export interface RequirementMapping {
   obligation: string;
   /** Primary-source citation (article / section reference). */
   citation: string;
+  /**
+   * Verbatim excerpt from corpus/<lawId>.md supporting this mapping.
+   * Enforced by scripts/check-quotes.mjs — a quote that is not present in the
+   * corpus fails the build.
+   *
+   * Omitted only where the claim is about the ABSENCE of an obligation, which
+   * by definition cannot be quoted. Such mappings rest on argument, not text,
+   * and should be treated as the weakest entries in the catalog.
+   */
+  quote?: string;
 }
 
 export interface Law {
