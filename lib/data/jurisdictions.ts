@@ -8,6 +8,12 @@ export const jurisdictions: Jurisdiction[] = [
     flag: "🇪🇺",
   },
   {
+    id: "uk",
+    name: "United Kingdom",
+    region: "Europe",
+    flag: "🇬🇧",
+  },
+  {
     id: "us-ca",
     name: "California (USA)",
     region: "North America",

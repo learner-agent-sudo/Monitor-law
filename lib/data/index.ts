@@ -5,11 +5,12 @@ import { pipeda } from "./laws/pipeda";
 import { quebecLaw25 } from "./laws/quebec-law25";
 import { pipl } from "./laws/pipl";
 import { pdpo } from "./laws/pdpo";
+import { ukGdpr } from "./laws/uk-gdpr";
 
 export { jurisdictions, jurisdictionsById } from "./jurisdictions";
 export { requirements, requirementsById, requirementCategories } from "./requirements";
 
-export const laws: Law[] = [gdpr, ccpa, pipeda, quebecLaw25, pipl, pdpo];
+export const laws: Law[] = [gdpr, ukGdpr, ccpa, pipeda, quebecLaw25, pipl, pdpo];
 
 export const lawsById: Record<string, Law> = Object.fromEntries(laws.map((l) => [l.id, l]));
 

@@ -58,6 +58,19 @@ export const provenance: Provenance[] = [
     ],
   },
   {
+    lawId: "uk-gdpr",
+    status: "source-checked",
+    sourceRef: "Regulation (EU) 2016/679 as retained in UK law",
+    checkUrl: "https://www.legislation.gov.uk/eur/2016/679/contents",
+    corpusFile: "corpus/uk-gdpr.md",
+    expectedMarkers: ["United Kingdom General Data Protection Regulation", "the Commissioner"],
+    lastReviewed: "2026-07-31",
+    corroboration: [
+      { name: "ICO guidance", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/" },
+      { name: "DLA Piper — UK", url: "https://www.dlapiperdataprotection.com/" },
+    ],
+  },
+  {
     lawId: "ccpa",
     status: "ai-drafted",
     corpusFile: "corpus/ccpa.md",

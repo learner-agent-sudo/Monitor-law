@@ -65,6 +65,11 @@ function stripCjkLines(text, language = "") {
 function normalize(text) {
   return text
     .replace(/­/g, "")
+    // Markdown heading markers are conversion artifacts, not statutory wording;
+    // legislation.gov.uk exports sometimes prefix every wrapped line with "###".
+    .replace(/^[ \t]*#{1,6}[ \t]+/gm, "")
+    // Rejoin words split across a line break by a soft hyphen ("machine-\nreadable").
+    .replace(/-[ \t]*\n[ \t]*/g, "-")
     .replace(/[‘’ʼ]/g, "'")
     .replace(/[“”]/g, '"')
     .replace(/[‐-―−]/g, "-")

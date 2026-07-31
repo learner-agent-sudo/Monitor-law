@@ -151,6 +151,12 @@ function CategoryRows({
             </td>
             <td style={{ color: "var(--text-muted)" }}>
               {m ? m.obligation : "Not addressed by this law."}
+              {m?.quote && (
+                <blockquote className="statute-quote">
+                  “{m.quote}”
+                  <span className="statute-quote-tag">verbatim from the statute text</span>
+                </blockquote>
+              )}
             </td>
             <td className="citation">{m ? m.citation : "—"}</td>
           </tr>

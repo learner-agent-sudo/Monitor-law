@@ -687,3 +687,26 @@ code {
   font-size: 12.5px;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
+
+/* Verbatim statutory excerpt shown beneath an obligation. The point of quote
+   anchoring is that the reader can see the statute's own words, not just our
+   paraphrase of them. */
+.statute-quote {
+  margin: 8px 0 0;
+  padding: 8px 12px;
+  border-left: 2px solid var(--accent);
+  background: rgba(76, 141, 255, 0.06);
+  border-radius: 0 6px 6px 0;
+  font-size: 13px;
+  color: var(--text);
+  font-style: italic;
+}
+.statute-quote-tag {
+  display: block;
+  margin-top: 5px;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}

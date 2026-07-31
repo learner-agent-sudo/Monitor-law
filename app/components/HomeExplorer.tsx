@@ -27,6 +27,7 @@ const EU_MEMBERS = [
 
 /** Map polygon -> the jurisdiction it selects. */
 const COUNTRY_JURISDICTION: Record<string, string> = {
+  "United Kingdom": "uk",
   "United States of America": "us-ca",
   Canada: "ca",
   China: "cn",
@@ -36,6 +37,7 @@ const COUNTRY_JURISDICTION: Record<string, string> = {
 /** Countries painted for a given jurisdiction. */
 const JURISDICTION_COUNTRIES: Record<string, string[]> = {
   eu: EU_MEMBERS,
+  uk: ["United Kingdom"],
   "us-ca": ["United States of America"],
   ca: ["Canada"],
   cn: ["China"],
@@ -54,6 +56,7 @@ const MARKER_DEFS: { id: string; jurisdictionId: string; name: string; short: st
 
 const NOTES: Record<string, string> = {
   eu: "The GDPR applies across all EU/EEA member states.",
+  uk: "Retained EU law, now measurably diverging: child consent at 13, fines in sterling, and the Data (Use and Access) Act 2025 replaced Art. 22 and omitted Art. 44 from 5 Feb 2026.",
   "us-ca":
     "The United States has no comprehensive federal privacy law — protection is state-by-state. California is shown here; more states arrive in Phase 2.",
   ca: "Canada's federal private-sector law. Québec has its own, stricter regime — select QC on the map.",
