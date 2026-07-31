@@ -44,7 +44,12 @@ const LAWS_DIR = join(ROOT, "lib", "data", "laws");
  * Canada's side-by-side EN/FR consolidations); those need an English-only
  * download instead, and are flagged rather than silently half-matched.
  */
-function stripCjkLines(text) {
+function stripCjkLines(text, language = "") {
+  // Only meaningful for a bilingual CJK+Latin text. For a Chinese-only statute
+  // (PIPL's authoritative NPC text) this would delete the whole document, so the
+  // filter is gated on the corpus declaring BOTH languages in its front matter.
+  const bilingual = /zh/.test(language) && /en/.test(language);
+  if (!bilingual) return text;
   const cjk = /[　-〿㐀-䶿一-鿿豈-﫿＀-￯]/g;
   return text
     .split("\n")
@@ -129,7 +134,7 @@ for (const file of lawFiles) {
 
   const raw = readFileSync(corpusPath, "utf8");
   const meta = readFrontMatter(raw);
-  const haystack = normalize(stripCjkLines(stripFrontMatter(raw)));
+  const haystack = normalize(stripCjkLines(stripFrontMatter(raw), meta.language ?? ""));
   const quotes = extractQuotes(src);
 
   if (quotes.length === 0) {

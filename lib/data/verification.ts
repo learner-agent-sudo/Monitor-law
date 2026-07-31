@@ -60,6 +60,7 @@ export const provenance: Provenance[] = [
   {
     lawId: "ccpa",
     status: "ai-drafted",
+    corpusFile: "corpus/ccpa.md",
     sourceRef: "Cal. Civ. Code §1798.100 et seq.",
     checkUrl:
       "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?division=3.&part=4.&lawCode=CIV&title=1.81.5",
@@ -73,6 +74,7 @@ export const provenance: Provenance[] = [
   {
     lawId: "pipeda",
     status: "ai-drafted",
+    corpusFile: "corpus/pipeda.md",
     sourceRef: "S.C. 2000, c. 5",
     checkUrl: "https://laws-lois.justice.gc.ca/eng/acts/P-8.6/FullText.html",
     expectedMarkers: ["Personal Information Protection and Electronic Documents Act", "10.1"],
@@ -85,6 +87,7 @@ export const provenance: Provenance[] = [
   {
     lawId: "quebec-law25",
     status: "ai-drafted",
+    corpusFile: "corpus/quebec-law25.md",
     sourceRef: "CQLR c. P-39.1",
     checkUrl: "https://www.legisquebec.gouv.qc.ca/en/document/cs/p-39.1",
     expectedMarkers: ["personal information", "P-39.1"],
@@ -95,13 +98,13 @@ export const provenance: Provenance[] = [
   },
   {
     lawId: "pipl",
-    status: "ai-drafted",
+    status: "source-checked",
     sourceRef: "PIPL (2021)",
-    // Previous chinalawtranslate URL returned 404 — caught by the automated check.
-    checkUrl:
-      "https://digichina.stanford.edu/work/translation-personal-information-protection-law-of-the-peoples-republic-of-china-effective-nov-1-2021/",
-    expectedMarkers: ["personal information"],
-    lastReviewed: "2026-07-30",
+    // Now anchored to the authoritative Chinese text from the NPC, not a translation.
+    checkUrl: "http://www.npc.gov.cn/npc/c2/c30834/202108/t20210820_313088.html",
+    corpusFile: "corpus/pipl.md",
+    expectedMarkers: ["个人信息保护法", "第六十六条"],
+    lastReviewed: "2026-07-31",
     corroboration: [
       { name: "China Law Translate", url: "https://www.chinalawtranslate.com/" },
       { name: "Stanford DigiChina", url: "https://digichina.stanford.edu/" },
@@ -110,6 +113,7 @@ export const provenance: Provenance[] = [
   {
     lawId: "pdpo",
     status: "ai-drafted",
+    corpusFile: "corpus/pdpo.md",
     sourceRef: "Cap. 486",
     // e-Legislation renders via JS, so text extraction found nothing to check
     // against. The PCPD's own page serves the ordinance as plain HTML.
