@@ -18,32 +18,44 @@ export const pdpo: Law = {
       obligation:
         "No enumerated lawful bases; collection must be for a lawful purpose directly related to a function/activity and by fair means.",
       citation: "DPP1 (Schedule 1)",
+      quote:
+        "the data is collected for a lawful purpose directly related",
     },
     consent: {
       strictness: 2,
       obligation:
         "'Prescribed consent' (express, voluntary) is required to use data for a new purpose and to use/provide data for direct marketing.",
       citation: "s.2(3); DPP3; Part 6A",
+      quote:
+        "means the express consent of the person given",
     },
     "notice-transparency": {
       strictness: 2,
       obligation: "A Personal Information Collection Statement must be given at collection; practices must be made available.",
       citation: "DPP1(3); DPP5",
+      quote:
+        "ascertain a data user’s policies and practices in relation",
     },
     "rights-access": {
       strictness: 2,
       obligation: "Individuals may make a data access request for a copy of their personal data.",
       citation: "PDPO ss.18–19",
+      quote:
+        "ascertain whether a data user holds personal data of",
     },
     "rights-deletion": {
       strictness: 1,
       obligation: "Data users must erase data no longer required; there is no free-standing individual right to erasure.",
       citation: "DPP2(2)",
+      quote:
+        "data is not kept longer than is necessary for the fulfillment of",
     },
     "rights-correction": {
       strictness: 2,
       obligation: "Individuals may make a data correction request for inaccurate data.",
       citation: "PDPO ss.22–23",
+      quote:
+        "request the correction of personal data",
     },
     "rights-portability": {
       strictness: 0,
@@ -55,6 +67,8 @@ export const pdpo: Law = {
       obligation:
         "Strict direct-marketing regime: opt-in to use data for marketing and a mandatory opt-out that must be honoured; consent needed to provide data to others for marketing.",
       citation: "PDPO Part 6A (ss.35A–35M)",
+      quote:
+        "Data subject may require data user to cease to",
     },
     "rights-automated-decision": {
       strictness: 0,
@@ -91,6 +105,8 @@ export const pdpo: Law = {
       obligation:
         "The cross-border transfer restriction (s.33) has never been brought into force; the PCPD recommends voluntary model contractual clauses.",
       citation: "PDPO s.33 (not in operation)",
+      quote:
+        "Prohibition against transfer of personal data to place outside",
     },
     "data-localization": {
       strictness: 0,
@@ -106,17 +122,23 @@ export const pdpo: Law = {
       strictness: 2,
       obligation: "A data user engaging a data processor must adopt contractual or other means to ensure protection and retention limits.",
       citation: "DPP2(3); DPP4(2)",
+      quote:
+        "adopt contractual or other means to prevent",
     },
     security: {
       strictness: 2,
       obligation: "All practicable steps must be taken to protect data against unauthorised access, use, or loss.",
       citation: "DPP4",
+      quote:
+        "personal data (including data in a form in which access to",
     },
     "enforcement-penalties": {
       strictness: 2,
       obligation:
         "PCPD issues enforcement notices (breach of which is an offence); direct-marketing and 2021 anti-doxxing offences carry fines up to HK$1M and imprisonment.",
       citation: "PDPO ss.50, 64; Part 6A",
+      quote:
+        "directing the data user to remedy and,",
     },
   },
 };

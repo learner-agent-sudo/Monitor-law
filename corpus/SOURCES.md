@@ -132,5 +132,9 @@ the consolidated PDF is side-by-side bilingual and cannot be anchored.
 | Bilingual, **two-column PDF** | HK Cap. 486 | ❌ Mostly no — the Data Protection Principles sit on lines carrying both languages, so removing Chinese also removes their English. Needs an **English-only** edition. |
 
 Canada was fixed this way: the side-by-side EN/FR PDF was replaced with an
-English-only export and went from unanchorable to 15/15. The same fix applies
-to Hong Kong.
+English-only export and went from unanchorable to 15/15. **Hong Kong was then
+fixed the same way** — the PCPD's English-only consolidation (2 CJK-dominant
+lines out of 7,174) replaced the bilingual PDF and anchored 11/11.
+
+**Rule that held every time: get a single-language edition.** No amount of
+post-processing rescues a text where two languages share a line or a column.

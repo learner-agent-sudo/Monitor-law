@@ -125,15 +125,13 @@ export const provenance: Provenance[] = [
   },
   {
     lawId: "pdpo",
-    status: "ai-drafted",
+    status: "source-checked",
     corpusFile: "corpus/pdpo.md",
     sourceRef: "Cap. 486",
-    // e-Legislation renders via JS, so text extraction found nothing to check
-    // against. The PCPD's own page serves the ordinance as plain HTML.
     checkUrl:
       "https://www.pcpd.org.hk/english/data_privacy_law/ordinance_at_a_Glance/ordinance.html",
-    expectedMarkers: ["personal data"],
-    lastReviewed: "2026-07-30",
+    expectedMarkers: ["personal data", "data protection principle"],
+    lastReviewed: "2026-07-31",
     corroboration: [
       { name: "PCPD Hong Kong", url: "https://www.pcpd.org.hk/" },
     ],
