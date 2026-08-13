@@ -62,6 +62,7 @@ const obligations = [];
     const body = m[3];
     obligations.push({
       id,
+      strictness: Number(body.match(/strictness:\s*(\d)/)?.[1] ?? 0),
       obligation: body.match(/obligation:\s*\n?\s*"((?:[^"\\]|\\.)*)"/)?.[1] ?? "",
       citation: body.match(/citation:\s*"([^"]*)"/)?.[1] ?? "",
       quote: body.match(/quote:\s*\n?\s*"((?:[^"\\]|\\.)*)"/)?.[1] ?? null,
@@ -82,14 +83,14 @@ const probes = {
   "lawful-basis": [/legal basis|lawful basis|legitimate interest|contractual necessity/i],
   consent: [/\bconsent\b/i, /withdraw (your )?consent/i, /opt[- ]in/i],
   "rights-access": [/right to (request )?(access|know)/i, /request a copy of/i, /access to the personal/i],
-  "rights-deletion": [/right to (request )?(delete|deletion|erasure)/i, /right to be forgotten/i],
-  "rights-correction": [/right to (request )?(correct|rectif)/i, /correct .{0,30}inaccurate/i],
+  "rights-deletion": [/right to (request )?(delete|deletion|erasure)/i, /right to be forgotten/i, /seeks? to .{0,40}delete/i, /(remove|delet\w+) (your |such |the )?(personal )?(data|information)/i],
+  "rights-correction": [/right to (request )?(correct|rectif)/i, /correct\W{0,3}.{0,40}inaccurate/i, /seeks? to correct/i, /(correct|amend|rectify) (inaccurate|incomplete|your)/i],
   "rights-portability": [/data portability|portable format|machine[- ]readable/i],
   "rights-optout-sale": [/opt[- ]out/i, /do not sell/i, /sale of personal/i, /global privacy control/i, /unsubscribe/i],
   "rights-automated-decision": [/automated (decision|processing)/i, /\bprofiling\b/i],
   "sensitive-data": [/sensitive (personal )?(information|data)/i, /special categor/i, /biometric/i],
   "childrens-data": [/\bchild(ren)?\b|\bminors?\b|under the age of|parental consent|COPPA|FERPA/i],
-  "cross-border-transfer": [/transfer.{0,40}(outside|international|cross[- ]border)/i, /standard contractual clauses|adequacy decision/i],
+  "cross-border-transfer": [/transfer.{0,40}(outside|international|cross[- ]border)/i, /standard contractual clauses|adequacy decision/i, /data privacy framework|\bDPF\b|privacy shield/i, /transferred to the united states|received from the european union/i],
   "dpo-representative": [/data protection officer|EU representative|privacy officer/i],
   "data-localization": [/stored? (in|within)|data cent(er|re)s? (located|in)/i],
 };
@@ -130,6 +131,17 @@ function findEvidence(reqId) {
 // ---- build findings -------------------------------------------------------
 const findings = obligations.map((o) => {
   const sc = scope[o.id] ?? { scope: "assessable", reason: "" };
+  // If the law imposes nothing here, there is nothing for a policy to evidence.
+  // Reporting it as a gap invents a failure out of the law's own silence.
+  if (o.strictness === 0) {
+    return {
+      ...o,
+      scope: "n/a",
+      scopeReason: "This law imposes no such obligation, so there is nothing for a policy to address.",
+      verdict: "NO OBLIGATION",
+      evidence: [],
+    };
+  }
   if (sc.scope === "not-assessable") {
     return { ...o, scope: sc.scope, scopeReason: sc.reason, verdict: "NOT ASSESSABLE", evidence: [] };
   }
@@ -149,14 +161,15 @@ const out = [];
 out.push(`# Policy gap analysis — ${policyPath} vs ${shortName}\n`);
 out.push(
   `**${count("EVIDENCED")}** evidenced · **${count("PARTIAL")}** partial · ` +
-    `**${count("NOT EVIDENCED")}** not evidenced · **${count("NOT ASSESSABLE")}** not assessable from a policy\n`,
+    `**${count("NOT EVIDENCED")}** not evidenced · **${count("NOT ASSESSABLE")}** not assessable from a policy · ` +
+    `**${count("NO OBLIGATION")}** not required by this law\n`,
 );
 out.push(
   "> Absence of a clause is not proof of non-compliance, and presence of one is not proof of compliance. " +
     "This locates evidence; it does not reach a legal conclusion.\n",
 );
 
-for (const group of ["NOT EVIDENCED", "PARTIAL", "EVIDENCED", "NOT ASSESSABLE"]) {
+for (const group of ["NOT EVIDENCED", "PARTIAL", "EVIDENCED", "NOT ASSESSABLE", "NO OBLIGATION"]) {
   const rows = findings.filter((f) => f.verdict === group);
   if (!rows.length) continue;
   out.push(`\n## ${group} (${rows.length})\n`);
@@ -164,7 +177,7 @@ for (const group of ["NOT EVIDENCED", "PARTIAL", "EVIDENCED", "NOT ASSESSABLE"])
     out.push(`### ${f.id} — ${f.citation}`);
     out.push(`**Law requires:** ${f.obligation}`);
     if (f.quote) out.push(`> ${f.quote}`);
-    if (f.verdict === "NOT ASSESSABLE") {
+    if (f.verdict === "NOT ASSESSABLE" || f.verdict === "NO OBLIGATION") {
       out.push(`_Why not assessable:_ ${f.scopeReason}`);
     } else if (f.evidence.length) {
       out.push(`**Policy says:**`);
