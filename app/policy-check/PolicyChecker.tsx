@@ -4,7 +4,7 @@ import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { laws, jurisdictionsById } from "@/lib/data";
 // Shared with scripts/analyze-policy.mjs so both run the exact same rules.
-import { analyzePolicy, VERDICT_ORDER } from "@/lib/policy-rules.mjs";
+import { analyzePolicy, VERDICT_ORDER, VERDICT_GUIDE } from "@/lib/policy-rules.mjs";
 
 /**
  * Public text-extraction service used for the URL option. A browser cannot
@@ -24,7 +24,10 @@ type Finding = {
   verdict: string;
   scopeReason: string;
   evidence: string[];
+  severity: { label: string; note: string } | null;
 };
+
+const GUIDE = VERDICT_GUIDE as Record<string, { meaning: string; action: string }>;
 
 const VERDICT_CLASS: Record<string, string> = {
   "NOT EVIDENCED": "v-gap",
@@ -214,6 +217,36 @@ export default function PolicyChecker() {
             ))}
           </div>
 
+          <details className="legend" open>
+            <summary>What these verdicts mean, and what to do about each</summary>
+            <table className="legend-table">
+              <thead>
+                <tr>
+                  <th style={{ width: "16%" }}>Verdict</th>
+                  <th style={{ width: "34%" }}>Meaning</th>
+                  <th>Your next step as reviewer</th>
+                </tr>
+              </thead>
+              <tbody>
+                {VERDICT_ORDER.map((v: string) => (
+                  <tr key={v}>
+                    <td>
+                      <span className={`verdict-pill ${VERDICT_CLASS[v]}`}>{v.toLowerCase()}</span>
+                    </td>
+                    <td style={{ color: "var(--text-muted)" }}>{GUIDE[v].meaning}</td>
+                    <td style={{ color: "var(--text-muted)" }}>{GUIDE[v].action}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="legend-warn">
+              <strong>Do not write a clause to clear a finding.</strong> If the organization does
+              not actually do the thing, adding a sentence saying it does turns a documentation gap
+              into a false statement to regulators and users. The policy follows the practice, never
+              the other way round.
+            </p>
+          </details>
+
           {VERDICT_ORDER.map((group: string) => {
             const rows = findings.filter((f) => f.verdict === group);
             if (!rows.length) return null;
@@ -226,7 +259,17 @@ export default function PolicyChecker() {
                   <div key={f.id} className={`finding ${VERDICT_CLASS[f.verdict]}`}>
                     <div className="finding-head">
                       <strong>{f.id}</strong>
-                      <span className="citation">{f.citation}</span>
+                      <span style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                        {f.severity && f.verdict !== "NOT ASSESSABLE" && (
+                          <span
+                            className={`sev sev-${f.severity.label.toLowerCase()}`}
+                            title={f.severity.note}
+                          >
+                            {f.severity.label}
+                          </span>
+                        )}
+                        <span className="citation">{f.citation}</span>
+                      </span>
                     </div>
                     <p className="finding-law">{f.obligation}</p>
                     {f.quote && <blockquote className="statute-quote">“{f.quote}”</blockquote>}
@@ -242,10 +285,20 @@ export default function PolicyChecker() {
                         ))}
                       </>
                     ) : (
-                      <p className="finding-note">
-                        No matching clause found. This is not a finding of non-compliance — the
-                        practice may exist and simply not be described here.
-                      </p>
+                      <>
+                        <p className="finding-note">
+                          No matching clause found. This is not a finding of non-compliance — the
+                          practice may exist and simply not be described here.
+                        </p>
+                        {f.severity?.label === "Advisory" && (
+                          <p className="finding-note">
+                            Note: {f.severity.note}
+                          </p>
+                        )}
+                        <p className="finding-action">
+                          <strong>Next step:</strong> {GUIDE["NOT EVIDENCED"].action}
+                        </p>
+                      </>
                     )}
                   </div>
                 ))}
