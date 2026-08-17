@@ -30,7 +30,7 @@
 import { readFileSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { analyzePolicy, LANES, LANE_ORDER } from "../lib/policy-rules.mjs";
+import { analyzePolicy, gapStatement, LANES, LANE_ORDER } from "../lib/policy-rules.mjs";
 import { BASIS } from "../lib/policy-remediation.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -138,17 +138,40 @@ for (const lane of LANE_ORDER) {
 
   for (const f of rows) {
     out.push(`### ${f.id} — ${f.citation}${f.severity ? ` _(${f.severity.label})_` : ""}`);
-    out.push(`**Law requires:** ${f.obligation}`);
+
+    // ① what the policy says, and where. ② what the law says. ③ the gap.
+    // ④ how to close it. Same order every time, so the reader can follow the
+    // reasoning from their own document to the statute and back.
+    out.push(`\n**① Your policy**`);
+    if (f.evidence.length) {
+      for (const e of f.evidence) {
+        out.push(`- ${e.section ? `**${e.section}:** ` : ""}“${e.text}”`);
+      }
+    } else {
+      out.push(`- _No clause matching this obligation was located._`);
+    }
+
+    out.push(`\n**② ${shortName} — ${f.citation}**`);
+    out.push(f.obligation);
     if (f.quote) out.push(`> ${f.quote}`);
 
-    if (lane === "ELSEWHERE") {
-      out.push(`_${f.scopeReason}_`);
-    } else if (f.evidence.length) {
-      out.push(`\n**Your policy says:**`);
-      for (const e of f.evidence) out.push(`- “${e}”`);
-    } else {
-      out.push(`\n**Your policy says:** _no matching clause found_`);
+    out.push(`\n**③ The gap**`);
+    out.push(gapStatement(f, shortName));
+    if (f.elements?.length) {
+      for (const e of f.elements) {
+        out.push(
+          `- ${e.found ? "✓" : "✗"} ${e.label}` +
+            (e.found && e.section ? ` — located in ${e.section}` : "") +
+            (e.found ? "" : " — _not located_"),
+        );
+      }
     }
+    if (lane === "ELSEWHERE") out.push(`\n_${f.scopeReason}_`);
+
+    out.push(
+      `\n**④ How to close it**` +
+        (f.editTarget ? ` — amend ${f.editTarget}` : f.evidence.length ? "" : " — insert new wording"),
+    );
 
     const r = f.remediation;
     if (r) {
@@ -165,7 +188,10 @@ for (const lane of LANE_ORDER) {
         r.steps.forEach((s, i) => out.push(`${i + 1}. ${s.text} ${tag(s)}`));
       }
       if (r.clause) {
-        out.push(`\n**2 · ${labels.clause}** ${tag(r.clause)}`);
+        const where = f.editTarget
+          ? `2 · Amend ${f.editTarget} — suggested wording`
+          : `2 · ${labels.clause}`;
+        out.push(`\n**${where}** ${tag(r.clause)}`);
         if (r.clauseNote) out.push(`\n${r.clauseNote}`);
         out.push("```markdown");
         out.push(r.clause.text);

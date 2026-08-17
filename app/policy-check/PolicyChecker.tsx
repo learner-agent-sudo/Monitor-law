@@ -4,7 +4,14 @@ import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { laws, jurisdictionsById, requirementsById } from "@/lib/data";
 // Shared with scripts/analyze-policy.mjs so both run the exact same rules.
-import { analyzePolicy, LANES, LANE_ORDER, VERDICT_ORDER, VERDICT_GUIDE } from "@/lib/policy-rules.mjs";
+import {
+  analyzePolicy,
+  gapStatement,
+  LANES,
+  LANE_ORDER,
+  VERDICT_ORDER,
+  VERDICT_GUIDE,
+} from "@/lib/policy-rules.mjs";
 import { BASIS } from "@/lib/policy-remediation.mjs";
 
 /**
@@ -31,6 +38,9 @@ type Remediation = {
   totalCount: number;
 };
 
+type Evidence = { text: string; section: string | null };
+type Element = { id: string; label: string; basis: Basis; found: boolean; section: string | null };
+
 type Finding = {
   id: string;
   citation: string;
@@ -39,7 +49,10 @@ type Finding = {
   verdict: string;
   lane: string;
   scopeReason: string;
-  evidence: string[];
+  evidence: Evidence[];
+  editTarget: string | null;
+  elements: Element[];
+  missingElements: Element[];
   severity: { label: string; note: string } | null;
   remediation: Remediation | null;
 };
@@ -156,13 +169,31 @@ function buildPlan(findings: Finding[], shortName: string): string {
     }
     for (const f of rows) {
       out.push(`### ${name(f)} — ${f.citation}${f.severity ? ` (${f.severity.label})` : ""}`);
-      out.push(`**Law requires:** ${f.obligation}`);
+
+      out.push("", "**① Your policy**");
+      if (f.evidence.length) {
+        for (const e of f.evidence) out.push(`- ${e.section ? `**${e.section}:** ` : ""}“${e.text}”`);
+      } else {
+        out.push("- _No clause matching this obligation was located._");
+      }
+
+      out.push("", `**② ${shortName} — ${f.citation}**`, f.obligation);
       if (f.quote) out.push(`> ${f.quote}`);
-      if (lane === "ELSEWHERE") out.push(`_${f.scopeReason}_`);
-      else if (f.evidence.length) {
-        out.push("", "**Your policy says:**");
-        for (const e of f.evidence) out.push(`- “${e}”`);
-      } else out.push("", "**Your policy says:** _no matching clause found_");
+
+      out.push("", "**③ The gap**", gapStatement(f, shortName));
+      for (const e of f.elements ?? []) {
+        out.push(
+          `- ${e.found ? "✓" : "✗"} ${e.label}` +
+            (e.found && e.section ? ` — located in ${e.section}` : e.found ? "" : " — _not located_"),
+        );
+      }
+      if (lane === "ELSEWHERE") out.push("", `_${f.scopeReason}_`);
+
+      out.push(
+        "",
+        `**④ How to close it**` +
+          (f.editTarget ? ` — amend ${f.editTarget}` : f.evidence.length ? "" : " — insert new wording"),
+      );
       const r = f.remediation;
       if (r) {
         if (r.lawNote) out.push("", `**Under ${shortName}:** ${r.lawNote}`);
@@ -179,7 +210,8 @@ function buildPlan(findings: Finding[], shortName: string): string {
           r.steps.forEach((s, i) => out.push(`${i + 1}. ${s.text} ${tagText(s)}`));
         }
         if (r.clause) {
-          out.push("", `**2 · ${labels.clause}** ${tagText(r.clause)}`);
+          const where = f.editTarget ? `Amend ${f.editTarget} — suggested wording` : labels.clause;
+          out.push("", `**2 · ${where}** ${tagText(r.clause)}`);
           if (r.clauseNote) out.push("", r.clauseNote);
           out.push("```markdown", r.clause.text, "```");
         } else if (r.clauseNote) {
@@ -246,7 +278,8 @@ function Recommendation({
       )}
       <div className="step">
         <div className="step-head">
-          <span className="step-n">2</span> {labels.clause}
+          <span className="step-n">2</span>{" "}
+          {f.editTarget && r.clause ? `Amend ${f.editTarget} — suggested wording` : labels.clause}
           {r.clause && <BasisTag item={r.clause} />}
         </div>
         {r.clause ? (
@@ -285,34 +318,76 @@ function Recommendation({
         </div>
       </div>
 
-      <p className="finding-law">{f.obligation}</p>
-      {f.quote && <blockquote className="statute-quote">“{f.quote}”</blockquote>}
-
-      {f.lane === "ELSEWHERE" ? (
-        <p className="finding-note">{f.scopeReason}</p>
-      ) : f.evidence.length ? (
-        <>
-          <div className="finding-label">Your policy says</div>
-          {f.evidence.map((e, i) => (
+      {/* ① what your policy says, and where */}
+      <div className="beat">
+        <div className="beat-head">
+          <span className="beat-n">1</span> Your policy
+        </div>
+        {f.evidence.length ? (
+          f.evidence.map((e, i) => (
             <blockquote key={i} className="policy-quote">
-              “{e}”
+              {e.section && <span className="quote-src">{e.section}</span>}“{e.text}”
             </blockquote>
-          ))}
-          {f.verdict === "PARTIAL" && <p className="finding-note">{f.scopeReason}</p>}
-        </>
-      ) : (
-        <p className="finding-note">
-          No matching clause found. That is not a finding of non-compliance — the practice may exist and
-          simply not be described here.
-        </p>
-      )}
+          ))
+        ) : (
+          <p className="finding-note">
+            No clause matching this obligation was located. That is not a finding of non-compliance
+            — the practice may exist and simply not be described here.
+          </p>
+        )}
+      </div>
+
+      {/* ② what the law says */}
+      <div className="beat">
+        <div className="beat-head">
+          <span className="beat-n">2</span> {shortName} — <span className="citation">{f.citation}</span>
+        </div>
+        <p className="finding-law">{f.obligation}</p>
+        {f.quote && <blockquote className="statute-quote">“{f.quote}”</blockquote>}
+      </div>
+
+      {/* ③ the gap between them, element by element */}
+      <div className="beat">
+        <div className="beat-head">
+          <span className="beat-n">3</span> The gap
+        </div>
+        <p className="gap-statement">{gapStatement(f, shortName)}</p>
+        {f.elements?.length > 0 && (
+          <ul className="element-list">
+            {f.elements.map((e) => (
+              <li key={e.id} className={e.found ? "el-found" : "el-missing"}>
+                <span className="el-mark">{e.found ? "✓" : "✗"}</span>
+                <span>
+                  {e.label}
+                  {e.found && e.section ? (
+                    <span className="el-where"> — located in {e.section}</span>
+                  ) : e.found ? null : (
+                    <span className="el-where"> — not located</span>
+                  )}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
+        {f.lane === "ELSEWHERE" && <p className="finding-note">{f.scopeReason}</p>}
+        {f.verdict === "PARTIAL" && <p className="finding-note">{f.scopeReason}</p>}
+      </div>
 
       {r &&
         (openByDefault ? (
-          steps
+          <div className="beat">
+            <div className="beat-head">
+              <span className="beat-n">4</span> How to close it
+              {f.editTarget ? <span className="beat-where"> — amend {f.editTarget}</span> : null}
+            </div>
+            {steps}
+          </div>
         ) : (
           <details className="rec-more">
-            <summary>{labels.summary}</summary>
+            <summary>
+              4 · How to close it — {labels.summary}
+              {f.editTarget ? ` (amend ${f.editTarget})` : ""}
+            </summary>
             {steps}
           </details>
         ))}

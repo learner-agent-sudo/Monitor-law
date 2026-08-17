@@ -1213,3 +1213,92 @@ code {
 /* A judgement call should not wear the same warning stripe as a hard gap, even
    though both are "nothing found in the policy". */
 .lane.lane-consider .rec { border-left-color: var(--border-strong); }
+
+/* ---- The four beats: your policy → the law → the gap → how to close it ----
+   Numbered and always in the same order, so a reader can follow the reasoning
+   from their own document to the statute and back to an edit. */
+.beat {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.rec .beat:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+.beat-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 8px;
+}
+.beat-head .citation {
+  text-transform: none;
+  letter-spacing: 0;
+}
+.beat-n {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--bg-hover);
+  color: var(--text-muted);
+  font-size: 10.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.beat-where {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* The section a quote came from — the difference between "your policy says
+   this" and "go and edit this paragraph". */
+.quote-src {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--green);
+  margin-bottom: 3px;
+}
+
+.gap-statement {
+  font-size: 13.5px;
+  color: var(--text);
+  margin: 0;
+}
+.element-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  font-size: 13px;
+}
+.element-list li {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin-bottom: 4px;
+  color: var(--text-muted);
+}
+.el-mark {
+  flex: none;
+  font-weight: 700;
+  width: 14px;
+}
+.el-found .el-mark { color: var(--green); }
+.el-missing .el-mark { color: var(--amber); }
+.el-missing { color: var(--text); }
+.el-where {
+  color: var(--text-faint);
+  font-size: 12.5px;
+}
