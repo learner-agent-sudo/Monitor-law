@@ -30,7 +30,7 @@
 import { readFileSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { analyzePolicy, VERDICT_ORDER } from "../lib/policy-rules.mjs";
+import { analyzePolicy, LANES, LANE_ORDER } from "../lib/policy-rules.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const [, , policyPath, lawId, ...rest] = process.argv;
@@ -74,40 +74,82 @@ const obligations = [];
 
 // ---- analyse (shared with the browser page — one implementation) ----------
 const policyText = readFileSync(policyPath, "utf8");
-const findings = analyzePolicy(obligations, policyText);
+const findings = analyzePolicy(obligations, policyText, lawId);
 
 if (asJson) {
   console.log(JSON.stringify({ lawId, shortName, policyPath, findings }, null, 2));
   process.exit(0);
 }
 
-const count = (v) => findings.filter((f) => f.verdict === v).length;
+const inLane = (l) => findings.filter((f) => f.lane === l);
+
+// Practice first, paper second — but the instruction differs by lane. Telling
+// someone to change a practice their policy already describes would be wrong,
+// and so would offering publishable wording for a duty that lives in a
+// contract. Kept in step with app/policy-check/PolicyChecker.tsx.
+const STEP_LABELS = {
+  ACT: { practice: "Change the practice", clause: "Then publish wording along these lines" },
+  REVIEW: { practice: "Confirm the practice behind the wording", clause: "Compare your wording against this" },
+  ELSEWHERE: { practice: "Build or check this artefact", clause: "Policy wording" },
+};
 const out = [];
-out.push(`# Policy gap analysis — ${policyPath} vs ${shortName}\n`);
+out.push(`# Action plan — ${policyPath} vs ${shortName}\n`);
 out.push(
-  `**${count("EVIDENCED")}** evidenced · **${count("PARTIAL")}** partial · ` +
-    `**${count("NOT EVIDENCED")}** not evidenced · **${count("NOT ASSESSABLE")}** not assessable from a policy · ` +
-    `**${count("NO OBLIGATION")}** not required by this law\n`,
+  `**${inLane("ACT").length}** to fix · **${inLane("REVIEW").length}** to review · ` +
+    `**${inLane("ELSEWHERE").length}** to check outside the policy · ` +
+    `**${inLane("NONE").length}** not required by this law\n`,
 );
 out.push(
   "> Absence of a clause is not proof of non-compliance, and presence of one is not proof of compliance. " +
-    "This locates evidence; it does not reach a legal conclusion.\n",
+    "This locates evidence; it does not reach a legal conclusion. Every draft clause below is a starting " +
+    "point with blanks to fill — publish it only once the practice it describes is actually true.\n",
 );
-for (const group of VERDICT_ORDER) {
-  const rows = findings.filter((f) => f.verdict === group);
+
+for (const lane of LANE_ORDER) {
+  const rows = inLane(lane);
   if (!rows.length) continue;
-  out.push(`\n## ${group} (${rows.length})\n`);
+  out.push(`\n## ${LANES[lane].title} (${rows.length})\n`);
+  out.push(`_${LANES[lane].blurb}_\n`);
+
+  // "Nothing required" needs no detail — one line each keeps the taxonomy
+  // visible without burying the work that does need doing.
+  if (lane === "NONE") {
+    for (const f of rows) out.push(`- **${f.id}** — ${f.scopeReason}`);
+    out.push("");
+    continue;
+  }
+
   for (const f of rows) {
-    out.push(`### ${f.id} — ${f.citation}`);
+    out.push(`### ${f.id} — ${f.citation}${f.severity ? ` _(${f.severity.label})_` : ""}`);
     out.push(`**Law requires:** ${f.obligation}`);
     if (f.quote) out.push(`> ${f.quote}`);
-    if (f.verdict === "NOT ASSESSABLE" || f.verdict === "NO OBLIGATION") {
+
+    if (lane === "ELSEWHERE") {
       out.push(`_${f.scopeReason}_`);
     } else if (f.evidence.length) {
-      out.push(`**Policy says:**`);
+      out.push(`\n**Your policy says:**`);
       for (const e of f.evidence) out.push(`- “${e}”`);
     } else {
-      out.push(`**Policy says:** _no matching clause found_`);
+      out.push(`\n**Your policy says:** _no matching clause found_`);
+    }
+
+    const r = f.remediation;
+    if (r) {
+      const labels = STEP_LABELS[lane];
+      if (r.lawNote) out.push(`\n**Under ${shortName}:** ${r.lawNote}`);
+      if (r.practice?.length) {
+        out.push(`\n**1 · ${labels.practice}**`);
+        r.practice.forEach((p, i) => out.push(`${i + 1}. ${p}`));
+      }
+      if (r.clause) {
+        out.push(`\n**2 · ${labels.clause}**`);
+        out.push("```markdown");
+        out.push(r.clause);
+        out.push("```");
+      } else if (r.clauseNote) {
+        out.push(`\n**2 · Policy wording:** ${r.clauseNote}`);
+      }
+      if (r.warning) out.push(`\n⚠️ ${r.warning}`);
     }
     out.push("");
   }
