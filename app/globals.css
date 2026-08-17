@@ -1135,3 +1135,81 @@ code {
   font-weight: 600;
   color: var(--accent);
 }
+
+/* ---- Basis tags ----
+   The tag is what lets a reader disagree. Without it, "we suggest a table"
+   reads with exactly the same authority as "the statute requires this". */
+.basis {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 1px 7px;
+  border-radius: 5px;
+  white-space: normal;
+  vertical-align: baseline;
+}
+.basis-law {
+  background: rgba(248, 81, 73, 0.13);
+  color: var(--red);
+}
+.basis-guidance {
+  background: rgba(210, 153, 34, 0.14);
+  color: var(--amber);
+}
+.basis-practice {
+  background: rgba(107, 118, 132, 0.18);
+  color: var(--text-faint);
+}
+.basis-cite {
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.basis-legend {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin: 18px 0 0;
+}
+.basis-legend-head {
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.basis-legend-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.basis-legend-list li {
+  margin-bottom: 6px;
+}
+.basis-legend-foot {
+  font-size: 12.5px;
+  color: var(--text-faint);
+  margin: 10px 0 0;
+}
+
+/* Fires when a card's every step is "our recommendation" — the reader should
+   never have to infer that from scanning tags one by one. */
+.rec-optional {
+  font-size: 13px;
+  color: var(--text-muted);
+  background: var(--bg);
+  border: 1px dashed var(--border-strong);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 14px 0 0;
+}
+.rec-optional strong { color: var(--text); }
+
+.plan-stat.lane-consider { border-left-color: var(--text-faint); }
+.plan-stat.lane-consider .plan-num { color: var(--text-muted); }
+.lane.lane-consider .lane-count { background: rgba(107, 118, 132, 0.18); color: var(--text-muted); }
+/* A judgement call should not wear the same warning stripe as a hard gap, even
+   though both are "nothing found in the policy". */
+.lane.lane-consider .rec { border-left-color: var(--border-strong); }

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { laws, jurisdictionsById, requirementsById } from "@/lib/data";
 // Shared with scripts/analyze-policy.mjs so both run the exact same rules.
 import { analyzePolicy, LANES, LANE_ORDER, VERDICT_ORDER, VERDICT_GUIDE } from "@/lib/policy-rules.mjs";
+import { BASIS } from "@/lib/policy-remediation.mjs";
 
 /**
  * Public text-extraction service used for the URL option. A browser cannot
@@ -16,12 +17,18 @@ import { analyzePolicy, LANES, LANE_ORDER, VERDICT_ORDER, VERDICT_GUIDE } from "
  */
 const READER = "https://r.jina.ai/";
 
+type Basis = "law" | "guidance" | "practice";
+type Step = { text: string; basis: Basis; cite?: string | null };
+type Clause = { text: string; basis: Basis; cite?: string | null };
+
 type Remediation = {
-  practice: string[];
-  clause: string | null;
+  steps: Step[];
+  clause: Clause | null;
   clauseNote?: string;
   warning?: string;
   lawNote: string | null;
+  requiredCount: number;
+  totalCount: number;
 };
 
 type Finding = {
@@ -64,9 +71,27 @@ const REC_CLASS: Record<string, string> = {
 const LANE_CLASS: Record<string, string> = {
   ACT: "lane-act",
   REVIEW: "lane-review",
+  CONSIDER: "lane-consider",
   ELSEWHERE: "lane-elsewhere",
   NONE: "lane-none",
 };
+
+const BASIS_INFO = BASIS as Record<Basis, { id: string; label: string; blurb: string }>;
+
+/**
+ * The tag that lets a reader agree or disagree. Without it every bullet reads
+ * with the same authority, and "we suggest a table" is indistinguishable from
+ * "the statute requires this" — which is how advice ends up overclaiming.
+ */
+function BasisTag({ item }: { item: { basis: Basis; cite?: string | null } }) {
+  const b = BASIS_INFO[item.basis] ?? BASIS_INFO.practice;
+  return (
+    <span className={`basis basis-${b.id}`} title={b.blurb}>
+      {b.label}
+      {item.cite ? <span className="basis-cite"> · {item.cite}</span> : null}
+    </span>
+  );
+}
 
 /**
  * The two steps are the same shape everywhere — practice first, paper second —
@@ -84,6 +109,11 @@ const STEP_LABELS: Record<string, { practice: string; clause: string; summary: s
     practice: "Confirm the practice behind the wording",
     clause: "Compare your wording against this",
     summary: "What to check, and model wording",
+  },
+  CONSIDER: {
+    practice: "What you could do",
+    clause: "Optional wording",
+    summary: "What you could do, and optional wording",
   },
   ELSEWHERE: {
     practice: "Build or check this artefact",
@@ -136,13 +166,22 @@ function buildPlan(findings: Finding[], shortName: string): string {
       const r = f.remediation;
       if (r) {
         if (r.lawNote) out.push("", `**Under ${shortName}:** ${r.lawNote}`);
+        if (r.requiredCount === 0 && r.totalCount > 0) {
+          out.push(
+            "",
+            `> **Nothing below is required by ${shortName}.** Every step is our recommendation for ` +
+              `how to discharge the duty, not a rule the statute imposes.`,
+          );
+        }
         const labels = STEP_LABELS[lane];
-        if (r.practice?.length) {
+        if (r.steps?.length) {
           out.push("", `**1 · ${labels.practice}**`);
-          r.practice.forEach((p, i) => out.push(`${i + 1}. ${p}`));
+          r.steps.forEach((s, i) => out.push(`${i + 1}. ${s.text} ${tagText(s)}`));
         }
         if (r.clause) {
-          out.push("", `**2 · ${labels.clause}**`, "```markdown", r.clause, "```");
+          out.push("", `**2 · ${labels.clause}** ${tagText(r.clause)}`);
+          if (r.clauseNote) out.push("", r.clauseNote);
+          out.push("```markdown", r.clause.text, "```");
         } else if (r.clauseNote) {
           out.push("", `**2 · Policy wording:** ${r.clauseNote}`);
         }
@@ -156,6 +195,12 @@ function buildPlan(findings: Finding[], shortName: string): string {
 
 function name(f: Finding): string {
   return requirementsById[f.id]?.name ?? f.id;
+}
+
+/** Basis tag in the markdown export — same claim, plain text. */
+function tagText(item: { basis: Basis; cite?: string | null }): string {
+  const b = BASIS_INFO[item.basis] ?? BASIS_INFO.practice;
+  return item.cite ? `_[${b.label.toLowerCase()} — ${item.cite}]_` : `_[${b.label.toLowerCase()}]_`;
 }
 
 function Recommendation({
@@ -179,14 +224,22 @@ function Recommendation({
           <strong>Under {shortName}:</strong> {r.lawNote}
         </p>
       )}
-      {r.practice?.length > 0 && (
+      {r.requiredCount === 0 && r.totalCount > 0 && (
+        <p className="rec-optional">
+          <strong>Nothing below is required by {shortName}.</strong> Every step is our
+          recommendation for how to discharge the duty, not a rule the statute imposes.
+        </p>
+      )}
+      {r.steps?.length > 0 && (
         <div className="step">
           <div className="step-head">
             <span className="step-n">1</span> {labels.practice}
           </div>
           <ol className="step-list">
-            {r.practice.map((p, i) => (
-              <li key={i}>{p}</li>
+            {r.steps.map((s, i) => (
+              <li key={i}>
+                {s.text} <BasisTag item={s} />
+              </li>
             ))}
           </ol>
         </div>
@@ -194,16 +247,18 @@ function Recommendation({
       <div className="step">
         <div className="step-head">
           <span className="step-n">2</span> {labels.clause}
+          {r.clause && <BasisTag item={r.clause} />}
         </div>
         {r.clause ? (
           <>
+            {r.clauseNote && <p className="finding-note">{r.clauseNote}</p>}
             <div className="draft-bar">
               <span>
                 Draft wording — every <code>[BRACKET]</code> is a fact you must supply
               </span>
-              <CopyButton text={r.clause} label="Copy wording" />
+              <CopyButton text={r.clause.text} label="Copy wording" />
             </div>
-            <pre className="draft">{r.clause}</pre>
+            <pre className="draft">{r.clause.text}</pre>
           </>
         ) : (
           <p className="finding-note">{r.clauseNote}</p>
@@ -453,7 +508,28 @@ export default function PolicyChecker() {
             </span>
           </div>
 
-          <div className="legend-warn" style={{ margin: "18px 0 4px" }}>
+          <div className="basis-legend">
+            <div className="basis-legend-head">
+              Every step below is tagged with its basis, so you can tell what {law.shortName}{" "}
+              actually demands from what is merely recommended:
+            </div>
+            <ul className="basis-legend-list">
+              {(Object.values(BASIS_INFO) as { id: string; label: string; blurb: string }[]).map(
+                (b) => (
+                  <li key={b.id}>
+                    <span className={`basis basis-${b.id}`}>{b.label}</span> {b.blurb}
+                  </li>
+                ),
+              )}
+            </ul>
+            <p className="basis-legend-foot">
+              Where a step rests on a <em>different</em> provision from the one quoted in the
+              finding, the tag names it — that link is usually the thing you cannot see from the
+              quote alone.
+            </p>
+          </div>
+
+          <div className="legend-warn" style={{ margin: "14px 0 4px" }}>
             <strong>Read this before you copy any wording.</strong> The order below is deliberate:
             change the practice first, publish the wording second. A clause describing something the
             organization does not actually do turns a documentation gap into a false statement to

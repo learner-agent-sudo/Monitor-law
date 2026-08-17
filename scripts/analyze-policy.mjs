@@ -31,6 +31,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { analyzePolicy, LANES, LANE_ORDER } from "../lib/policy-rules.mjs";
+import { BASIS } from "../lib/policy-remediation.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const [, , policyPath, lawId, ...rest] = process.argv;
@@ -90,12 +91,20 @@ const inLane = (l) => findings.filter((f) => f.lane === l);
 const STEP_LABELS = {
   ACT: { practice: "Change the practice", clause: "Then publish wording along these lines" },
   REVIEW: { practice: "Confirm the practice behind the wording", clause: "Compare your wording against this" },
+  CONSIDER: { practice: "What you could do", clause: "Optional wording" },
   ELSEWHERE: { practice: "Build or check this artefact", clause: "Policy wording" },
+};
+
+/** "[required by law — Art. 6]" / "[our recommendation]" */
+const tag = (item) => {
+  const b = BASIS[item.basis] ?? BASIS.practice;
+  return item.cite ? `_[${b.label.toLowerCase()} — ${item.cite}]_` : `_[${b.label.toLowerCase()}]_`;
 };
 const out = [];
 out.push(`# Action plan — ${policyPath} vs ${shortName}\n`);
 out.push(
   `**${inLane("ACT").length}** to fix · **${inLane("REVIEW").length}** to review · ` +
+    `**${inLane("CONSIDER").length}** to consider · ` +
     `**${inLane("ELSEWHERE").length}** to check outside the policy · ` +
     `**${inLane("NONE").length}** not required by this law\n`,
 );
@@ -103,6 +112,14 @@ out.push(
   "> Absence of a clause is not proof of non-compliance, and presence of one is not proof of compliance. " +
     "This locates evidence; it does not reach a legal conclusion. Every draft clause below is a starting " +
     "point with blanks to fill — publish it only once the practice it describes is actually true.\n",
+);
+out.push(
+  "> Every step below is tagged with its basis, so you can tell what the statute demands from what is " +
+    "merely recommended: " +
+    Object.values(BASIS)
+      .map((b) => `**${b.label}** — ${b.blurb}`)
+      .join(" · ") +
+    "\n",
 );
 
 for (const lane of LANE_ORDER) {
@@ -137,14 +154,21 @@ for (const lane of LANE_ORDER) {
     if (r) {
       const labels = STEP_LABELS[lane];
       if (r.lawNote) out.push(`\n**Under ${shortName}:** ${r.lawNote}`);
-      if (r.practice?.length) {
+      if (r.requiredCount === 0 && r.totalCount > 0) {
+        out.push(
+          `\n> **Nothing below is required by ${shortName}.** Every step here is our recommendation ` +
+            `for how to discharge the duty, not a rule the statute imposes. Disagree freely.`,
+        );
+      }
+      if (r.steps?.length) {
         out.push(`\n**1 · ${labels.practice}**`);
-        r.practice.forEach((p, i) => out.push(`${i + 1}. ${p}`));
+        r.steps.forEach((s, i) => out.push(`${i + 1}. ${s.text} ${tag(s)}`));
       }
       if (r.clause) {
-        out.push(`\n**2 · ${labels.clause}**`);
+        out.push(`\n**2 · ${labels.clause}** ${tag(r.clause)}`);
+        if (r.clauseNote) out.push(`\n${r.clauseNote}`);
         out.push("```markdown");
-        out.push(r.clause);
+        out.push(r.clause.text);
         out.push("```");
       } else if (r.clauseNote) {
         out.push(`\n**2 · Policy wording:** ${r.clauseNote}`);
