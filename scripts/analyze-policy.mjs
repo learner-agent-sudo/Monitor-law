@@ -74,7 +74,14 @@ const obligations = [];
 
 
 // ---- analyse (shared with the browser page — one implementation) ----------
-const policyText = readFileSync(policyPath, "utf8");
+// Fixtures in policies/ carry a YAML front-matter block recording where the
+// text came from. That block is commentary about the policy, not the policy,
+// and analysing it produces nonsense — a provenance note mentioning "lawful
+// basis" was matched as though the policy itself had said it. Stripped here
+// rather than in analyzePolicy(), because pasted text in the browser never has
+// front matter and a leading "---" there is a horizontal rule.
+const raw = readFileSync(policyPath, "utf8");
+const policyText = raw.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, "");
 const findings = analyzePolicy(obligations, policyText, lawId);
 
 if (asJson) {
@@ -148,7 +155,18 @@ for (const lane of LANE_ORDER) {
         out.push(`- ${e.section ? `**${e.section}:** ` : ""}“${e.text}”`);
       }
     } else {
-      out.push(`- _No clause matching this obligation was located._`);
+      out.push(`- _No wording matching this obligation's search terms was located._`);
+    }
+    // Show the search terms themselves. A reader who can see that the tool
+    // looked for "lawful basis" can tell at a glance that their policy uses
+    // different words for the same thing — which is a fact about the probe,
+    // not a fact about their policy.
+    if (f.searched?.length) {
+      out.push(
+        `\n<sub>Matched by text search — looked for: ` +
+          f.searched.map((s) => `${s.found ? "✓" : "✗"} ${s.label}`).join(" · ") +
+          `</sub>`,
+      );
     }
 
     out.push(`\n**② ${shortName} — ${f.citation}**`);

@@ -41,9 +41,12 @@ type Remediation = {
 type Evidence = { text: string; section: string | null };
 type Element = { id: string; label: string; basis: Basis; found: boolean; section: string | null };
 
+type Searched = { label: string; found: boolean };
+
 type Finding = {
   id: string;
   citation: string;
+  searched: Searched[];
   obligation: string;
   quote: string | null;
   verdict: string;
@@ -331,9 +334,30 @@ function Recommendation({
           ))
         ) : (
           <p className="finding-note">
-            No clause matching this obligation was located. That is not a finding of non-compliance
-            — the practice may exist and simply not be described here.
+            No wording matching this obligation&apos;s search terms was located. That is not a
+            finding of non-compliance — the practice may exist, or your policy may say the same
+            thing in different words.
           </p>
+        )}
+        {f.searched?.length > 0 && (
+          <details className="searched">
+            <summary>
+              Matched by text search, not by reading — see the {f.searched.length} terms
+            </summary>
+            <ul className="searched-list">
+              {f.searched.map((s, i) => (
+                <li key={i} className={s.found ? "el-found" : "el-missing"}>
+                  <span className="el-mark">{s.found ? "✓" : "✗"}</span>
+                  <span>{s.label}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="searched-note">
+              These are regular expressions run over your text. If your policy addresses this in
+              words none of the above would catch, the finding above is wrong — and that is a defect
+              in the search terms, not in your policy.
+            </p>
+          </details>
         )}
       </div>
 
@@ -459,10 +483,12 @@ export default function PolicyChecker() {
       </p>
 
       <div className="disclaimer" style={{ marginTop: 0, marginBottom: 28 }}>
-        <strong>This is not a compliance score, and the draft wording is not legal advice.</strong> A
-        missing clause is reported as <em>not evidenced</em>, never as non-compliance — the practice
-        may exist and simply not be described. Every draft clause below is a starting point with
-        blanks you must fill in, and none of it has been reviewed by a lawyer.
+        <strong>This matches text, it does not read your policy.</strong> Findings come from
+        regular expressions — Ctrl-F with synonyms. A policy that addresses something in words the
+        search terms do not anticipate will be reported as not evidenced, which is a defect in the
+        terms rather than in the policy. Every finding shows exactly what was searched for so you
+        can see which happened. It is not a compliance score, and the draft wording is not legal
+        advice.
       </div>
 
       {/* ---- input ---- */}
