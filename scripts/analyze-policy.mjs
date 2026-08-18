@@ -23,8 +23,14 @@
  *     records or internal assessments are reported as NOT ASSESSABLE.
  *
  * Usage:
- *   node scripts/analyze-policy.mjs <policy-file> <lawId> [--json]
+ *   node scripts/analyze-policy.mjs <policy-file> <lawId> [--json] [--interpret|--prompt]
  *   e.g. node scripts/analyze-policy.mjs policies/yuja.md gdpr
+ *
+ *   --interpret  after the deterministic pass, send the gaps and the policy to
+ *                the Anthropic API to be read properly. Needs ANTHROPIC_API_KEY.
+ *                Every quote returned is verified against the policy before it
+ *                is printed; unverifiable claims are discarded.
+ *   --prompt     print that prompt instead of sending it, to run elsewhere.
  */
 
 import { readFileSync, existsSync } from "node:fs";
@@ -32,13 +38,25 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { analyzePolicy, gapStatement, LANES, LANE_ORDER } from "../lib/policy-rules.mjs";
 import { BASIS } from "../lib/policy-remediation.mjs";
+import {
+  buildInterpretationPrompt,
+  interpretableFindings,
+  parseInterpretation,
+  requestInterpretation,
+  verifyAgainstPolicy,
+  INTERPRET_STATES,
+} from "../lib/policy-interpret.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const [, , policyPath, lawId, ...rest] = process.argv;
 const asJson = rest.includes("--json");
+const wantInterpret = rest.includes("--interpret");
+const wantPrompt = rest.includes("--prompt");
 
 if (!policyPath || !lawId) {
-  console.error("usage: node scripts/analyze-policy.mjs <policy-file> <lawId> [--json]");
+  console.error(
+    "usage: node scripts/analyze-policy.mjs <policy-file> <lawId> [--json] [--interpret|--prompt]",
+  );
   process.exit(2);
 }
 if (!existsSync(policyPath)) {
@@ -83,6 +101,50 @@ const obligations = [];
 const raw = readFileSync(policyPath, "utf8");
 const policyText = raw.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, "");
 const findings = analyzePolicy(obligations, policyText, lawId);
+
+// ---- layer 2: interpretation over the gaps only ---------------------------
+// The deterministic pass above is free, instant and reproducible. This is none
+// of those, so it runs only where patterns found nothing, and only when asked.
+const interpretations = {};
+if (wantInterpret || wantPrompt) {
+  const gaps = interpretableFindings(findings);
+  if (!gaps.length) {
+    if (wantPrompt) {
+      console.error("nothing to interpret: the deterministic pass found evidence for every obligation");
+      process.exit(0);
+    }
+  } else {
+    const prompt = buildInterpretationPrompt({
+      lawShortName: shortName,
+      findings: gaps,
+      policyText,
+    });
+
+    if (wantPrompt) {
+      console.log(prompt);
+      process.exit(0);
+    }
+
+    const apiKey = process.env.ANTHROPIC_API_KEY;
+    if (!apiKey) {
+      console.error(
+        "--interpret needs ANTHROPIC_API_KEY. Use --prompt to print the prompt and run it elsewhere.",
+      );
+      process.exit(2);
+    }
+
+    try {
+      const raw = await requestInterpretation({ apiKey, prompt });
+      const { results, error } = parseInterpretation(raw);
+      if (error) throw new Error(error);
+      // Verified against the policy before anything is printed.
+      for (const r of verifyAgainstPolicy(results, policyText)) interpretations[r.id] = r;
+    } catch (e) {
+      console.error(`interpretation failed: ${e.message}`);
+      console.error("the deterministic findings below are unaffected.");
+    }
+  }
+}
 
 if (asJson) {
   console.log(JSON.stringify({ lawId, shortName, policyPath, findings }, null, 2));
@@ -185,6 +247,23 @@ for (const lane of LANE_ORDER) {
       }
     }
     if (lane === "ELSEWHERE") out.push(`\n_${f.scopeReason}_`);
+
+    // Second opinion, if one was requested and survived quote verification.
+    const ip = interpretations[f.id];
+    if (ip) {
+      const state = INTERPRET_STATES[ip.verdict] ?? INTERPRET_STATES.absent;
+      out.push(`\n**Second opinion — read by a model: ${state.label}**`);
+      out.push(`_${state.blurb}_`);
+      if (ip.reason) out.push(ip.reason);
+      for (const q of ip.quotes) out.push(`> “${q}” _(verified present in the policy)_`);
+      if (ip.missing) out.push(`**Still not covered:** ${ip.missing}`);
+      if (ip.rejectedQuotes.length) {
+        out.push(
+          `⚠️ ${ip.rejectedQuotes.length} quote(s) discarded — not found in the document, so any ` +
+            `claim resting on them was dropped.`,
+        );
+      }
+    }
 
     out.push(
       `\n**④ How to close it**` +

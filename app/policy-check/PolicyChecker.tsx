@@ -13,6 +13,15 @@ import {
   VERDICT_GUIDE,
 } from "@/lib/policy-rules.mjs";
 import { BASIS } from "@/lib/policy-remediation.mjs";
+import {
+  buildInterpretationPrompt,
+  interpretableFindings,
+  parseInterpretation,
+  requestInterpretation,
+  verifyAgainstPolicy,
+  INTERPRET_STATES,
+  INTERPRET_MODEL,
+} from "@/lib/policy-interpret.mjs";
 
 /**
  * Public text-extraction service used for the URL option. A browser cannot
@@ -42,6 +51,20 @@ type Evidence = { text: string; section: string | null };
 type Element = { id: string; label: string; basis: Basis; found: boolean; section: string | null };
 
 type Searched = { label: string; found: boolean };
+
+type Interpretation = {
+  id: string;
+  verdict: "addressed" | "partially" | "absent" | "unverified";
+  quotes: string[];
+  rejectedQuotes: string[];
+  reason: string;
+  missing: string | null;
+};
+
+const STATES = INTERPRET_STATES as Record<
+  string,
+  { id: string; label: string; blurb: string }
+>;
 
 type Finding = {
   id: string;
@@ -238,16 +261,55 @@ function tagText(item: { basis: Basis; cite?: string | null }): string {
   return item.cite ? `_[${b.label.toLowerCase()} — ${item.cite}]_` : `_[${b.label.toLowerCase()}]_`;
 }
 
+/**
+ * The model's answer, held to the same evidence standard as everything else:
+ * every quote below survived an exact-substring check against the policy. The
+ * block is visually distinct from the deterministic findings on purpose — a
+ * reader must never have to wonder which pass produced a claim.
+ */
+function InterpretationBlock({ r }: { r: Interpretation }) {
+  const state = STATES[r.verdict] ?? STATES.absent;
+  return (
+    <div className={`interp interp-${state.id}`}>
+      <div className="interp-head">
+        <span className="interp-tag">Second opinion · read by a model</span>
+        <span className={`interp-verdict iv-${state.id}`}>{state.label}</span>
+      </div>
+      <p className="interp-blurb">{state.blurb}</p>
+      {r.reason && <p className="interp-reason">{r.reason}</p>}
+      {r.quotes.map((q, i) => (
+        <blockquote key={i} className="policy-quote">
+          <span className="quote-src">verified present in your policy</span>“{q}”
+        </blockquote>
+      ))}
+      {r.missing && (
+        <p className="interp-missing">
+          <strong>Still not covered:</strong> {r.missing}
+        </p>
+      )}
+      {r.rejectedQuotes.length > 0 && (
+        <p className="interp-rejected">
+          <strong>{r.rejectedQuotes.length} quote{r.rejectedQuotes.length > 1 ? "s" : ""} discarded</strong>{" "}
+          — the model produced wording that is not in your document, so any claim resting on it was
+          dropped. This is why quotes are checked rather than trusted.
+        </p>
+      )}
+    </div>
+  );
+}
+
 function Recommendation({
   f,
   index,
   shortName,
   openByDefault,
+  interpretation,
 }: {
   f: Finding;
   index: number;
   shortName: string;
   openByDefault: boolean;
+  interpretation?: Interpretation;
 }) {
   const r = f.remediation;
   const labels = STEP_LABELS[f.lane] ?? STEP_LABELS.ACT;
@@ -359,6 +421,7 @@ function Recommendation({
             </p>
           </details>
         )}
+        {interpretation && <InterpretationBlock r={interpretation} />}
       </div>
 
       {/* ② what the law says */}
@@ -428,6 +491,13 @@ export default function PolicyChecker() {
   const [ran, setRan] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
+  // ---- layer 2: interpretation ----
+  const [apiKey, setApiKey] = useState("");
+  const [interpreting, setInterpreting] = useState(false);
+  const [interpretError, setInterpretError] = useState<string | null>(null);
+  const [interpretations, setInterpretations] = useState<Record<string, Interpretation>>({});
+  const [showInterpret, setShowInterpret] = useState(false);
+
   const law = laws.find((l) => l.id === lawId)!;
 
   const findings: Finding[] = useMemo(() => {
@@ -443,6 +513,59 @@ export default function PolicyChecker() {
   }, [ran, text, law]);
 
   const inLane = (l: string) => findings.filter((f) => f.lane === l);
+
+  // Only the gaps are worth a call — everything already evidenced was found on
+  // the free, reproducible path and does not need a model's opinion.
+  const gaps = useMemo(
+    () =>
+      (interpretableFindings(findings) as Finding[]).map((f) => ({
+        id: f.id,
+        name: name(f),
+        citation: f.citation,
+        obligation: f.obligation,
+        quote: f.quote,
+      })),
+    [findings],
+  );
+
+  const prompt = useMemo(
+    () =>
+      gaps.length
+        ? (buildInterpretationPrompt({
+            lawShortName: law.shortName,
+            findings: gaps,
+            policyText: text,
+          }) as string)
+        : "",
+    [gaps, law.shortName, text],
+  );
+
+  async function runInterpretation() {
+    if (!apiKey.trim() || !gaps.length) return;
+    setInterpreting(true);
+    setInterpretError(null);
+    try {
+      const raw = await requestInterpretation({ apiKey: apiKey.trim(), prompt });
+      const { results, error } = parseInterpretation(raw) as {
+        results: any[];
+        error: string | null;
+      };
+      if (error) throw new Error(error);
+      // Nothing reaches the screen before its quotes are checked against the
+      // document. An unverifiable quote invalidates the claim built on it.
+      const verified = verifyAgainstPolicy(results, text) as Interpretation[];
+      setInterpretations(Object.fromEntries(verified.map((r) => [r.id, r])));
+      if (!verified.length) setInterpretError("The model returned no usable results.");
+    } catch (e: any) {
+      setInterpretError(
+        `${e?.message ?? e}. If this is a CORS or auth failure, check the key is an Anthropic API ` +
+          `key (not a Claude.ai login) and has credit. You can also copy the prompt below and run ` +
+          `it anywhere yourself.`,
+      );
+    } finally {
+      setInterpreting(false);
+    }
+  }
 
   async function loadFile(f: File) {
     setError(null);
@@ -483,12 +606,12 @@ export default function PolicyChecker() {
       </p>
 
       <div className="disclaimer" style={{ marginTop: 0, marginBottom: 28 }}>
-        <strong>This matches text, it does not read your policy.</strong> Findings come from
-        regular expressions — Ctrl-F with synonyms. A policy that addresses something in words the
-        search terms do not anticipate will be reported as not evidenced, which is a defect in the
-        terms rather than in the policy. Every finding shows exactly what was searched for so you
-        can see which happened. It is not a compliance score, and the draft wording is not legal
-        advice.
+        <strong>The first pass matches text, it does not read your policy.</strong> Findings come
+        from regular expressions — Ctrl-F with synonyms — so a policy that addresses something in
+        unanticipated words is reported as not evidenced, which is a defect in the search terms
+        rather than in the policy. Every finding shows exactly what was searched for, and where the
+        patterns find nothing you can hand that gap to a model to read properly. It is not a
+        compliance score, and the draft wording is not legal advice.
       </div>
 
       {/* ---- input ---- */}
@@ -543,10 +666,11 @@ export default function PolicyChecker() {
 
       <p className="url-note">
         The analysis runs entirely in your browser — pasted or uploaded text never leaves your
-        machine. <strong>The URL option is the exception:</strong> browsers cannot fetch other
-        sites directly, so that request is routed through the public reader service{" "}
-        <code>r.jina.ai</code>, which will see the address you enter. Paste the text instead if
-        that matters to you.
+        machine. <strong>Two things are exceptions, both opt-in.</strong> Fetching a URL is routed
+        through the public reader service <code>r.jina.ai</code>, which will see the address you
+        enter, because browsers cannot fetch other sites directly. And the optional second opinion
+        on the results sends your policy text to the Anthropic API under your own key. Paste the
+        text and skip the second opinion, and nothing leaves this tab.
       </p>
 
       {error && <div className="checker-error">{error}</div>}
@@ -608,6 +732,73 @@ export default function PolicyChecker() {
               Paste it into a document to work through with whoever owns the practice.
             </span>
           </div>
+
+          {/* ---- layer 2: interpretation, offered only where layer 1 found nothing ---- */}
+          {gaps.length > 0 && (
+            <div className="interp-panel">
+              <div className="interp-panel-head">
+                <div>
+                  <strong>Pattern matching found nothing for {gaps.length} obligation
+                  {gaps.length > 1 ? "s" : ""}.</strong>{" "}
+                  That can mean the policy is silent — or that it says the same thing in words the
+                  search terms do not know. A model can read the text properly and tell the two
+                  apart.
+                </div>
+                <button className="bar-btn" onClick={() => setShowInterpret((s) => !s)}>
+                  {showInterpret ? "Hide" : "Get a second opinion"}
+                </button>
+              </div>
+
+              {showInterpret && (
+                <div className="interp-panel-body">
+                  <p className="interp-privacy">
+                    <strong>This one sends your policy off your machine.</strong> Everything else on
+                    this page runs locally; this does not. The policy text and the statutory quotes
+                    go to the Anthropic API under <em>your</em> key, billed to you, using{" "}
+                    <code>{INTERPRET_MODEL}</code>. This site is a static export with no backend, so
+                    there is nowhere to keep a shared key — and nowhere for us to see your text
+                    either. The key stays in this browser tab and is gone when you close it.
+                  </p>
+
+                  <div className="interp-controls">
+                    <input
+                      type="password"
+                      className="text-input"
+                      placeholder="sk-ant-… (your own Anthropic API key)"
+                      value={apiKey}
+                      onChange={(e) => setApiKey(e.target.value)}
+                      autoComplete="off"
+                      spellCheck={false}
+                    />
+                    <button
+                      className="bar-btn primary"
+                      onClick={runInterpretation}
+                      disabled={interpreting || !apiKey.trim()}
+                    >
+                      {interpreting ? "Reading…" : `Read the ${gaps.length} gap${gaps.length > 1 ? "s" : ""}`}
+                    </button>
+                  </div>
+
+                  <p className="interp-alt">
+                    No key, or would rather not paste one? <CopyButton text={prompt} label="Copy the prompt" />{" "}
+                    and run it in Claude, or anywhere else. Paste the reply back into whatever you
+                    like — the answer is the same, you just check the quotes by hand.
+                  </p>
+
+                  {interpretError && <div className="checker-error">{interpretError}</div>}
+
+                  {Object.keys(interpretations).length > 0 && (
+                    <p className="interp-done">
+                      Second opinion attached to {Object.keys(interpretations).length} finding
+                      {Object.keys(interpretations).length > 1 ? "s" : ""} below. Every quote shown
+                      was verified as present in your document; anything the model produced that was
+                      not in your text has been discarded.
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
 
           <div className="basis-legend">
             <div className="basis-legend-head">
@@ -674,6 +865,7 @@ export default function PolicyChecker() {
                     index={i + 1}
                     shortName={law.shortName}
                     openByDefault={lane === "ACT"}
+                    interpretation={interpretations[f.id]}
                   />
                 ))}
               </section>

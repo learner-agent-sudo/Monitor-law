@@ -35,6 +35,10 @@ jobs:
       # understates a mandatory duty without any visible symptom.
       - name: Check remediation basis tags
         run: node scripts/check-remediation.mjs
+      # Quote verification is what stops the interpretation layer from asserting
+      # things about a document it did not find there. Offline — no API key.
+      - name: Check interpretation quote verification
+        run: node scripts/check-interpret.mjs
       - name: Build static export
         env:
           # Must match the canonical Pages URL casing exactly:
