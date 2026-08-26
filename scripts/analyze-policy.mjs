@@ -26,11 +26,15 @@
  *   node scripts/analyze-policy.mjs <policy-file> <lawId> [--json] [--interpret|--prompt]
  *   e.g. node scripts/analyze-policy.mjs policies/yuja.md gdpr
  *
- *   --interpret  after the deterministic pass, send the gaps and the policy to
- *                the Anthropic API to be read properly. Needs ANTHROPIC_API_KEY.
- *                Every quote returned is verified against the policy before it
- *                is printed; unverifiable claims are discarded.
- *   --prompt     print that prompt instead of sending it, to run elsewhere.
+ *   --interpret        after the deterministic pass, send the gaps and the
+ *                      policy to a model to be read properly. Every quote
+ *                      returned is verified against the policy before it is
+ *                      printed; unverifiable claims are discarded.
+ *   --provider=<id>    gemini (default, has a free tier) or anthropic.
+ *                      Reads GEMINI_API_KEY or ANTHROPIC_API_KEY accordingly;
+ *                      with no flag, whichever key is set wins.
+ *   --model=<name>     override the provider's default model.
+ *   --prompt           print the prompt instead of sending it, to run elsewhere.
  */
 
 import { readFileSync, existsSync } from "node:fs";
@@ -45,6 +49,8 @@ import {
   requestInterpretation,
   verifyAgainstPolicy,
   INTERPRET_STATES,
+  PROVIDERS,
+  DEFAULT_PROVIDER,
 } from "../lib/policy-interpret.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -125,16 +131,34 @@ if (wantInterpret || wantPrompt) {
       process.exit(0);
     }
 
-    const apiKey = process.env.ANTHROPIC_API_KEY;
+    // Provider from --provider=<id>, else whichever key is in the environment.
+    const flag = rest.find((r) => r.startsWith("--provider="))?.split("=")[1];
+    const provider =
+      flag ?? (process.env.GEMINI_API_KEY ? "gemini" : process.env.ANTHROPIC_API_KEY ? "anthropic" : DEFAULT_PROVIDER);
+    if (!PROVIDERS[provider]) {
+      console.error(`unknown provider "${provider}" — known: ${Object.keys(PROVIDERS).join(", ")}`);
+      process.exit(2);
+    }
+    const apiKey =
+      provider === "gemini"
+        ? process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY
+        : process.env.ANTHROPIC_API_KEY;
     if (!apiKey) {
       console.error(
-        "--interpret needs ANTHROPIC_API_KEY. Use --prompt to print the prompt and run it elsewhere.",
+        `--interpret with provider "${provider}" needs ` +
+          `${provider === "gemini" ? "GEMINI_API_KEY" : "ANTHROPIC_API_KEY"}. ` +
+          `Use --prompt to print the prompt and run it elsewhere.`,
       );
       process.exit(2);
     }
 
     try {
-      const raw = await requestInterpretation({ apiKey, prompt });
+      const raw = await requestInterpretation({
+        apiKey,
+        prompt,
+        provider,
+        model: rest.find((r) => r.startsWith("--model="))?.split("=")[1],
+      });
       const { results, error } = parseInterpretation(raw);
       if (error) throw new Error(error);
       // Verified against the policy before anything is printed.

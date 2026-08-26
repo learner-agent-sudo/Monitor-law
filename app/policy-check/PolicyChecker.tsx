@@ -20,8 +20,10 @@ import {
   requestInterpretation,
   verifyAgainstPolicy,
   INTERPRET_STATES,
-  INTERPRET_MODEL,
+  PROVIDERS,
+  DEFAULT_PROVIDER,
 } from "@/lib/policy-interpret.mjs";
+import KeyVault, { type VaultState } from "./KeyVault";
 
 /**
  * Public text-extraction service used for the URL option. A browser cannot
@@ -492,7 +494,11 @@ export default function PolicyChecker() {
   const fileRef = useRef<HTMLInputElement>(null);
 
   // ---- layer 2: interpretation ----
-  const [apiKey, setApiKey] = useState("");
+  const [vault, setVault] = useState<VaultState>({
+    provider: DEFAULT_PROVIDER as string,
+    model: (PROVIDERS as any)[DEFAULT_PROVIDER].defaultModel as string,
+    apiKey: "",
+  });
   const [interpreting, setInterpreting] = useState(false);
   const [interpretError, setInterpretError] = useState<string | null>(null);
   const [interpretations, setInterpretations] = useState<Record<string, Interpretation>>({});
@@ -541,11 +547,16 @@ export default function PolicyChecker() {
   );
 
   async function runInterpretation() {
-    if (!apiKey.trim() || !gaps.length) return;
+    if (!vault.apiKey.trim() || !gaps.length) return;
     setInterpreting(true);
     setInterpretError(null);
     try {
-      const raw = await requestInterpretation({ apiKey: apiKey.trim(), prompt });
+      const raw = await requestInterpretation({
+        apiKey: vault.apiKey.trim(),
+        prompt,
+        provider: vault.provider,
+        model: vault.model,
+      });
       const { results, error } = parseInterpretation(raw) as {
         results: any[];
         error: string | null;
@@ -558,9 +569,9 @@ export default function PolicyChecker() {
       if (!verified.length) setInterpretError("The model returned no usable results.");
     } catch (e: any) {
       setInterpretError(
-        `${e?.message ?? e}. If this is a CORS or auth failure, check the key is an Anthropic API ` +
-          `key (not a Claude.ai login) and has credit. You can also copy the prompt below and run ` +
-          `it anywhere yourself.`,
+        `${e?.message ?? e}. Check the key belongs to the selected provider and that the model name ` +
+          `is one your key can reach — model names change, and the field above is editable for ` +
+          `exactly that reason. You can also copy the prompt below and run it anywhere yourself.`,
       );
     } finally {
       setInterpreting(false);
@@ -754,26 +765,19 @@ export default function PolicyChecker() {
                   <p className="interp-privacy">
                     <strong>This one sends your policy off your machine.</strong> Everything else on
                     this page runs locally; this does not. The policy text and the statutory quotes
-                    go to the Anthropic API under <em>your</em> key, billed to you, using{" "}
-                    <code>{INTERPRET_MODEL}</code>. This site is a static export with no backend, so
-                    there is nowhere to keep a shared key — and nowhere for us to see your text
-                    either. The key stays in this browser tab and is gone when you close it.
+                    go to the provider you choose below, under <em>your</em> key. This site is a
+                    static export with no backend, so there is nowhere to keep a shared key — and
+                    nowhere for the operator of this site to see your text either. The request goes
+                    from your browser straight to the provider.
                   </p>
 
+                  <KeyVault value={vault} onChange={setVault} />
+
                   <div className="interp-controls">
-                    <input
-                      type="password"
-                      className="text-input"
-                      placeholder="sk-ant-… (your own Anthropic API key)"
-                      value={apiKey}
-                      onChange={(e) => setApiKey(e.target.value)}
-                      autoComplete="off"
-                      spellCheck={false}
-                    />
                     <button
                       className="bar-btn primary"
                       onClick={runInterpretation}
-                      disabled={interpreting || !apiKey.trim()}
+                      disabled={interpreting || !vault.apiKey.trim()}
                     >
                       {interpreting ? "Reading…" : `Read the ${gaps.length} gap${gaps.length > 1 ? "s" : ""}`}
                     </button>

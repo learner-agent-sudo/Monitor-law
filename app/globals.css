@@ -1399,6 +1399,115 @@ code {
   margin: 12px 0 0;
 }
 
+/* ---- Key vault ---- */
+.vault {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 12px 0;
+}
+.vault-grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.vault-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+.vault-grid .vault-row { margin-bottom: 0; }
+.vault-grow { flex: 1; min-width: 240px; }
+/* Direct child only: the radio options inside .vault-modes are also <label>s,
+   and must not inherit the uppercase field-label treatment. */
+.vault-row > label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-faint);
+  font-weight: 650;
+}
+.vault-row select {
+  background: var(--bg-elevated);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 14px;
+  font-family: inherit;
+}
+.vault-inline {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.vault-inline .text-input { flex: 1; min-width: 200px; }
+.vault-note {
+  font-size: 12.5px;
+  color: var(--text-faint);
+  margin: 10px 0 14px;
+}
+.vault-modes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.vault-mode {
+  flex: 1;
+  min-width: 210px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text);
+  font-weight: 400;
+}
+.vault-mode.on {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.vault-mode input { margin-top: 3px; }
+.vault-mode strong {
+  display: block;
+  font-size: 13px;
+}
+.vault-mode-detail {
+  display: block;
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-top: 3px;
+}
+.vault-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.vault-status {
+  font-size: 12.5px;
+  color: var(--green);
+}
+.vault-warning {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin: 12px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+.vault-warning strong { color: var(--text-muted); }
+
 .interp {
   margin-top: 12px;
   padding: 12px 16px;

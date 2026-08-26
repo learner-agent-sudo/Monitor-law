@@ -16,7 +16,10 @@ import {
   parseInterpretation,
   verifyAgainstPolicy,
   interpretableFindings,
+  PROVIDERS,
+  DEFAULT_PROVIDER,
 } from "../lib/policy-interpret.mjs";
+import { encryptSecret, decryptSecret, STORAGE_MODES } from "../lib/key-store.mjs";
 
 let failures = 0;
 const results = [];
@@ -136,6 +139,65 @@ check("prompt carries the law", prompt.includes("PIPEDA"));
 check("prompt demands verbatim quotes", /VERBATIM/.test(prompt));
 check("prompt permits an empty answer", /absent/.test(prompt));
 check("prompt forbids judging compliance", /Do not judge legal compliance/.test(prompt));
+
+// ---- providers -----------------------------------------------------------
+for (const [id, p] of Object.entries(PROVIDERS)) {
+  check(`${id}: endpoint is https`, p.endpoint(p.defaultModel).startsWith("https://"));
+  check(`${id}: key is sent in a header, never in the URL`, !p.endpoint(p.defaultModel).includes("key="));
+  check(`${id}: headers carry the key`, JSON.stringify(p.headers("SECRET")).includes("SECRET"));
+  check(`${id}: body carries the prompt`, p.body("PROMPT_TEXT", p.defaultModel).includes("PROMPT_TEXT"));
+  check(`${id}: has a default model`, Boolean(p.defaultModel));
+}
+check("gemini is the default (it has a free tier)", DEFAULT_PROVIDER === "gemini");
+check(
+  "gemini asks for JSON back",
+  PROVIDERS.gemini.body("x", "m").includes("application/json"),
+);
+check(
+  "anthropic sends the header its API requires for browser calls",
+  "anthropic-dangerous-direct-browser-access" in PROVIDERS.anthropic.headers("k"),
+);
+check(
+  "gemini response shape is extracted",
+  PROVIDERS.gemini.extractText({ candidates: [{ content: { parts: [{ text: "hello" }] } }] }) === "hello",
+);
+check(
+  "anthropic response shape is extracted",
+  PROVIDERS.anthropic.extractText({ content: [{ type: "text", text: "hello" }] }) === "hello",
+);
+check(
+  "a malformed response extracts to empty rather than throwing",
+  PROVIDERS.gemini.extractText({}) === "" && PROVIDERS.anthropic.extractText({}) === "",
+);
+
+// ---- key encryption ------------------------------------------------------
+{
+  const secret = "AIzaSyEXAMPLE-not-a-real-key-000000000";
+  const blob = await encryptSecret(secret, "correct horse battery staple");
+
+  check("ciphertext does not contain the key", !JSON.stringify(blob).includes(secret));
+  check("stores salt, iv and ciphertext", Boolean(blob.salt && blob.iv && blob.ct));
+  check(
+    "round-trips with the right passphrase",
+    (await decryptSecret(blob, "correct horse battery staple")) === secret,
+  );
+
+  let threw = false;
+  try {
+    await decryptSecret(blob, "wrong passphrase");
+  } catch {
+    threw = true;
+  }
+  check("REJECTS a wrong passphrase rather than returning garbage", threw);
+
+  const again = await encryptSecret(secret, "correct horse battery staple");
+  check("salt and iv are fresh each time", again.salt !== blob.salt && again.iv !== blob.iv);
+  check(
+    "same key encrypted twice gives different ciphertext",
+    again.ct !== blob.ct,
+  );
+  check("all three storage modes are described for the user", Object.keys(STORAGE_MODES).length === 3);
+}
 
 // ---- report --------------------------------------------------------------
 const lines = ["# Interpretation layer check\n"];
