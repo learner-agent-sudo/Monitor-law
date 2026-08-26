@@ -519,6 +519,8 @@ export default function PolicyChecker() {
   }, [ran, text, law]);
 
   const inLane = (l: string) => findings.filter((f) => f.lane === l);
+  const hasKey = Boolean(vault.apiKey.trim());
+  const providerLabel = (PROVIDERS as any)[vault.provider]?.label ?? vault.provider;
 
   // Only the gaps are worth a call — everything already evidenced was found on
   // the free, reproducible path and does not need a model's opinion.
@@ -680,9 +682,31 @@ export default function PolicyChecker() {
         machine. <strong>Two things are exceptions, both opt-in.</strong> Fetching a URL is routed
         through the public reader service <code>r.jina.ai</code>, which will see the address you
         enter, because browsers cannot fetch other sites directly. And the optional second opinion
-        on the results sends your policy text to the Anthropic API under your own key. Paste the
+        on the results sends your policy text to whichever provider you set up below, under your own key. Paste the
         text and skip the second opinion, and nothing leaves this tab.
       </p>
+
+      {/* Key setup lives here, with the other inputs, NOT inside the results.
+          It was previously only reachable after running an analysis that found
+          gaps — which meant a reader who wanted to set a key up first, or whose
+          policy had no gaps, could not find it at all. */}
+      <details className="setup-block" open={!hasKey && showInterpret}>
+        <summary>
+          <span className="setup-title">Second opinion on the results — optional</span>
+          <span className={`setup-status ${hasKey ? "on" : ""}`}>
+            {hasKey
+              ? `${providerLabel} key ready`
+              : "No API key set up — the checker still works without one"}
+          </span>
+        </summary>
+        <p className="setup-lead">
+          The checker matches text patterns. Where it finds nothing, a model can read the policy
+          properly and tell a real gap from a wording it did not recognise. That needs an API key —
+          Google Gemini has a free tier. Nothing here is required: without a key you can still copy
+          the prompt and run it yourself.
+        </p>
+        <KeyVault value={vault} onChange={setVault} />
+      </details>
 
       {error && <div className="checker-error">{error}</div>}
 
@@ -771,16 +795,30 @@ export default function PolicyChecker() {
                     from your browser straight to the provider.
                   </p>
 
-                  <KeyVault value={vault} onChange={setVault} />
-
                   <div className="interp-controls">
-                    <button
-                      className="bar-btn primary"
-                      onClick={runInterpretation}
-                      disabled={interpreting || !vault.apiKey.trim()}
-                    >
-                      {interpreting ? "Reading…" : `Read the ${gaps.length} gap${gaps.length > 1 ? "s" : ""}`}
-                    </button>
+                    {hasKey ? (
+                      <>
+                        <button
+                          className="bar-btn primary"
+                          onClick={runInterpretation}
+                          disabled={interpreting}
+                        >
+                          {interpreting
+                            ? "Reading…"
+                            : `Read the ${gaps.length} gap${gaps.length > 1 ? "s" : ""} with ${providerLabel}`}
+                        </button>
+                        <span className="char-count">
+                          Using <code>{vault.model}</code>. Change it in{" "}
+                          <em>Second opinion on the results</em>, above the policy box.
+                        </span>
+                      </>
+                    ) : (
+                      <p className="interp-nokey">
+                        <strong>No API key set up yet.</strong> Open{" "}
+                        <em>Second opinion on the results</em> above the policy box to add one —
+                        Google Gemini has a free tier. Or take the prompt below and run it yourself.
+                      </p>
+                    )}
                   </div>
 
                   <p className="interp-alt">
