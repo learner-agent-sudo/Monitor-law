@@ -1442,6 +1442,58 @@ code {
 }
 .interp-nokey strong { color: var(--text); }
 
+/* Always-visible state line for the second pass. A failure hidden behind a
+   collapsed panel reads exactly like never having run — which is the bug this
+   replaces. */
+.interp-state {
+  font-size: 13px;
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--bg);
+}
+.interp-live { color: var(--purple); display: flex; align-items: center; gap: 9px; }
+.interp-ok { color: var(--text-muted); }
+.interp-ok strong { color: var(--green); }
+.interp-failed { color: var(--text-muted); }
+.interp-failed strong { color: var(--red); }
+.interp-idle { color: var(--text-faint); }
+.interp-idle strong { color: var(--text-muted); }
+
+.spinner {
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(163, 113, 247, 0.3);
+  border-top-color: var(--purple);
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation: none; }
+}
+
+.interp-auto {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  color: var(--text-faint);
+  cursor: pointer;
+}
+.linkish {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 /* ---- Key vault ---- */
 .vault {
   background: var(--bg);

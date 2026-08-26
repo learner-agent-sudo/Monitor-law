@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { laws, jurisdictionsById, requirementsById } from "@/lib/data";
 // Shared with scripts/analyze-policy.mjs so both run the exact same rules.
@@ -503,6 +503,11 @@ export default function PolicyChecker() {
   const [interpretError, setInterpretError] = useState<string | null>(null);
   const [interpretations, setInterpretations] = useState<Record<string, Interpretation>>({});
   const [showInterpret, setShowInterpret] = useState(false);
+  // Configuring a key IS the opt-in, so the second pass runs by default. This
+  // exists for people who want to keep a key set up but control when it spends.
+  const [autoRun, setAutoRun] = useState(true);
+  // Dedupe: one call per (law, policy) analysis, not one per render.
+  const lastRunRef = useRef<string | null>(null);
 
   const law = laws.find((l) => l.id === lawId)!;
 
@@ -521,6 +526,14 @@ export default function PolicyChecker() {
   const inLane = (l: string) => findings.filter((f) => f.lane === l);
   const hasKey = Boolean(vault.apiKey.trim());
   const providerLabel = (PROVIDERS as any)[vault.provider]?.label ?? vault.provider;
+
+  // Split the second pass's answers so the summary can say what it actually
+  // did: re-open gaps, or agree they are gaps. Both are useful outcomes.
+  const interpValues = Object.values(interpretations);
+  const reopened = interpValues.filter(
+    (r) => r.verdict === "addressed" || r.verdict === "partially",
+  ).length;
+  const agreed = interpValues.filter((r) => r.verdict === "absent").length;
 
   // Only the gaps are worth a call — everything already evidenced was found on
   // the free, reproducible path and does not need a model's opinion.
@@ -548,6 +561,26 @@ export default function PolicyChecker() {
     [gaps, law.shortName, text],
   );
 
+  /**
+   * Run the second pass automatically once an analysis produces gaps and a key
+   * is configured.
+   *
+   * Previously this waited behind a collapsed panel and a button, so someone
+   * who had set a key up saw no sign it existed — the results looked identical
+   * to having no key at all. Setting up a key is the consent; making the user
+   * hunt for a second switch afterwards was just a hidden control.
+   */
+  useEffect(() => {
+    if (!ran || !hasKey || !autoRun || !gaps.length || interpreting) return;
+    const sig = `${law.id}:${vault.provider}:${vault.model}:${text.length}:${gaps.map((g) => g.id).join(",")}`;
+    if (lastRunRef.current === sig) return;
+    lastRunRef.current = sig;
+    void runInterpretation();
+    // runInterpretation closes over exactly these; re-running on its identity
+    // would loop.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ran, hasKey, autoRun, gaps, law.id, vault.provider, vault.model, text.length]);
+
   async function runInterpretation() {
     if (!vault.apiKey.trim() || !gaps.length) return;
     setInterpreting(true);
@@ -571,7 +604,8 @@ export default function PolicyChecker() {
       if (!verified.length) setInterpretError("The model returned no usable results.");
     } catch (e: any) {
       setInterpretError(
-        `${e?.message ?? e}. Check the key belongs to the selected provider and that the model name ` +
+        // Provider messages already end in a full stop about half the time.
+        `${String(e?.message ?? e).replace(/\.\s*$/, "")}. Check the key belongs to the selected provider and that the model name ` +
           `is one your key can reach — model names change, and the field above is editable for ` +
           `exactly that reason. You can also copy the prompt below and run it anywhere yourself.`,
       );
@@ -768,20 +802,79 @@ export default function PolicyChecker() {
             </span>
           </div>
 
-          {/* ---- layer 2: interpretation, offered only where layer 1 found nothing ---- */}
+          {/* ---- layer 2: interpretation, over the gaps layer 1 could not see ----
+              Status and errors live OUT here, never behind the collapse. A failed
+              call hidden inside a closed panel is indistinguishable from a call
+              that never ran, which is exactly how this went wrong before. */}
           {gaps.length > 0 && (
-            <div className="interp-panel">
+            <div className={`interp-panel ${interpreting ? "busy" : ""}`}>
               <div className="interp-panel-head">
                 <div>
-                  <strong>Pattern matching found nothing for {gaps.length} obligation
-                  {gaps.length > 1 ? "s" : ""}.</strong>{" "}
+                  <strong>
+                    Pattern matching found nothing for {gaps.length} obligation
+                    {gaps.length > 1 ? "s" : ""}.
+                  </strong>{" "}
                   That can mean the policy is silent — or that it says the same thing in words the
                   search terms do not know. A model can read the text properly and tell the two
                   apart.
                 </div>
                 <button className="bar-btn" onClick={() => setShowInterpret((s) => !s)}>
-                  {showInterpret ? "Hide" : "Get a second opinion"}
+                  {showInterpret ? "Hide details" : "Details"}
                 </button>
+              </div>
+
+              {/* Always-visible state line. */}
+              <div className="interp-state">
+                {interpreting ? (
+                  <span className="interp-live">
+                    <span className="spinner" aria-hidden="true" /> Reading {gaps.length} gap
+                    {gaps.length > 1 ? "s" : ""} with {providerLabel} ({vault.model})…
+                  </span>
+                ) : interpretError ? (
+                  <span className="interp-failed">
+                    <strong>{providerLabel} could not be reached.</strong> {interpretError}
+                  </span>
+                ) : Object.keys(interpretations).length > 0 ? (
+                  <span className="interp-ok">
+                    <strong>
+                      {providerLabel} read {Object.keys(interpretations).length} gap
+                      {Object.keys(interpretations).length > 1 ? "s" : ""}
+                    </strong>{" "}
+                    — {reopened} re-opened as possibly addressed, {agreed} confirmed as not covered.
+                    Findings below carry its answer. Every quote it gave was checked against your
+                    document first.
+                  </span>
+                ) : hasKey ? (
+                  <span className="interp-idle">
+                    Ready to read them with {providerLabel}.{" "}
+                    <button className="linkish" onClick={runInterpretation}>
+                      Run now
+                    </button>
+                  </span>
+                ) : (
+                  <span className="interp-idle">
+                    <strong>No API key set up.</strong> Open{" "}
+                    <em>Second opinion on the results</em> above the policy box to add one — Google
+                    Gemini has a free tier — or copy the prompt and run it yourself.
+                  </span>
+                )}
+              </div>
+
+              <div className="interp-controls">
+                {hasKey && !interpreting && (
+                  <button className="bar-btn" onClick={runInterpretation}>
+                    {Object.keys(interpretations).length > 0 ? "Read again" : "Read the gaps"}
+                  </button>
+                )}
+                <CopyButton text={prompt} label="Copy the prompt instead" />
+                <label className="interp-auto">
+                  <input
+                    type="checkbox"
+                    checked={autoRun}
+                    onChange={(e) => setAutoRun(e.target.checked)}
+                  />
+                  Run automatically when I analyse
+                </label>
               </div>
 
               {showInterpret && (
@@ -789,54 +882,15 @@ export default function PolicyChecker() {
                   <p className="interp-privacy">
                     <strong>This one sends your policy off your machine.</strong> Everything else on
                     this page runs locally; this does not. The policy text and the statutory quotes
-                    go to the provider you choose below, under <em>your</em> key. This site is a
-                    static export with no backend, so there is nowhere to keep a shared key — and
-                    nowhere for the operator of this site to see your text either. The request goes
-                    from your browser straight to the provider.
+                    go to the provider you set up, under <em>your</em> key. This site is a static
+                    export with no backend, so there is nowhere to keep a shared key — and nowhere
+                    for the operator of this site to see your text either. The request goes from
+                    your browser straight to the provider.
                   </p>
-
-                  <div className="interp-controls">
-                    {hasKey ? (
-                      <>
-                        <button
-                          className="bar-btn primary"
-                          onClick={runInterpretation}
-                          disabled={interpreting}
-                        >
-                          {interpreting
-                            ? "Reading…"
-                            : `Read the ${gaps.length} gap${gaps.length > 1 ? "s" : ""} with ${providerLabel}`}
-                        </button>
-                        <span className="char-count">
-                          Using <code>{vault.model}</code>. Change it in{" "}
-                          <em>Second opinion on the results</em>, above the policy box.
-                        </span>
-                      </>
-                    ) : (
-                      <p className="interp-nokey">
-                        <strong>No API key set up yet.</strong> Open{" "}
-                        <em>Second opinion on the results</em> above the policy box to add one —
-                        Google Gemini has a free tier. Or take the prompt below and run it yourself.
-                      </p>
-                    )}
-                  </div>
-
                   <p className="interp-alt">
-                    No key, or would rather not paste one? <CopyButton text={prompt} label="Copy the prompt" />{" "}
-                    and run it in Claude, or anywhere else. Paste the reply back into whatever you
-                    like — the answer is the same, you just check the quotes by hand.
+                    Prefer not to send it at all? Copy the prompt above and run it in Claude, or
+                    anywhere else. The answer is the same — you just check the quotes by hand.
                   </p>
-
-                  {interpretError && <div className="checker-error">{interpretError}</div>}
-
-                  {Object.keys(interpretations).length > 0 && (
-                    <p className="interp-done">
-                      Second opinion attached to {Object.keys(interpretations).length} finding
-                      {Object.keys(interpretations).length > 1 ? "s" : ""} below. Every quote shown
-                      was verified as present in your document; anything the model produced that was
-                      not in your text has been discarded.
-                    </p>
-                  )}
                 </div>
               )}
             </div>
