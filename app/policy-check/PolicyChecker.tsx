@@ -6,7 +6,9 @@ import { laws, jurisdictionsById, requirementsById } from "@/lib/data";
 // Shared with scripts/analyze-policy.mjs so both run the exact same rules.
 import {
   analyzePolicy,
+  consolidate,
   gapStatement,
+  CONFIDENCE,
   LANES,
   LANE_ORDER,
   VERDICT_ORDER,
@@ -49,7 +51,7 @@ type Remediation = {
   totalCount: number;
 };
 
-type Evidence = { text: string; section: string | null };
+type Evidence = { text: string; section: string | null; source?: "model" | "pattern" };
 type Element = { id: string; label: string; basis: Basis; found: boolean; section: string | null };
 
 type Searched = { label: string; found: boolean };
@@ -83,10 +85,22 @@ type Finding = {
   missingElements: Element[];
   severity: { label: string; note: string } | null;
   remediation: Remediation | null;
+  // Set by consolidate() once a model has looked at this obligation.
+  confidence: "read" | "pattern";
+  modelReason?: string | null;
+  modelMissing?: string | null;
+  modelAgreedAbsent?: boolean;
+  modelRejected?: boolean;
+  rejectedQuotes?: string[];
 };
 
+const CONF = CONFIDENCE as Record<string, { id: string; label: string; blurb: string }>;
+
 const GUIDE = VERDICT_GUIDE as Record<string, { meaning: string; action: string }>;
-const LANE_INFO = LANES as Record<string, { id: string; title: string; blurb: string }>;
+const LANE_INFO = LANES as Record<
+  string,
+  { id: string; title: string; tip: string; blurb: string }
+>;
 
 const VERDICT_CLASS: Record<string, string> = {
   "NOT EVIDENCED": "v-gap",
@@ -264,39 +278,16 @@ function tagText(item: { basis: Basis; cite?: string | null }): string {
 }
 
 /**
- * The model's answer, held to the same evidence standard as everything else:
- * every quote below survived an exact-substring check against the policy. The
- * block is visually distinct from the deterministic findings on purpose — a
- * reader must never have to wonder which pass produced a claim.
+ * How this finding was decided. Not decoration — a keyword miss and a
+ * model-read miss are very different claims, and the reader has to be able to
+ * tell them apart at a glance.
  */
-function InterpretationBlock({ r }: { r: Interpretation }) {
-  const state = STATES[r.verdict] ?? STATES.absent;
+function ConfidenceChip({ f }: { f: Finding }) {
+  const c = CONF[f.confidence] ?? CONF.pattern;
   return (
-    <div className={`interp interp-${state.id}`}>
-      <div className="interp-head">
-        <span className="interp-tag">Second opinion · read by a model</span>
-        <span className={`interp-verdict iv-${state.id}`}>{state.label}</span>
-      </div>
-      <p className="interp-blurb">{state.blurb}</p>
-      {r.reason && <p className="interp-reason">{r.reason}</p>}
-      {r.quotes.map((q, i) => (
-        <blockquote key={i} className="policy-quote">
-          <span className="quote-src">verified present in your policy</span>“{q}”
-        </blockquote>
-      ))}
-      {r.missing && (
-        <p className="interp-missing">
-          <strong>Still not covered:</strong> {r.missing}
-        </p>
-      )}
-      {r.rejectedQuotes.length > 0 && (
-        <p className="interp-rejected">
-          <strong>{r.rejectedQuotes.length} quote{r.rejectedQuotes.length > 1 ? "s" : ""} discarded</strong>{" "}
-          — the model produced wording that is not in your document, so any claim resting on it was
-          dropped. This is why quotes are checked rather than trusted.
-        </p>
-      )}
-    </div>
+    <span className={`conf conf-${c.id}`} title={c.blurb}>
+      {c.label}
+    </span>
   );
 }
 
@@ -305,13 +296,11 @@ function Recommendation({
   index,
   shortName,
   openByDefault,
-  interpretation,
 }: {
   f: Finding;
   index: number;
   shortName: string;
   openByDefault: boolean;
-  interpretation?: Interpretation;
 }) {
   const r = f.remediation;
   const labels = STEP_LABELS[f.lane] ?? STEP_LABELS.ACT;
@@ -379,6 +368,7 @@ function Recommendation({
         <div className="rec-title">
           <h4>{name(f)}</h4>
           <div className="rec-meta">
+            <ConfidenceChip f={f} />
             {f.severity && <span className={`sev sev-${f.severity.label.toLowerCase()}`}>{f.severity.label}</span>}
             <span className="citation">{f.citation}</span>
           </div>
@@ -392,15 +382,36 @@ function Recommendation({
         </div>
         {f.evidence.length ? (
           f.evidence.map((e, i) => (
-            <blockquote key={i} className="policy-quote">
-              {e.section && <span className="quote-src">{e.section}</span>}“{e.text}”
+            <blockquote key={i} className={`policy-quote ${e.source === "model" ? "by-model" : ""}`}>
+              <span className="quote-src">
+                {e.section ?? "location not pinned"}
+                {e.source === "model" ? " · found by AI, quote verified against your text" : null}
+              </span>
+              “{e.text}”
             </blockquote>
           ))
+        ) : f.modelAgreedAbsent ? (
+          <p className="finding-note">
+            Nothing found — by keyword search, and by a model that read the whole policy. Still not
+            proof of non-compliance: the practice may exist and simply go undescribed.
+          </p>
         ) : (
           <p className="finding-note">
-            No wording matching this obligation&apos;s search terms was located. That is not a
-            finding of non-compliance — the practice may exist, or your policy may say the same
-            thing in different words.
+            No wording matching this obligation&apos;s search terms was located.{" "}
+            {f.confidence === "pattern"
+              ? "Only keywords have been checked so far — a policy that says this in its own words would be missed."
+              : "That is not a finding of non-compliance — the practice may exist and simply not be described here."}
+          </p>
+        )}
+
+        {f.rejectedQuotes && f.rejectedQuotes.length > 0 && (
+          <p className="interp-rejected">
+            <strong>
+              {f.rejectedQuotes.length} AI quote{f.rejectedQuotes.length > 1 ? "s" : ""} discarded
+            </strong>{" "}
+            — the model produced wording that is not in your document, so any claim resting on it
+            was dropped and the finding above stands. This is why quotes are checked rather than
+            trusted.
           </p>
         )}
         {f.searched?.length > 0 && (
@@ -423,7 +434,6 @@ function Recommendation({
             </p>
           </details>
         )}
-        {interpretation && <InterpretationBlock r={interpretation} />}
       </div>
 
       {/* ② what the law says */}
@@ -442,7 +452,12 @@ function Recommendation({
         </div>
         <p className="gap-statement">{gapStatement(f, shortName)}</p>
         {f.elements?.length > 0 && (
-          <ul className="element-list">
+          <>
+            <div className="element-head">
+              Keyword checklist — what the patterns could and could not find
+              {f.confidence === "read" ? ", independent of what the model read" : ""}
+            </div>
+            <ul className="element-list">
             {f.elements.map((e) => (
               <li key={e.id} className={e.found ? "el-found" : "el-missing"}>
                 <span className="el-mark">{e.found ? "✓" : "✗"}</span>
@@ -456,7 +471,8 @@ function Recommendation({
                 </span>
               </li>
             ))}
-          </ul>
+            </ul>
+          </>
         )}
         {f.lane === "ELSEWHERE" && <p className="finding-note">{f.scopeReason}</p>}
         {f.verdict === "PARTIAL" && <p className="finding-note">{f.scopeReason}</p>}
@@ -511,7 +527,9 @@ export default function PolicyChecker() {
 
   const law = laws.find((l) => l.id === lawId)!;
 
-  const findings: Finding[] = useMemo(() => {
+  // The keyword pass. Cheap, deterministic, and the thing that decides which
+  // obligations are worth sending to a model.
+  const rawFindings: Finding[] = useMemo(() => {
     if (!ran || !text.trim()) return [];
     const obligations = Object.entries(law.mappings).map(([id, m]) => ({
       id,
@@ -522,6 +540,13 @@ export default function PolicyChecker() {
     }));
     return analyzePolicy(obligations, text, law.id) as Finding[];
   }, [ran, text, law]);
+
+  // One consolidated set. Where a model has read an obligation, its answer
+  // replaces the keyword verdict and the finding moves lane accordingly.
+  const findings: Finding[] = useMemo(
+    () => consolidate(rawFindings, interpretations, text) as Finding[],
+    [rawFindings, interpretations, text],
+  );
 
   const inLane = (l: string) => findings.filter((f) => f.lane === l);
   const hasKey = Boolean(vault.apiKey.trim());
@@ -539,7 +564,10 @@ export default function PolicyChecker() {
   // the free, reproducible path and does not need a model's opinion.
   const gaps = useMemo(
     () =>
-      (interpretableFindings(findings) as Finding[]).map((f) => ({
+      // Sent from the RAW keyword pass, not the consolidated one — otherwise an
+      // obligation the model has already resolved would drop out of the list
+      // and the dedupe signature would flap on every result.
+      (interpretableFindings(rawFindings) as Finding[]).map((f) => ({
         id: f.id,
         name: name(f),
         citation: f.citation,
@@ -936,6 +964,7 @@ export default function PolicyChecker() {
                   <h3 className="lane-title">
                     {info.title} <span className="lane-count">{rows.length}</span>
                   </h3>
+                  <p className="lane-tip">{info.tip}</p>
                   <p className="lane-blurb">{info.blurb}</p>
                   <ul className="lane-none-list">
                     {rows.map((f) => (
@@ -953,7 +982,8 @@ export default function PolicyChecker() {
                 <h3 className="lane-title">
                   {info.title} <span className="lane-count">{rows.length}</span>
                 </h3>
-                <p className="lane-blurb">{info.blurb}</p>
+                <p className="lane-tip">{info.tip}</p>
+                  <p className="lane-blurb">{info.blurb}</p>
                 {rows.map((f, i) => (
                   <Recommendation
                     key={f.id}
@@ -961,7 +991,6 @@ export default function PolicyChecker() {
                     index={i + 1}
                     shortName={law.shortName}
                     openByDefault={lane === "ACT"}
-                    interpretation={interpretations[f.id]}
                   />
                 ))}
               </section>

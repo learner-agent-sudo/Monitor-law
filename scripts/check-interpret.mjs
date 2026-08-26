@@ -20,6 +20,7 @@ import {
   DEFAULT_PROVIDER,
 } from "../lib/policy-interpret.mjs";
 import { encryptSecret, decryptSecret, STORAGE_MODES } from "../lib/key-store.mjs";
+import { analyzePolicy, consolidate, gapStatement, LANES } from "../lib/policy-rules.mjs";
 
 let failures = 0;
 const results = [];
@@ -197,6 +198,119 @@ check(
     again.ct !== blob.ct,
   );
   check("all three storage modes are described for the user", Object.keys(STORAGE_MODES).length === 3);
+}
+
+// ---- consolidation: the model's answer becomes THE answer ----------------
+{
+  const obligations = [
+    { id: "rights-correction", strictness: 2, obligation: "o", citation: "c", quote: "q" },
+  ];
+  const raw = analyzePolicy(obligations, POLICY, "pdpo");
+  check("keyword pass alone reports a gap", raw[0].verdict === "NOT EVIDENCED" && raw[0].lane === "ACT");
+
+  const found = {
+    "rights-correction": {
+      id: "rights-correction",
+      verdict: "addressed",
+      quotes: ["is tied to the purposes for which the information is collected"],
+      rejectedQuotes: [],
+      reason: "Found in the purposes table.",
+      missing: null,
+    },
+  };
+  const merged = consolidate(raw, found, POLICY);
+  check(
+    "a verified AI finding CHANGES the verdict, not just adds a note",
+    merged[0].verdict === "EVIDENCED",
+    `got ${merged[0].verdict}`,
+  );
+  check(
+    "and MOVES the finding out of the 'missing' lane",
+    merged[0].lane === "REVIEW",
+    `got ${merged[0].lane}`,
+  );
+  check("the finding is marked as read rather than keyword-matched", merged[0].confidence === "read");
+  check(
+    "AI-found evidence is tagged with its source and located in the document",
+    merged[0].evidence[0].source === "model" && Boolean(merged[0].evidence[0].section),
+  );
+
+  const rejected = consolidate(
+    raw,
+    {
+      "rights-correction": {
+        id: "rights-correction",
+        verdict: "unverified",
+        quotes: [],
+        rejectedQuotes: ["We honour all correction requests within 40 days."],
+        reason: "x",
+        missing: null,
+      },
+    },
+    POLICY,
+  );
+  check(
+    "a REJECTED AI claim leaves the gap standing",
+    rejected[0].verdict === "NOT EVIDENCED" && rejected[0].lane === "ACT",
+    `got ${rejected[0].verdict}/${rejected[0].lane}`,
+  );
+
+  const agreed = consolidate(
+    raw,
+    {
+      "rights-correction": {
+        id: "rights-correction",
+        verdict: "absent",
+        quotes: [],
+        rejectedQuotes: [],
+        reason: "Nothing on correction.",
+        missing: null,
+      },
+    },
+    POLICY,
+  );
+  check(
+    "an AI 'absent' confirms the gap rather than changing it",
+    agreed[0].verdict === "NOT EVIDENCED" && agreed[0].modelAgreedAbsent === true,
+  );
+  check(
+    "and the gap statement says both passes agree",
+    /two independent passes agreeing/i.test(gapStatement(agreed[0], "PDPO")),
+  );
+
+  // policyScope must still cap the result.
+  const consentRaw = analyzePolicy(
+    [{ id: "consent", strictness: 3, obligation: "o", citation: "c", quote: "q" }],
+    POLICY,
+    "pdpo",
+  );
+  const consentMerged = consolidate(
+    consentRaw,
+    {
+      consent: {
+        id: "consent",
+        verdict: "addressed",
+        quotes: ["is tied to the purposes for which the information is collected"],
+        rejectedQuotes: [],
+        reason: "x",
+        missing: null,
+      },
+    },
+    POLICY,
+  );
+  check(
+    "a partial-scope obligation stays PARTIAL even when the AI reads it as addressed",
+    consentMerged[0].verdict === "PARTIAL",
+    `got ${consentMerged[0].verdict}`,
+  );
+
+  check("untouched findings are labelled keyword-only", consolidate(raw, {}, POLICY)[0].confidence === "pattern");
+}
+
+// ---- lane names carry a plain-language tip -------------------------------
+for (const [id, lane] of Object.entries(LANES)) {
+  check(`${id}: has a one-line tip for the reader`, Boolean(lane.tip && lane.tip.length < 120));
+  check(`${id}: title says what it means, not just a label`, lane.title.length > 12);
 }
 
 // ---- report --------------------------------------------------------------

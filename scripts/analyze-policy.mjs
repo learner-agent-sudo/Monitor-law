@@ -40,7 +40,7 @@
 import { readFileSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { analyzePolicy, gapStatement, LANES, LANE_ORDER } from "../lib/policy-rules.mjs";
+import { analyzePolicy, consolidate, gapStatement, CONFIDENCE, LANES, LANE_ORDER } from "../lib/policy-rules.mjs";
 import { BASIS } from "../lib/policy-remediation.mjs";
 import {
   buildInterpretationPrompt,
@@ -170,12 +170,17 @@ if (wantInterpret || wantPrompt) {
   }
 }
 
+// One consolidated set: where a model read an obligation, its answer replaces
+// the keyword verdict and the finding moves lane accordingly. Done before the
+// JSON branch so both outputs describe the same state.
+const merged = consolidate(findings, interpretations, policyText);
+
 if (asJson) {
-  console.log(JSON.stringify({ lawId, shortName, policyPath, findings }, null, 2));
+  console.log(JSON.stringify({ lawId, shortName, policyPath, findings: merged }, null, 2));
   process.exit(0);
 }
 
-const inLane = (l) => findings.filter((f) => f.lane === l);
+const inLane = (l) => merged.filter((f) => f.lane === l);
 
 // Practice first, paper second — but the instruction differs by lane. Telling
 // someone to change a practice their policy already describes would be wrong,
@@ -219,6 +224,7 @@ for (const lane of LANE_ORDER) {
   const rows = inLane(lane);
   if (!rows.length) continue;
   out.push(`\n## ${LANES[lane].title} (${rows.length})\n`);
+  out.push(`**${LANES[lane].tip}**\n`);
   out.push(`_${LANES[lane].blurb}_\n`);
 
   // "Nothing required" needs no detail — one line each keeps the taxonomy
@@ -230,7 +236,11 @@ for (const lane of LANE_ORDER) {
   }
 
   for (const f of rows) {
-    out.push(`### ${f.id} — ${f.citation}${f.severity ? ` _(${f.severity.label})_` : ""}`);
+    const conf = CONFIDENCE[f.confidence] ?? CONFIDENCE.pattern;
+    out.push(
+      `### ${f.id} — ${f.citation}${f.severity ? ` _(${f.severity.label})_` : ""} ` +
+        `· _${conf.label}_`,
+    );
 
     // ① what the policy says, and where. ② what the law says. ③ the gap.
     // ④ how to close it. Same order every time, so the reader can follow the
@@ -238,7 +248,10 @@ for (const lane of LANE_ORDER) {
     out.push(`\n**① Your policy**`);
     if (f.evidence.length) {
       for (const e of f.evidence) {
-        out.push(`- ${e.section ? `**${e.section}:** ` : ""}“${e.text}”`);
+        out.push(
+          `- ${e.section ? `**${e.section}:** ` : ""}“${e.text}”` +
+            (e.source === "model" ? ` _(found by AI, quote verified)_` : ""),
+        );
       }
     } else {
       out.push(`- _No wording matching this obligation's search terms was located._`);
@@ -272,21 +285,11 @@ for (const lane of LANE_ORDER) {
     }
     if (lane === "ELSEWHERE") out.push(`\n_${f.scopeReason}_`);
 
-    // Second opinion, if one was requested and survived quote verification.
-    const ip = interpretations[f.id];
-    if (ip) {
-      const state = INTERPRET_STATES[ip.verdict] ?? INTERPRET_STATES.absent;
-      out.push(`\n**Second opinion — read by a model: ${state.label}**`);
-      out.push(`_${state.blurb}_`);
-      if (ip.reason) out.push(ip.reason);
-      for (const q of ip.quotes) out.push(`> “${q}” _(verified present in the policy)_`);
-      if (ip.missing) out.push(`**Still not covered:** ${ip.missing}`);
-      if (ip.rejectedQuotes.length) {
-        out.push(
-          `⚠️ ${ip.rejectedQuotes.length} quote(s) discarded — not found in the document, so any ` +
-            `claim resting on them was dropped.`,
-        );
-      }
+    if (f.rejectedQuotes?.length) {
+      out.push(
+        `\n⚠️ ${f.rejectedQuotes.length} AI quote(s) discarded — not found in the document, so any ` +
+          `claim resting on them was dropped and the finding above stands.`,
+      );
     }
 
     out.push(

@@ -978,12 +978,41 @@ code {
 .lane.lane-act .lane-count { background: rgba(210, 153, 34, 0.16); color: var(--amber); }
 .lane.lane-review .lane-count { background: var(--accent-soft); color: var(--accent); }
 .lane.lane-elsewhere .lane-count { background: rgba(163, 113, 247, 0.14); color: var(--purple); }
-.lane-blurb {
+/* The one-line translation of the lane heading. The headings say what to do;
+   this says why the item landed there. */
+.lane-tip {
   font-size: 13.5px;
+  color: var(--text);
+  font-weight: 600;
+  margin: 0 0 4px;
+  max-width: 780px;
+}
+.lane-blurb {
+  font-size: 13px;
   color: var(--text-muted);
   margin: 0 0 16px;
   max-width: 780px;
 }
+
+/* How a finding was decided — keyword match, or actually read. */
+.conf {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 2px 7px;
+  border-radius: 5px;
+  white-space: nowrap;
+  cursor: help;
+}
+.conf-read { background: rgba(163, 113, 247, 0.16); color: var(--purple); }
+.conf-pattern { background: rgba(107, 118, 132, 0.18); color: var(--text-faint); }
+
+/* A quote the model located, rather than a keyword hit. */
+.policy-quote.by-model {
+  border-left-color: var(--purple);
+  background: rgba(163, 113, 247, 0.06);
+}
+.policy-quote.by-model .quote-src { color: var(--purple); }
 .lane-none-list {
   margin: 0;
   padding-left: 20px;
@@ -1277,9 +1306,17 @@ code {
   color: var(--text);
   margin: 0;
 }
+.element-head {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-faint);
+  margin-top: 12px;
+  font-weight: 650;
+}
 .element-list {
   list-style: none;
-  margin: 10px 0 0;
+  margin: 6px 0 0;
   padding: 0;
   font-size: 13px;
 }
