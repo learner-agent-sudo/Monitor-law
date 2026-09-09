@@ -15,12 +15,14 @@ import {
   buildInterpretationPrompt,
   parseInterpretation,
   verifyAgainstPolicy,
+  screenCitations,
   interpretableFindings,
   PROVIDERS,
   DEFAULT_PROVIDER,
 } from "../lib/policy-interpret.mjs";
 import { encryptSecret, decryptSecret, STORAGE_MODES } from "../lib/key-store.mjs";
 import { analyzePolicy, consolidate, gapStatement, LANES } from "../lib/policy-rules.mjs";
+import { extractCitations } from "../lib/provisions.mjs";
 
 let failures = 0;
 const results = [];
@@ -140,6 +142,61 @@ check("prompt carries the law", prompt.includes("PIPEDA"));
 check("prompt demands verbatim quotes", /VERBATIM/.test(prompt));
 check("prompt permits an empty answer", /absent/.test(prompt));
 check("prompt forbids judging compliance", /Do not judge legal compliance/.test(prompt));
+
+// ---- Control 2 at runtime: the model's prose may not name absent provisions --
+{
+  const known = ["art-6", "art-13", "art-30", "art-37"];
+  const cite = (s, law) => extractCitations(s, law);
+
+  const clean = screenCitations(
+    "Article 6 requires a lawful basis for each purpose.",
+    "gdpr",
+    known,
+    cite,
+  );
+  check("keeps a sentence citing an ingested provision", clean.text.includes("Article 6"));
+  check("and strips nothing from it", clean.stripped.length === 0);
+
+  // The canonical failure: a real article number attached to the wrong duty,
+  // where the article itself is NOT in what we ingested.
+  const bad = screenCitations(
+    "Your policy is fine. Article 47b requires a DPO above 250 employees.",
+    "gdpr",
+    known,
+    cite,
+  );
+  check(
+    "REMOVES a sentence citing a provision absent from the corpus",
+    !bad.text.includes("47b") && bad.text.includes("Your policy is fine"),
+    `got "${bad.text}"`,
+  );
+  check("and reports what was withheld", bad.stripped[0]?.provisions.includes("art-47"));
+
+  check(
+    "sentences with no citation are always kept",
+    screenCitations("This looks adequate.", "gdpr", known, cite).text === "This looks adequate.",
+  );
+  check(
+    "a sub-clause resolves to its parent provision",
+    screenCitations("Article 6(1)(f) applies.", "gdpr", known, cite).stripped.length === 0,
+  );
+  check(
+    "with no whitelist supplied, prose passes through untouched",
+    screenCitations("Article 999 applies.", "gdpr", [], cite).text === "Article 999 applies.",
+  );
+
+  // Wired through verifyAgainstPolicy, which is how the app calls it.
+  const wired = verifyAgainstPolicy(
+    [{ id: "x", verdict: "absent", quotes: [], reason: "Nothing found. Article 47b would require it.", missing: null }],
+    POLICY,
+    { lawId: "gdpr", knownProvisions: known, extractCitations: cite },
+  );
+  check(
+    "verifyAgainstPolicy applies the whitelist to the reason field",
+    !wired[0].reason.includes("47b") && wired[0].strippedCitations.length === 1,
+    `got "${wired[0].reason}"`,
+  );
+}
 
 // ---- providers -----------------------------------------------------------
 for (const [id, p] of Object.entries(PROVIDERS)) {

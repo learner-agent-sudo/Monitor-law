@@ -29,8 +29,18 @@ jobs:
       - run: npm ci
       # Content integrity gate: a mapping that misquotes the statute must never
       # reach the published site. Offline and deterministic, so it is safe to block on.
+      # Article-aware chunking: regenerate the provision index and fail if a
+      # source has changed shape enough that provisions stop being detected.
+      - name: Build provision index
+        run: node scripts/build-provisions.mjs
       - name: Check quote anchoring
         run: node scripts/check-quotes.mjs
+      # Controls 2 and 3 at provision level: every cited provision must exist in
+      # the ingested corpus, and every quote must sit inside the provision it is
+      # attributed to. A real quote under the wrong article passes a file-level
+      # search and is the most dangerous error this system can make.
+      - name: Check citations and provision-scoped quotes
+        run: node scripts/check-citations.mjs
       # An untagged remediation step renders with the weakest label, which
       # understates a mandatory duty without any visible symptom.
       - name: Check remediation basis tags

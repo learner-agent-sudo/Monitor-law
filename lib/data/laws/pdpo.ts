@@ -39,7 +39,7 @@ export const pdpo: Law = {
     "rights-access": {
       strictness: 2,
       obligation: "Individuals may make a data access request for a copy of their personal data.",
-      citation: "PDPO ss.18–19",
+      citation: "PDPO DPP6; ss.18–19",
       quote:
         "ascertain whether a data user holds personal data of",
     },
@@ -53,7 +53,7 @@ export const pdpo: Law = {
     "rights-correction": {
       strictness: 2,
       obligation: "Individuals may make a data correction request for inaccurate data.",
-      citation: "PDPO ss.22–23",
+      citation: "PDPO DPP6; ss.22–23",
       quote:
         "request the correction of personal data",
     },

@@ -25,6 +25,8 @@ import {
   PROVIDERS,
   DEFAULT_PROVIDER,
 } from "@/lib/policy-interpret.mjs";
+import { extractCitations } from "@/lib/provisions.mjs";
+import provisionIndex from "@/lib/data/provision-index.json";
 import KeyVault, { type VaultState } from "./KeyVault";
 
 /**
@@ -625,9 +627,14 @@ export default function PolicyChecker() {
         error: string | null;
       };
       if (error) throw new Error(error);
-      // Nothing reaches the screen before its quotes are checked against the
-      // document. An unverifiable quote invalidates the claim built on it.
-      const verified = verifyAgainstPolicy(results, text) as Interpretation[];
+      // Nothing reaches the screen before two checks run: quotes must exist in
+      // the document (Control 3), and any provision the model names in prose
+      // must exist in the ingested corpus (Control 2).
+      const verified = verifyAgainstPolicy(results, text, {
+        lawId: law.id,
+        knownProvisions: (provisionIndex as any).laws?.[law.id]?.provisions ?? [],
+        extractCitations,
+      }) as Interpretation[];
       setInterpretations(Object.fromEntries(verified.map((r) => [r.id, r])));
       if (!verified.length) setInterpretError("The model returned no usable results.");
     } catch (e: any) {

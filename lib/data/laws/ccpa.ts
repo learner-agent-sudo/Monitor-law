@@ -135,7 +135,7 @@ export const ccpa: Law = {
       strictness: 2,
       obligation:
         "Duty to implement reasonable security; failure enables the breach private right of action, plus CPRA cybersecurity audits.",
-      citation: "§1798.150, §1798.185(a)(15)",
+      citation: "§1798.100(e), §1798.150",
       quote:
         "shall implement reasonable security procedures and practices appropriate to the nature of the personal information",
     },

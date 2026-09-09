@@ -17,7 +17,7 @@ export const pipeda: Law = {
       strictness: 2,
       obligation:
         "Processing must be for purposes a reasonable person would consider appropriate; consent is generally required.",
-      citation: "PIPEDA s.5(3); Sch.1 Principle 4.3",
+      citation: "PIPEDA s.3, s.5(3); Sch.1 Principle 4.3",
       quote:
         "for purposes that a reasonable person would consider appropriate in the circumstances",
     },
