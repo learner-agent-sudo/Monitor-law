@@ -19,12 +19,16 @@ export const ccpa: Law = {
       obligation:
         "No lawful-basis requirement; the CPRA added purpose-limitation and data-minimization duties but processing is not gated on an enumerated basis.",
       citation: "Cal. Civ. Code §1798.100(c)",
+      quote:
+        "shall not collect additional categories of personal information or use personal information collected for additional purposes that are incompatible with",
     },
     consent: {
       strictness: 1,
       obligation:
         "Predominantly opt-out; opt-in consent required only in specific cases (e.g. sale of minors' data, secondary use after opting out).",
       citation: "§1798.120, §1798.135",
+      quote:
+        "A consumer shall have the right, at any time, to direct a business that sells or shares personal information about the consumer to third parties not to sell",
     },
     "notice-transparency": {
       strictness: 2,
@@ -74,6 +78,8 @@ export const ccpa: Law = {
       obligation:
         "CPRA directs the CPPA to issue automated decision-making / profiling rules (regulations adopted 2025, phased in).",
       citation: "§1798.185(a)(15)",
+      quote:
+        "Issuing regulations governing access and opt-out rights with respect to a business’ use of automated decisionmaking technology",
     },
     "sensitive-data": {
       strictness: 2,
@@ -93,6 +99,7 @@ export const ccpa: Law = {
     },
     "breach-notification": {
       strictness: 2,
+      sourceType: "outside-corpus",
       obligation:
         "California's separate breach-notification statute requires notice; the CCPA adds a private right of action for certain breaches.",
       citation: "§1798.150 (§1798.82 is a separate statute, not held in corpus)",
@@ -109,6 +116,8 @@ export const ccpa: Law = {
       obligation:
         "CPRA authorizes risk-assessment and cybersecurity-audit regulations for high-risk processing (adopted 2025, phased in).",
       citation: "§1798.185(a)(15)",
+      quote:
+        "Issuing regulations governing access and opt-out rights with respect to a business’ use of automated decisionmaking technology",
     },
     "cross-border-transfer": {
       strictness: 0,
@@ -122,6 +131,7 @@ export const ccpa: Law = {
     },
     "records-processing": {
       strictness: 1,
+      sourceType: "outside-corpus",
       obligation: "Businesses must maintain records of consumer requests for at least 24 months.",
       citation: "11 CCR §7101 (CPPA regulations — not held in corpus)",
     },
@@ -130,6 +140,8 @@ export const ccpa: Law = {
       obligation:
         "Contracts with service providers, contractors, and third parties must contain specific mandated terms.",
       citation: "§1798.100(d), §1798.140",
+      quote:
+        "Service provider” means a person that processes personal information on behalf of a business",
     },
     security: {
       strictness: 2,

@@ -82,21 +82,25 @@ export const pdpo: Law = {
     },
     "childrens-data": {
       strictness: 1,
+      sourceType: "guidance",
       obligation: "No statutory children's regime; the PCPD issues guidance on minors' data.",
       citation: "PCPD guidance",
     },
     "breach-notification": {
       strictness: 1,
+      sourceType: "guidance",
       obligation: "Breach notification is recommended by the PCPD but not legally mandatory (reform under discussion).",
       citation: "PCPD guidance (voluntary)",
     },
     "dpo-representative": {
       strictness: 1,
+      sourceType: "guidance",
       obligation: "Appointing a data protection officer is recommended best practice, not a legal requirement.",
       citation: "PCPD best-practice guide",
     },
     dpia: {
       strictness: 1,
+      sourceType: "guidance",
       obligation: "Privacy impact assessments are encouraged by the PCPD but not mandated.",
       citation: "PCPD guidance",
     },
@@ -117,6 +121,8 @@ export const pdpo: Law = {
       strictness: 1,
       obligation: "Retention and accountability duties under the principles; no records-of-processing mandate.",
       citation: "DPP2",
+      quote:
+        "accuracy and duration of retention of personal data",
     },
     "vendor-processor": {
       strictness: 2,

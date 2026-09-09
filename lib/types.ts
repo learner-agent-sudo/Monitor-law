@@ -36,9 +36,36 @@ export interface Requirement {
   domain: Domain;
 }
 
+/**
+ * What kind of source a mapping rests on.
+ *
+ * Control 1 says only primary text may be the basis of a stated requirement,
+ * and until this field existed the catalog could not honour that: a mapping
+ * resting on a regulator's best-practice guide looked exactly like one resting
+ * on a statutory duty. Both carried a strictness score, and strictness measures
+ * how firmly something is imposed — not whether it is law at all. Those are
+ * different questions and the second one has to be answerable.
+ *
+ *   statute         The ingested primary text. Requires a verbatim quote,
+ *                   verified inside the provision cited.
+ *   guidance        A regulator's published view. Persuasive, often decisive in
+ *                   practice, and NOT the statute — a regulator can change it
+ *                   without any law changing. Cannot ground a stated
+ *                   requirement, and is displayed as guidance.
+ *   outside-corpus  Real binding law whose text this repository does not hold.
+ *                   Named honestly so its absence is visible rather than read
+ *                   as "no such rule".
+ */
+export type MappingSource = "statute" | "guidance" | "outside-corpus";
+
 /** How one law addresses one requirement. */
 export interface RequirementMapping {
   strictness: Strictness;
+  /**
+   * Defaults to "statute". Anything else must say so explicitly, because the
+   * default is the one that carries the strongest guarantee.
+   */
+  sourceType?: MappingSource;
   /** One-sentence description of what the law actually requires here. */
   obligation: string;
   /** Primary-source citation (article / section reference). */

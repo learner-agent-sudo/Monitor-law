@@ -48,6 +48,7 @@ function readMappings(lawId) {
       citation: body.match(/citation:\s*"([^"]*)"/)?.[1] ?? "",
       quote: body.match(/quote:\s*\n?\s*"((?:[^"\\]|\\.)*)"/)?.[1] ?? null,
       strictness: Number(body.match(/strictness:\s*(\d)/)?.[1] ?? 0),
+      sourceType: body.match(/sourceType:\s*"([a-z-]+)"/)?.[1] ?? "statute",
     });
   }
   return out;
@@ -80,6 +81,8 @@ for (const lawId of LAWS) {
       scoped: 0,
       unscoped: readMappings(lawId).length,
       unresolved: 0,
+      guidance: readMappings(lawId).filter((m) => m.sourceType === "guidance").length,
+      outside: readMappings(lawId).filter((m) => m.sourceType === "outside-corpus").length,
       degraded: spec.scopeNote,
     });
     continue;
@@ -102,6 +105,23 @@ for (const lawId of LAWS) {
   let unscoped = 0;
 
   for (const mp of mappings) {
+    // Control 1, enforced: a mapping that asserts an obligation and claims to
+    // rest on the statute must actually quote the statute. Guidance and
+    // out-of-corpus mappings are exempt BECAUSE they are declared as such —
+    // which is the whole point of declaring them.
+    if (mp.strictness > 0 && mp.sourceType === "statute" && !mp.quote) {
+      problems.push(
+        `${lawId}/${mp.requirementId}: asserts an obligation (strictness ${mp.strictness}) with no ` +
+          `quote, while claiming to rest on the statute. Either quote the provision, or tag it ` +
+          `sourceType "guidance" / "outside-corpus" so the weaker basis is visible.`,
+      );
+    }
+    if (mp.sourceType === "guidance" && mp.quote) {
+      problems.push(
+        `${lawId}/${mp.requirementId}: tagged as guidance but carries a statutory quote — one of the two is wrong.`,
+      );
+    }
+
     const keys = extractCitations(mp.citation, lawId);
 
     // --- Control 2 -------------------------------------------------------
@@ -162,18 +182,27 @@ for (const lawId of LAWS) {
     }
   }
 
-  rows.push({ lawId, provisions: index.size, mappings: mappings.length, scoped, unscoped, unresolved });
+  rows.push({
+    lawId,
+    provisions: index.size,
+    mappings: mappings.length,
+    scoped,
+    unscoped,
+    unresolved,
+    guidance: mappings.filter((m) => m.sourceType === "guidance").length,
+    outside: mappings.filter((m) => m.sourceType === "outside-corpus").length,
+  });
 }
 
 // ---- report ---------------------------------------------------------------
 const out = [];
 out.push("# Citation & provision-scoped quote check\n");
-out.push("| Law | Provisions indexed | Mappings | Quote verified in cited provision | Citation not resolvable |");
-out.push("| --- | --- | --- | --- | --- |");
+out.push("| Law | Provisions indexed | Mappings | Quote verified in cited provision | On regulator guidance | Text not held |");
+out.push("| --- | --- | --- | --- | --- | --- |");
 for (const r of rows) {
   out.push(
     `| \`${r.lawId}\` | ${r.provisions} | ${r.mappings} | ` +
-      `${r.degraded ? "— _not scoped_" : r.scoped} | ${r.unresolved} |`,
+      `${r.degraded ? "— _not scoped_" : r.scoped} | ${r.guidance ?? 0} | ${r.outside ?? 0} |`,
   );
 }
 for (const r of rows.filter((x) => x.degraded)) {

@@ -84,6 +84,7 @@ export const pipeda: Law = {
     },
     "childrens-data": {
       strictness: 1,
+      sourceType: "guidance",
       obligation:
         "No statutory children's regime; OPC guidance treats minors' information as sensitive requiring heightened care.",
       citation: "OPC guidance",
@@ -105,6 +106,7 @@ export const pipeda: Law = {
     },
     dpia: {
       strictness: 1,
+      sourceType: "guidance",
       obligation: "No statutory DPIA mandate; OPC expects assessments for higher-risk initiatives.",
       citation: "OPC guidance",
     },

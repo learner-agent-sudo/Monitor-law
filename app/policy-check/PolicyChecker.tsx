@@ -89,6 +89,8 @@ type Finding = {
   missingElements: Element[];
   severity: { label: string; note: string } | null;
   remediation: Remediation | null;
+  // Control 1: what kind of source this obligation rests on.
+  sourceType?: "statute" | "guidance" | "outside-corpus";
   // Set by consolidate() once a model has looked at this obligation.
   confidence: "read" | "pattern";
   modelReason?: string | null;
@@ -447,6 +449,21 @@ function Recommendation({
         </div>
         <p className="finding-law">{f.obligation}</p>
         {f.quote && <blockquote className="statute-quote">“{f.quote}”</blockquote>}
+        {f.sourceType === "guidance" && (
+          <p className="src-warn">
+            <strong>This is regulator guidance, not the statute.</strong> No provision of{" "}
+            {shortName} imposes it. Guidance is persuasive and often decisive in practice, but a
+            regulator can change its own view without any law changing — so treat this as expected
+            practice rather than a legal requirement.
+          </p>
+        )}
+        {f.sourceType === "outside-corpus" && (
+          <p className="src-warn">
+            <strong>The text behind this is not held here.</strong> It is real law, but this
+            repository does not contain it, so nothing above has been verified against a primary
+            source. Read the instrument named in the citation directly.
+          </p>
+        )}
       </div>
 
       {/* ③ the gap between them, element by element */}
@@ -545,6 +562,7 @@ export default function PolicyChecker() {
       obligation: m.obligation,
       citation: m.citation,
       quote: m.quote ?? null,
+      sourceType: m.sourceType ?? "statute",
     }));
     return analyzePolicy(obligations, text, law.id) as Finding[];
   }, [ran, text, law]);

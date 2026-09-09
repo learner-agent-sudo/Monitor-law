@@ -47,21 +47,29 @@ export const quebecLaw25: Law = {
       strictness: 2,
       obligation: "Right to have information de-indexed / ceased to be disseminated and, in cases, deleted.",
       citation: "Private Sector Act s.28.1",
+      quote:
+        "to cease disseminating that information or to de-index any hyperlink attached to his name",
     },
     "rights-correction": {
       strictness: 2,
       obligation: "Right to rectify inaccurate, incomplete, or ambiguous information.",
       citation: "Private Sector Act s.28",
+      quote:
+        "require that the information be rectified",
     },
     "rights-portability": {
       strictness: 2,
       obligation: "Right to receive computerized personal information in a structured, commonly used format (in force Sept 2024).",
       citation: "Private Sector Act s.27 para.3",
+      quote:
+        "computerized personal information collected from the",
     },
     "rights-optout-sale": {
       strictness: 1,
       obligation: "No 'sale' concept; control is exercised through consent and withdrawal.",
-      citation: "Private Sector Act s.14",
+      citation: "Private Sector Act s.12",
+      quote:
+        "commercial or philanthropic prospection may not be considered a consistent purpose",
     },
     "rights-automated-decision": {
       strictness: 2,
@@ -132,6 +140,8 @@ export const quebecLaw25: Law = {
       strictness: 2,
       obligation: "Mandates for service providers must be governed by a written contract with prescribed protective terms.",
       citation: "Private Sector Act s.18.3, s.20",
+      quote:
+        "if the information is necessary for carrying out a mandate or",
     },
     security: {
       strictness: 2,
@@ -145,6 +155,8 @@ export const quebecLaw25: Law = {
       obligation:
         "Administrative monetary penalties up to CA$10M or 2% of worldwide turnover; penal fines up to CA$25M or 4%; private right of action.",
       citation: "Private Sector Act s.90.1, s.91",
+      quote:
+        "A monetary administrative penalty may be imposed by a person designated by the Commission",
     },
   },
 };
