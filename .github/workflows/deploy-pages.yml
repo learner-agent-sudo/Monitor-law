@@ -43,6 +43,10 @@ jobs:
         run: node scripts/check-citations.mjs
       # An untagged remediation step renders with the weakest label, which
       # understates a mandatory duty without any visible symptom.
+      # Control 4: an instrument with no version metadata cannot be dated, and
+      # an undated answer silently asserts "this is the law now".
+      - name: Check temporal and version metadata
+        run: node scripts/check-temporal.mjs
       - name: Check remediation basis tags
         run: node scripts/check-remediation.mjs
       # Quote verification is what stops the interpretation layer from asserting

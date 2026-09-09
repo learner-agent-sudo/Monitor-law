@@ -27,6 +27,8 @@ import {
 } from "@/lib/policy-interpret.mjs";
 import { extractCitations } from "@/lib/provisions.mjs";
 import provisionIndex from "@/lib/data/provision-index.json";
+import { versionsById } from "@/lib/data/versions";
+import { statusAsOf } from "@/lib/temporal.mjs";
 import KeyVault, { type VaultState } from "./KeyVault";
 
 /**
@@ -509,6 +511,10 @@ export default function PolicyChecker() {
   const [fetching, setFetching] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [ran, setRan] = useState(false);
+  // Control 4: the date every answer is given as at. Editable so a reader can
+  // ask what applied on a past date, which is the only way to read a phased
+  // instrument correctly.
+  const [asOf, setAsOf] = useState(() => new Date().toISOString().slice(0, 10));
   const fileRef = useRef<HTMLInputElement>(null);
 
   // ---- layer 2: interpretation ----
@@ -820,6 +826,33 @@ export default function PolicyChecker() {
       {ran && findings.length > 0 && (
         <>
           <h2 className="section">Your action plan — {law.shortName}</h2>
+
+          {/* Control 4: no answer here is undated. The corpus-text date is the
+              honest limit of what this repository knows. */}
+          {(() => {
+            const v = (versionsById as any)[law.id];
+            const s = statusAsOf(v, asOf) as {
+              asOf: string;
+              status: string | null;
+              binding: boolean;
+              note: string;
+            };
+            return (
+              <p className="asof">
+                Answered as at <strong>{s.asOf}</strong> against {law.shortName}{" "}
+                <em>{s.status ?? "status unrecorded"}</em>. {s.note}{" "}
+                {v ? (
+                  <>
+                    The text held here is consolidated to <strong>{v.consolidationDate}</strong> — anything
+                    amended after that date is invisible to this tool.
+                    {v.note ? ` ${v.note}` : ""}
+                  </>
+                ) : (
+                  <>No version metadata is recorded, so this answer cannot be dated.</>
+                )}
+              </p>
+            );
+          })()}
 
           <div className="plan-summary">
             {(LANE_ORDER as string[]).map((l) => (
