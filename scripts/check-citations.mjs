@@ -29,30 +29,16 @@ import {
   resolveKey,
   PROVISION_PATTERNS,
 } from "../lib/provisions.mjs";
+import { LAW_IDS, readMappings as readLawMappings } from "../lib/law-source.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const LAWS = Object.keys(PROVISION_PATTERNS);
+const LAWS = LAW_IDS;
 
-/** Pull { requirementId, citation, quote } out of a law's TypeScript source. */
-function readMappings(lawId) {
-  const file = join(ROOT, "lib", "data", "laws", `${lawId}.ts`);
-  if (!existsSync(file)) return [];
-  const src = readFileSync(file, "utf8");
-  const out = [];
-  const re = /\n {4}(?:"([a-z0-9-]+)"|([a-zA-Z_$][\w$]*))\s*:\s*\{([\s\S]*?)\n {4}\}/g;
-  let m;
-  while ((m = re.exec(src))) {
-    const body = m[3];
-    out.push({
-      requirementId: m[1] ?? m[2],
-      citation: body.match(/citation:\s*"([^"]*)"/)?.[1] ?? "",
-      quote: body.match(/quote:\s*\n?\s*"((?:[^"\\]|\\.)*)"/)?.[1] ?? null,
-      strictness: Number(body.match(/strictness:\s*(\d)/)?.[1] ?? 0),
-      sourceType: body.match(/sourceType:\s*"([a-z-]+)"/)?.[1] ?? "statute",
-    });
-  }
-  return out;
-}
+// The mapping reader moved to lib/law-source.mjs so this check and
+// scripts/check-gap-traces.mjs cannot disagree about which cells exist or
+// which of them carry quotes — the trace check's coverage rule depends on
+// seeing exactly the same catalog this one does.
+const readMappings = (lawId) => readLawMappings(ROOT, lawId);
 
 const rows = [];
 const problems = [];

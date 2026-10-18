@@ -5,6 +5,8 @@ import { jurisdictions } from "@/lib/data";
 import { analyzeGap } from "@/lib/gap";
 import { CoverageBadge } from "@/app/components/CoverageBadge";
 import { Disclaimer } from "@/app/components/Disclaimer";
+import { GapTraceDetails } from "@/app/components/GapTrace";
+import { tracesFor } from "@/lib/gap-traces";
 
 export default function GapAnalysisPage() {
   const [sourceId, setSourceId] = useState("ca"); // "I comply with Canada"
@@ -12,6 +14,16 @@ export default function GapAnalysisPage() {
 
   const result = useMemo(() => analyzeGap(sourceId, targetId), [sourceId, targetId]);
   const sameJurisdiction = sourceId === targetId;
+
+  // Requirements where BOTH regimes are silent. Counting these as "already
+  // covered" would turn two absences into a reassurance, which is the exact
+  // error a gap-analysis tool must not make: nothing here says a duty does not
+  // exist elsewhere — in a sectoral statute, in guidance, or in contract.
+  const nilBoth = useMemo(() => result.covered.filter((c) => c.neitherAddresses), [result]);
+  const trulyCovered = useMemo(
+    () => result.covered.filter((c) => !c.neitherAddresses),
+    [result],
+  );
 
   return (
     <>
@@ -59,9 +71,17 @@ export default function GapAnalysisPage() {
               </div>
             </div>
             <div className="stat covered">
-              <div className="num">{result.covered.length}</div>
+              <div className="num">{result.covered.length - nilBoth.length}</div>
               <div className="lbl">Requirements already met or exceeded</div>
             </div>
+            {nilBoth.length > 0 && (
+              <div className="stat">
+                <div className="num">{nilBoth.length}</div>
+                <div className="lbl">
+                  Neither regime addresses — silence on both sides, not coverage
+                </div>
+              </div>
+            )}
           </div>
 
           <h2 className="section">
@@ -97,7 +117,16 @@ export default function GapAnalysisPage() {
                       <td>
                         <CoverageBadge level={c.targetStrictness} />
                       </td>
-                      <td style={{ color: "var(--text-muted)" }}>{c.targetObligation}</td>
+                      <td style={{ color: "var(--text-muted)" }}>
+                        {c.targetObligation}
+                        {/* A gap is the difference between two scores, and where
+                            the baseline score rests on no quoted text it is the
+                            unevidenced half driving the conclusion. Show it. */}
+                        {!c.sourceQuoted &&
+                          tracesFor(c.sourceLawIds, c.requirement.id).map((t) => (
+                            <GapTraceDetails key={t.lawId} trace={t} showLaw />
+                          ))}
+                      </td>
                       <td className="citation">{c.targetCitation}</td>
                     </tr>
                   ))}
@@ -118,7 +147,7 @@ export default function GapAnalysisPage() {
                 </tr>
               </thead>
               <tbody>
-                {result.covered.map((c) => (
+                {trulyCovered.map((c) => (
                   <tr key={c.requirement.id}>
                     <td>
                       <div className="req-name">{c.requirement.name}</div>
@@ -135,6 +164,54 @@ export default function GapAnalysisPage() {
               </tbody>
             </table>
           </div>
+
+          {nilBoth.length > 0 && (
+            <>
+              <h2 className="section">Neither regime addresses</h2>
+              <p className="page-lead" style={{ marginBottom: 16 }}>
+                Both instruments are silent on these, so there is no gap <em>between</em> them —
+                which is not the same as there being no obligation. Each row carries the search
+                behind it: how many provisions were read, which words appear nowhere in the
+                instrument, and which provisions came closest.
+              </p>
+              <div className="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th style={{ width: "24%" }}>Requirement</th>
+                      <th style={{ width: "15%" }}>{result.source.name}</th>
+                      <th style={{ width: "15%" }}>{result.target.name}</th>
+                      <th>What was searched</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {nilBoth.map((c) => (
+                      <tr key={c.requirement.id}>
+                        <td>
+                          <div className="req-name">{c.requirement.name}</div>
+                          <div className="req-cat">{c.requirement.category}</div>
+                        </td>
+                        <td>
+                          <CoverageBadge level={c.sourceStrictness} />
+                        </td>
+                        <td>
+                          <CoverageBadge level={c.targetStrictness} />
+                        </td>
+                        <td style={{ color: "var(--text-muted)" }}>
+                          {[
+                            ...tracesFor(c.sourceLawIds, c.requirement.id),
+                            ...tracesFor(c.targetLawIds, c.requirement.id),
+                          ].map((t) => (
+                            <GapTraceDetails key={t.lawId} trace={t} showLaw />
+                          ))}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
         </>
       )}
 

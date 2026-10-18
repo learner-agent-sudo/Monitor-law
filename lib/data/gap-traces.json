@@ -1,0 +1,1204 @@
+{
+  "ccpa/cross-border-transfer": {
+    "lawId": "ccpa",
+    "requirementId": "cross-border-transfer",
+    "strictness": 0,
+    "sourceType": "statute",
+    "obligation": "No restriction on cross-border transfers of personal information.",
+    "citation": "—",
+    "provisionsSearched": 27,
+    "termsTried": [
+      "transfer outside the jurisdiction",
+      "adequacy / comparable protection",
+      "standard contractual clauses",
+      "outside the territory",
+      "another country or jurisdiction",
+      "cross-border",
+      "place outside"
+    ],
+    "termsAbsent": [
+      "transfer outside the jurisdiction",
+      "adequacy / comparable protection",
+      "standard contractual clauses",
+      "outside the territory",
+      "cross-border",
+      "place outside"
+    ],
+    "candidatesFound": 0,
+    "weakOnly": 1,
+    "candidates": [],
+    "nearest": [],
+    "noNearest": true,
+    "verdict": "Every specific term was absent across all 27 ingested sections: no adequacy concept, no contractual-safeguard mechanism, no 'cross-border', no 'outside the territory'. The one provision reached by a broad term is §1798.199, which lets the Agency cooperate with privacy authorities in other states and countries — regulator coordination, not a restriction on transfers. The statute governs what a business may do with personal information and says nothing about geography.",
+    "elsewhere": null,
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "ccpa/data-localization": {
+    "lawId": "ccpa",
+    "requirementId": "data-localization",
+    "strictness": 0,
+    "sourceType": "statute",
+    "obligation": "No data localization requirement.",
+    "citation": "—",
+    "provisionsSearched": 27,
+    "termsTried": [
+      "localisation",
+      "stored within the territory",
+      "shall be stored or retained",
+      "within the territory",
+      "remain in the jurisdiction",
+      "free movement / free flow",
+      "free movement shall not be restricted",
+      "critical information infrastructure",
+      "export restriction (the usual near-miss)",
+      "transfer to a third country",
+      "place outside",
+      "processing within or outside the jurisdiction"
+    ],
+    "termsAbsent": [
+      "localisation",
+      "stored within the territory",
+      "within the territory",
+      "free movement shall not be restricted",
+      "critical information infrastructure",
+      "transfer to a third country",
+      "place outside",
+      "processing within or outside the jurisdiction"
+    ],
+    "candidatesFound": 1,
+    "weakOnly": 2,
+    "candidates": [
+      {
+        "key": "sec-1798.140",
+        "label": "§1798.140",
+        "matched": [
+          "export restriction (the usual near-miss)"
+        ],
+        "excerpt": "contract, or as otherwise permitted by this title. (iii) Retaining, using, or disclosing the information outside of the direct business relationship between the contractor and the business.",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      }
+    ],
+    "nearest": [
+      "sec-1798.140"
+    ],
+    "noNearest": false,
+    "verdict": "The single hit is in the §1798.140 definitions, where a contractor is barred from 'retaining, using, or disclosing the information outside of the direct business relationship' — 'outside' in a contractual sense, not a geographic one. No provision addresses where personal information may be stored.",
+    "elsewhere": null,
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "ccpa/dpo-representative": {
+    "lawId": "ccpa",
+    "requirementId": "dpo-representative",
+    "strictness": 0,
+    "sourceType": "statute",
+    "obligation": "No requirement to appoint a data protection officer or representative.",
+    "citation": "—",
+    "provisionsSearched": 27,
+    "termsTried": [
+      "data protection officer",
+      "privacy officer",
+      "representative",
+      "designated individual",
+      "accountability",
+      "responsible for compliance",
+      "contact person",
+      "authorised agent"
+    ],
+    "termsAbsent": [
+      "data protection officer",
+      "privacy officer",
+      "designated individual",
+      "responsible for compliance"
+    ],
+    "candidatesFound": 2,
+    "weakOnly": 4,
+    "candidates": [
+      {
+        "key": "sec-1798.185",
+        "label": "§1798.185",
+        "matched": [
+          "authorised agent"
+        ],
+        "excerpt": "1798.106, 1798.110, and 1798.115 and to facilitate a consumer’s or the consumer’s authorized agent’s ability to delete personal information, correct inaccurate personal information",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      },
+      {
+        "key": "sec-1798.130",
+        "label": "§1798.130",
+        "matched": [
+          "authorised agent"
+        ],
+        "excerpt": "verifiable consumer request received directly from a consumer or a consumer’s authorized agent, pursuant to Section 1798.110 or 1798.115, to the extent that the service provider",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      }
+    ],
+    "nearest": [
+      "sec-1798.130",
+      "sec-1798.185"
+    ],
+    "noNearest": false,
+    "verdict": "Neither 'data protection officer' nor 'privacy officer' appears anywhere in the ingested text, and no provision requires a business to designate anyone. The nearest figure runs in the opposite direction: §1798.130 and §1798.185 both deal with a consumer's authorised agent — someone appointed by the consumer to make requests against the business, not someone inside the business accountable for compliance.",
+    "elsewhere": null,
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "ccpa/records-processing": {
+    "lawId": "ccpa",
+    "requirementId": "records-processing",
+    "strictness": 1,
+    "sourceType": "outside-corpus",
+    "obligation": "Businesses must maintain records of consumer requests for at least 24 months.",
+    "citation": "11 CCR §7101 (CPPA regulations — not held in corpus)",
+    "provisionsSearched": 27,
+    "termsTried": [
+      "records of processing",
+      "maintain records",
+      "documentation of activities",
+      "register / log",
+      "retention period for records",
+      "data user return",
+      "policies and practices",
+      "record of requests"
+    ],
+    "termsAbsent": [
+      "records of processing",
+      "documentation of activities",
+      "data user return",
+      "policies and practices"
+    ],
+    "candidatesFound": 1,
+    "weakOnly": 2,
+    "candidates": [
+      {
+        "key": "sec-1798.105",
+        "label": "§1798.105",
+        "matched": [
+          "record of requests"
+        ],
+        "excerpt": "involves disproportionate effort. (2) The business may maintain a confidential record of deletion requests solely for the purpose of preventing the personal information of a consumer",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      }
+    ],
+    "nearest": [
+      "sec-1798.105"
+    ],
+    "noNearest": false,
+    "verdict": "The statute imposes no record-keeping duty. The nearest provision grants a permission rather than an obligation: §1798.105 allows a business to 'maintain a confidential record of deletion requests' for the purpose of honouring them, and it covers that one request type.",
+    "elsewhere": "The 24-month retention duty asserted in this cell comes from the Agency's regulations at 11 CCR §7101, not from the Act. Those regulations are not in this corpus, which is why the mapping is tagged outside-corpus — the duty is real and this repository cannot evidence it.",
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "gdpr/data-localization": {
+    "lawId": "gdpr",
+    "requirementId": "data-localization",
+    "strictness": 0,
+    "sourceType": "statute",
+    "obligation": "No general data localization requirement — the GDPR enables free flow of data within the EU.",
+    "citation": "Recital 13 GDPR",
+    "provisionsSearched": 99,
+    "termsTried": [
+      "localisation",
+      "stored within the territory",
+      "shall be stored or retained",
+      "within the territory",
+      "remain in the jurisdiction",
+      "free movement / free flow",
+      "free movement shall not be restricted",
+      "critical information infrastructure",
+      "export restriction (the usual near-miss)",
+      "transfer to a third country",
+      "place outside",
+      "processing within or outside the jurisdiction"
+    ],
+    "termsAbsent": [
+      "localisation",
+      "stored within the territory",
+      "within the territory",
+      "free movement shall not be restricted",
+      "critical information infrastructure",
+      "place outside",
+      "processing within or outside the jurisdiction"
+    ],
+    "candidatesFound": 17,
+    "weakOnly": 6,
+    "candidates": [
+      {
+        "key": "art-45",
+        "label": "Article 45",
+        "matched": [
+          "transfer to a third country"
+        ],
+        "excerpt": "Article 45 Transfers on the basis of an adequacy decision 1. A transfer of personal data to a third country or an international organisation may take place where the Commission has decided",
+        "truncatedStart": false,
+        "truncatedEnd": true,
+        "named": true
+      },
+      {
+        "key": "art-96",
+        "label": "Article 96",
+        "matched": [
+          "transfer to a third country"
+        ],
+        "excerpt": "with previously concluded Agreements International agreements involving the transfer of personal data to third countries or international organisations which were concluded by Member States prior",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": false
+      },
+      {
+        "key": "art-44",
+        "label": "Article 44",
+        "matched": [
+          "transfer to a third country"
+        ],
+        "excerpt": "personal data which are undergoing processing or are intended for processing after transfer to a third country or to an international organisation shall take place only if, subject to the",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      },
+      {
+        "key": "art-46",
+        "label": "Article 46",
+        "matched": [
+          "transfer to a third country"
+        ],
+        "excerpt": "absence of a decision pursuant to Article 45(3), a controller or processor may transfer personal data to a third country or an international organisation only if the controller or processor has provided",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      }
+    ],
+    "nearest": [
+      "art-44",
+      "art-45",
+      "art-46"
+    ],
+    "noNearest": false,
+    "verdict": "Chapter V controls export, not location. A transfer to a third country needs an adequacy decision (Art. 45) or appropriate safeguards (Art. 46), and Art. 44 makes those conditions general. None of them requires personal data to be stored in the Union, and Art. 1 points the other way: the Regulation's stated object includes the free movement of personal data. Reading an export restriction as a storage requirement is the common error, and it is the one this cell records as absent.",
+    "elsewhere": null,
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "pdpo/breach-notification": {
+    "lawId": "pdpo",
+    "requirementId": "breach-notification",
+    "strictness": 1,
+    "sourceType": "guidance",
+    "obligation": "Breach notification is recommended by the PCPD but not legally mandatory (reform under discussion).",
+    "citation": "PCPD guidance (voluntary)",
+    "provisionsSearched": 78,
+    "termsTried": [
+      "breach",
+      "notify the regulator",
+      "unauthorised access or disclosure",
+      "real risk of significant harm",
+      "without undue delay / 72 hours",
+      "security incident",
+      "loss of data"
+    ],
+    "termsAbsent": [
+      "notify the regulator",
+      "real risk of significant harm",
+      "without undue delay / 72 hours",
+      "security incident"
+    ],
+    "candidatesFound": 2,
+    "weakOnly": 0,
+    "candidates": [
+      {
+        "key": "dpp-4",
+        "label": "Data Protection Principle 4",
+        "matched": [
+          "unauthorised access or disclosure",
+          "loss of data"
+        ],
+        "excerpt": "processing of the data is not practicable) held by a data user is protected against unauthorized or accidental access, processing, erasure, loss or use having particular regard to— (Amended 18",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      },
+      {
+        "key": "s-55",
+        "label": "Section 55",
+        "matched": [
+          "breach"
+        ],
+        "excerpt": "whether any disciplinary action should be taken against the data subject for a breach of the terms of his employment or appointment to office; (b) does not include",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": false
+      }
+    ],
+    "nearest": [
+      "dpp-4"
+    ],
+    "noNearest": false,
+    "verdict": "DPP4 requires all practicable steps to protect personal data 'against unauthorized or accidental access, processing, erasure, loss or use' — a duty to prevent a breach, with nothing about reporting one once it happens. No provision requires notifying the Commissioner or affected data subjects, and no timetable or harm threshold appears anywhere. The second provision the search reached, s.55, uses 'breach' in the sense of breach of employment terms.",
+    "elsewhere": "Notification in Hong Kong runs on the PCPD's voluntary arrangement, and mandatory notification has been under discussion in the reform of the Ordinance for some years. An organisation treating notification as optional is following the text and taking a risk on the guidance.",
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "pdpo/childrens-data": {
+    "lawId": "pdpo",
+    "requirementId": "childrens-data",
+    "strictness": 1,
+    "sourceType": "guidance",
+    "obligation": "No statutory children's regime; the PCPD issues guidance on minors' data.",
+    "citation": "PCPD guidance",
+    "provisionsSearched": 78,
+    "termsTried": [
+      "child",
+      "minor",
+      "under the age of",
+      "parental consent",
+      "guardian",
+      "age threshold"
+    ],
+    "termsAbsent": [
+      "child",
+      "under the age of",
+      "parental consent",
+      "age threshold"
+    ],
+    "candidatesFound": 4,
+    "weakOnly": 0,
+    "candidates": [
+      {
+        "key": "dpp-3",
+        "label": "Data Protection Principle 3",
+        "matched": [
+          "minor"
+        ],
+        "excerpt": "his or her personal data for a new purpose if— (a) the data subject is— (i) a minor; (ii) incapable of managing his or her own affairs; or (iii) mentally incapacitated",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      },
+      {
+        "key": "s-42",
+        "label": "Section 42",
+        "matched": [
+          "minor"
+        ],
+        "excerpt": "domestic premises, enter the premises with the consent of any person (other than a minor) resident therein; (b) carry out in the premises the inspection. (2) Subject",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": false
+      },
+      {
+        "key": "s-59",
+        "label": "Section 59",
+        "matched": [
+          "minor"
+        ],
+        "excerpt": "any other individual. (Added 18 of 2012 s. 32) 59A. Care and guardianship of minors Personal data in relation to a minor transferred or disclosed by the Hong Kong",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": false
+      },
+      {
+        "key": "s-2",
+        "label": "Section 2",
+        "matched": [
+          "minor"
+        ],
+        "excerpt": "(howsoever the individual is described), means— (a) where the individual is a minor, a person who has parental responsibility for the minor; (b) where the individual",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      }
+    ],
+    "nearest": [
+      "dpp-3",
+      "s-2"
+    ],
+    "noNearest": false,
+    "verdict": "There is a minor-specific mechanism, and it is narrow. DPP3(2) lets a 'relevant person' give the prescribed consent for using a minor's data for a new purpose, but only where the minor 'is incapable of understanding the new purpose and deciding whether to give the prescribed consent' and the relevant person reasonably believes the use is clearly in the minor's interest; s.2 defines that person as someone with parental responsibility. This is substitute consent for one decision, not a children's regime — there is no age of consent, no general parental-consent gate, and no heightened protection for minors' data as a class.",
+    "elsewhere": "The strictness 1 rests on PCPD guidance about minors' data, which is the regulator's position rather than the Ordinance's text.",
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "pdpo/data-localization": {
+    "lawId": "pdpo",
+    "requirementId": "data-localization",
+    "strictness": 0,
+    "sourceType": "statute",
+    "obligation": "No data localization requirement.",
+    "citation": "—",
+    "provisionsSearched": 78,
+    "termsTried": [
+      "localisation",
+      "stored within the territory",
+      "shall be stored or retained",
+      "within the territory",
+      "remain in the jurisdiction",
+      "free movement / free flow",
+      "free movement shall not be restricted",
+      "critical information infrastructure",
+      "export restriction (the usual near-miss)",
+      "transfer to a third country",
+      "place outside",
+      "processing within or outside the jurisdiction"
+    ],
+    "termsAbsent": [
+      "localisation",
+      "stored within the territory",
+      "within the territory",
+      "free movement shall not be restricted",
+      "critical information infrastructure",
+      "transfer to a third country"
+    ],
+    "candidatesFound": 5,
+    "weakOnly": 1,
+    "candidates": [
+      {
+        "key": "s-33",
+        "label": "Section 33",
+        "matched": [
+          "export restriction (the usual near-miss)",
+          "place outside"
+        ],
+        "excerpt": "33. Prohibition against transfer of personal data to place outside Hong Kong except in specified circumstances (Not yet in operation) (1) This",
+        "truncatedStart": false,
+        "truncatedEnd": true,
+        "named": true
+      },
+      {
+        "key": "s-46",
+        "label": "Section 46",
+        "matched": [
+          "export restriction (the usual near-miss)",
+          "place outside"
+        ],
+        "excerpt": "Commissioner may, for the purpose of enabling or assisting an authority of a place outside Hong Kong to perform a relevant function of that authority, disclose matters",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": false
+      },
+      {
+        "key": "dpp-4",
+        "label": "Data Protection Principle 4",
+        "matched": [
+          "processing within or outside the jurisdiction"
+        ],
+        "excerpt": "Without limiting subsection (1), if a data user engages a data processor, whether within or outside Hong Kong, to process personal data on the data user’s behalf, the data user",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      }
+    ],
+    "nearest": [
+      "s-33",
+      "dpp-4"
+    ],
+    "noNearest": false,
+    "verdict": "The nearest provision is not in force. Section 33 would prohibit transferring personal data 'to a place outside Hong Kong except in specified circumstances', and the ingested text carries its status in the heading: '(Not yet in operation)'. It was enacted in 1995 and has never been commenced. Even commenced it would restrict export rather than require local storage — and DPP4(2) runs the other way, expressly contemplating 'a data processor, whether within or outside Hong Kong'. So this cell is 0 twice over: the provision would not localise, and it does not apply.",
+    "elsewhere": null,
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "pdpo/dpia": {
+    "lawId": "pdpo",
+    "requirementId": "dpia",
+    "strictness": 1,
+    "sourceType": "guidance",
+    "obligation": "Privacy impact assessments are encouraged by the PCPD but not mandated.",
+    "citation": "PCPD guidance",
+    "provisionsSearched": 78,
+    "termsTried": [
+      "impact assessment",
+      "privacy impact",
+      "risk assessment",
+      "prior consultation",
+      "high risk",
+      "compliance audit"
+    ],
+    "termsAbsent": [
+      "impact assessment",
+      "privacy impact",
+      "risk assessment",
+      "prior consultation",
+      "high risk",
+      "compliance audit"
+    ],
+    "candidatesFound": 0,
+    "weakOnly": 0,
+    "candidates": [],
+    "nearest": [],
+    "noNearest": true,
+    "verdict": "None of the six terms appears in the Ordinance: no 'impact assessment', no 'privacy impact', no 'prior consultation', no 'high risk'. No provision requires an assessment before a new or higher-risk use of personal data.",
+    "elsewhere": "The strictness 1 rests on PCPD guidance encouraging privacy impact assessments.",
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "pdpo/dpo-representative": {
+    "lawId": "pdpo",
+    "requirementId": "dpo-representative",
+    "strictness": 1,
+    "sourceType": "guidance",
+    "obligation": "Appointing a data protection officer is recommended best practice, not a legal requirement.",
+    "citation": "PCPD best-practice guide",
+    "provisionsSearched": 78,
+    "termsTried": [
+      "data protection officer",
+      "privacy officer",
+      "representative",
+      "designated individual",
+      "accountability",
+      "responsible for compliance",
+      "contact person"
+    ],
+    "termsAbsent": [
+      "data protection officer",
+      "privacy officer",
+      "designated individual",
+      "responsible for compliance"
+    ],
+    "candidatesFound": 0,
+    "weakOnly": 4,
+    "candidates": [],
+    "nearest": [],
+    "noNearest": true,
+    "verdict": "'Data protection officer' and 'privacy officer' appear nowhere in the Ordinance, and no provision requires a data user to designate anyone responsible for compliance. The four provisions reached only by broad terms use 'representative' in an unrelated sense — 'bodies representative of data users', whom the Commissioner consults before issuing a code of practice.",
+    "elsewhere": "The strictness 1 rests on the PCPD's best-practice guidance recommending a data protection officer. Appointing one is sound practice and is not required by the text.",
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "pdpo/rights-automated-decision": {
+    "lawId": "pdpo",
+    "requirementId": "rights-automated-decision",
+    "strictness": 0,
+    "sourceType": "statute",
+    "obligation": "Automated decision-making and profiling are not specifically regulated.",
+    "citation": "—",
+    "provisionsSearched": 78,
+    "termsTried": [
+      "automated decision-making",
+      "profiling",
+      "solely automated",
+      "human intervention",
+      "logic involved",
+      "algorithm",
+      "decision affecting the individual"
+    ],
+    "termsAbsent": [
+      "profiling",
+      "solely automated",
+      "human intervention",
+      "logic involved",
+      "algorithm",
+      "decision affecting the individual"
+    ],
+    "candidatesFound": 2,
+    "weakOnly": 0,
+    "candidates": [
+      {
+        "key": "dpp-4",
+        "label": "Data Protection Principle 4",
+        "matched": [
+          "automated decision-making"
+        ],
+        "excerpt": "(Amended 18 of 2012 s. 40) (c) any security measures incorporated (whether by automated means or otherwise) into any equipment in which the data is stored; (Amended 18 of",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      },
+      {
+        "key": "s-2",
+        "label": "Section 2",
+        "matched": [
+          "automated decision-making"
+        ],
+        "excerpt": "includes amending, augmenting, deleting or rearranging the data, whether by automated means or otherwise; register (登記冊) means the register of data users kept and maintained",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      }
+    ],
+    "nearest": [
+      "dpp-4",
+      "s-2"
+    ],
+    "noNearest": false,
+    "verdict": "The Ordinance acknowledges automated processing only in passing, and only as a mechanism. Section 2 defines processing to include amending data 'whether by automated means or otherwise', and DPP4 asks about security measures incorporated 'whether by automated means or otherwise' into equipment. Neither attaches any right to a decision reached that way: no profiling rules, no right to human review, no duty to explain the logic. 'Profiling' and 'algorithm' appear nowhere in the ingested text.",
+    "elsewhere": null,
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "pdpo/rights-portability": {
+    "lawId": "pdpo",
+    "requirementId": "rights-portability",
+    "strictness": 0,
+    "sourceType": "statute",
+    "obligation": "No data-portability right.",
+    "citation": "—",
+    "provisionsSearched": 78,
+    "termsTried": [
+      "portability",
+      "machine-readable",
+      "structured, commonly used format",
+      "transmit to another organisation",
+      "receive the data provided",
+      "direct transfer on request",
+      "computerised form",
+      "copy of the data",
+      "access right (the usual near-miss)",
+      "supply a copy on request"
+    ],
+    "termsAbsent": [
+      "portability",
+      "machine-readable",
+      "structured, commonly used format",
+      "transmit to another organisation",
+      "receive the data provided",
+      "direct transfer on request",
+      "computerised form",
+      "access right (the usual near-miss)"
+    ],
+    "candidatesFound": 6,
+    "weakOnly": 0,
+    "candidates": [
+      {
+        "key": "s-18",
+        "label": "Section 18",
+        "matched": [
+          "copy of the data",
+          "supply a copy on request"
+        ],
+        "excerpt": "individual is the data subject; (b) if the data user holds such data, to be supplied by the data user with a copy of such data. (2) A data access request under both paragraphs of subsection",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      },
+      {
+        "key": "s-23",
+        "label": "Section 23",
+        "matched": [
+          "copy of the data",
+          "supply a copy on request"
+        ],
+        "excerpt": "(Amended 18 of 2012 s. 2) (a) make the necessary correction to the data; (b) supply the requestor with a copy of the data as so corrected; and (c) subject to subsection (3), if— (i) the",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": false
+      },
+      {
+        "key": "s-19",
+        "label": "Section 19",
+        "matched": [
+          "copy of the data",
+          "supply a copy on request"
+        ],
+        "excerpt": "informing the requestor in writing that the data user holds the data; and (ii) supplying a copy of the data; or (b) if the data user does not hold any personal data which",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      }
+    ],
+    "nearest": [
+      "s-18",
+      "s-19"
+    ],
+    "noNearest": false,
+    "verdict": "Sections 18 and 19 create a data access request and oblige the data user to supply 'a copy of the data'. That is access in a form the data user selects; nothing requires a structured or machine-readable format, and nothing obliges transmission to another data user. 'Portability' does not appear in the Ordinance.",
+    "elsewhere": null,
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "pdpo/sensitive-data": {
+    "lawId": "pdpo",
+    "requirementId": "sensitive-data",
+    "strictness": 0,
+    "sourceType": "statute",
+    "obligation": "No statutory category of sensitive personal data with heightened rules.",
+    "citation": "—",
+    "provisionsSearched": 78,
+    "termsTried": [
+      "special categories",
+      "sensitive personal data",
+      "racial or ethnic origin",
+      "biometric",
+      "health data",
+      "political opinions",
+      "trade-union membership",
+      "sexual orientation / sex life",
+      "religious beliefs",
+      "genetic data",
+      "identity card number"
+    ],
+    "termsAbsent": [
+      "special categories",
+      "sensitive personal data",
+      "racial or ethnic origin",
+      "biometric",
+      "political opinions",
+      "trade-union membership",
+      "sexual orientation / sex life",
+      "religious beliefs",
+      "genetic data",
+      "identity card number"
+    ],
+    "candidatesFound": 1,
+    "weakOnly": 0,
+    "candidates": [
+      {
+        "key": "s-59",
+        "label": "Section 59",
+        "matched": [
+          "health data"
+        ],
+        "excerpt": "59. Health (1) Personal data relating to the physical or mental health of the data subject is exempt from",
+        "truncatedStart": false,
+        "truncatedEnd": true,
+        "named": true
+      }
+    ],
+    "nearest": [
+      "s-59"
+    ],
+    "noNearest": false,
+    "verdict": "There is no special category of sensitive data, and the Ordinance's one engagement with health information runs the other way: s.59 exempts personal data about the data subject's physical or mental health from DPP6 and s.18(1)(b), and from DPP3, where applying them would be likely to cause serious harm. That withdraws protection in defined circumstances rather than adding it. 'Sensitive personal data', 'biometric', 'racial or ethnic origin', 'political opinions', 'trade union' and 'genetic data' appear nowhere.",
+    "elsewhere": "Hong Kong reaches some of this ground differently — identity card numbers are governed by a PCPD code of practice issued under the Ordinance rather than by a sensitive-data category in the text itself.",
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "pipeda/childrens-data": {
+    "lawId": "pipeda",
+    "requirementId": "childrens-data",
+    "strictness": 1,
+    "sourceType": "guidance",
+    "obligation": "No statutory children's regime; OPC guidance treats minors' information as sensitive requiring heightened care.",
+    "citation": "OPC guidance",
+    "provisionsSearched": 120,
+    "termsTried": [
+      "child",
+      "minor",
+      "under the age of",
+      "parental consent",
+      "guardian",
+      "age threshold"
+    ],
+    "termsAbsent": [
+      "child",
+      "under the age of",
+      "parental consent",
+      "age threshold"
+    ],
+    "candidatesFound": 1,
+    "weakOnly": 1,
+    "candidates": [
+      {
+        "key": "sch1-4.3",
+        "label": "Schedule 1, clause 4.3",
+        "matched": [
+          "minor"
+        ],
+        "excerpt": "Seeking consent may be impossible or inappropriate when the individual is a minor, seriously ill, or mentally incapacitated. In addition, organizations that",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      }
+    ],
+    "nearest": [
+      "sch1-4.3"
+    ],
+    "noNearest": false,
+    "verdict": "The Act mentions minors once, and not as a protected class: Principle 4.3 observes that seeking consent 'may be impossible or inappropriate when the individual is a minor, seriously ill, or mentally incapacitated' — an exception to the consent requirement, not a heightened duty. There is no age threshold, no parental-consent gate and no children's regime.",
+    "elsewhere": "The strictness 1 recorded for this cell rests on OPC guidance treating minors' information as sensitive and requiring heightened care. That is the regulator's position and it can change without any amendment to the Act — which is why the mapping is tagged guidance rather than statute.",
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "pipeda/data-localization": {
+    "lawId": "pipeda",
+    "requirementId": "data-localization",
+    "strictness": 0,
+    "sourceType": "statute",
+    "obligation": "No federal data localization requirement (some provincial public-sector rules exist).",
+    "citation": "—",
+    "provisionsSearched": 120,
+    "termsTried": [
+      "localisation",
+      "stored within the territory",
+      "shall be stored or retained",
+      "within the territory",
+      "remain in the jurisdiction",
+      "free movement / free flow",
+      "free movement shall not be restricted",
+      "critical information infrastructure",
+      "export restriction (the usual near-miss)",
+      "transfer to a third country",
+      "place outside",
+      "processing within or outside the jurisdiction"
+    ],
+    "termsAbsent": [
+      "localisation",
+      "stored within the territory",
+      "within the territory",
+      "free movement shall not be restricted",
+      "critical information infrastructure",
+      "transfer to a third country",
+      "place outside",
+      "processing within or outside the jurisdiction"
+    ],
+    "candidatesFound": 1,
+    "weakOnly": 2,
+    "candidates": [
+      {
+        "key": "s-30",
+        "label": "Section 30",
+        "matched": [
+          "export restriction (the usual near-miss)"
+        ],
+        "excerpt": "the operation of a federal work, undertaking or business or the organization discloses the information outside the province for consideration. - **Application** **(1.1)** This Part does",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      }
+    ],
+    "nearest": [
+      "s-30"
+    ],
+    "noNearest": false,
+    "verdict": "The only provision reached is s.30, a transitional rule about when this Part began to apply to organisations within a province — its 'outside the province' is about the Act's own scope, not about where data may be held. PIPEDA imposes no localisation duty; under the accountability principle an organisation stays responsible for information it transfers to a third party for processing, wherever that processing happens.",
+    "elsewhere": "Several provincial public-sector statutes do impose localisation, and British Columbia's and Nova Scotia's are the usual examples. None is in this corpus, so this cell speaks only for the federal Act.",
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "pipeda/dpia": {
+    "lawId": "pipeda",
+    "requirementId": "dpia",
+    "strictness": 1,
+    "sourceType": "guidance",
+    "obligation": "No statutory DPIA mandate; OPC expects assessments for higher-risk initiatives.",
+    "citation": "OPC guidance",
+    "provisionsSearched": 120,
+    "termsTried": [
+      "impact assessment",
+      "privacy impact",
+      "risk assessment",
+      "prior consultation",
+      "high risk",
+      "compliance audit"
+    ],
+    "termsAbsent": [
+      "impact assessment",
+      "privacy impact",
+      "risk assessment",
+      "prior consultation",
+      "high risk",
+      "compliance audit"
+    ],
+    "candidatesFound": 0,
+    "weakOnly": 0,
+    "candidates": [],
+    "nearest": [],
+    "noNearest": true,
+    "verdict": "None of the six terms appears in the Act: no 'impact assessment', no 'privacy impact', no 'prior consultation', no 'high risk'. No provision requires an assessment before a new initiative.",
+    "elsewhere": "The strictness 1 rests on the OPC's expectation of assessments for higher-risk initiatives. Worth noting for anyone operating in both: the Québec regime makes a privacy impact assessment a statutory duty, so a Canadian organisation can face a real obligation that PIPEDA itself never imposes.",
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "pipeda/rights-automated-decision": {
+    "lawId": "pipeda",
+    "requirementId": "rights-automated-decision",
+    "strictness": 0,
+    "sourceType": "statute",
+    "obligation": "Automated decision-making is not specifically regulated (proposed under the lapsed Bill C-27).",
+    "citation": "—",
+    "provisionsSearched": 120,
+    "termsTried": [
+      "automated decision-making",
+      "profiling",
+      "solely automated",
+      "human intervention",
+      "logic involved",
+      "algorithm",
+      "decision affecting the individual"
+    ],
+    "termsAbsent": [
+      "automated decision-making",
+      "profiling",
+      "solely automated",
+      "human intervention",
+      "logic involved",
+      "algorithm",
+      "decision affecting the individual"
+    ],
+    "candidatesFound": 0,
+    "weakOnly": 0,
+    "candidates": [],
+    "nearest": [],
+    "noNearest": true,
+    "verdict": "Nothing to show, and that is the finding. Across 120 indexed provisions the Act does not contain the string 'automat' at all — nor 'profil', nor any of the seven terms searched. This is the strongest form of absence a trace can record: not a near-miss judged insufficient, but vocabulary that is simply not in the instrument.",
+    "elsewhere": "Automated decision-making rules were proposed in Bill C-27, alongside AIDA; both lapsed on prorogation in January 2025. Sector regulators and the Québec regime address automated decisions where PIPEDA does not.",
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "pipeda/rights-portability": {
+    "lawId": "pipeda",
+    "requirementId": "rights-portability",
+    "strictness": 0,
+    "sourceType": "statute",
+    "obligation": "No data-portability right (proposed under the lapsed Bill C-27).",
+    "citation": "—",
+    "provisionsSearched": 120,
+    "termsTried": [
+      "portability",
+      "machine-readable",
+      "structured, commonly used format",
+      "transmit to another organisation",
+      "receive the data provided",
+      "direct transfer on request",
+      "computerised form",
+      "copy of the data",
+      "access right (the usual near-miss)",
+      "supply a copy on request",
+      "transfer of an account"
+    ],
+    "termsAbsent": [
+      "portability",
+      "structured, commonly used format",
+      "transmit to another organisation",
+      "receive the data provided",
+      "direct transfer on request",
+      "computerised form",
+      "supply a copy on request",
+      "transfer of an account"
+    ],
+    "candidatesFound": 10,
+    "weakOnly": 0,
+    "candidates": [
+      {
+        "key": "sch1-4.9",
+        "label": "Schedule 1, clause 4.9",
+        "matched": [
+          "access right (the usual near-miss)"
+        ],
+        "excerpt": "**4.9 Principle 9 — Individual Access** Upon request, an individual shall be informed of the existence, use, and",
+        "truncatedStart": false,
+        "truncatedEnd": true,
+        "named": true
+      },
+      {
+        "key": "s-9",
+        "label": "Section 9",
+        "matched": [
+          "access right (the usual near-miss)"
+        ],
+        "excerpt": "**(1)** Despite clause 4.9 of Schedule 1, an organization shall not give an individual access to personal information if doing so would likely reveal personal information",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": false
+      },
+      {
+        "key": "sch1-4.5.4",
+        "label": "Schedule 1, clause 4.5.4",
+        "matched": [
+          "access right (the usual near-miss)"
+        ],
+        "excerpt": "principle (Clause 4.3), the Identifying Purposes principle (Clause 4.2), and the Individual Access principle (Clause 4.9).",
+        "truncatedStart": true,
+        "truncatedEnd": false,
+        "named": false
+      },
+      {
+        "key": "s-10",
+        "label": "Section 10",
+        "matched": [
+          "access right (the usual near-miss)"
+        ],
+        "excerpt": "an alternative format to an individual with a sensory disability who has a right of access to personal information under this Part and who requests that it be transmitted",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      }
+    ],
+    "nearest": [
+      "sch1-4.9",
+      "s-10"
+    ],
+    "noNearest": false,
+    "verdict": "Principle 4.9 gives access — on request an individual 'shall be informed of the existence, use, and disclosure of his or her personal information and shall be given access to that information'. Access is not portability: nothing specifies a format, and nothing obliges an organisation to send the information anywhere. The Act's only format duty is s.10, and it is narrow — an alternative format for an individual with a sensory disability, where that version exists or converting it is reasonable and necessary.",
+    "elsewhere": "A portability right was proposed in Bill C-27, which died when Parliament was prorogued in January 2025. A 0 here is current law, not a drafting oversight.",
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "quebec-law25/data-localization": {
+    "lawId": "quebec-law25",
+    "requirementId": "data-localization",
+    "strictness": 0,
+    "sourceType": "statute",
+    "obligation": "No hard localization mandate; instead a transfer-adequacy assessment is required.",
+    "citation": "Private Sector Act s.17",
+    "provisionsSearched": 149,
+    "termsTried": [
+      "localisation",
+      "stored within the territory",
+      "shall be stored or retained",
+      "within the territory",
+      "remain in the jurisdiction",
+      "free movement / free flow",
+      "free movement shall not be restricted",
+      "critical information infrastructure",
+      "export restriction (the usual near-miss)",
+      "transfer to a third country",
+      "place outside",
+      "processing within or outside the jurisdiction"
+    ],
+    "termsAbsent": [
+      "localisation",
+      "stored within the territory",
+      "within the territory",
+      "free movement shall not be restricted",
+      "critical information infrastructure",
+      "transfer to a third country",
+      "place outside",
+      "processing within or outside the jurisdiction"
+    ],
+    "candidatesFound": 2,
+    "weakOnly": 0,
+    "candidates": [
+      {
+        "key": "s-17",
+        "label": "Section 17",
+        "matched": [
+          "export restriction (the usual near-miss)"
+        ],
+        "excerpt": "### 17. Before communicating personal information outside Québec, a person carrying on an enterprise must conduct a privacy impact assessment.",
+        "truncatedStart": false,
+        "truncatedEnd": true,
+        "named": true
+      },
+      {
+        "key": "s-8",
+        "label": "Section 8",
+        "matched": [
+          "export restriction (the usual near-miss)"
+        ],
+        "excerpt": "1 of the first paragraph, and the possibility that the information could be communicated outside Québec. On request, the person concerned is also informed of the personal",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      }
+    ],
+    "nearest": [
+      "s-17",
+      "s-8"
+    ],
+    "noNearest": false,
+    "verdict": "Section 17 is an export gate, not a localisation rule: before communicating personal information outside Québec an enterprise must conduct a privacy impact assessment, and may proceed only if the assessment establishes that the information 'would receive adequate protection'. That restricts sending data out under conditions; it does not require data to stay. Section 8 goes only to disclosure — the person concerned must be informed of the possibility that their information could be communicated outside Québec.",
+    "elsewhere": null,
+    "reviewed": "2026-10-18",
+    "degraded": "PDF conversion fused page line-numbers into section numbers (s.3.1 renders as 23.1), so a citation cannot be matched to a provision. Quotes are still verified against the file; only the provision-level scoping is unavailable."
+  },
+  "uk-gdpr/data-localization": {
+    "lawId": "uk-gdpr",
+    "requirementId": "data-localization",
+    "strictness": 0,
+    "sourceType": "statute",
+    "obligation": "No data localization requirement. (Claims about the ABSENCE of an obligation cannot be quoted and are the weakest entries in this catalog.)",
+    "citation": "—",
+    "provisionsSearched": 86,
+    "termsTried": [
+      "localisation",
+      "stored within the territory",
+      "shall be stored or retained",
+      "within the territory",
+      "remain in the jurisdiction",
+      "free movement / free flow",
+      "free movement shall not be restricted",
+      "critical information infrastructure",
+      "export restriction (the usual near-miss)",
+      "transfer to a third country",
+      "place outside",
+      "processing within or outside the jurisdiction"
+    ],
+    "termsAbsent": [
+      "localisation",
+      "stored within the territory",
+      "within the territory",
+      "free movement shall not be restricted",
+      "critical information infrastructure",
+      "place outside",
+      "processing within or outside the jurisdiction"
+    ],
+    "candidatesFound": 16,
+    "weakOnly": 8,
+    "candidates": [
+      {
+        "key": "art-96",
+        "label": "Article 96",
+        "matched": [
+          "transfer to a third country"
+        ],
+        "excerpt": "previously concluded Agreements ### International agreements involving the transfer of personal data to third countries or F412 ### international organisations which were concluded by [ the United",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": false
+      },
+      {
+        "key": "art-46",
+        "label": "Article 46",
+        "matched": [
+          "transfer to a third country"
+        ],
+        "excerpt": ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . F262 [ 1A A transfer of personal data to a third country or an international organisation by a controller or processor is made subject",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      },
+      {
+        "key": "art-49",
+        "label": "Article 49",
+        "matched": [
+          "transfer to a third country"
+        ],
+        "excerpt": "Article 45A and of compliance with Article 46 (appropriate safeguards)], a transfer or a set of transfers of personal data to a third country or an international organisation shall take place only on one of the following",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": false
+      },
+      {
+        "key": "art-44",
+        "label": "Article 44",
+        "matched": [
+          "transfer to a third country"
+        ],
+        "excerpt": "Article 44A General principles for transfers 1 A controller or processor may transfer personal data to a third country or an international organisation only if— a the condition in paragraph 2 is",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      },
+      {
+        "key": "art-45",
+        "label": "Article 45",
+        "matched": [
+          "transfer to a third country"
+        ],
+        "excerpt": "purposes of Article 44A, the Secretary of State may by regulations approve transfers of personal data to— a a third country, or b an international organisation. 2 The Secretary of State may only make",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      }
+    ],
+    "nearest": [
+      "art-44",
+      "art-45",
+      "art-46"
+    ],
+    "noNearest": false,
+    "verdict": "The retained Regulation keeps Chapter V's export conditions and adds nothing about where data must sit. Arts. 44-46 restrict transfers abroad; no provision requires storage in the United Kingdom.",
+    "elsewhere": "The machinery that replaced the Commission's role — the Secretary of State's adequacy regulations — sits in the Data Protection Act 2018, which this repository does not hold. A reader checking UK transfer rules needs that Act as well as this one.",
+    "reviewed": "2026-10-18",
+    "degraded": null
+  }
+}

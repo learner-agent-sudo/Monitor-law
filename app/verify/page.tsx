@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { laws, lawsById, jurisdictionsById } from "@/lib/data";
 import { provenance, provenanceByLaw, STATUS_LABEL, STALE_AFTER_DAYS } from "@/lib/data/verification";
+import { traceCoverage } from "@/lib/gap-traces";
+
+const coverage = traceCoverage();
 
 export const metadata = {
   title: "How to verify this content · Privacy Law Monitor",
@@ -129,6 +132,26 @@ export default function VerifyPage() {
             silently rots.
           </p>
         </div>
+        <div className="card">
+          <div className="card-title">🕳️ Nothing left blank</div>
+          <p className="card-summary">
+            Every cell that does <em>not</em> quote a statute carries a search trace instead —{" "}
+            {coverage.cells} of them, over {coverage.provisionReads.toLocaleString()} provision
+            reads. The build refuses a cell that claims nothing was found while the search found
+            something, and refuses a named near-miss the search never reached.
+          </p>
+        </div>
+      </div>
+
+      <div className="disclaimer" style={{ marginTop: 20 }}>
+        <strong>Why that last one matters most here.</strong> A gap is asserted by comparing a
+        quoted obligation on one side against a blank on the other — so the blank is the half
+        driving the conclusion, and until recently it rested on nothing but our not having found
+        anything. It now has to show its work: provisions read, words tried, words that appear
+        nowhere in the instrument, and the nearest provisions in their own text, with the reading
+        marked as a reading and dated. A search trace still cannot prove silence — a statute may
+        impose a duty in words nobody thought to search for — but it costs one line to contradict
+        instead of an afternoon.
       </div>
 
       <div className="disclaimer">

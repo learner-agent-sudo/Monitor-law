@@ -4,6 +4,8 @@ import { laws, lawsById, jurisdictionsById, requirements, requirementCategories 
 import { CoverageBadge } from "@/app/components/CoverageBadge";
 import { Disclaimer } from "@/app/components/Disclaimer";
 import { provenanceByLaw, STATUS_LABEL as VERIFY_LABEL } from "@/lib/data/verification";
+import { GapTraceDetails } from "@/app/components/GapTrace";
+import { traceFor } from "@/lib/gap-traces";
 import type { Strictness } from "@/lib/types";
 
 const STATUS_LABEL: Record<string, string> = {
@@ -141,6 +143,10 @@ function CategoryRows({
       {rows.map((req) => {
         const m = law.mappings[req.id];
         const level: Strictness = m ? m.strictness : 0;
+        // Where a cell quotes the statute, the quote is the evidence. Where it
+        // does not, the trace is — and every such cell has one, enforced by
+        // scripts/check-gap-traces.mjs. Neither case is left bare.
+        const trace = m?.quote ? null : traceFor(law.id, req.id);
         return (
           <tr key={req.id}>
             <td>
@@ -157,6 +163,7 @@ function CategoryRows({
                   <span className="statute-quote-tag">verbatim from the statute text</span>
                 </blockquote>
               )}
+              {trace && <GapTraceDetails trace={trace} />}
             </td>
             <td className="citation">{m ? m.citation : "—"}</td>
           </tr>
