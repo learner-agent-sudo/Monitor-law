@@ -1925,3 +1925,123 @@ code {
   line-height: 1.4;
   color: var(--accent);
 }
+
+/* ---- Strictness rubric ---- */
+/* The scores decide every gap this catalog reports, so the scale gets a real
+   explanation rather than four adjectives on a badge. */
+.rubric {
+  margin-top: 8px;
+}
+.rubric-grid {
+  display: grid;
+  /* Narrow enough that all four levels sit on one row at full width: the
+     scale reads as a ladder, and a lone fourth card below the others reads
+     as an afterthought. */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+.rubric-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.rubric-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.rubric-floor {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 4px;
+  padding: 2px 7px;
+}
+.rubric-q {
+  margin: 0 0 8px;
+  font-size: 14.5px;
+  font-weight: 650;
+  color: var(--text);
+}
+.rubric-means {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.rubric-not {
+  margin: 10px 0 0;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  background: rgba(210, 153, 34, 0.07);
+  border: 1px solid rgba(210, 153, 34, 0.22);
+  border-radius: 7px;
+  padding: 8px 11px;
+}
+.rubric-not-tag {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 3px;
+}
+.rubric-ex {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 12.5px;
+  color: var(--text-faint);
+}
+.rubric-ex-link {
+  display: block;
+  font-weight: 650;
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+.rubric-ladder {
+  margin-top: 20px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 16px;
+  background: var(--bg-elevated);
+}
+.rubric-ladder-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 12px;
+}
+.rubric-ladder-row {
+  display: grid;
+  grid-template-columns: 120px 180px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+}
+.rubric-ladder-row:first-child {
+  border-top: none;
+}
+.rubric-ladder-why {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.rubric-ladder-note {
+  margin: 12px 0 0;
+  font-size: 11.5px;
+  color: var(--text-faint);
+}
+@media (max-width: 720px) {
+  .rubric-ladder-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}

@@ -133,6 +133,14 @@ export default function VerifyPage() {
           </p>
         </div>
         <div className="card">
+          <div className="card-title">📏 A scale you can apply</div>
+          <p className="card-summary">
+            Every gap is one score minus another, so each level of the 0–3 scale is defined by a
+            question about the text, with a worked example the build confirms really scores what it
+            illustrates. <Link href="/requirements">See the rubric</Link>.
+          </p>
+        </div>
+        <div className="card">
           <div className="card-title">🕳️ Nothing left blank</div>
           <p className="card-summary">
             Every cell that does <em>not</em> quote a statute carries a search trace instead —{" "}

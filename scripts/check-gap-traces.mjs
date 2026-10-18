@@ -51,6 +51,7 @@ import {
 } from "../lib/provisions.mjs";
 import { searchProvisions, flattenLinks, tidy } from "../lib/gap-search.mjs";
 import { LAW_IDS, readMappings, readRequirements, needsTrace } from "../lib/law-source.mjs";
+import { BINDING_FLOOR } from "../lib/strictness.mjs";
 import { deriveTraces, serialise } from "./build-gap-traces.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -143,12 +144,14 @@ export function validateTrace(id, trace, index, search, knownRequirementIds = ne
     }
     // "instead-of" is the strong claim — it puts a mark beside the score in the
     // comparison tables, saying the 0 understates the position. A row that only
-    // gestures at the ground cannot carry that.
-    if (h.kind === "instead-of" && h.strictness < 2) {
+    // gestures at the ground cannot carry that. The threshold is the published
+    // binding floor, imported rather than written here a second time: this rule
+    // and the rubric a reader is shown have to be the same number.
+    if (h.kind === "instead-of" && h.strictness < BINDING_FLOOR) {
       problems.push(
         `${id}: claims "${h.requirementId}" constrains the same ground instead, but ${trace.lawId} ` +
-          `scores only ${h.strictness} there. Below 2 that is a trace of a constraint, not one — ` +
-          `use "different-approach".`,
+          `scores only ${h.strictness} there. Below ${BINDING_FLOOR} — the binding floor in ` +
+          `lib/strictness.mjs — that is a trace of a constraint, not one; use "different-approach".`,
       );
     }
   }

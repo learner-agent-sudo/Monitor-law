@@ -1,6 +1,7 @@
 import { requirements, requirementCategories, laws, lawsById } from "@/lib/data";
 import { CoverageBadge } from "@/app/components/CoverageBadge";
 import { Disclaimer } from "@/app/components/Disclaimer";
+import { ScaleRubric } from "@/app/components/ScaleRubric";
 import type { Strictness } from "@/lib/types";
 
 export default function RequirementsPage() {
@@ -14,6 +15,9 @@ export default function RequirementsPage() {
         possible. Below, each requirement shows how the tracked laws score against it.
       </p>
 
+      <ScaleRubric />
+
+      <h2 className="section">Every law against every requirement</h2>
       <div className="table-wrap">
         <table>
           <thead>
