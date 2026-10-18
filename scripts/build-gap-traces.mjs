@@ -25,7 +25,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildProvisionIndex, PROVISION_PATTERNS } from "../lib/provisions.mjs";
 import { searchProvisions } from "../lib/gap-search.mjs";
-import { LAW_IDS, readMappings, needsTrace } from "../lib/law-source.mjs";
+import { LAW_IDS, readMappings, readRequirements, needsTrace } from "../lib/law-source.mjs";
 import { GAP_VERDICTS, VERDICTS_REVIEWED } from "../lib/data/gap-verdicts.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -38,12 +38,16 @@ const OUT = join(ROOT, "lib", "data", "gap-traces.json");
 export function deriveTraces(root = ROOT) {
   const traces = {};
   const missingVerdict = [];
+  const requirementsById = Object.fromEntries(readRequirements(root).map((r) => [r.id, r]));
 
   for (const lawId of LAW_IDS) {
     const corpusFile = join(root, "corpus", `${lawId}.md`);
     if (!existsSync(corpusFile)) continue;
     const index = buildProvisionIndex(lawId, readFileSync(corpusFile, "utf8"));
     const spec = PROVISION_PATTERNS[lawId];
+    const byRequirement = Object.fromEntries(
+      readMappings(root, lawId).map((m) => [m.requirementId, m]),
+    );
 
     for (const mp of readMappings(root, lawId)) {
       if (!needsTrace(mp)) continue;
@@ -91,7 +95,27 @@ export function deriveTraces(root = ROOT) {
         nearest: verdict.nearest ?? [],
         noNearest: Boolean(verdict.noNearest),
         verdict: verdict.verdict,
+        practicalEffect: verdict.practicalEffect ?? null,
         elsewhere: verdict.elsewhere ?? null,
+        // Each cross-reference is resolved against THIS law's own mappings, so
+        // the score and citation shown are the catalog's, not the author's
+        // recollection of it. A pointer that goes stale when a neighbouring
+        // row is re-scored is worse than no pointer at all.
+        handledBy: (verdict.handledBy ?? []).map((h) => {
+          const target = byRequirement[h.requirementId];
+          return {
+            requirementId: h.requirementId,
+            name: requirementsById[h.requirementId]?.name ?? h.requirementId,
+            // Default to the weaker claim. Saying the same ground is covered
+            // elsewhere has to be opted into, never inherited by omission.
+            kind: h.kind ?? "different-approach",
+            note: h.note,
+            strictness: target?.strictness ?? 0,
+            citation: target?.citation ?? "—",
+            obligation: target?.obligation ?? "",
+            quoted: Boolean(target?.quote),
+          };
+        }),
         reviewed: VERDICTS_REVIEWED,
         // Québec's source cannot support provision-level scoping, so a trace
         // for it inherits the same caveat the citation check prints.

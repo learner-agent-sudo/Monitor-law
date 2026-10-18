@@ -131,8 +131,9 @@ export const gdpr: Law = {
     },
     "data-localization": {
       strictness: 0,
-      obligation: "No general data localization requirement — the GDPR enables free flow of data within the EU.",
-      citation: "Recital 13 GDPR",
+      obligation:
+        "No requirement to store personal data in the EU — but Chapter V permits a transfer out only on its conditions, so keeping data in the EEA is the one route that engages none of them.",
+      citation: "— no provision; see Cross-border transfer",
     },
     "records-processing": {
       strictness: 3,

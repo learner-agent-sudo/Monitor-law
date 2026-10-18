@@ -137,8 +137,8 @@ export const ukGdpr: Law = {
     "data-localization": {
       strictness: 0,
       obligation:
-        "No data localization requirement. (Claims about the ABSENCE of an obligation cannot be quoted and are the weakest entries in this catalog.)",
-      citation: "—",
+        "No requirement to store personal data in the UK — but the retained Chapter V permits a transfer out only on its conditions, so UK storage is the one route that engages none of them.",
+      citation: "— no provision; see Cross-border transfer",
     },
     "records-processing": {
       strictness: 3,

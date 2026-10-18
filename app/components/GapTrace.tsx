@@ -1,5 +1,5 @@
 import { lawsById } from "@/lib/data";
-import type { GapTrace } from "@/lib/gap-traces";
+import type { GapTrace, HandledBy } from "@/lib/gap-traces";
 
 // ---------------------------------------------------------------------------
 // The evidence behind an empty cell.
@@ -21,15 +21,45 @@ function plural(n: number, one: string, many = `${one}s`) {
   return `${n} ${n === 1 ? one : many}`;
 }
 
+function CrossRef({ handled, shortName }: { handled: HandledBy; shortName: string }) {
+  return (
+    <div className="trace-cross">
+      <div className="trace-cross-head">
+        <span className="trace-cand-label">{handled.name}</span>
+        <span className={`pill pill-${handled.strictness}`}>
+          {shortName} scores {handled.strictness}
+        </span>
+        <span className="trace-cand-terms">{handled.citation}</span>
+      </div>
+      <p className="trace-mech">{handled.note}</p>
+    </div>
+  );
+}
+
 export function GapTraceDetails({ trace, showLaw = false }: { trace: GapTrace; showLaw?: boolean }) {
   const law = lawsById[trace.lawId];
   const shortName = law?.shortName ?? trace.lawId;
+  // Two kinds of neighbour, and conflating them was the first thing this got
+  // wrong: "the constraint is really there, under another name" and "this is
+  // how the regime works instead, and it constrains nothing equivalent" cannot
+  // wear the same label without telling the reader California limits where
+  // data may live.
+  const insteadOf = trace.handledBy.filter((h) => h.kind === "instead-of");
+  const related = trace.handledBy.filter((h) => h.kind !== "instead-of");
 
   return (
     <details className="trace">
       <summary className="trace-summary">
         {showLaw && <span className="trace-law">{shortName}</span>}
         {trace.noNearest ? "No provision matched any search term" : "No provision imposes this"}
+        {/* Say it before the disclosure is opened. A reader who never clicks
+            should still not walk away thinking the instrument is indifferent
+            to ground it covers from another direction. */}
+        {insteadOf.length > 0 && (
+          <span className="trace-elsewhere-flag">
+            → constrained under {insteadOf.map((h) => h.name).join(" and ")}
+          </span>
+        )}
         <span className="trace-cta">show what was searched</span>
       </summary>
 
@@ -90,9 +120,35 @@ export function GapTraceDetails({ trace, showLaw = false }: { trace: GapTrace; s
           )}
         </div>
 
+        {insteadOf.length > 0 && (
+          <div className="trace-step">
+            <span className="trace-step-tag trace-step-tag-cross">
+              The constraint is in another row
+            </span>
+            {insteadOf.map((h) => (
+              <CrossRef key={h.requirementId} handled={h} shortName={shortName} />
+            ))}
+          </div>
+        )}
+
+        {related.length > 0 && (
+          <div className="trace-step">
+            <span className="trace-step-tag">Related, but not equivalent</span>
+            {related.map((h) => (
+              <CrossRef key={h.requirementId} handled={h} shortName={shortName} />
+            ))}
+          </div>
+        )}
+
         <div className="trace-step">
           <span className="trace-step-tag trace-step-tag-read">Reading</span>
           <p className="trace-verdict">{trace.verdict}</p>
+          {trace.practicalEffect && (
+            <p className="trace-practical">
+              <span className="trace-practical-tag">In practice</span>
+              {trace.practicalEffect}
+            </p>
+          )}
           <p className="trace-reviewed">
             An interpretation of the provisions above, not a result of the search. Reviewed{" "}
             {trace.reviewed} — disagree with it by pointing at a provision it missed.

@@ -114,8 +114,9 @@ export const pdpo: Law = {
     },
     "data-localization": {
       strictness: 0,
-      obligation: "No data localization requirement.",
-      citation: "—",
+      obligation:
+        "No requirement to store data in Hong Kong, and no transfer formality either: s.33, which would have restricted export, has never been brought into force.",
+      citation: "— no provision; see Cross-border transfer",
     },
     "records-processing": {
       strictness: 1,

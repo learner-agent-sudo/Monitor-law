@@ -1872,3 +1872,56 @@ code {
   font-size: 11.5px;
   color: var(--text-faint);
 }
+
+/* ---- Cross-references out of an empty cell ---- */
+/* A 0 can be legally correct and still mislead: the GDPR mandates no storage
+   location, but prices export so heavily that EEA storage is the only route
+   avoiding the apparatus. These mark the rows where the constraint actually
+   lives, so such a cell never reads like a genuine nil. */
+.trace-elsewhere-flag {
+  color: var(--accent);
+  font-size: 12px;
+}
+.trace-step-tag-cross {
+  color: var(--accent);
+  border-color: rgba(76, 141, 255, 0.4);
+}
+.trace-cross + .trace-cross {
+  margin-top: 10px;
+}
+.trace-cross-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 3px;
+}
+.trace-cross-head .pill {
+  min-width: 0;
+  font-size: 11px;
+  padding: 1px 8px;
+}
+.trace-practical {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  border-left: 2px solid var(--border-strong);
+  padding: 6px 12px;
+}
+.trace-practical-tag {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 3px;
+}
+/* Marker beside a score in the comparison tables. */
+.understated {
+  display: block;
+  margin-top: 5px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--accent);
+}

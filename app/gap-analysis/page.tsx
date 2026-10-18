@@ -6,7 +6,26 @@ import { analyzeGap } from "@/lib/gap";
 import { CoverageBadge } from "@/app/components/CoverageBadge";
 import { Disclaimer } from "@/app/components/Disclaimer";
 import { GapTraceDetails } from "@/app/components/GapTrace";
-import { tracesFor } from "@/lib/gap-traces";
+import { tracesFor, understatedBy } from "@/lib/gap-traces";
+
+/**
+ * Marks a score that is correct but reads as less than it is.
+ *
+ * A jurisdiction can impose nothing under one requirement while constraining
+ * the same ground firmly under its neighbour — the GDPR requires no storage
+ * location yet lets data leave the EEA only on Chapter V's conditions. Left
+ * unmarked, that 0 sits beside California's genuine nil and says the opposite
+ * of the truth.
+ */
+function Understated({ lawIds, requirementId }: { lawIds: string[]; requirementId: string }) {
+  const handled = understatedBy(lawIds, requirementId);
+  if (!handled.length) return null;
+  return (
+    <span className="understated">
+      constrained under {handled.map((h) => h.name).join(" and ")}
+    </span>
+  );
+}
 
 export default function GapAnalysisPage() {
   const [sourceId, setSourceId] = useState("ca"); // "I comply with Canada"
@@ -113,9 +132,11 @@ export default function GapAnalysisPage() {
                       </td>
                       <td>
                         <CoverageBadge level={c.sourceStrictness} />
+                        <Understated lawIds={c.sourceLawIds} requirementId={c.requirement.id} />
                       </td>
                       <td>
                         <CoverageBadge level={c.targetStrictness} />
+                        <Understated lawIds={c.targetLawIds} requirementId={c.requirement.id} />
                       </td>
                       <td style={{ color: "var(--text-muted)" }}>
                         {c.targetObligation}
@@ -172,7 +193,9 @@ export default function GapAnalysisPage() {
                 Both instruments are silent on these, so there is no gap <em>between</em> them —
                 which is not the same as there being no obligation. Each row carries the search
                 behind it: how many provisions were read, which words appear nowhere in the
-                instrument, and which provisions came closest.
+                instrument, and which provisions came closest. Where a regime constrains the same
+                ground from another direction — restricting export rather than mandating storage,
+                say — the row says which requirement to read instead.
               </p>
               <div className="table-wrap">
                 <table>
@@ -193,9 +216,11 @@ export default function GapAnalysisPage() {
                         </td>
                         <td>
                           <CoverageBadge level={c.sourceStrictness} />
+                          <Understated lawIds={c.sourceLawIds} requirementId={c.requirement.id} />
                         </td>
                         <td>
                           <CoverageBadge level={c.targetStrictness} />
+                          <Understated lawIds={c.targetLawIds} requirementId={c.requirement.id} />
                         </td>
                         <td style={{ color: "var(--text-muted)" }}>
                           {[

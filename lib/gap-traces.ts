@@ -29,6 +29,38 @@ export interface TraceCandidate {
   named: boolean;
 }
 
+/**
+ * A neighbouring requirement that carries the constraint this cell lacks.
+ *
+ * The GDPR has no provision requiring data to be stored in the Union, so its
+ * data-localization cell is honestly 0 — but Art. 44 permits export "only if"
+ * Chapter V's conditions are met, which makes EEA storage the one route that
+ * avoids the whole apparatus. Shown as a bare 0 beside California's genuine
+ * nil, that reads as "the GDPR does not care where data lives", which is the
+ * opposite of the truth. Resolved from the catalog at build time, so the score
+ * shown is always the live one.
+ */
+export interface HandledBy {
+  requirementId: string;
+  name: string;
+  /**
+   * "instead-of"         the same ground is genuinely constrained, by another
+   *                      route — the 0 understates the position, and only this
+   *                      kind is marked beside the score in the comparison.
+   * "different-approach" related and NOT equivalent. California's contract
+   *                      terms are worth reading next to its nil on data
+   *                      location, but they do not limit where data may live.
+   */
+  kind: "instead-of" | "different-approach";
+  /** What is there, in one line. */
+  note: string;
+  /** This law's score on that requirement — always higher than the cell's own. */
+  strictness: number;
+  citation: string;
+  obligation: string;
+  quoted: boolean;
+}
+
 export interface GapTrace {
   lawId: string;
   requirementId: string;
@@ -52,7 +84,10 @@ export interface GapTrace {
   nearest: string[];
   noNearest: boolean;
   verdict: string;
+  /** What the position amounts to in practice, where that differs from the score. */
+  practicalEffect: string | null;
   elsewhere: string | null;
+  handledBy: HandledBy[];
   reviewed: string;
   /** Set where the instrument's source cannot support provision-level scoping. */
   degraded: string | null;
@@ -73,6 +108,30 @@ export function traceFor(lawId: string, requirementId: string): GapTrace | null 
  */
 export function tracesFor(lawIds: string[], requirementId: string): GapTrace[] {
   return lawIds.map((id) => traceFor(id, requirementId)).filter((t): t is GapTrace => t !== null);
+}
+
+/**
+ * Does a 0 in this cell understate the position?
+ *
+ * True where the instrument constrains the same ground through another
+ * requirement. The comparison tables use it to mark such a cell, so a score
+ * that is legally correct but practically misleading cannot pass as a plain
+ * nil.
+ */
+export function understatedBy(lawIds: string[], requirementId: string): HandledBy[] {
+  const seen = new Set<string>();
+  const out: HandledBy[] = [];
+  for (const t of tracesFor(lawIds, requirementId)) {
+    // Only "instead-of". A related row that imposes nothing equivalent belongs
+    // inside the trace as further reading, not as a mark beside the score —
+    // marking it would say California limits where data may live.
+    for (const h of t.handledBy.filter((x) => x.kind === "instead-of")) {
+      if (seen.has(h.requirementId)) continue;
+      seen.add(h.requirementId);
+      out.push(h);
+    }
+  }
+  return out;
 }
 
 /** Headline counts, for the provenance page. */

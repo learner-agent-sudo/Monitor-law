@@ -26,6 +26,13 @@
  *     requirement is suspect.
  *  6. NO SHRUGGING. An author may claim nothing was found only where the
  *     search found nothing.
+ *  7. CROSS-REFERENCES LEAD SOMEWHERE. A cell may point at a neighbouring
+ *     requirement that carries the constraint instead — the GDPR imposes no
+ *     storage mandate, but Chapter V prices export so heavily that a bare 0
+ *     misleads. That pointer must name a real requirement, this law must be
+ *     mapped against it, and it must score HIGHER than the cell pointing at
+ *     it, because a pointer to an equally empty row is reassurance that
+ *     delivers nothing.
  *
  * Deterministic. No model involved. Fails the build.
  *
@@ -43,7 +50,7 @@ import {
   PROVISION_PATTERNS,
 } from "../lib/provisions.mjs";
 import { searchProvisions, flattenLinks, tidy } from "../lib/gap-search.mjs";
-import { LAW_IDS, readMappings, needsTrace } from "../lib/law-source.mjs";
+import { LAW_IDS, readMappings, readRequirements, needsTrace } from "../lib/law-source.mjs";
 import { deriveTraces, serialise } from "./build-gap-traces.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -53,7 +60,7 @@ const TRACE_FILE = join(ROOT, "lib", "data", "gap-traces.json");
  * Validate one trace against the corpus. Pure, so the self-test at the bottom
  * can feed it a deliberately broken trace and prove the gate bites.
  */
-export function validateTrace(id, trace, index, search) {
+export function validateTrace(id, trace, index, search, knownRequirementIds = new Set()) {
   const problems = [];
 
   // --- 4. whitelist, on named near-misses -------------------------------
@@ -108,12 +115,57 @@ export function validateTrace(id, trace, index, search) {
     }
   }
 
+  // --- 7. cross-references must lead somewhere better -------------------
+  // "The constraint you are looking for is in that row" is only useful if that
+  // row actually carries something. A pointer to an equally empty cell reads
+  // as reassurance and delivers nothing, so it is rejected.
+  for (const h of trace.handledBy ?? []) {
+    if (!knownRequirementIds.has(h.requirementId)) {
+      problems.push(`${id}: points at requirement "${h.requirementId}", which is not in the taxonomy`);
+      continue;
+    }
+    if (h.requirementId === trace.requirementId) {
+      problems.push(`${id}: points at itself`);
+      continue;
+    }
+    if (h.strictness <= trace.strictness) {
+      problems.push(
+        `${id}: points at "${h.requirementId}", where ${trace.lawId} scores ${h.strictness} — ` +
+          `no higher than the ${trace.strictness} it is meant to explain. A cross-reference to an ` +
+          `equally empty row is false comfort.`,
+      );
+    }
+    if (!h.note || h.note.length < 10) {
+      problems.push(`${id}: cross-reference to "${h.requirementId}" has no note saying what is there`);
+    }
+    if (!["instead-of", "different-approach"].includes(h.kind)) {
+      problems.push(`${id}: cross-reference to "${h.requirementId}" has an unknown kind "${h.kind}"`);
+    }
+    // "instead-of" is the strong claim — it puts a mark beside the score in the
+    // comparison tables, saying the 0 understates the position. A row that only
+    // gestures at the ground cannot carry that.
+    if (h.kind === "instead-of" && h.strictness < 2) {
+      problems.push(
+        `${id}: claims "${h.requirementId}" constrains the same ground instead, but ${trace.lawId} ` +
+          `scores only ${h.strictness} there. Below 2 that is a trace of a constraint, not one — ` +
+          `use "different-approach".`,
+      );
+    }
+  }
+
   // --- 4. whitelist, on the author's prose ------------------------------
   // The verdict is a reading, but a reading that cites a provision is making a
   // checkable claim. Prose may cite only the instrument the entry is about;
   // a section number from another statute would resolve against this index and
-  // read as verified when nothing verified it.
-  const prose = `${trace.verdict} ${trace.elsewhere ?? ""}`;
+  // read as verified when nothing verified it. Every authored string is
+  // screened, including the practical-effect note and the cross-reference
+  // notes — a citation is a citation wherever the author puts it.
+  const prose = [
+    trace.verdict,
+    trace.practicalEffect ?? "",
+    trace.elsewhere ?? "",
+    ...(trace.handledBy ?? []).map((h) => h.note),
+  ].join(" ");
   for (const key of extractCitations(prose, trace.lawId)) {
     if (!resolveKey(key, index)) {
       problems.push(
@@ -137,6 +189,7 @@ export function validateTrace(id, trace, index, search) {
 // validateTrace above is meant to be pulled in from elsewhere.
 const problems = [];
 const rows = [];
+const knownRequirementIds = new Set(readRequirements(ROOT).map((r) => r.id));
 
 // --- 2. fidelity -----------------------------------------------------------
 const { traces: fresh, missingVerdict } = deriveTraces(ROOT);
@@ -196,7 +249,7 @@ for (const lawId of LAW_IDS) {
     traced++;
     if (trace.noNearest) silent++;
     const search = searchProvisions(lawId, mp.requirementId, index);
-    problems.push(...validateTrace(id, trace, index, search));
+    problems.push(...validateTrace(id, trace, index, search, knownRequirementIds));
 
     if (PROVISION_PATTERNS[lawId].provisionScoped === false && !trace.degraded) {
       problems.push(`${id}: ${lawId} is not provision-scoped, but the trace does not say so`);
@@ -215,8 +268,12 @@ for (const lawId of LAW_IDS) {
   const search = searchProvisions("pdpo", "dpia", index);
   const base = {
     lawId: "pdpo",
+    requirementId: "dpia",
+    strictness: 1,
     candidates: [],
+    handledBy: [],
     verdict: "A verdict long enough to pass the minimum-length rule for a stated reason.",
+    practicalEffect: null,
     reviewed: "2026-10-18",
     elsewhere: null,
   };
@@ -254,6 +311,58 @@ for (const lawId of LAW_IDS) {
   if (!shrugged.some((p) => /has to be addressed/.test(p))) {
     problems.push("SELF-TEST FAILED: ignoring provisions the search surfaced was accepted");
   }
+
+  // Pointing a reader at a row that is just as empty.
+  const hollow = validateTrace(
+    "self-test/hollow",
+    {
+      ...base,
+      nearest: [],
+      noNearest: true,
+      handledBy: [
+        {
+          requirementId: "childrens-data",
+          strictness: 1,
+          note: "A note of adequate length to pass the note rule.",
+        },
+      ],
+    },
+    index,
+    search,
+    knownRequirementIds,
+  );
+  if (!hollow.some((p) => /false comfort/.test(p))) {
+    problems.push("SELF-TEST FAILED: a cross-reference to an equally empty row was accepted");
+  }
+
+  // Claiming the same ground is constrained elsewhere, pointing at a row that
+  // barely registers. This is the claim that puts a mark beside a score in the
+  // comparison, so it has to be the hardest one to make.
+  const overclaim = validateTrace(
+    "self-test/overclaim",
+    {
+      ...base,
+      strictness: 0,
+      nearest: [],
+      noNearest: true,
+      handledBy: [
+        {
+          requirementId: "childrens-data",
+          kind: "instead-of",
+          strictness: 1,
+          note: "A note of adequate length to pass the note rule.",
+        },
+      ],
+    },
+    index,
+    search,
+    knownRequirementIds,
+  );
+  if (!overclaim.some((p) => /not one/.test(p))) {
+    problems.push(
+      "SELF-TEST FAILED: 'constrained under another row' was accepted pointing at a strictness-1 row",
+    );
+  }
 }
 
 // ---- report ---------------------------------------------------------------
@@ -284,10 +393,20 @@ if (problems.length) {
   process.exit(1);
 }
 
+const refs = all.flatMap((t) => t.handledBy ?? []);
+const strong = refs.filter((h) => h.kind === "instead-of");
+out.push(
+  `${refs.length} cross-reference(s) out of these cells, each verified to score higher than the ` +
+    `cell making it. ${strong.length} claim the same ground is constrained by another route — ` +
+    `the only ones marked beside a score in the comparison, and each confirmed to point at a ` +
+    `requirement scoring 2 or more.\n`,
+);
 out.push(
   "\nNo problems. Every cell that does not quote the statute records what was searched, how " +
-    "far the search reached, and which provisions came closest — and the three self-tests " +
-    "confirm the gate rejects an unreached near-miss, an invented citation and an ignored hit.\n",
+    "far the search reached, and which provisions came closest — and the five self-tests " +
+    "confirm the gate rejects an unreached near-miss, an invented citation, an ignored hit, " +
+    "a cross-reference to an equally empty row, and a claim that the ground is covered " +
+    "elsewhere when that row barely registers.\n",
 );
 out.push(
   "> This proves a search happened, not that the law is silent. The verdicts are a reading of " +
