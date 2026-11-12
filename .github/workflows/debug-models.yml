@@ -1,0 +1,48 @@
+name: Debug - GitHub Models (temporary)
+on:
+  push:
+    branches:
+      - claude/legal-research-website-jyihm4
+    paths:
+      - ".github/workflows/debug-models.yml"
+permissions:
+  contents: read
+  models: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Catalog with curl
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "== catalog, with token"
+          curl -sS -i -m 30 -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" https://models.github.ai/catalog/models | head -c 1500 || true
+          echo; echo "== catalog, no token"
+          curl -sS -i -m 30 -H "Accept: application/json" https://models.github.ai/catalog/models | head -c 700 || true
+      - name: Chat with curl
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for m in openai/gpt-4.1-nano openai/gpt-4o-mini; do
+            echo; echo "== chat $m"
+            curl -sS -i -m 60 -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" -H "Content-Type: application/json" https://models.github.ai/inference/chat/completions -d "{\"model\":\"$m\",\"messages\":[{\"role\":\"user\",\"content\":\"Reply with the single word: ready\"}],\"max_tokens\":20}" | head -c 1500 || true
+          done
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Same calls with Node fetch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          node -e '
+          (async () => {
+            const h = { Authorization: "Bearer " + process.env.GITHUB_TOKEN, Accept: "application/vnd.github+json" };
+            const show = async (label, res) => { const t = await res.text(); console.log("==", label, res.status, res.url, "redirected=" + res.redirected, "type=" + res.headers.get("content-type"), "len=" + t.length, "body:", t.slice(0, 400).replace(/\s+/g, " ")); };
+            await show("node catalog", await fetch("https://models.github.ai/catalog/models", { headers: h }));
+            const body = JSON.stringify({ model: "openai/gpt-4o-mini", messages: [{ role: "user", content: "Reply with the single word: ready" }], max_tokens: 20 });
+            await show("node chat", await fetch("https://models.github.ai/inference/chat/completions", { method: "POST", headers: { ...h, "Content-Type": "application/json" }, body }));
+            await show("node chat +signal", await fetch("https://models.github.ai/inference/chat/completions", { method: "POST", headers: { ...h, "Content-Type": "application/json" }, body, signal: AbortSignal.timeout(60000) }));
+          })().catch((e) => { console.log("node error", e); });
+          '
