@@ -1,0 +1,250 @@
+{
+  "lawId": "ccpa",
+  "answers": {
+    "lawful-basis.ground": {
+      "option": "fair-purpose",
+      "says": "No list of legal grounds. Collection, use, retention and sharing must be reasonably necessary and proportionate to the disclosed purposes, and not used in an incompatible way.",
+      "citation": "§1798.100(c)",
+      "quote": "shall be reasonably necessary and proportionate to achieve the purposes for which the personal information was collected or processed"
+    },
+    "lawful-basis.legitimate-interests": {
+      "option": "not-needed",
+      "says": "The CCPA has no ground-based gate, so a legitimate-interests ground does not arise. Use is governed by notice, purpose limits and opt-out rights instead."
+    },
+    "consent.standard": {
+      "option": "must-be-express",
+      "says": "Consent must be a freely given, specific, informed and unambiguous indication, given by a statement or a clear affirmative action. Hovering, muting, pausing or closing content is not consent.",
+      "citation": "§1798.140(h)",
+      "quote": "including by a statement or by a clear affirmative action, signifies agreement to the processing of personal information"
+    },
+    "consent.role": {
+      "option": "only-for-specific-uses",
+      "says": "Consent is not the general basis for using data. It is needed only for particular uses, such as selling or sharing data of consumers under 16 and some financial incentive programs.",
+      "citation": "§1798.120(c)",
+      "quote": "has affirmatively authorized the sale or sharing of the consumer’s personal information"
+    },
+    "consent.withdrawal": {
+      "option": "yes-any-time",
+      "says": "Yes. Consent to a financial incentive program may be revoked at any time. A consumer may also direct a business at any time to stop selling or sharing their data.",
+      "citation": "§1798.125(b)(3)",
+      "quote": "which may be revoked by the consumer at any time"
+    },
+    "consent.separate": {
+      "option": "no",
+      "says": "No separate, express consent is needed for sensitive data: the consumer can limit its use instead. Exception: affirmative authorisation is required before selling or sharing data of consumers under 16.",
+      "citation": "§1798.121(a)",
+      "quote": "direct a business that collects sensitive personal information about the consumer to limit its use of the consumer’s sensitive personal information"
+    },
+    "notice.timing": {
+      "option": "at-or-before-collection",
+      "says": "Yes. A business that controls collection must tell consumers, at or before the point of collection, what it collects and why, whether it sells or shares it, and how long it keeps it.",
+      "citation": "§1798.100(a)",
+      "quote": "at or before the point of collection, inform consumers of the following"
+    },
+    "notice.content": {
+      "option": "detailed-list",
+      "says": "A prescribed list: categories collected, purposes, whether data is sold or shared, how long each category is kept, and the consumer's rights and request methods in the online privacy policy.",
+      "citation": "§1798.100(a)(3)",
+      "quote": "The length of time the business intends to retain each category of personal information"
+    },
+    "access.right": {
+      "option": "copy-plus-details",
+      "says": "A consumer can ask for the categories collected, sources, purposes, third parties, and the specific pieces collected. Categories sold, shared or disclosed for a business purpose are also disclosed.",
+      "citation": "§1798.110(a)",
+      "quote": "The specific pieces of personal information it has collected about that consumer",
+      "ownTerm": "right to know"
+    },
+    "access.deadline": {
+      "option": "fixed-deadline",
+      "says": "Within 45 days of a verifiable consumer request, free of charge. The period may be extended once by another 45 days if the consumer is told within the first 45 days.",
+      "citation": "§1798.130(a)(2)(A)",
+      "quote": "within 45 days of receiving a verifiable consumer request from the consumer"
+    },
+    "deletion.right": {
+      "option": "right-to-request",
+      "says": "A consumer can require a business to delete personal information it collected from them, subject to exceptions such as completing a transaction, security, free speech and legal obligations.",
+      "citation": "§1798.105(a)",
+      "quote": "A consumer shall have the right to request that a business delete any personal information about the consumer",
+      "ownTerm": "right to delete"
+    },
+    "deletion.pass-on": {
+      "option": "yes",
+      "says": "Yes. The business must notify its service providers and contractors to delete the data, and notify third parties it sold or shared the data with, unless this proves impossible or involves disproportionate effort.",
+      "citation": "§1798.105(c)(1)",
+      "quote": "notify all third parties to whom the business has sold or shared the personal information to delete"
+    },
+    "correction.right": {
+      "option": "yes",
+      "says": "Yes. A consumer can ask a business that maintains inaccurate personal information to correct it, taking account of the nature of the data and the purposes of processing.",
+      "citation": "§1798.106(a)",
+      "quote": "A consumer shall have the right to request a business that maintains inaccurate personal information about the consumer to correct that inaccurate personal information",
+      "ownTerm": "right to correct"
+    },
+    "correction.pass-on": {
+      "option": "no",
+      "says": "No. Section 1798.106 does not require a business to tell others who already received the data about a correction. The nearest rule is that the business must use commercially reasonable efforts to correct the data as directed."
+    },
+    "portability.right": {
+      "option": "usable-copy",
+      "says": "The consumer gets the data in a readily useable, structured, commonly used, machine-readable format. The law does not require the business to send it directly to another organisation.",
+      "citation": "§1798.130(a)(3)(B)(iii)",
+      "quote": "in a structured, commonly used, machine-readable format that may also be transmitted to another entity at the consumer’s request"
+    },
+    "optout.marketing": {
+      "option": "opt-out",
+      "says": "The CCPA has no general direct-marketing opt-out. The nearest control: a consumer can direct a business to stop sharing their data for cross-context behavioral advertising, which is the targeted advertising the law reaches.",
+      "citation": "§1798.120(a), §1798.140(ah)",
+      "quote": "A consumer shall have the right, at any time, to direct a business that sells or shares personal information about the consumer to third parties not to sell or share"
+    },
+    "optout.sale": {
+      "option": "opt-out",
+      "says": "A business may sell or share data until the consumer opts out, and must then stop. Consumers under 16 must affirmatively authorise any sale or sharing first (§1798.120(c)).",
+      "citation": "§1798.120(a)",
+      "quote": "A consumer shall have the right, at any time, to direct a business that sells or shares personal information about the consumer to third parties not to sell or share",
+      "ownTerm": "right to opt out of sale or sharing"
+    },
+    "adm.protection": {
+      "option": "told-or-explained",
+      "says": "The statute only directs the regulator to write rules on access and opt-out rights for automated decisionmaking, including meaningful information about the logic involved. The detail depends on regulations.",
+      "citation": "§1798.185(a)(15)",
+      "quote": "requiring a business’ response to access requests to include meaningful information about the logic involved in those decisionmaking processes",
+      "ownTerm": "automated decisionmaking technology"
+    },
+    "sensitive.category": {
+      "option": "defined-list",
+      "says": "Yes. Sensitive personal information is a defined list with its own rules, including ID and account numbers, precise geolocation, race, religion, union membership, genetic data and neural data.",
+      "citation": "§1798.140(ae)",
+      "quote": "A consumer’s racial or ethnic origin, citizenship or immigration status, religious or philosophical beliefs, or union membership",
+      "ownTerm": "sensitive personal information"
+    },
+    "sensitive.rule": {
+      "option": "person-can-limit",
+      "says": "Sensitive personal information may be used, but the consumer can direct the business to limit its use to what is necessary to provide the goods or services reasonably expected. Some uses are exempt.",
+      "citation": "§1798.121(a)",
+      "quote": "A consumer shall have the right, at any time, to direct a business that collects sensitive personal information about the consumer to limit its use",
+      "ownTerm": "right to limit use and disclosure of sensitive personal information"
+    },
+    "children.rule": {
+      "option": "parental-consent-below-age",
+      "says": "No sale or sharing of data of consumers under 16 without affirmative authorisation. Ages 13 to 15 may authorise it themselves; under 13, a parent or guardian must.",
+      "citation": "§1798.120(c)",
+      "quote": "or the consumer’s parent or guardian, in the case of consumers who are less than 13 years of age, has affirmatively authorized"
+    },
+    "breach.regulator": {
+      "option": "no",
+      "says": "No. The CCPA imposes no duty to notify the regulator of a breach. Breach notice is in a separate statute (Civil Code §1798.82), which is outside this file. Section 1798.150 gives only a private action."
+    },
+    "breach.individuals": {
+      "option": "no",
+      "says": "No. The CCPA does not require people affected by a breach to be told. Breach notice is in Civil Code §1798.82, a separate statute outside this file; §1798.150 gives only a private action."
+    },
+    "breach.records": {
+      "option": "no",
+      "says": "No. The CCPA does not require a record of breaches. Its record-keeping rules concern regulations on compliance generally (§1798.199.40(b)), not breach logs."
+    },
+    "dpo.officer": {
+      "option": "no",
+      "says": "No. The CCPA does not require a named data protection officer. It requires businesses to ensure that staff who handle consumer inquiries know the law's requirements (§1798.130(a)(6)).",
+      "citation": "§1798.130(a)(6)",
+      "quote": "Ensure that all individuals responsible for handling consumer inquiries about the business’ privacy practices"
+    },
+    "dpo.local-representative": {
+      "option": "no",
+      "says": "No. The CCPA has no requirement for a business based outside California to appoint a local representative. It applies to businesses that do business in California."
+    },
+    "dpia.duty": {
+      "option": "in-listed-cases",
+      "says": "The statute only directs the regulator to require risk assessments for processing that presents significant risk, and sets no timing. The detail depends on regulations.",
+      "citation": "§1798.185(a)(14)",
+      "quote": "Issuing regulations requiring businesses whose processing of consumers’ personal information presents significant risk to consumers’ privacy or security",
+      "ownTerm": "risk assessment"
+    },
+    "dpia.regulator": {
+      "option": "in-some-cases",
+      "says": "The statute directs regulations requiring businesses with significant-risk processing to submit a risk assessment to the regulator on a regular basis. Whether and how this applies depends on regulations.",
+      "citation": "§1798.185(a)(14)(B)",
+      "quote": "Submit to the California Privacy Protection Agency on a regular basis a risk assessment with respect to their processing of personal information"
+    },
+    "transfer.rule": {
+      "option": "no-restriction",
+      "says": "Nothing. The CCPA does not restrict sending personal information outside California or the United States. Its contract and service-provider duties still apply to any recipient."
+    },
+    "transfer.tell-people": {
+      "option": "no",
+      "says": "No. The CCPA does not require consumers to be told, or asked, before their data goes abroad."
+    },
+    "localization.rule": {
+      "option": "no",
+      "says": "No. The CCPA has no data localization requirement: it does not require personal information to be stored inside California or the United States."
+    },
+    "records.duty": {
+      "option": "policies-and-practices",
+      "says": "A privacy policy must be kept and updated at least every 12 months, describing categories collected, sources, purposes, third parties and consumer rights. Further record-keeping may come from regulations.",
+      "citation": "§1798.130(a)(5)",
+      "quote": "Disclose the following information in its online privacy policy or policies"
+    },
+    "vendor.contract": {
+      "option": "contract-with-set-terms",
+      "says": "A written agreement must limit the purposes for which data is disclosed, require the same privacy protection, let the business check compliance, and require notice if the vendor cannot comply.",
+      "citation": "§1798.100(d)",
+      "quote": "shall enter into an agreement with the third party, service provider, or contractor, that",
+      "ownTerm": "service provider or contractor"
+    },
+    "vendor.direct-duties": {
+      "option": "yes",
+      "says": "Yes. Service providers and contractors can be fined directly for violating the CCPA, and must help the business respond to deletion requests (§1798.105(c)(3)).",
+      "citation": "§1798.155(a)",
+      "quote": "Any business, service provider, contractor, or other person that violates this title shall be liable for an administrative fine"
+    },
+    "security.duty": {
+      "option": "general-standard",
+      "says": "A business must implement reasonable security procedures and practices appropriate to the nature of the personal information. The statute names no specific measures.",
+      "citation": "§1798.100(e)",
+      "quote": "shall implement reasonable security procedures and practices appropriate to the nature of the personal information"
+    },
+    "enforcement.fines": {
+      "option": "fixed-caps",
+      "says": "Yes. The CPPA can impose administrative fines of up to $2,500 per violation, or $7,500 per intentional violation or violation involving under-16 data. Amounts are adjusted for inflation.",
+      "citation": "§1798.155(a)",
+      "quote": "shall be liable for an administrative fine of not more than two thousand five hundred dollars"
+    },
+    "enforcement.private-action": {
+      "option": "limited",
+      "says": "Only for data breaches caused by failure to keep reasonable security: $100 to $750 per consumer per incident, or actual damages, after 30 days' notice. No suit for other CCPA violations.",
+      "citation": "§1798.150(a), §1798.150(c)",
+      "quote": "shall apply only to violations as defined in subdivision (a) and shall not be based on violations of any other section of this title"
+    }
+  },
+  "terms": {
+    "organisation": {
+      "term": "business",
+      "citation": "§1798.140(d)",
+      "quote": "“Business” means: (1) A sole proprietorship, partnership, limited liability company, corporation, association, or other legal entity"
+    },
+    "vendor": {
+      "term": "service provider",
+      "citation": "§1798.140(ag)",
+      "quote": "“Service provider” means a person that processes personal information on behalf of a business"
+    },
+    "person": {
+      "term": "consumer",
+      "citation": "§1798.140(i)",
+      "quote": "“Consumer” means a natural person who is a California resident"
+    },
+    "data": {
+      "term": "personal information",
+      "citation": "§1798.140(v)",
+      "quote": "“Personal information” means information that identifies, relates to, describes, is reasonably capable of being associated with"
+    },
+    "sensitive": {
+      "term": "sensitive personal information",
+      "citation": "§1798.140(ae)",
+      "quote": "“Sensitive personal information” means: (1) Personal information that reveals: (A) A consumer’s social security, driver’s license, state identification card, or passport number."
+    },
+    "regulator": {
+      "term": "California Privacy Protection Agency",
+      "citation": "§1798.199.10(a)",
+      "quote": "There is hereby established in state government the California Privacy Protection Agency"
+    }
+  }
+}

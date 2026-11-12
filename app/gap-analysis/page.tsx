@@ -1,12 +1,20 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { jurisdictions } from "@/lib/data";
-import { analyzeGap } from "@/lib/gap";
+import {
+  analyzeGap,
+  sameMeaningDifferentWords,
+  type Point,
+  type RequirementComparison,
+} from "@/lib/gap";
 import { CoverageBadge } from "@/app/components/CoverageBadge";
 import { Disclaimer } from "@/app/components/Disclaimer";
 import { GapTraceDetails } from "@/app/components/GapTrace";
+import { PointTable } from "@/app/components/PointTable";
+import { TermsTable } from "@/app/components/TermsTable";
 import { tracesFor, understatedBy } from "@/lib/gap-traces";
+import type { Strictness } from "@/lib/types";
 
 /**
  * Marks a score that is correct but reads as less than it is.
@@ -27,22 +35,127 @@ function Understated({ lawIds, requirementId }: { lawIds: string[]; requirementI
   );
 }
 
+function pointsWith(c: RequirementComparison, relation: Point["relation"]): Point[] {
+  return c.points.filter((p) => p.relation === relation);
+}
+
+function comparedCount(c: RequirementComparison): number {
+  return c.points.filter((p) => p.relation !== "unknown").length;
+}
+
+function RequirementCell({ c }: { c: RequirementComparison }) {
+  return (
+    <td>
+      <div className="req-name">{c.requirement.name}</div>
+      <div className="req-cat">{c.requirement.category}</div>
+    </td>
+  );
+}
+
+function ScoreCell({
+  level,
+  lawIds,
+  requirementId,
+}: {
+  level: Strictness;
+  lawIds: string[];
+  requirementId: string;
+}) {
+  return (
+    <td>
+      <CoverageBadge level={level} />
+      <Understated lawIds={lawIds} requirementId={requirementId} />
+    </td>
+  );
+}
+
+/** The points, the whole-requirement score and any byScoreOnly / scoreDisagrees notes for a gap row. */
+function WhatDiffers({
+  c,
+  sourceName,
+  targetName,
+}: {
+  c: RequirementComparison;
+  sourceName: string;
+  targetName: string;
+}) {
+  const more = pointsWith(c, "more");
+  const less = pointsWith(c, "less");
+  return (
+    <>
+      {more.length > 0 && (
+        <ul className="diff-list">
+          {more.map((p) =>
+            p.source && p.target ? (
+              <li key={p.facetId}>
+                <strong>{p.label}</strong>: {p.target.says}
+                {p.target.citation && <> <span className="citation">({p.target.citation})</span></>}
+                <div className="diff-muted">
+                  {sourceName}: {p.source.says}
+                </div>
+              </li>
+            ) : null,
+          )}
+        </ul>
+      )}
+      {c.verdict === "mixed" && less.length > 0 && (
+        <p className="diff-muted">
+          Where {sourceName} already asks for more: {less.map((p) => p.label).join("; ")}
+        </p>
+      )}
+      {c.scoreDisagrees && (
+        <p className="diff-note">
+          On the points compared here the two laws line up, but overall {targetName} imposes this
+          more firmly: {c.targetObligation}{" "}
+          <span className="citation">({c.targetCitation})</span>
+        </p>
+      )}
+      {c.byScoreOnly && (
+        <p className="diff-note">
+          {c.targetObligation} <span className="citation">{c.targetCitation}</span>
+        </p>
+      )}
+    </>
+  );
+}
+
+/** Full-width row under a requirement: every point, both laws side by side. */
+function PointsRow({
+  c,
+  colSpan,
+  sourceName,
+  targetName,
+}: {
+  c: RequirementComparison;
+  colSpan: number;
+  sourceName: string;
+  targetName: string;
+}) {
+  if (c.points.length === 0) return null;
+  return (
+    <tr className="cmp-detail-row">
+      <td colSpan={colSpan}>
+        <details className="cmp-disclosure">
+          <summary>
+            All {c.points.length} {c.points.length === 1 ? "point" : "points"} for this requirement
+          </summary>
+          <div className="cmp-detail-body">
+            <PointTable points={c.points} sourceName={sourceName} targetName={targetName} />
+          </div>
+        </details>
+      </td>
+    </tr>
+  );
+}
+
 export default function GapAnalysisPage() {
   const [sourceId, setSourceId] = useState("ca"); // "I comply with Canada"
   const [targetId, setTargetId] = useState("cn"); // "...gap to China?"
 
   const result = useMemo(() => analyzeGap(sourceId, targetId), [sourceId, targetId]);
   const sameJurisdiction = sourceId === targetId;
-
-  // Requirements where BOTH regimes are silent. Counting these as "already
-  // covered" would turn two absences into a reassurance, which is the exact
-  // error a gap-analysis tool must not make: nothing here says a duty does not
-  // exist elsewhere — in a sectoral statute, in guidance, or in contract.
-  const nilBoth = useMemo(() => result.covered.filter((c) => c.neitherAddresses), [result]);
-  const trulyCovered = useMemo(
-    () => result.covered.filter((c) => !c.neitherAddresses),
-    [result],
-  );
+  const sourceName = result.source.name;
+  const targetName = result.target.name;
 
   return (
     <>
@@ -50,9 +163,15 @@ export default function GapAnalysisPage() {
       <h1 className="page-title">Cross-jurisdiction gap analysis</h1>
       <p className="page-lead">
         Pick the regime you already comply with, then the regime you want to comply with. The tool
-        surfaces every obligation where the target demands <em>more or different</em> than your
-        current baseline — a prioritized list of gaps to close.
+        shows where the target asks for more than your current baseline, where it takes a different
+        approach, and where the two already line up.
       </p>
+      <div className="cmp-howto">
+        <strong>How to read this.</strong> Each requirement is broken into the points that are
+        actually compared in practice. Each law is placed on every point from its own text, with the
+        passage quoted, and two laws are then compared by what they require, not by the words they
+        use. Open a row to see both laws side by side.
+      </div>
 
       <div className="controls">
         <div className="control">
@@ -85,31 +204,35 @@ export default function GapAnalysisPage() {
           <div className="stat-row">
             <div className="stat gap">
               <div className="num">{result.gaps.length}</div>
+              <div className="lbl">Requirements where {targetName} asks for more</div>
+            </div>
+            {result.different.length > 0 && (
+              <div className="stat">
+                <div className="num">{result.different.length}</div>
+                <div className="lbl">Different approach: read both</div>
+              </div>
+            )}
+            <div className="stat covered">
+              <div className="num">{result.covered.length}</div>
               <div className="lbl">
-                Gaps to close moving to {result.target.name}
+                Same in substance, or {sourceName} already asks for more
               </div>
             </div>
-            <div className="stat covered">
-              <div className="num">{result.covered.length - nilBoth.length}</div>
-              <div className="lbl">Requirements already met or exceeded</div>
-            </div>
-            {nilBoth.length > 0 && (
+            {result.neither.length > 0 && (
               <div className="stat">
-                <div className="num">{nilBoth.length}</div>
-                <div className="lbl">
-                  Neither regime addresses — silence on both sides, not coverage
-                </div>
+                <div className="num">{result.neither.length}</div>
+                <div className="lbl">Neither law deals with this</div>
               </div>
             )}
           </div>
 
           <h2 className="section">
-            Gaps — where {result.target.name} demands more than {result.source.name}
+            Where {targetName} asks for more than {sourceName}
           </h2>
           {result.gaps.length === 0 ? (
             <p className="empty">
-              No additional obligations detected. Complying with {result.source.name} broadly meets
-              or exceeds {result.target.name} across the tracked requirements.
+              No additional obligations detected. Complying with {sourceName} broadly meets or
+              exceeds {targetName} across the tracked requirements.
             </p>
           ) : (
             <div className="table-wrap">
@@ -117,78 +240,190 @@ export default function GapAnalysisPage() {
                 <thead>
                   <tr>
                     <th style={{ width: "20%" }}>Requirement</th>
-                    <th style={{ width: "13%" }}>Your baseline</th>
-                    <th style={{ width: "13%" }}>Target</th>
-                    <th>What the target additionally requires</th>
-                    <th style={{ width: "16%" }}>Citation</th>
+                    <th style={{ width: "13%" }}>{sourceName}</th>
+                    <th style={{ width: "13%" }}>{targetName}</th>
+                    <th>What differs</th>
                   </tr>
                 </thead>
                 <tbody>
                   {result.gaps.map((c) => (
-                    <tr key={c.requirement.id}>
-                      <td>
-                        <div className="req-name">{c.requirement.name}</div>
-                        <div className="req-cat">{c.requirement.category}</div>
-                      </td>
-                      <td>
-                        <CoverageBadge level={c.sourceStrictness} />
-                        <Understated lawIds={c.sourceLawIds} requirementId={c.requirement.id} />
-                      </td>
-                      <td>
-                        <CoverageBadge level={c.targetStrictness} />
-                        <Understated lawIds={c.targetLawIds} requirementId={c.requirement.id} />
-                      </td>
-                      <td style={{ color: "var(--text-muted)" }}>
-                        {c.targetObligation}
-                        {/* A gap is the difference between two scores, and where
-                            the baseline score rests on no quoted text it is the
-                            unevidenced half driving the conclusion. Show it. */}
-                        {!c.sourceQuoted &&
-                          tracesFor(c.sourceLawIds, c.requirement.id).map((t) => (
-                            <GapTraceDetails key={t.lawId} trace={t} showLaw />
-                          ))}
-                      </td>
-                      <td className="citation">{c.targetCitation}</td>
-                    </tr>
+                    <Fragment key={c.requirement.id}>
+                      <tr>
+                        <RequirementCell c={c} />
+                        <ScoreCell
+                          level={c.sourceStrictness}
+                          lawIds={c.sourceLawIds}
+                          requirementId={c.requirement.id}
+                        />
+                        <ScoreCell
+                          level={c.targetStrictness}
+                          lawIds={c.targetLawIds}
+                          requirementId={c.requirement.id}
+                        />
+                        <td>
+                          <WhatDiffers c={c} sourceName={sourceName} targetName={targetName} />
+                          {/* A gap is the difference between two scores, and where
+                              the baseline score rests on no quoted text it is the
+                              unevidenced half driving the conclusion. Show it. */}
+                          {!c.sourceQuoted &&
+                            tracesFor(c.sourceLawIds, c.requirement.id).map((t) => (
+                              <GapTraceDetails key={t.lawId} trace={t} showLaw />
+                            ))}
+                        </td>
+                      </tr>
+                      <PointsRow
+                        c={c}
+                        colSpan={4}
+                        sourceName={sourceName}
+                        targetName={targetName}
+                      />
+                    </Fragment>
                   ))}
                 </tbody>
               </table>
             </div>
           )}
 
-          <h2 className="section">Already covered</h2>
-          <div className="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th style={{ width: "24%" }}>Requirement</th>
-                  <th style={{ width: "15%" }}>Your baseline</th>
-                  <th style={{ width: "15%" }}>Target</th>
-                  <th>Target obligation</th>
-                </tr>
-              </thead>
-              <tbody>
-                {trulyCovered.map((c) => (
-                  <tr key={c.requirement.id}>
-                    <td>
-                      <div className="req-name">{c.requirement.name}</div>
-                    </td>
-                    <td>
-                      <CoverageBadge level={c.sourceStrictness} />
-                    </td>
-                    <td>
-                      <CoverageBadge level={c.targetStrictness} />
-                    </td>
-                    <td style={{ color: "var(--text-muted)" }}>{c.targetObligation}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {nilBoth.length > 0 && (
+          {result.different.length > 0 && (
             <>
-              <h2 className="section">Neither regime addresses</h2>
+              <h2 className="section">Different approach</h2>
+              <p className="cmp-intro">
+                Both laws deal with these points, but not in the same way. Neither is simply stricter
+                here, so read both placements before drawing a conclusion.
+              </p>
+              <div className="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th style={{ width: "20%" }}>Requirement</th>
+                      <th style={{ width: "13%" }}>{sourceName}</th>
+                      <th style={{ width: "13%" }}>{targetName}</th>
+                      <th>What differs</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.different.map((c) => (
+                      <Fragment key={c.requirement.id}>
+                        <tr>
+                          <RequirementCell c={c} />
+                          <ScoreCell
+                            level={c.sourceStrictness}
+                            lawIds={c.sourceLawIds}
+                            requirementId={c.requirement.id}
+                          />
+                          <ScoreCell
+                            level={c.targetStrictness}
+                            lawIds={c.targetLawIds}
+                            requirementId={c.requirement.id}
+                          />
+                          <td>
+                            <ul className="diff-list">
+                              {pointsWith(c, "different").map((p) =>
+                                p.source && p.target ? (
+                                  <li key={p.facetId}>
+                                    <strong>{p.label}</strong>
+                                    <div className="diff-muted">
+                                      {sourceName}: {p.source.says}
+                                    </div>
+                                    <div className="diff-muted">
+                                      {targetName}: {p.target.says}
+                                    </div>
+                                  </li>
+                                ) : null,
+                              )}
+                            </ul>
+                          </td>
+                        </tr>
+                        <PointsRow
+                          c={c}
+                          colSpan={4}
+                          sourceName={sourceName}
+                          targetName={targetName}
+                        />
+                      </Fragment>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
+
+          {result.covered.length > 0 && (
+            <>
+              <h2 className="section">
+                Same in substance, or {sourceName} already asks for more
+              </h2>
+              <div className="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th style={{ width: "20%" }}>Requirement</th>
+                      <th style={{ width: "13%" }}>{sourceName}</th>
+                      <th style={{ width: "13%" }}>{targetName}</th>
+                      <th>In substance</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.covered.map((c) => (
+                      <Fragment key={c.requirement.id}>
+                        <tr>
+                          <RequirementCell c={c} />
+                          <ScoreCell
+                            level={c.sourceStrictness}
+                            lawIds={c.sourceLawIds}
+                            requirementId={c.requirement.id}
+                          />
+                          <ScoreCell
+                            level={c.targetStrictness}
+                            lawIds={c.targetLawIds}
+                            requirementId={c.requirement.id}
+                          />
+                          <td>
+                            {c.byScoreOnly ? (
+                              <p className="diff-note">
+                                {c.targetObligation}{" "}
+                                <span className="citation">{c.targetCitation}</span>
+                              </p>
+                            ) : c.verdict === "same" ? (
+                              <>
+                                <div>Same on all {comparedCount(c)} points compared.</div>
+                                {c.points
+                                  .filter((p) => sameMeaningDifferentWords(p))
+                                  .map((p) => (
+                                    <div key={p.facetId} className="diff-muted">
+                                      Same rule, different name: “{p.source?.ownTerm}” (
+                                      {p.source?.lawShortName}) / “{p.target?.ownTerm}” (
+                                      {p.target?.lawShortName})
+                                    </div>
+                                  ))}
+                              </>
+                            ) : (
+                              <div>
+                                {sourceName} already asks for more on:{" "}
+                                {pointsWith(c, "less")
+                                  .map((p) => p.label)
+                                  .join("; ")}
+                              </div>
+                            )}
+                          </td>
+                        </tr>
+                        <PointsRow
+                          c={c}
+                          colSpan={4}
+                          sourceName={sourceName}
+                          targetName={targetName}
+                        />
+                      </Fragment>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
+
+          {result.neither.length > 0 && (
+            <>
+              <h2 className="section">Neither law deals with this</h2>
               <p className="page-lead" style={{ marginBottom: 16 }}>
                 Both instruments are silent on these, so there is no gap <em>between</em> them —
                 which is not the same as there being no obligation. Each row carries the search
@@ -202,26 +437,25 @@ export default function GapAnalysisPage() {
                   <thead>
                     <tr>
                       <th style={{ width: "24%" }}>Requirement</th>
-                      <th style={{ width: "15%" }}>{result.source.name}</th>
-                      <th style={{ width: "15%" }}>{result.target.name}</th>
+                      <th style={{ width: "15%" }}>{sourceName}</th>
+                      <th style={{ width: "15%" }}>{targetName}</th>
                       <th>What was searched</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {nilBoth.map((c) => (
+                    {result.neither.map((c) => (
                       <tr key={c.requirement.id}>
-                        <td>
-                          <div className="req-name">{c.requirement.name}</div>
-                          <div className="req-cat">{c.requirement.category}</div>
-                        </td>
-                        <td>
-                          <CoverageBadge level={c.sourceStrictness} />
-                          <Understated lawIds={c.sourceLawIds} requirementId={c.requirement.id} />
-                        </td>
-                        <td>
-                          <CoverageBadge level={c.targetStrictness} />
-                          <Understated lawIds={c.targetLawIds} requirementId={c.requirement.id} />
-                        </td>
+                        <RequirementCell c={c} />
+                        <ScoreCell
+                          level={c.sourceStrictness}
+                          lawIds={c.sourceLawIds}
+                          requirementId={c.requirement.id}
+                        />
+                        <ScoreCell
+                          level={c.targetStrictness}
+                          lawIds={c.targetLawIds}
+                          requirementId={c.requirement.id}
+                        />
                         <td style={{ color: "var(--text-muted)" }}>
                           {[
                             ...tracesFor(c.sourceLawIds, c.requirement.id),
@@ -237,6 +471,13 @@ export default function GapAnalysisPage() {
               </div>
             </>
           )}
+
+          <TermsTable
+            sourceLawIds={result.comparisons[0]?.sourceLawIds ?? []}
+            targetLawIds={result.comparisons[0]?.targetLawIds ?? []}
+            sourceName={sourceName}
+            targetName={targetName}
+          />
         </>
       )}
 

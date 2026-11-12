@@ -1,0 +1,259 @@
+{
+  "lawId": "quebec-law25",
+  "answers": {
+    "lawful-basis.ground": {
+      "option": "consent-unless-exempt",
+      "says": "Consent is the default. Personal information may not be passed to a third person unless the person consents or the Act provides for it. Use for another purpose also needs consent, except in listed cases.",
+      "citation": "Private Sector Act s.13",
+      "quote": "No person may communicate to a third person the personal information he holds on another person, unless the person concerned consents to, or this Act provides for, such communication."
+    },
+    "lawful-basis.legitimate-interests": {
+      "option": "no",
+      "says": "No: the Act has no legitimate-interests ground. Collection needs a serious and legitimate reason and a stated purpose (s.4); otherwise the Act relies on consent and the exceptions it lists.",
+      "citation": "Private Sector Act s.4",
+      "quote": "Any person carrying on an enterprise who, for a serious and legitimate reason, collects personal information on another person must determine the purposes for collecting the information before doing so"
+    },
+    "consent.standard": {
+      "option": "implied-can-count",
+      "says": "Consent must be clear, free and informed, and given for specific purposes (s.14). Express consent is required only for sensitive information (s.12, s.13). The Act does not expressly rule out implied consent for other data.",
+      "citation": "Private Sector Act s.14",
+      "quote": "Consent under this Act must be clear, free and informed and be given for specific purposes."
+    },
+    "consent.role": {
+      "option": "the-default-rule",
+      "says": "Consent is the default rule for using personal information for other purposes within the enterprise (s.12), and for communicating it to third persons (s.13). Listed exceptions apply.",
+      "citation": "Private Sector Act s.12",
+      "quote": "Unless the person concerned gives his consent, personal information may not be used within the"
+    },
+    "consent.withdrawal": {
+      "option": "yes-any-time",
+      "says": "Yes: the person must be told of the right to withdraw consent to use or communication (s.8). The Act sets no formalities or limits. Consent lasts only as long as needed for its purposes (s.14).",
+      "citation": "Private Sector Act s.8",
+      "quote": "of the person’s right to withdraw consent to the communication or use of the information collected"
+    },
+    "consent.separate": {
+      "option": "for-sensitive-data",
+      "says": "Yes, for sensitive data only: consent to its use or communication must be express. The Act does not require separate express consent for passing ordinary data to others or sending it abroad.",
+      "citation": "Private Sector Act s.13",
+      "quote": "Such consent must be given expressly when it concerns sensitive personal information."
+    },
+    "notice.timing": {
+      "option": "at-or-before-collection",
+      "says": "Yes: when information is collected from the person, that person must be told the purposes, means, rights and right to withdraw consent. The same information must be repeated on request (s.8).",
+      "citation": "Private Sector Act s.8",
+      "quote": "Any person who collects personal information from the person concerned must, when the information is"
+    },
+    "notice.content": {
+      "option": "detailed-list",
+      "says": "A long prescribed list. At collection: purposes, means, rights, consent withdrawal, third parties and possible transfer outside Québec. On request: data held, who has access, and how long it is kept (s.8).",
+      "citation": "Private Sector Act s.8",
+      "quote": "categories of persons who have access to the information within the enterprise, the duration of the period of time the information will be kept"
+    },
+    "access.right": {
+      "option": "copy-of-data",
+      "says": "A person may have the enterprise confirm that it holds their information and obtain a copy, in a written, intelligible form (s.27). Sources (s.7) and access details (s.8) are given only on request.",
+      "citation": "Private Sector Act s.27",
+      "quote": "confirm the existence of the personal information, communicate it to the person and allow him to obtain a copy of it"
+    },
+    "access.deadline": {
+      "option": "fixed-deadline",
+      "says": "The person in charge must reply in writing promptly and no later than 30 days after receiving the request. A reply not given within 30 days is deemed a refusal (s.32).",
+      "citation": "Private Sector Act s.32",
+      "quote": "promptly and not later than 30 days after the date the request is received"
+    },
+    "deletion.right": {
+      "option": "duty-only",
+      "says": "The Act itself gives no right to demand deletion: the enterprise must destroy or anonymize information once its purposes are achieved (s.23). A right to have data deleted sits in the Civil Code (art. 40), which this file does not hold.",
+      "citation": "Private Sector Act s.23",
+      "quote": "must destroy the information, or anonymize it to use it for serious and legitimate"
+    },
+    "deletion.pass-on": {
+      "option": "no",
+      "says": "No general duty to tell others to delete. Narrow rules exist: a mandatary must not keep information after its contract ends (s.18.3), and a research recipient must report destruction to the sender (s.21.0.2).",
+      "citation": "Private Sector Act s.18.3",
+      "quote": "mandatary or person does not keep the information after the expiry of the mandate or contract"
+    },
+    "correction.right": {
+      "option": "yes",
+      "says": "Yes: a person may require that personal information about them that is inaccurate, incomplete or equivocal be rectified (s.28). A correction must be provided free of charge as a copy (s.35).",
+      "citation": "Private Sector Act s.28",
+      "quote": "may, if personal information concerning him is inaccurate, incomplete or equivocal"
+    },
+    "correction.pass-on": {
+      "option": "no",
+      "says": "The Act does not require a correction to be passed to those who already received the data. Section 35 requires only a free copy of the changed information to the requester. Any further duty comes from Civil Code art. 40, not in this file.",
+      "citation": "Private Sector Act s.35",
+      "quote": "free of charge to the person who made the request a copy of any personal information modified or added"
+    },
+    "portability.right": {
+      "option": "direct-transfer",
+      "says": "Computerized information the person supplied must be given to them in a structured, commonly used technological format and, at their request, sent to any person or body authorized by law to collect it (s.27).",
+      "citation": "Private Sector Act s.27",
+      "quote": "communicated, at the applicant’s request, to any person or body authorized by law to collect such information"
+    },
+    "optout.marketing": {
+      "option": "opt-in",
+      "says": "Consent is needed first: commercial prospection cannot be a consistent purpose, so its use requires consent (s.12). The person must be told they may withdraw consent, and use must then stop (s.22).",
+      "citation": "Private Sector Act s.12",
+      "quote": "commercial or philanthropic prospection may not be considered a consistent purpose"
+    },
+    "optout.sale": {
+      "option": "needs-consent-or-ground",
+      "says": "Passing personal information to a third person needs the person's consent, unless the Act provides for it (s.13). There is no opt-out model for sharing or selling data.",
+      "citation": "Private Sector Act s.13",
+      "quote": "unless the person concerned consents to, or this Act provides for, such communication"
+    },
+    "adm.protection": {
+      "option": "refuse-or-human-review",
+      "says": "People must be told when a decision is made only by automated processing and, on request, given the reasons and main factors. They can put their case to a staff member who is in a position to review the decision (s.12.1).",
+      "citation": "Private Sector Act s.12.1",
+      "quote": "The person concerned must be given the opportunity to submit observations to a member of the personnel of the enterprise who is in a position to review the decision"
+    },
+    "sensitive.category": {
+      "option": "sensitivity-is-a-factor",
+      "says": "No fixed list. Information is sensitive if, by its nature (medical, biometric, intimate) or its context of use, it carries a high reasonable expectation of privacy. The examples are not exhaustive (s.12).",
+      "citation": "Private Sector Act s.12",
+      "quote": "sensitive if, due to its nature, in particular its medical, biometric or otherwise intimate nature, or the"
+    },
+    "sensitive.rule": {
+      "option": "express-consent",
+      "says": "Sensitive personal information needs express consent for its use (s.12) and for its communication to third persons (s.13). Consent must be given expressly, not implied.",
+      "citation": "Private Sector Act s.13",
+      "quote": "Such consent must be given expressly when it concerns sensitive personal information."
+    },
+    "children.rule": {
+      "option": "parental-consent-below-age",
+      "says": "Below 14, a minor's information may not be collected without consent from the parent or tutor, unless it is clearly for the minor's benefit (s.4.1). From 14, the minor may consent alone (s.14).",
+      "citation": "Private Sector Act s.4.1",
+      "quote": "The personal information concerning a minor under 14 years of age may not be collected from him"
+    },
+    "breach.regulator": {
+      "option": "yes-no-fixed-time",
+      "says": "Yes, promptly, with no fixed number of hours, where the confidentiality incident presents a risk of serious injury (s.3.5). The Act sets no deadline in hours or days.",
+      "citation": "Private Sector Act s.3.5",
+      "quote": "If the incident presents a risk of serious injury, the person carrying on an enterprise must promptly notify"
+    },
+    "breach.individuals": {
+      "option": "yes-when-harm-likely",
+      "says": "Yes, where the incident presents a risk of serious injury: each person whose information is concerned must be notified, unless an investigation could be hampered (s.3.5). The Commission may order it.",
+      "citation": "Private Sector Act s.3.5",
+      "quote": "He must also notify any person whose personal information is concerned by the incident"
+    },
+    "breach.records": {
+      "option": "yes",
+      "says": "Yes: a register of confidentiality incidents must be kept, and a copy sent to the Commission on request (s.3.8).",
+      "citation": "Private Sector Act s.3.8",
+      "quote": "A person carrying on an enterprise must keep a register of confidentiality incidents."
+    },
+    "dpo.officer": {
+      "option": "always",
+      "says": "Yes, every enterprise. The person with the highest authority must ensure the Act is complied with and acts as person in charge of personal information protection, though the role may be delegated in writing (s.3.1).",
+      "citation": "Private Sector Act s.3.1",
+      "quote": "implemented and complied with. That person shall exercise the function of person in charge of the protection"
+    },
+    "dpo.local-representative": {
+      "option": "no",
+      "says": "No. The Act does not require a foreign organisation to appoint a local representative. Nearest rules: the person in charge (s.3.1), and the assessment before sending data outside Québec (s.17).",
+      "citation": "Private Sector Act s.1",
+      "quote": "whether the enterprise keeps the information itself or through the agency of a third person"
+    },
+    "dpia.duty": {
+      "option": "in-listed-cases",
+      "says": "Yes, in listed cases: any project to acquire, develop or overhaul an information system or electronic service delivery system that involves personal information needs a privacy impact assessment (s.3.3).",
+      "citation": "Private Sector Act s.3.3",
+      "quote": "Any person carrying on an enterprise must conduct a privacy impact assessment for any project to"
+    },
+    "dpia.regulator": {
+      "option": "no",
+      "says": "No: the Act does not require the assessment itself to be sent to or approved by the Commission. The nearest rule is that a research agreement must be sent to the Commission (s.21.0.2), and the Commission may demand information (s.81.3).",
+      "citation": "Private Sector Act s.21.0.2",
+      "quote": "The agreement must be sent to the Commission and comes into force 30 days after it is received by the"
+    },
+    "transfer.rule": {
+      "option": "safeguards-or-assessment",
+      "says": "Before sending information outside Québec, a privacy impact assessment is required. Sending is allowed if it shows adequate protection, under a written agreement (s.17). The Act lists no approved countries.",
+      "citation": "Private Sector Act s.17",
+      "quote": "The information may be communicated if the assessment establishes that it would receive adequate"
+    },
+    "transfer.tell-people": {
+      "option": "told",
+      "says": "They must be told, when information is collected, of the possibility that it could be communicated outside Québec (s.8). The Act does not require separate consent for this.",
+      "citation": "Private Sector Act s.8",
+      "quote": "the possibility that the information could be communicated outside Québec"
+    },
+    "localization.rule": {
+      "option": "no",
+      "says": "No. The Act does not require personal information to be stored in Québec. It regulates sending information outside Québec through a privacy impact assessment and a written agreement (s.17).",
+      "citation": "Private Sector Act s.17",
+      "quote": "Before communicating personal information outside Québec, a person carrying on an enterprise must conduct a privacy impact assessment"
+    },
+    "records.duty": {
+      "option": "policies-and-practices",
+      "says": "Documented governance policies and practices must be set up and approved by the person in charge, covering retention, destruction, roles and complaints, and published in plain language (s.3.2). No per-activity record is required.",
+      "citation": "Private Sector Act s.3.2",
+      "quote": "Any person carrying on an enterprise must establish and implement governance policies and practices"
+    },
+    "vendor.contract": {
+      "option": "contract-with-set-terms",
+      "says": "A mandate or contract with a service provider must be in writing. It must specify protection measures, limit use to the mandate, and bar keeping the information after the contract ends (s.18.3).",
+      "citation": "Private Sector Act s.18.3",
+      "quote": "specify in the mandate or contract the measures the mandatary or the person performing the contract"
+    },
+    "vendor.direct-duties": {
+      "option": "yes",
+      "says": "Yes: a mandatary or contractor must notify the person in charge without delay of any violation of confidentiality, and must allow the person in charge to verify compliance (s.18.3).",
+      "citation": "Private Sector Act s.18.3",
+      "quote": "must notify the person in charge of the protection of personal information without delay of any"
+    },
+    "security.duty": {
+      "option": "general-standard",
+      "says": "Security measures must be reasonable given the sensitivity, purpose, quantity, distribution and storage medium of the information (s.10). The Act names no specific measures.",
+      "citation": "Private Sector Act s.10",
+      "quote": "collected, used, communicated, kept or destroyed and that are reasonable given the sensitivity of the information"
+    },
+    "enforcement.fines": {
+      "option": "turnover-based",
+      "says": "Yes: the Commission can impose monetary administrative penalties of up to $50,000 for a natural person, or otherwise the greater of $10 million or 2% of worldwide turnover (s.90.12). Penal fines need a court (s.91).",
+      "citation": "Private Sector Act s.90.12",
+      "quote": "in all other cases, $10,000,000 or, if greater, the amount corresponding to 2% of worldwide turnover for the preceding fiscal year"
+    },
+    "enforcement.private-action": {
+      "option": "limited",
+      "says": "Limited: punitive damages of at least $1,000 are awarded where the infringement is intentional or results from a gross fault (s.93.1). Ordinary damages come from the Civil Code, which is not in this file.",
+      "citation": "Private Sector Act s.93.1",
+      "quote": "the infringement is intentional or results from a gross fault, the court shall award"
+    }
+  },
+  "terms": {
+    "organisation": {
+      "term": "person carrying on an enterprise",
+      "citation": "Private Sector Act s.3.1",
+      "quote": "Any person carrying on an enterprise is responsible for protecting the personal information held by the"
+    },
+    "vendor": {
+      "term": "mandatary",
+      "citation": "Private Sector Act s.18.3",
+      "quote": "specify in the mandate or contract the measures the mandatary or the person performing the contract"
+    },
+    "person": {
+      "term": "person concerned",
+      "citation": "Private Sector Act s.8",
+      "quote": "Any person who collects personal information from the person concerned must, when the information is"
+    },
+    "data": {
+      "term": "personal information",
+      "citation": "Private Sector Act s.2",
+      "quote": "Personal information is any information which relates to a natural person and directly or indirectly allows that person to be identified."
+    },
+    "sensitive": {
+      "term": "sensitive personal information",
+      "citation": "Private Sector Act s.13",
+      "quote": "Such consent must be given expressly when it concerns sensitive personal information."
+    },
+    "regulator": {
+      "term": "Commission d’accès à l’information",
+      "citation": "Private Sector Act s.3.5",
+      "quote": "the Commission d’accès à l’information established by section 103 of the Act respecting Access to documents"
+    }
+  }
+}

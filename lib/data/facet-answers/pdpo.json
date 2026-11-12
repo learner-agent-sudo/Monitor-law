@@ -1,0 +1,244 @@
+{
+  "lawId": "pdpo",
+  "answers": {
+    "lawful-basis.ground": {
+      "option": "fair-purpose",
+      "says": "There is no list of legal grounds. Personal data may be collected only for a lawful purpose directly related to the data user's function or activity, by lawful and fair means, and only as far as necessary.",
+      "citation": "DPP1(1)",
+      "quote": "the data is collected for a lawful purpose directly related to a function or activity of the data user who is to use"
+    },
+    "lawful-basis.legitimate-interests": {
+      "option": "not-needed",
+      "says": "The question does not arise: the Ordinance has no list of grounds, so no ground such as the organisation's own interests is needed. Collection only has to meet the purpose, necessity and fairness tests.",
+      "citation": "DPP1(1)",
+      "quote": "Personal data shall not be collected unless"
+    },
+    "consent.standard": {
+      "option": "must-be-express",
+      "says": "Prescribed consent must be the express consent of the person, given voluntarily. Implied consent is not enough. The Ordinance does not say 'informed' or that silence never counts.",
+      "citation": "s.2(3)(a)",
+      "quote": "means the express consent of the person given voluntarily"
+    },
+    "consent.role": {
+      "option": "only-for-specific-uses",
+      "says": "Consent is needed only for particular uses: a new purpose of use (DPP3(1)) and direct marketing (Part 6A). Ordinary collection and use for the original purpose needs no consent.",
+      "citation": "DPP3(1)",
+      "quote": "Personal data shall not, without the prescribed consent of the data subject, be used for a new purpose"
+    },
+    "consent.withdrawal": {
+      "option": "yes-with-limits",
+      "says": "Prescribed consent stops counting once withdrawn by written notice served on the person who was given it. Withdrawal works from the notice onward. For direct marketing, s.35G lets a person require the use to stop at any time.",
+      "citation": "s.2(3)(b)",
+      "quote": "does not include any consent which has been withdrawn by notice in writing served on the person to whom the consent has been given"
+    },
+    "consent.separate": {
+      "option": "no",
+      "says": "No separate tier of consent. Prescribed consent (express and voluntary) is the only kind. It is needed for a new purpose (DPP3) and for direct marketing; giving data to others for marketing needs written consent (s.35K).",
+      "citation": "DPP3(1); s.35K(1)(a)",
+      "quote": "Personal data shall not, without the prescribed consent of the data subject, be used for a new purpose"
+    },
+    "notice.timing": {
+      "option": "at-or-before-collection",
+      "says": "Where the person supplying the data is the data subject, the data user must take all practicable steps to tell them, on or before collection, the purpose and the classes of persons the data may go to, and whether supplying it is obligatory.",
+      "citation": "DPP1(3)",
+      "quote": "where the person from whom personal data is or is to be collected is the data subject, all practicable steps shall be taken"
+    },
+    "notice.content": {
+      "option": "purposes-and-recipients",
+      "says": "The notice must give the purpose and the classes of people the data may be passed to, whether supplying it is obligatory, and the access and correction rights with who handles requests. Retention periods are not required.",
+      "citation": "DPP1(3)",
+      "quote": "the classes of persons to whom the data may be transferred"
+    },
+    "access.right": {
+      "option": "copy-of-data",
+      "says": "A person may ask whether the organisation holds their personal data (a data access request) and, if it does, for a copy of that data. The law gives no right to details of purposes, recipients or sources.",
+      "citation": "s.18(1)",
+      "quote": "to be supplied by the data user with a copy of such data"
+    },
+    "access.deadline": {
+      "option": "fixed-deadline",
+      "says": "The data user must comply within 40 days after receiving the request, subject to the refusal grounds in s.20 and the fee rule in s.28(5). DPP6 separately asks for a reasonable time.",
+      "citation": "s.19(1)",
+      "quote": "a data user must comply with a data access request within 40 days"
+    },
+    "deletion.right": {
+      "option": "duty-only",
+      "says": "No right for the person to require deletion. The data user must itself take all practicable steps to erase personal data it no longer needs for its purpose, unless erasure is prohibited by law or the data is in the public interest to keep.",
+      "citation": "s.26(1)",
+      "quote": "must take all practicable steps to erase personal data held by the data user"
+    },
+    "deletion.pass-on": {
+      "option": "no",
+      "says": "No duty to tell others holding the data to delete it. Section 26(2)(a) says a data user must erase data even where another data user controls its processing, but does not require that other user to be notified.",
+      "citation": "s.26(2)(a)",
+      "quote": "must take all practicable steps to erase personal data in accordance with subsection (1)"
+    },
+    "correction.right": {
+      "option": "yes",
+      "says": "A person may make a data correction request for personal data they consider inaccurate. If the data user is satisfied it is inaccurate, it must correct it and send a copy of the corrected data within 40 days (s.23(1)).",
+      "citation": "s.22(1)",
+      "quote": "may make a request that the data user make the necessary"
+    },
+    "correction.pass-on": {
+      "option": "yes",
+      "says": "If the data went to a third party in the 12 months before the correction, the data user must send that party the corrected data with written reasons, unless it has reason to believe the party has stopped using it.",
+      "citation": "s.23(1)(c)",
+      "quote": "take all practicable steps to supply the third party with a copy of the data as so corrected"
+    },
+    "portability.right": {
+      "option": "none",
+      "says": "The Ordinance gives no data portability right. The nearest thing is the access right in s.18, which gives a copy of the data held to the person, not a transfer to another organisation.",
+      "citation": "s.18(1)",
+      "quote": "to be supplied by the data user with a copy of such data"
+    },
+    "optout.marketing": {
+      "option": "opt-in",
+      "says": "A data user must get the person's consent before using their data in direct marketing (s.35E(1)), after giving the required information (s.35C). The person can still require the use to stop at any time (s.35G(1)).",
+      "citation": "s.35E(1); s.35G(1)",
+      "quote": "must not use the data subject’s personal data in direct marketing unless"
+    },
+    "optout.sale": {
+      "option": "needs-consent-or-ground",
+      "says": "Passing data to others is a use, and a new purpose needs prescribed consent (DPP3(1)). Providing data to others for direct marketing needs written consent (s.35K(1)(a)). There is no opt-out route for a sale in the first place.",
+      "citation": "DPP3(1)",
+      "quote": "Personal data shall not, without the prescribed consent of the data subject, be used for a new purpose"
+    },
+    "adm.protection": {
+      "option": "none",
+      "says": "The Ordinance does not single out decisions made only by automated means or profiling. No right to refuse, be told of, or ask for review of such decisions exists."
+    },
+    "sensitive.category": {
+      "option": "sensitivity-is-a-factor",
+      "says": "No fixed list of sensitive data. The kind of data, and the harm that could result from misuse, is a factor the data user must weigh when deciding how much security is practicable.",
+      "citation": "DPP4(1)",
+      "quote": "the kind of data and the harm that could result"
+    },
+    "sensitive.rule": {
+      "option": "no-special-rule",
+      "says": "No special rule applies to any kind of data. The same principles apply to all personal data, and sensitivity only feeds into the security duty in DPP4(1)(a).",
+      "citation": "DPP4(1)(a)",
+      "quote": "the kind of data and the harm that could result if any of"
+    },
+    "children.rule": {
+      "option": "someone-acts-for-child",
+      "says": "No age limit and no children's regime. For a minor, a person with parental responsibility is the relevant person, who can make access requests for them and, in limited cases, give prescribed consent to a new purpose (DPP3(2)).",
+      "citation": "s.2(1); DPP3(2)",
+      "quote": "where the individual is a minor, a person who has parental responsibility for the minor"
+    },
+    "breach.regulator": {
+      "option": "no",
+      "says": "No duty to tell the Commissioner about a data breach. The Ordinance contains no breach-notification rule."
+    },
+    "breach.individuals": {
+      "option": "no",
+      "says": "No duty to tell affected people about a data breach. The Ordinance contains no breach-notification rule."
+    },
+    "breach.records": {
+      "option": "no",
+      "says": "No duty to keep a record of data breaches. The only log book the Ordinance requires is for refused access and correction requests (s.27).",
+      "citation": "s.27(1)",
+      "quote": "A data user shall keep and maintain a log book"
+    },
+    "dpo.officer": {
+      "option": "no",
+      "says": "No duty to appoint a data protection officer. The nearest thing is that a data user must tell people the name or job title and address of the individual who handles access and correction requests.",
+      "citation": "DPP1(3)",
+      "quote": "the name or job title, and address, of the individual who is to handle any such request"
+    },
+    "dpo.local-representative": {
+      "option": "no",
+      "says": "No duty for an organisation based abroad to appoint a representative in Hong Kong. The Ordinance has no local-representative rule at all, and it only binds the Government as a public body.",
+      "citation": "s.3(1)",
+      "quote": "This Ordinance binds the Government"
+    },
+    "dpia.duty": {
+      "option": "no",
+      "says": "No duty to assess risks before a use of data. The Ordinance has no impact-assessment requirement. The nearest thing is the security duty in DPP4(1), which asks for regard to the kind of data and the harm."
+    },
+    "dpia.regulator": {
+      "option": "no",
+      "says": "No duty to send any risk assessment to the Commissioner or to consult the Commissioner before a risky use of data. The Ordinance has no such assessment."
+    },
+    "transfer.rule": {
+      "option": "no-restriction",
+      "says": "No restriction is in force. Section 33, which would bar transfers outside Hong Kong unless listed conditions are met, is printed as 'Not yet in operation' and is treated as not in force.",
+      "citation": "s.33 (not yet in operation)",
+      "quote": "A data user shall not transfer personal data to a place outside Hong Kong unless"
+    },
+    "transfer.tell-people": {
+      "option": "no",
+      "says": "No duty to tell or ask people before their data goes abroad. DPP1(3) requires telling people the classes of persons to whom data may be transferred, not overseas transfers in particular."
+    },
+    "localization.rule": {
+      "option": "no",
+      "says": "No requirement to store personal data inside Hong Kong. The Ordinance has no localisation rule."
+    },
+    "records.duty": {
+      "option": "policies-and-practices",
+      "says": "A data user must take all practicable steps so that a person can find out its policies and practices on personal data, the kinds of data it holds, and the main purposes of use. There is no detailed record-of-processing duty.",
+      "citation": "DPP5",
+      "quote": "ascertain a data user’s policies and practices in relation to personal data"
+    },
+    "vendor.contract": {
+      "option": "stays-responsible",
+      "says": "The data user stays responsible. For a data processor, inside or outside Hong Kong, it must adopt contractual or other means to limit retention (DPP2(3)) and to prevent unauthorised access or loss (DPP4(2)).",
+      "citation": "DPP2(3)",
+      "quote": "adopt contractual or other means to prevent any personal data transferred to the data processor"
+    },
+    "vendor.direct-duties": {
+      "option": "no",
+      "says": "No. The duties on processing done for a data user fall on that data user, which must adopt contractual or other means. The Ordinance places no direct duty on the data processor itself.",
+      "citation": "DPP4(2)",
+      "quote": "the data user must adopt contractual or other means to prevent"
+    },
+    "security.duty": {
+      "option": "general-standard",
+      "says": "All practicable steps must be taken to protect personal data against unauthorised or accidental access, processing, erasure, loss or use. The law lists matters to weigh (kind of data, location, staff, transmission) but names no measures.",
+      "citation": "DPP4(1)",
+      "quote": "all practicable steps shall be taken to ensure that"
+    },
+    "enforcement.fines": {
+      "option": "courts-only",
+      "says": "No. The Commissioner can only serve an enforcement notice (s.50). Ignoring one is an offence, and a court sets the penalty: on a first conviction a fine at level 5 and up to 2 years in prison (s.50A).",
+      "citation": "s.50A(1)",
+      "quote": "A data user who contravenes an enforcement notice commits"
+    },
+    "enforcement.private-action": {
+      "option": "general",
+      "says": "Yes. An individual who suffers damage from a contravention by a data user of a requirement under the Ordinance is entitled to compensation, which may include injury to feelings. The data user has a defence of reasonable care (s.66(3)).",
+      "citation": "s.66(1)",
+      "quote": "shall be entitled to compensation from that data user for that damage"
+    }
+  },
+  "terms": {
+    "organisation": {
+      "term": "data user",
+      "citation": "s.2(1)",
+      "quote": "data user (資料使用者), in relation to personal data, means a person who, either alone or jointly or in common with other persons"
+    },
+    "vendor": {
+      "term": "data processor",
+      "citation": "DPP2(4)",
+      "quote": "data processor (資料處理者) means a person who—"
+    },
+    "person": {
+      "term": "data subject",
+      "citation": "s.2(1)",
+      "quote": "data subject (資料當事人), in relation to personal data, means the individual who is the subject of the data"
+    },
+    "data": {
+      "term": "personal data",
+      "citation": "s.2(1)",
+      "quote": "personal data (個人資料) means any data—"
+    },
+    "sensitive": {
+      "term": null,
+      "note": "The Ordinance defines no category of sensitive personal data. Sensitivity appears only as a factor in DPP4(1)(a)."
+    },
+    "regulator": {
+      "term": "Commissioner",
+      "citation": "s.2(1)",
+      "quote": "Commissioner (專員) means the Privacy Commissioner for Personal Data established under section 5(1)"
+    }
+  }
+}
