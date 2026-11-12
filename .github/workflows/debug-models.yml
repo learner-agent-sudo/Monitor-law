@@ -1,4 +1,4 @@
-name: Debug - GitHub Models (temporary)
+name: Debug - feeds (temporary)
 on:
   push:
     branches:
@@ -7,51 +7,66 @@ on:
       - ".github/workflows/debug-models.yml"
 permissions:
   contents: read
-  models: read
 jobs:
   probe:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
-      - name: Try other addresses
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          BODY='{"model":"openai/gpt-4o-mini","messages":[{"role":"user","content":"Reply with the single word: ready"}],"max_tokens":20}'
-          BODY2='{"model":"gpt-4o-mini","messages":[{"role":"user","content":"Reply with the single word: ready"}],"max_tokens":20}'
-          get() { echo; echo "== GET $1"; curl -sS -i -m 25 -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" "$1" | head -c 600 | tr -d '\r' || true; }
-          post() { echo; echo "== POST $1"; curl -sS -i -m 40 -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" -H "Content-Type: application/json" "$1" -d "$2" | head -c 900 | tr -d '\r' || true; }
-          get https://models.github.ai/
-          get https://models.github.ai/does-not-exist
-          post https://models.github.ai/inference/v1/chat/completions "$BODY"
-          post https://models.github.ai/v1/chat/completions "$BODY"
-          post "https://models.github.ai/orgs/${GITHUB_REPOSITORY_OWNER}/inference/chat/completions" "$BODY"
-          post https://models.inference.ai.azure.com/chat/completions "$BODY2"
-          get https://models.inference.ai.azure.com/models
-          get https://api.github.com/catalog/models
-          get https://api.github.com/models
-          post https://api.github.com/inference/chat/completions "$BODY"
-          post https://api.github.com/models/inference/chat/completions "$BODY"
-          echo; echo "== dns"; getent hosts models.github.ai || true
-      - name: Official action
-        id: ai
-        continue-on-error: true
-        uses: actions/ai-inference@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          prompt: "Reply with the single word: ready"
-          model: openai/gpt-4o-mini
-      - name: Official action result
-        env:
-          RESPONSE: ${{ steps.ai.outputs.response }}
-          OUTCOME: ${{ steps.ai.outcome }}
+          node-version: 20
+      - name: Probe candidate feeds
         run: |
-          echo "outcome: $OUTCOME"
-          echo "response: ${RESPONSE:0:300}"
-      - name: gh models extension
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh extension install github/gh-models 2>&1 | tail -2 || true
-          echo "== list"; GH_DEBUG=api gh models list 2>&1 | grep -E "^\* Request to|^< HTTP|^\* Request took|^[a-z].*/" | head -30 || true
-          echo "== run"; GH_DEBUG=api gh models run openai/gpt-4o-mini "Reply with the single word: ready" 2>&1 | grep -vi "authorization" | head -40 || true
+          cat > /tmp/probe.mjs <<'JS'
+          import { parseFeed } from "./lib/research/feeds.mjs";
+          const urls = process.argv.slice(2);
+          const UA = "Mozilla/5.0 (compatible; law-monitor-agent/1.0; feed reader)";
+          for (const url of urls) {
+            try {
+              const res = await fetch(url, { headers: { "User-Agent": UA, Accept: "application/rss+xml, application/atom+xml, application/xml, text/xml, */*" }, signal: AbortSignal.timeout(25000), redirect: "follow" });
+              const text = await res.text();
+              const items = parseFeed(text);
+              const dates = items.map((i) => i.published).filter(Boolean).sort((a, b) => b - a);
+              console.log(`${String(res.status).padEnd(4)} items=${String(items.length).padEnd(4)} newest=${dates[0] ? dates[0].toISOString().slice(0, 10) : "-"} oldest=${dates.length ? dates[dates.length - 1].toISOString().slice(0, 10) : "-"} type=${(res.headers.get("content-type") || "").slice(0, 30).padEnd(30)} len=${String(text.length).padEnd(7)} ${url}${res.redirected ? " -> " + res.url : ""}`);
+              if (items[0]) console.log(`       first: ${items[0].title.slice(0, 90)}`);
+              else console.log(`       body: ${text.slice(0, 110).replace(/\s+/g, " ")}`);
+            } catch (e) { console.log(`ERR  ${url} ${e?.cause?.code || e?.name || e}`); }
+          }
+          JS
+          cp /tmp/probe.mjs ./probe-tmp.mjs
+          node probe-tmp.mjs \
+            https://www.edpb.europa.eu/feed/news_en \
+            https://www.edpb.europa.eu/rss_en \
+            https://edpb.europa.eu/feed/news_en \
+            https://www.edps.europa.eu/feed/news_en \
+            https://www.europarl.europa.eu/rss/doc/press-releases/en.xml \
+            https://www.europarl.europa.eu/rss/doc/top-stories/en.xml \
+            https://www.dataprotectionreport.com/feed/ \
+            https://privacymatters.dlapiper.com/feed/ \
+            https://www.chinalawtranslate.com/feed/ \
+            https://www.chinalawtranslate.com/en/feed/ \
+            https://www.pcpd.org.hk/english/rss/rss.xml \
+            https://www.pcpd.org.hk/rss/rss_e.xml \
+            https://www.pdpc.gov.sg/rss \
+            https://www.ppc.go.jp/rss/news.xml \
+            https://www.ppc.go.jp/en/rss.xml \
+            https://iapp.org/rss/daily-dashboard/ \
+            https://www.globalpolicywatch.com/feed/ \
+            https://www.privacyworld.blog/feed/ \
+            https://www.debevoisedatablog.com/feed/ \
+            https://law.asia/feed/ \
+            https://www.techpolicy.press/rss/feed.xml \
+            https://www.insidetechlaw.com/feed/ \
+            https://www.technologylawdispatch.com/feed/ \
+            https://www.huntonak.com/privacy-and-information-security-law/feed \
+            https://www.lexology.com/rss \
+            https://digital-strategy.ec.europa.eu/en/rss.xml \
+            https://www.oaic.gov.au/rss \
+            https://www.priv.gc.ca/en/rss/news \
+            https://ico.org.uk/global/rss-feeds/ \
+            https://www.meti.go.jp/english/rss/index.xml \
+            https://www.imda.gov.sg/rss \
+            https://eur-lex.europa.eu/EN/display-feed.rss?rssId=222 \
+            https://www.cnil.fr/en/rss.xml \
+            https://www.info.gov.hk/gia/rss/general_en.xml
