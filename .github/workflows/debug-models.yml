@@ -11,38 +11,47 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
-      - name: Catalog with curl
+      - name: Try other addresses
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "== catalog, with token"
-          curl -sS -i -m 30 -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" https://models.github.ai/catalog/models | head -c 1500 || true
-          echo; echo "== catalog, no token"
-          curl -sS -i -m 30 -H "Accept: application/json" https://models.github.ai/catalog/models | head -c 700 || true
-      - name: Chat with curl
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          for m in openai/gpt-4.1-nano openai/gpt-4o-mini; do
-            echo; echo "== chat $m"
-            curl -sS -i -m 60 -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" -H "Content-Type: application/json" https://models.github.ai/inference/chat/completions -d "{\"model\":\"$m\",\"messages\":[{\"role\":\"user\",\"content\":\"Reply with the single word: ready\"}],\"max_tokens\":20}" | head -c 1500 || true
-          done
-      - uses: actions/setup-node@v4
+          BODY='{"model":"openai/gpt-4o-mini","messages":[{"role":"user","content":"Reply with the single word: ready"}],"max_tokens":20}'
+          BODY2='{"model":"gpt-4o-mini","messages":[{"role":"user","content":"Reply with the single word: ready"}],"max_tokens":20}'
+          get() { echo; echo "== GET $1"; curl -sS -i -m 25 -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" "$1" | head -c 600 | tr -d '\r' || true; }
+          post() { echo; echo "== POST $1"; curl -sS -i -m 40 -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" -H "Content-Type: application/json" "$1" -d "$2" | head -c 900 | tr -d '\r' || true; }
+          get https://models.github.ai/
+          get https://models.github.ai/does-not-exist
+          post https://models.github.ai/inference/v1/chat/completions "$BODY"
+          post https://models.github.ai/v1/chat/completions "$BODY"
+          post "https://models.github.ai/orgs/${GITHUB_REPOSITORY_OWNER}/inference/chat/completions" "$BODY"
+          post https://models.inference.ai.azure.com/chat/completions "$BODY2"
+          get https://models.inference.ai.azure.com/models
+          get https://api.github.com/catalog/models
+          get https://api.github.com/models
+          post https://api.github.com/inference/chat/completions "$BODY"
+          post https://api.github.com/models/inference/chat/completions "$BODY"
+          echo; echo "== dns"; getent hosts models.github.ai || true
+      - name: Official action
+        id: ai
+        continue-on-error: true
+        uses: actions/ai-inference@v1
         with:
-          node-version: 20
-      - name: Same calls with Node fetch
+          prompt: "Reply with the single word: ready"
+          model: openai/gpt-4o-mini
+      - name: Official action result
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RESPONSE: ${{ steps.ai.outputs.response }}
+          OUTCOME: ${{ steps.ai.outcome }}
         run: |
-          node -e '
-          (async () => {
-            const h = { Authorization: "Bearer " + process.env.GITHUB_TOKEN, Accept: "application/vnd.github+json" };
-            const show = async (label, res) => { const t = await res.text(); console.log("==", label, res.status, res.url, "redirected=" + res.redirected, "type=" + res.headers.get("content-type"), "len=" + t.length, "body:", t.slice(0, 400).replace(/\s+/g, " ")); };
-            await show("node catalog", await fetch("https://models.github.ai/catalog/models", { headers: h }));
-            const body = JSON.stringify({ model: "openai/gpt-4o-mini", messages: [{ role: "user", content: "Reply with the single word: ready" }], max_tokens: 20 });
-            await show("node chat", await fetch("https://models.github.ai/inference/chat/completions", { method: "POST", headers: { ...h, "Content-Type": "application/json" }, body }));
-            await show("node chat +signal", await fetch("https://models.github.ai/inference/chat/completions", { method: "POST", headers: { ...h, "Content-Type": "application/json" }, body, signal: AbortSignal.timeout(60000) }));
-          })().catch((e) => { console.log("node error", e); });
-          '
+          echo "outcome: $OUTCOME"
+          echo "response: ${RESPONSE:0:300}"
+      - name: gh models extension
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh extension install github/gh-models 2>&1 | tail -2 || true
+          echo "== list"; GH_DEBUG=api gh models list 2>&1 | grep -E "^\* Request to|^< HTTP|^\* Request took|^[a-z].*/" | head -30 || true
+          echo "== run"; GH_DEBUG=api gh models run openai/gpt-4o-mini "Reply with the single word: ready" 2>&1 | grep -vi "authorization" | head -40 || true
