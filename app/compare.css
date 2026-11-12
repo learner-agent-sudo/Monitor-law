@@ -65,6 +65,11 @@
   color: var(--purple);
   border-color: rgba(163, 113, 247, 0.32);
 }
+.rel-second {
+  background: rgba(76, 141, 255, 0.12);
+  color: var(--accent);
+  border-color: rgba(76, 141, 255, 0.32);
+}
 .rel-unknown {
   background: transparent;
   color: var(--text-faint);
@@ -194,5 +199,99 @@ table.point-table td:first-child {
 @media (max-width: 720px) {
   .diff-list {
     padding-left: 16px;
+  }
+}
+
+/* ---- Phone layout (720px and narrower) ----
+   Tables become stacked blocks: the header row is hidden and each row is a
+   block. Labels come from data-label on each cell. Child combinators are used
+   throughout, so a point table nested in a gap row keeps its own rules.
+   Above 720px none of this applies. */
+@media (max-width: 720px) {
+  .cmp-stack,
+  .cmp-stack > tbody {
+    display: block;
+    width: 100%;
+  }
+  .cmp-stack > thead {
+    display: none;
+  }
+  .cmp-stack > tbody > tr {
+    display: block;
+    padding: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cmp-stack > tbody > tr:last-child {
+    border-bottom: none;
+  }
+  .cmp-stack > tbody > tr > td {
+    display: block;
+    width: auto;
+    min-width: 0;
+    padding: 0;
+    border: none;
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+  .cmp-stack > tbody > tr > td + td {
+    margin-top: 12px;
+  }
+  .cmp-stack > tbody > tr > td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 3px;
+    font-size: 12px;
+    font-weight: 650;
+    color: var(--text-faint);
+  }
+  .cmp-stack .rel-chip,
+  .cmp-stack .point-alias {
+    white-space: normal;
+  }
+
+  /* Gap tables: requirement across the top, the two badges side by side,
+     then the "What differs" / "Why" / "In substance" content at full width. */
+  .cmp-stack-pair > tbody > tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 12px;
+    align-items: start;
+  }
+  .cmp-stack-pair > tbody > tr > td,
+  .cmp-stack-pair > tbody > tr > td + td {
+    margin-top: 0;
+  }
+  .cmp-stack-pair > tbody > tr > td:first-child,
+  .cmp-stack-pair > tbody > tr > td:last-child {
+    grid-column: 1 / -1;
+  }
+  .cmp-stack-pair > tbody > tr > td:first-child {
+    margin-bottom: 10px;
+  }
+  .cmp-stack-pair > tbody > tr > td:last-child {
+    margin-top: 12px;
+  }
+  .cmp-stack-pair > tbody > tr > td[data-label] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+  }
+  .cmp-stack-pair > tbody > tr > td[data-label]::before {
+    margin-bottom: 0;
+  }
+  .cmp-stack-pair > tbody > tr > td .pill {
+    min-width: 0;
+  }
+  .cmp-stack-pair > tbody > tr.cmp-detail-row {
+    display: block;
+    padding: 0;
+    background: rgba(107, 118, 132, 0.04);
+  }
+  .cmp-stack-pair > tbody > tr.cmp-detail-row > td {
+    padding: 0 14px 14px;
+  }
+  .cmp-stack > tbody > tr.cmp-detail-row > td {
+    padding: 0 14px 14px;
   }
 }

@@ -233,8 +233,11 @@ function Comparison({
   // The "In substance" column only makes sense for exactly two jurisdictions:
   // the verdict runs from the first selected to the second, as the callout says.
   const showSubstance = ids.length === 2 && gap !== null;
-  const verdictByReq: Record<string, string> = gap
-    ? Object.fromEntries(gap.comparisons.map((c) => [c.requirement.id, c.verdict]))
+  // A row flagged for a second look reads as such, whatever its points say.
+  const substanceByReq: Record<string, string> = gap
+    ? Object.fromEntries(
+        gap.comparisons.map((c) => [c.requirement.id, c.needsSecondLook ? "second-look" : c.verdict]),
+      )
     : {};
   const verdictChip = (verdict: string | undefined) => {
     if (!gap || !verdict) return null;
@@ -246,6 +249,7 @@ function Comparison({
       same: { cls: "rel-same", text: "Same in substance" },
       different: { cls: "rel-different", text: "Different approach" },
       neither: { cls: "rel-unknown", text: "Neither deals with this" },
+      "second-look": { cls: "rel-second", text: "Worth a second look" },
     };
     const c = chip[verdict];
     return c ? <span className={`rel-chip ${c.cls}`}>{c.text}</span> : null;
@@ -349,7 +353,7 @@ function Comparison({
                           </td>
                         );
                       })}
-                      {showSubstance && <td>{verdictChip(verdictByReq[req.id])}</td>}
+                      {showSubstance && <td>{verdictChip(substanceByReq[req.id])}</td>}
                     </tr>
                   ))}
               </Fragment>

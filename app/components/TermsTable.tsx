@@ -7,6 +7,9 @@ import { terms, termsFor, type TermEntry } from "@/lib/facets";
 // stops a difference in wording being mistaken for a difference in substance.
 // ---------------------------------------------------------------------------
 
+/** Chinese wording gets lang="zh" so screen readers and fonts treat it as such. */
+const CJK = /[\u4E00-\u9FFF]/;
+
 /** The law's English gloss, when the entry carries one (not yet typed on TermEntry). */
 function englishOf(entry: TermEntry): string | undefined {
   return (entry as TermEntry & { english?: string }).english;
@@ -21,12 +24,12 @@ function firstEntry(lawIds: string[], termId: string): TermEntry | null {
   return null;
 }
 
-function TermCell({ entry }: { entry: TermEntry | null }) {
-  if (!entry) return <td className="cmp-muted">Not yet filled in</td>;
+function TermCell({ entry, label }: { entry: TermEntry | null; label: string }) {
+  if (!entry) return <td className="cmp-muted" data-label={label}>Not yet filled in</td>;
 
   if (entry.term === null) {
     return (
-      <td>
+      <td data-label={label}>
         <div className="cmp-muted">{entry.note ?? "No such term in this law."}</div>
         {entry.citation && <div className="citation">{entry.citation}</div>}
       </td>
@@ -35,7 +38,7 @@ function TermCell({ entry }: { entry: TermEntry | null }) {
 
   const english = englishOf(entry);
   return (
-    <td>
+    <td data-label={label}>
       <div>
         <strong>{entry.term}</strong>
         {english && <span className="term-english"> [{english}]</span>}
@@ -44,7 +47,9 @@ function TermCell({ entry }: { entry: TermEntry | null }) {
       {entry.quote && (
         <details className="cmp-disclosure">
           <summary>Wording</summary>
-          <blockquote className="cmp-quote">{entry.quote}</blockquote>
+          <blockquote className="cmp-quote" lang={CJK.test(entry.quote) ? "zh" : undefined}>
+            {entry.quote}
+          </blockquote>
         </details>
       )}
     </td>
@@ -75,7 +80,7 @@ export function TermsTable({
         difference in wording is not mistaken for a difference in substance.
       </p>
       <div className="table-wrap">
-        <table className="point-table">
+        <table className="point-table cmp-stack">
           <thead>
             <tr>
               <th>Idea</th>
@@ -89,8 +94,8 @@ export function TermsTable({
                 <td>
                   <strong>{concept.concept}</strong>
                 </td>
-                <TermCell entry={firstEntry(sourceLawIds, concept.id)} />
-                <TermCell entry={firstEntry(targetLawIds, concept.id)} />
+                <TermCell entry={firstEntry(sourceLawIds, concept.id)} label={sourceName} />
+                <TermCell entry={firstEntry(targetLawIds, concept.id)} label={targetName} />
               </tr>
             ))}
           </tbody>

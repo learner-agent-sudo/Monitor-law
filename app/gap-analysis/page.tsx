@@ -53,23 +53,25 @@ function RequirementCell({ c }: { c: RequirementComparison }) {
 }
 
 function ScoreCell({
+  label,
   level,
   lawIds,
   requirementId,
 }: {
+  label: string;
   level: Strictness;
   lawIds: string[];
   requirementId: string;
 }) {
   return (
-    <td>
+    <td data-label={label}>
       <CoverageBadge level={level} />
       <Understated lawIds={lawIds} requirementId={requirementId} />
     </td>
   );
 }
 
-/** The points, the whole-requirement score and any byScoreOnly / scoreDisagrees notes for a gap row. */
+/** The points, and the byScoreOnly note for a gap row. */
 function WhatDiffers({
   c,
   sourceName,
@@ -101,13 +103,6 @@ function WhatDiffers({
       {c.verdict === "mixed" && less.length > 0 && (
         <p className="diff-muted">
           Where {sourceName} already asks for more: {less.map((p) => p.label).join("; ")}
-        </p>
-      )}
-      {c.scoreDisagrees && (
-        <p className="diff-note">
-          On the points compared here the two laws line up, but overall {targetName} imposes this
-          more firmly: {c.targetObligation}{" "}
-          <span className="citation">({c.targetCitation})</span>
         </p>
       )}
       {c.byScoreOnly && (
@@ -212,6 +207,12 @@ export default function GapAnalysisPage() {
                 <div className="lbl">Different approach: read both</div>
               </div>
             )}
+            {result.secondLook.length > 0 && (
+              <div className="stat">
+                <div className="num">{result.secondLook.length}</div>
+                <div className="lbl">Worth a second look</div>
+              </div>
+            )}
             <div className="stat covered">
               <div className="num">{result.covered.length}</div>
               <div className="lbl">
@@ -236,7 +237,7 @@ export default function GapAnalysisPage() {
             </p>
           ) : (
             <div className="table-wrap">
-              <table>
+              <table className="cmp-stack cmp-stack-pair">
                 <thead>
                   <tr>
                     <th style={{ width: "20%" }}>Requirement</th>
@@ -251,12 +252,12 @@ export default function GapAnalysisPage() {
                       <tr>
                         <RequirementCell c={c} />
                         <ScoreCell
-                          level={c.sourceStrictness}
+                          label={sourceName} level={c.sourceStrictness}
                           lawIds={c.sourceLawIds}
                           requirementId={c.requirement.id}
                         />
                         <ScoreCell
-                          level={c.targetStrictness}
+                          label={targetName} level={c.targetStrictness}
                           lawIds={c.targetLawIds}
                           requirementId={c.requirement.id}
                         />
@@ -292,7 +293,7 @@ export default function GapAnalysisPage() {
                 here, so read both placements before drawing a conclusion.
               </p>
               <div className="table-wrap">
-                <table>
+                <table className="cmp-stack cmp-stack-pair">
                   <thead>
                     <tr>
                       <th style={{ width: "20%" }}>Requirement</th>
@@ -307,12 +308,12 @@ export default function GapAnalysisPage() {
                         <tr>
                           <RequirementCell c={c} />
                           <ScoreCell
-                            level={c.sourceStrictness}
+                            label={sourceName} level={c.sourceStrictness}
                             lawIds={c.sourceLawIds}
                             requirementId={c.requirement.id}
                           />
                           <ScoreCell
-                            level={c.targetStrictness}
+                            label={targetName} level={c.targetStrictness}
                             lawIds={c.targetLawIds}
                             requirementId={c.requirement.id}
                           />
@@ -332,6 +333,78 @@ export default function GapAnalysisPage() {
                                 ) : null,
                               )}
                             </ul>
+                            {c.scoreDisagrees && (
+                              <div className="diff-muted">
+                                {targetName}&apos;s rule is also rated firmer overall:{" "}
+                                {c.targetObligation}{" "}
+                                <span className="citation">({c.targetCitation})</span>
+                              </div>
+                            )}
+                          </td>
+                        </tr>
+                        <PointsRow
+                          c={c}
+                          colSpan={4}
+                          sourceName={sourceName}
+                          targetName={targetName}
+                        />
+                      </Fragment>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
+
+          {result.secondLook.length > 0 && (
+            <>
+              <h2 className="section">Worth a second look</h2>
+              <p className="cmp-intro">
+                On the points compared here, {sourceName} already matches or goes further than{" "}
+                {targetName}. But {targetName}&apos;s rule is rated firmer overall, usually because it
+                spells out more detail than these points capture. Read {targetName}&apos;s rule before
+                treating these as covered.
+              </p>
+              <div className="table-wrap">
+                <table className="cmp-stack cmp-stack-pair">
+                  <thead>
+                    <tr>
+                      <th style={{ width: "20%" }}>Requirement</th>
+                      <th style={{ width: "13%" }}>{sourceName}</th>
+                      <th style={{ width: "13%" }}>{targetName}</th>
+                      <th>Why</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.secondLook.map((c) => (
+                      <Fragment key={c.requirement.id}>
+                        <tr>
+                          <RequirementCell c={c} />
+                          <ScoreCell
+                            label={sourceName} level={c.sourceStrictness}
+                            lawIds={c.sourceLawIds}
+                            requirementId={c.requirement.id}
+                          />
+                          <ScoreCell
+                            label={targetName} level={c.targetStrictness}
+                            lawIds={c.targetLawIds}
+                            requirementId={c.requirement.id}
+                          />
+                          <td>
+                            <div>
+                              {c.verdict === "same" ? (
+                                `Same on all ${comparedCount(c)} ${comparedCount(c) === 1 ? "point" : "points"} compared.`
+                              ) : (
+                                <>
+                                  {sourceName} already asks for more on:{" "}
+                                  {pointsWith(c, "less").map((p) => p.label).join("; ")}
+                                </>
+                              )}
+                            </div>
+                            <div className="diff-note">
+                              {targetName}&apos;s rule: {c.targetObligation}{" "}
+                              <span className="citation">({c.targetCitation})</span>
+                            </div>
                           </td>
                         </tr>
                         <PointsRow
@@ -354,7 +427,7 @@ export default function GapAnalysisPage() {
                 Same in substance, or {sourceName} already asks for more
               </h2>
               <div className="table-wrap">
-                <table>
+                <table className="cmp-stack cmp-stack-pair">
                   <thead>
                     <tr>
                       <th style={{ width: "20%" }}>Requirement</th>
@@ -369,12 +442,12 @@ export default function GapAnalysisPage() {
                         <tr>
                           <RequirementCell c={c} />
                           <ScoreCell
-                            level={c.sourceStrictness}
+                            label={sourceName} level={c.sourceStrictness}
                             lawIds={c.sourceLawIds}
                             requirementId={c.requirement.id}
                           />
                           <ScoreCell
-                            level={c.targetStrictness}
+                            label={targetName} level={c.targetStrictness}
                             lawIds={c.targetLawIds}
                             requirementId={c.requirement.id}
                           />
@@ -447,12 +520,12 @@ export default function GapAnalysisPage() {
                       <tr key={c.requirement.id}>
                         <RequirementCell c={c} />
                         <ScoreCell
-                          level={c.sourceStrictness}
+                          label={sourceName} level={c.sourceStrictness}
                           lawIds={c.sourceLawIds}
                           requirementId={c.requirement.id}
                         />
                         <ScoreCell
-                          level={c.targetStrictness}
+                          label={targetName} level={c.targetStrictness}
                           lawIds={c.targetLawIds}
                           requirementId={c.requirement.id}
                         />

@@ -4,6 +4,7 @@ import { answersFor, facetsByRequirement, type Facet, type FacetAnswer } from "@
 import {
   compareRequirement as compareRequirementJs,
   isGap as isGapJs,
+  needsSecondLook as needsSecondLookJs,
   sameMeaningDifferentWords as sameMeaningDifferentWordsJs,
 } from "@/lib/compare.mjs";
 
@@ -23,6 +24,9 @@ import {
 //   neither    both laws are silent on every point and both scores are 0
 // Where no point can be compared (no answers yet), the verdict falls back to
 // the 0-3 strictness scores, and the comparison says so (byScoreOnly).
+// Otherwise the points decide. When the points say same or less but the
+// target's overall score is higher, the row is flagged for a second look
+// (needsSecondLook) and kept out of "covered"; the verdict itself is unchanged.
 //
 // The strictness score is a simplified 0-3 heuristic for prioritization only.
 // It is not legal advice. Always read the underlying obligations and citations.
@@ -81,6 +85,10 @@ interface EngineResult {
 // here, so every page gets the types above.
 const compareRequirement = compareRequirementJs as unknown as (args: EngineArgs) => EngineResult;
 const isGap = isGapJs as unknown as (verdict: Verdict) => boolean;
+const needsSecondLook = needsSecondLookJs as unknown as (result: {
+  verdict: Verdict;
+  scoreDisagrees: boolean;
+}) => boolean;
 /** True when two laws mean the same thing under different names for it. */
 export const sameMeaningDifferentWords = sameMeaningDifferentWordsJs as unknown as (
   point: Point,
@@ -115,10 +123,12 @@ export interface RequirementComparison {
   /** No point could be compared, so the verdict rests on the 0-3 scores alone. */
   byScoreOnly: boolean;
   /**
-   * The points show no "more", but the target's overall score is higher. The
-   * points did not capture a difference the score records, and the page says so.
+   * The points say same, less or different, but the target's overall score is
+   * higher. A flag only: the verdict stays where the points put it.
    */
   scoreDisagrees: boolean;
+  /** scoreDisagrees on a "same" or "less" row: the points may miss something the score records. */
+  needsSecondLook: boolean;
   /**
    * Neither side addresses this requirement at all.
    *
@@ -139,9 +149,20 @@ export interface GapResult {
    * Most points first, then largest score difference.
    */
   gaps: RequirementComparison[];
-  /** Where the two take a different approach to the same ground (verdict "different"). */
+  /**
+   * Where the two take a different approach to the same ground (verdict "different").
+   * A row here may still carry scoreDisagrees, which the page notes.
+   */
   different: RequirementComparison[];
-  /** Where the source already meets the target, or asks for more (verdict "same" or "less"). */
+  /**
+   * Where the points say the source already meets the target or asks for more,
+   * but the target's overall score is higher (needsSecondLook). Read the target's rule.
+   */
+  secondLook: RequirementComparison[];
+  /**
+   * Where the source already meets the target, or asks for more, and nothing
+   * calls for a second look (verdict "same" or "less", not needsSecondLook).
+   */
   covered: RequirementComparison[];
   /** Where neither law deals with the requirement (verdict "neither"). */
   neither: RequirementComparison[];
@@ -250,6 +271,7 @@ export function analyzeGap(sourceJurisdictionId: string, targetJurisdictionId: s
       verdict: outcome.verdict,
       byScoreOnly: outcome.byScoreOnly,
       scoreDisagrees: outcome.scoreDisagrees,
+      needsSecondLook: needsSecondLook(outcome),
       neitherAddresses: outcome.verdict === "neither",
     };
   });
@@ -262,8 +284,11 @@ export function analyzeGap(sourceJurisdictionId: string, targetJurisdictionId: s
         countRelation(b, "more") - countRelation(a, "more") || b.delta - a.delta,
     );
   const different = comparisons.filter((c) => c.verdict === "different");
-  const covered = comparisons.filter((c) => c.verdict === "same" || c.verdict === "less");
+  const secondLook = comparisons.filter((c) => c.needsSecondLook);
+  const covered = comparisons.filter(
+    (c) => (c.verdict === "same" || c.verdict === "less") && !c.needsSecondLook,
+  );
   const neither = comparisons.filter((c) => c.verdict === "neither");
 
-  return { source, target, comparisons, gaps, different, covered, neither };
+  return { source, target, comparisons, gaps, different, secondLook, covered, neither };
 }

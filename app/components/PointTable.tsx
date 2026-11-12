@@ -21,10 +21,13 @@ export function RelationChip({ relation, targetName }: { relation: PointRelation
   return <span className={`rel-chip ${chip.cls}`}>{chip.text(targetName)}</span>;
 }
 
-function SideCell({ side }: { side: PointSide | null }) {
-  if (!side) return <td className="cmp-muted">Not yet compared</td>;
+/** Chinese wording gets lang="zh" so screen readers and fonts treat it as such. */
+const CJK = /[\u4E00-\u9FFF]/;
+
+function SideCell({ side, label }: { side: PointSide | null; label: string }) {
+  if (!side) return <td className="cmp-muted" data-label={label}>Not yet compared</td>;
   return (
-    <td>
+    <td data-label={label}>
       <div>
         <strong>{side.optionLabel}</strong>
       </div>
@@ -33,22 +36,32 @@ function SideCell({ side }: { side: PointSide | null }) {
       {side.quote && (
         <details className="cmp-disclosure">
           <summary>Wording relied on</summary>
-          <blockquote className="cmp-quote">{side.quote}</blockquote>
+          <blockquote className="cmp-quote" lang={CJK.test(side.quote) ? "zh" : undefined}>
+            {side.quote}
+          </blockquote>
         </details>
       )}
     </td>
   );
 }
 
-function PointRow({ point, targetName }: { point: Point; targetName: string }) {
+function PointRow({
+  point,
+  sourceName,
+  targetName,
+}: {
+  point: Point;
+  sourceName: string;
+  targetName: string;
+}) {
   return (
     <tr>
       <td>
         <strong>{point.label}</strong>
         <div className="point-q">{point.question}</div>
       </td>
-      <SideCell side={point.source} />
-      <SideCell side={point.target} />
+      <SideCell side={point.source} label={sourceName} />
+      <SideCell side={point.target} label={targetName} />
       <td>
         <RelationChip relation={point.relation} targetName={targetName} />
         {sameMeaningDifferentWords(point) && (
@@ -72,7 +85,7 @@ export function PointTable({
 }) {
   return (
     <div className="table-wrap">
-      <table className="point-table">
+      <table className="point-table cmp-stack">
         <thead>
           <tr>
             <th>Point</th>
@@ -83,7 +96,7 @@ export function PointTable({
         </thead>
         <tbody>
           {points.map((p) => (
-            <PointRow key={p.facetId} point={p} targetName={targetName} />
+            <PointRow key={p.facetId} point={p} sourceName={sourceName} targetName={targetName} />
           ))}
         </tbody>
       </table>
