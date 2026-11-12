@@ -66,6 +66,11 @@ async function writeStepSummary(result, track) {
     for (const s of failed) lines.push(`- ${mdEscape(s.name)} [${s.id}]: ${mdEscape(s.error)}`);
     lines.push("");
   }
+  if (result.notes?.length) {
+    lines.push("### Model notes");
+    for (const n of result.notes) lines.push(`- ${mdEscape(n)}`);
+    lines.push("");
+  }
   await appendFile(file, `${lines.join("\n")}\n`, "utf8");
 }
 

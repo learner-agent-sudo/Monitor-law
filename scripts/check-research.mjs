@@ -15,8 +15,12 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 import { parseFeed, canonicalUrl, itemId, isHttpUrl, fetchSource, decodeEntities } from "../lib/research/feeds.mjs";
-import { TOPIC, LEGAL, KINDS, scoreItem, guessKind, guessPlace, matchPlace } from "../lib/research/relevance.mjs";
-import { pickModels, analyze, parseBatchReply, FALLBACK_MODELS } from "../lib/research/analyze.mjs";
+import {
+  TOPIC, LEGAL, KINDS, NOISE, scoreItem, guessKind, guessPlace, matchPlace, keywordKeep,
+} from "../lib/research/relevance.mjs";
+import {
+  pickModels, analyze, parseBatchReply, FALLBACK_MODELS, extractContent, adaptVariant,
+} from "../lib/research/analyze.mjs";
 import { loadStore, saveStore, isDuplicate, mergeItems } from "../lib/research/store.mjs";
 import { SOURCES } from "../lib/research/sources.mjs";
 import { run } from "../lib/research/run.mjs";
@@ -34,7 +38,8 @@ const DAY = 86_400_000;
 const ymd = (d) => d.toISOString().slice(0, 10);
 const noop = async () => {};
 const SILENT = () => {};
-const NO_DELAYS = { gdelt: 0, sleep: noop, modelRetry: 0, modelGap: 0 };
+const NO_DELAYS = { sleep: noop, modelRetry: 0, modelGap: 0 };
+const USER_AGENT_VALUE = "Mozilla/5.0 (compatible; law-monitor-agent/1.0; feed reader)";
 const CATALOG = "https://models.github.ai/catalog/models";
 const CHAT = "https://models.github.ai/inference/chat/completions";
 
@@ -212,23 +217,25 @@ async function tmpStorePath(dir, name = "ai.json") {
 // E. Place guessing
 // ============================================================================
 {
-  check("place: Brussels is EU", guessPlace("Brussels publishes AI Act guidance", {}).region === "eu");
-  check(
-    "place: Brussels label is European Union",
-    guessPlace("Brussels publishes AI Act guidance", {}).jurisdiction === "European Union",
-  );
-  const ca = guessPlace("California AG sues retailer", { region: "us", jurisdiction: null });
-  check("place: source fixes region, text gives California", ca.region === "us" && ca.jurisdiction === "California", JSON.stringify(ca));
-  const sg = guessPlace("Singapore PDPC issues guidance", { region: "asia", jurisdiction: null });
-  check("place: Singapore inside an asia source", sg.region === "asia" && sg.jurisdiction === "Singapore");
-  const euJapan = guessPlace("Japan and the EU discuss rules", { region: "eu", jurisdiction: null });
-  check(
-    "place: a fixed region is not overridden by a place of another region",
-    euJapan.region === "eu" && euJapan.jurisdiction === "European Union",
-    JSON.stringify(euJapan),
-  );
-  check("place: 'Hong Kong' with no fixed region", guessPlace("Hong Kong issues AI rules", { region: null, jurisdiction: null }).region === "asia");
-  check("place: nothing recognised falls back to other", guessPlace("Something general", {}).region === "other");
+  const brussels = guessPlace({ title: "Brussels publishes AI Act guidance" }, {});
+  check("place: Brussels is EU", brussels.region === "eu" && brussels.jurisdiction === "European Union", JSON.stringify(brussels));
+  const ca = guessPlace({ title: "California AG sues retailer" }, { region: "us", jurisdiction: null });
+  check("place: news source, California in title gives California", ca.region === "us" && ca.jurisdiction === "California", JSON.stringify(ca));
+  const sg = guessPlace({ title: "Singapore PDPC issues guidance" }, { region: "asia", jurisdiction: null });
+  check("place: Singapore inside an asia news source", sg.region === "asia" && sg.jurisdiction === "Singapore");
+  // A US story fetched by the Asia search is labelled US, from its title.
+  const usViaAsia = guessPlace({ title: "California AI law signed" }, { region: "asia", jurisdiction: null });
+  check("place: title place overrides the news source's region", usViaAsia.region === "us" && usViaAsia.jurisdiction === "California", JSON.stringify(usViaAsia));
+  const jpViaEu = guessPlace({ title: "Japan publishes AI rules" }, { region: "eu", jurisdiction: null });
+  check("place: Japan in title overrides an EU news source", jpViaEu.region === "asia" && jpViaEu.jurisdiction === "Japan", JSON.stringify(jpViaEu));
+  // No place in the title: the source's region with its generic label; the description is not used.
+  const generic = guessPlace({ title: "Something about AI rules", description: "Brussels said so" }, { region: "asia", jurisdiction: null });
+  check("place: news source with no place in title falls back to region label", generic.region === "asia" && generic.jurisdiction === "Asia", JSON.stringify(generic));
+  // Both fixed: kept as they are, whatever the title says.
+  const bothFixed = guessPlace({ title: "California law" }, { region: "eu", jurisdiction: "European Union" });
+  check("place: a source that fixes both keeps both", bothFixed.region === "eu" && bothFixed.jurisdiction === "European Union");
+  check("place: 'Hong Kong' with no fixed region", guessPlace({ title: "Hong Kong issues AI rules" }, { region: null, jurisdiction: null }).region === "asia");
+  check("place: nothing recognised falls back to other", guessPlace({ title: "Something general" }, {}).region === "other");
   check("place: 'we use cookies' does not read as US", matchPlace("we use cookies") === null);
   check("place: Canada is other", matchPlace("Canada's privacy commissioner")?.region === "other");
 }
@@ -290,8 +297,38 @@ async function tmpStorePath(dir, name = "ai.json") {
     const missing = await loadStore(join(dir, "nope.json"), "ai");
     check("store: missing file gives the empty shape", missing.checked === null && missing.items.length === 0 && missing.track === "ai");
     const garbage = join(dir, "bad.json");
-    await writeFile(garbage, "{not json");
-    check("store: unreadable file gives the empty shape", (await loadStore(garbage, "privacy")).track === "privacy");
+    const garbageBytes = "{not json";
+    await writeFile(garbage, garbageBytes);
+    let threw = null;
+    try {
+      await loadStore(garbage, "privacy");
+    } catch (e) {
+      threw = e;
+    }
+    check(
+      "store: a corrupt file throws with a clear refusal message",
+      threw !== null && /exists but is not a valid store; refusing to overwrite it/.test(threw.message),
+      threw?.message ?? "did not throw",
+    );
+    const noItems = join(dir, "noitems.json");
+    await writeFile(noItems, JSON.stringify({ track: "ai", items: "nope" }));
+    const arrayTop = join(dir, "array.json");
+    await writeFile(arrayTop, "[]");
+    let threwShape = false;
+    let threwArray = false;
+    try {
+      await loadStore(noItems, "ai");
+    } catch {
+      threwShape = true;
+    }
+    try {
+      await loadStore(arrayTop, "ai");
+    } catch {
+      threwArray = true;
+    }
+    check("store: a file whose items is not an array throws", threwShape);
+    check("store: a top-level array is not a store and throws", threwArray);
+    check("store: a corrupt file is left byte-for-byte unchanged", (await readFile(garbage, "utf8")) === garbageBytes);
     await saveStore(path, { track: "ai", checked: null, analysis: null, sources: [], items: [items[0]] });
     const text = await readFile(path, "utf8");
     check("store: saved file is pretty JSON with a trailing newline", text.endsWith("\n") && text.includes('\n  "track"'));
@@ -402,37 +439,6 @@ async function tmpStorePath(dir, name = "ai.json") {
   const frBad = await fetchSource(fr, "ai", { fetchImpl: fakeWeb([[(u) => u.includes("federalregister"), () => body("<html>")]]).fetchImpl, now: NOW });
   check("federal register: non-JSON reply is an error", frBad.error === "response was not JSON");
 
-  // GDELT
-  const gAsia = sourceById("gdelt-asia");
-  const gWeb = fakeWeb([
-    [
-      (u) => u.startsWith("https://api.gdeltproject.org/"),
-      () =>
-        json({
-          articles: [
-            { url: "https://news.test/a", title: "Japan revises AI guidelines", seendate: "20261111T093000Z", domain: "news.test" },
-          ],
-        }),
-    ],
-  ]);
-  const sleeps = [];
-  const gRes = await fetchSource(gAsia, "ai", {
-    fetchImpl: gWeb.fetchImpl,
-    now: NOW,
-    sleep: async (ms) => sleeps.push(ms),
-  });
-  check("GDELT: JSON articles read with publisher = domain", gRes.items.length === 2 && gRes.items[0].source === "news.test", JSON.stringify(gRes.items.map((i) => i.source)));
-  check("GDELT: published date from seendate", gRes.items[0].published?.toISOString() === "2026-11-11T09:30:00.000Z");
-  check("GDELT: waits 5.5 seconds between requests", sleeps.includes(5500), JSON.stringify(sleeps));
-  check("GDELT: query asks for English sources", decodeURIComponent(gWeb.calls[0].url).includes("sourcelang:english"));
-
-  const gErr = await fetchSource(gAsia, "ai", {
-    fetchImpl: fakeWeb([[(u) => u.startsWith("https://api.gdeltproject.org/"), () => body("Please limit requests to one every 5 seconds.")]]).fetchImpl,
-    now: NOW,
-    sleep: noop,
-  });
-  check("GDELT: non-JSON error body becomes the error text", gErr.error?.startsWith("Please limit requests") && gErr.items.length === 0, gErr.error);
-
   // Google News
   const gn = sourceById("gnews-us");
   const gnWeb = fakeWeb([
@@ -459,13 +465,17 @@ async function tmpStorePath(dir, name = "ai.json") {
   );
 
   // Partial failure: one of two queries fails.
+  const gAsia = sourceById("gnews-asia");
   const partial = fakeWeb([
     [
-      (u) => u.startsWith("https://api.gdeltproject.org/"),
-      (u) => (u.includes("Hong") || u.includes("Singapore") ? body("nope", 503) : json({ articles: [{ url: "https://n.test/1", title: "AI law in Japan passes", seendate: "20261112T080000Z", domain: "n.test" }] })),
+      (u) => u.startsWith("https://news.google.com/rss/search"),
+      (u) =>
+        decodeURIComponent(u).includes("Singapore")
+          ? body("nope", 503)
+          : body(rssDoc([{ title: "Japan passes AI law", link: "https://n.test/1", date: NOW }])),
     ],
   ]);
-  const partialRes = await fetchSource(gAsia, "ai", { fetchImpl: partial.fetchImpl, now: NOW, sleep: noop });
+  const partialRes = await fetchSource(gAsia, "ai", { fetchImpl: partial.fetchImpl, now: NOW });
   check(
     "partial failure keeps items and records the failed query",
     partialRes.items.length === 1 && /1 of 2 queries failed: HTTP 503/.test(partialRes.error ?? ""),
@@ -807,11 +817,289 @@ try {
   const dryPath = await tmpStorePath(dir, "dry.json");
   const r6 = await run({ track: "ai", storePath: dryPath, fetchImpl: newsWeb().fetchImpl, now: NOW, env: {}, dryRun: true, log: SILENT, delays: NO_DELAYS });
   check("run: dry run reports additions but writes no file", r6.added.length === 1 && !existsSync(dryPath));
+
+  // 7. Overflow beyond the model budget is held for the next run, not added.
+  // 130 distinct legal AI items: the budget is 12 batches of 10 = 120.
+  const code = (i) => {
+    let s = "";
+    let n = i;
+    do {
+      s = String.fromCharCode(97 + (n % 26)) + s;
+      n = Math.floor(n / 26);
+    } while (n > 0);
+    return `zq${s}`;
+  };
+  const bigItems = (count) =>
+    Array.from({ length: count }, (_, i) => ({
+      title: `Regulator issues new AI guidance topic ${code(i)}`,
+      link: `https://digital-strategy.ec.europa.eu/en/news/big${i}`,
+      description: "Guidance text.",
+    }));
+  const echoChat = (u, init) => {
+    const msg = JSON.parse(init.body).messages[1].content;
+    const arr = JSON.parse(msg.slice(msg.indexOf("\n") + 1));
+    return chatReply(arr.map((x) => ({ n: x.n, keep: true, kind: "guidance", summary: "Regulator issued guidance." })));
+  };
+  const bigWeb = () =>
+    fakeWeb([
+      [onUrl(EC_URL), () => body(rssDoc(bigItems(130)))],
+      [catalogOk, nanoCatalog],
+      [(u) => u === CHAT, echoChat],
+    ]);
+  const overPath = join(dir, "overflow.json");
+  const logsOver = [];
+  const o1 = await run({ track: "ai", storePath: overPath, fetchImpl: bigWeb().fetchImpl, now: NOW, env: { GITHUB_TOKEN: "t" }, log: (l) => logsOver.push(l), delays: NO_DELAYS });
+  check("overflow: model mode adds only the candidates it was able to send", o1.added.length === 120 && o1.store.analysis.mode === "model", `added ${o1.added.length}`);
+  check("overflow: the rest is logged as left for the next run", logsOver.some((l) => l.includes("10 candidate(s) left for the next run")));
+  const o2 = await run({ track: "ai", storePath: overPath, fetchImpl: bigWeb().fetchImpl, now: NOW, env: { GITHUB_TOKEN: "t" }, log: SILENT, delays: NO_DELAYS });
+  check("overflow: a later run picks up the held items", o2.added.length === 10 && new Set(o2.store.items.map((i) => i.title)).size === 130, `added ${o2.added.length}`);
+
+  // 8. Keyword-rule additions are capped at 40 per run, highest score first.
+  const capPath = join(dir, "cap.json");
+  const capWeb = fakeWeb([[onUrl(EC_URL), () => body(rssDoc(bigItems(60)))]]);
+  const logsCap = [];
+  const c1 = await run({ track: "ai", storePath: capPath, fetchImpl: capWeb.fetchImpl, now: NOW, env: {}, log: (l) => logsCap.push(l), delays: NO_DELAYS });
+  check("cap: keyword mode adds at most 40 items", c1.added.length === 40, `added ${c1.added.length}`);
+  check("cap: the held-back count is logged", logsCap.some((l) => l.includes("20 keyword-rule item(s) held back by the cap of 40 per run")));
+
+  // 9. Official outranks news at equal keyword score.
+  const sameText = { title: "Regulator issues new AI guidance" };
+  const offScore = scoreItem(sameText, "ai", { type: "official", presumed: [] }).score;
+  const anaScore = scoreItem(sameText, "ai", { type: "analysis", presumed: [] }).score;
+  const newsScore = scoreItem(sameText, "ai", { type: "news", presumed: [] }).score;
+  check("ordering: official outranks analysis outranks news at equal keyword score", offScore > anaScore && anaScore > newsScore, `${offScore}/${anaScore}/${newsScore}`);
+
+  // 10. A run with nothing new keeps the previous analysis instead of replacing it.
+  const prevPath = join(dir, "prev.json");
+  const prevAnalysis = { mode: "model", model: "openai/gpt-4.1-nano" };
+  await writeFile(prevPath, JSON.stringify({ track: "ai", checked: null, analysis: prevAnalysis, sources: [], items: [] }));
+  const p1 = await run({ track: "ai", storePath: prevPath, fetchImpl: fakeWeb([]).fetchImpl, now: NOW, env: {}, log: SILENT, delays: NO_DELAYS });
+  check("previous analysis: kept when no new candidates", JSON.stringify(p1.store.analysis) === JSON.stringify(prevAnalysis), JSON.stringify(p1.store.analysis));
+  const freshPath = join(dir, "fresh-none.json");
+  const p2 = await run({ track: "ai", storePath: freshPath, fetchImpl: fakeWeb([]).fetchImpl, now: NOW, env: {}, log: SILENT, delays: NO_DELAYS });
+  check("previous analysis: null when there was no previous value", p2.store.analysis === null, JSON.stringify(p2.store.analysis));
+
+  // 11. A corrupt store makes run() throw and leaves the file untouched.
+  const corruptPath = join(dir, "corrupt-run.json");
+  const corruptBytes = '{"track":"ai","items":[{"id":"x"';
+  await writeFile(corruptPath, corruptBytes);
+  let runErr = null;
+  try {
+    await run({ track: "ai", storePath: corruptPath, fetchImpl: newsWeb().fetchImpl, now: NOW, env: {}, log: SILENT, delays: NO_DELAYS });
+  } catch (e) {
+    runErr = e;
+  }
+  check("corrupt store: run refuses and throws", runErr !== null && /refusing to overwrite it/.test(runErr.message));
+  check("corrupt store: file is byte-for-byte unchanged", (await readFile(corruptPath, "utf8")) === corruptBytes);
 } finally {
   await rm(dir, { recursive: true, force: true });
 }
 
 // ============================================================================
+// L. Topic window, title flags, strict keyword rule, noise
+// ============================================================================
+{
+  const news = { type: "news", presumed: [] };
+  const longNews = { title: "Quarterly results", description: `${"x ".repeat(160)}artificial intelligence` };
+  check(
+    "topic window: non-presumed source ignores terms after the first 300 characters",
+    scoreItem(longNews, "ai", news).onTopic === false,
+  );
+  const earlyNews = { title: "Quarterly results", description: `AI tools for finance ${"x ".repeat(120)}` };
+  check("topic window: terms inside the first 300 characters count", scoreItem(earlyNews, "ai", news).onTopic === true);
+  check(
+    "topic window: a presumed source is on topic whatever its text",
+    scoreItem({ title: "Webinar recap", description: "x".repeat(400) }, "privacy", { presumed: ["privacy"], type: "analysis" }).onTopic === true,
+  );
+  const titleFlags = scoreItem({ title: "AI bill", description: "privacy" }, "ai", news);
+  check("title flags: topicInTitle and legalInTitle come from the title", titleFlags.topicInTitle === true && titleFlags.legalInTitle === true);
+  const descOnly = scoreItem({ title: "Quarterly results", description: "AI law" }, "ai", news);
+  check("title flags: false when only the description matches", descOnly.topicInTitle === false && descOnly.legalInTitle === false);
+
+  const kw = (title, track = "ai", source = news) => keywordKeep({ title, description: "" }, track, source);
+  const KOSPI = "South Korea’s KOSPI Plummets 6% on AI Regulation Fears; Barely Holds 5,000 Level";
+  const WEBINAR = "[Webinar] The State of Law Firm Visibility in AI Search";
+  const AIRCON = "FEHD reviews this year's efforts to tackle dripping air conditioners";
+  const KEEP1 = "Senator Kristen Gonzalez Bans Unsafe Chatbot Feature for Minors, Leading AI Safety Bill Signed Into Law";
+  const KEEP2 = "First Harmonised Technical Standard Published Under the EU AI Act";
+  check("strict: KOSPI market story is rejected by the noise pattern", !kw(KOSPI) && NOISE.test(KOSPI), "");
+  check("strict: law-firm webinar advert is rejected by the noise pattern", !kw(WEBINAR) && NOISE.test(WEBINAR), "");
+  check("strict: dripping air conditioners story is rejected in keyword mode", !kw(AIRCON) && !kw(AIRCON, "privacy"));
+  check("strict: AI chatbot bill signed into law is kept", kw(KEEP1) === true);
+  check("strict: first harmonised technical standard under the AI Act is kept", kw(KEEP2) === true);
+
+  check("strict, topic part: a title off topic is rejected even if it reads as law", !kw("Council approves new bridge law"));
+  check(
+    "strict, topic part: a presumed source needs no AI word in the title",
+    keywordKeep({ title: "New bill passed in Paris", description: "" }, "ai", { type: "analysis", presumed: ["ai"] }) === true,
+  );
+  check("strict, legal part: an on-topic title that is not a development is rejected", !kw("AI company posts record quarterly profit"));
+  check("strict, noise part: a how-to on an on-topic legal subject is rejected", !kw("How to comply with the AI Act"));
+  check("strict, noise part: an opinion piece is rejected", !kw("Opinion: the AI Act needs a rethink"));
+  for (const w of ["stocks", "shares", "share price", "markets", "index", "investors", "KOSPI", "Nikkei", "Nasdaq", "rally", "plunged", "selloff", "webinar", "podcast", "opinion", "sponsored", "how to", "guide"]) {
+    check(`noise: "${w}" is matched`, NOISE.test(`AI rules and ${w}`));
+  }
+  check("noise: what businesses need to know is matched", NOISE.test("AI rules: what businesses need to know"));
+  check("noise: guidelines is not matched by guide", !NOISE.test("Commission publishes AI guidelines"));
+}
+
+// M. Model replies, notes, parameter retries, User-Agent, no GDELT
+// ============================================================================
+{
+  const oneCand = [cand("Commission adopts AI regulation", "")];
+  const validReply = { n: 1, keep: true, kind: "regulation", summary: "Adopted." };
+  const opts = { token: "tok-secret", sleep: noop, retryMs: 0, gapMs: 0 };
+  const chatCalls = (web) => web.calls.filter((c) => c.url === CHAT);
+
+  // Content as an array of parts is joined.
+  const full = JSON.stringify({ items: [validReply] });
+  const partsWeb = fakeWeb([
+    [catalogOk, nanoCatalog],
+    [
+      (u) => u === CHAT,
+      () =>
+        json({
+          choices: [{ message: { content: [{ type: "text", text: full.slice(0, 30) }, { type: "text", text: full.slice(30) }] } }],
+        }),
+    ],
+  ]);
+  const parts = await analyze(oneCand, "ai", { ...opts, fetchImpl: partsWeb.fetchImpl });
+  check("content: an array of text parts is joined into one reply", parts.mode.mode === "model" && parts.results.get(0)?.summary === "Adopted.");
+  check("content: extractContent reads a parts array and ignores non-text parts", extractContent({ content: [{ type: "text", text: "a" }, { type: "image" }, { type: "text", text: "b" }] }).content === "ab");
+
+  // Refusal with no content.
+  const refusalWeb = fakeWeb([
+    [catalogOk, nanoCatalog],
+    [(u) => u === CHAT, () => json({ choices: [{ finish_reason: "stop", message: { content: null, refusal: "I cannot help with that." } }] })],
+  ]);
+  const rf = await analyze(oneCand, "ai", { ...opts, fetchImpl: refusalWeb.fetchImpl });
+  check("refusal: a refusal with no content is treated as no content", rf.mode.mode === "keywords" && rf.notes.some((n) => n.includes("model refused")), rf.notes.join(" | "));
+  check(
+    "refusal: extractContent returns the refusal and no content",
+    JSON.stringify(extractContent({ content: null, refusal: "no" })) === JSON.stringify({ content: null, refusal: "no" }),
+  );
+
+  // Diagnostic in the notes for an empty-content 200.
+  const emptyWeb = fakeWeb([
+    [catalogOk, nanoCatalog],
+    [(u) => u === CHAT, () => new Response(JSON.stringify({ choices: [{ finish_reason: "length", message: { content: "" } }] }), { status: 200 })],
+  ]);
+  const em = await analyze(oneCand, "ai", { ...opts, fetchImpl: emptyWeb.fetchImpl });
+  const emJoined = em.notes.join("\n");
+  check("diagnostic: a 200 with empty content names finish_reason in the notes", emJoined.includes("finish_reason=length"), emJoined);
+  check("diagnostic: the start of the raw body is in the notes", emJoined.includes('"content":""'));
+  check("diagnostic: the token never appears in the notes", !emJoined.includes("tok-secret"));
+  const padWeb = fakeWeb([
+    [catalogOk, nanoCatalog],
+    [
+      (u) => u === CHAT,
+      () => new Response(JSON.stringify({ choices: [{ finish_reason: "stop", message: { content: "" } }], pad: "x".repeat(1000) }), { status: 200 }),
+    ],
+  ]);
+  const pad = await analyze(oneCand, "ai", { ...opts, fetchImpl: padWeb.fetchImpl });
+  const padJoined = pad.notes.join("\n");
+  check(
+    "diagnostic: the body excerpt is limited to 300 characters",
+    padJoined.includes("x".repeat(150)) && !padJoined.includes("x".repeat(260)),
+    String(padJoined.length),
+  );
+
+  // Fall-through: a 200 with no usable content is not settled on.
+  const twoCatalog = () => json([{ id: "openai/gpt-4.1-nano", rate_limit_tier: "low" }, { id: "openai/gpt-4o-mini", rate_limit_tier: "low" }]);
+  const ftWeb = fakeWeb([
+    [catalogOk, twoCatalog],
+    [
+      (u) => u === CHAT,
+      (u, init) =>
+        JSON.parse(init.body).model === "openai/gpt-4.1-nano"
+          ? new Response(JSON.stringify({ choices: [{ message: { content: null } }] }), { status: 200 })
+          : chatReply([validReply]),
+    ],
+  ]);
+  const ft = await analyze(oneCand, "ai", { ...opts, fetchImpl: ftWeb.fetchImpl });
+  check("fall-through: a 200 with no content moves to the second model", ft.mode.mode === "model" && ft.mode.model === "openai/gpt-4o-mini", JSON.stringify(ft.mode));
+  check("fall-through: the rejected model is named in the notes", ft.notes.some((n) => n.startsWith("openai/gpt-4.1-nano rejected:")));
+  check(
+    "notes: catalog size and the ordered candidate models are logged",
+    ft.notes.includes("catalog: 2 model(s) listed") &&
+      ft.notes.includes("candidate models, in order: openai/gpt-4.1-nano, openai/gpt-4o-mini"),
+    ft.notes.join(" | "),
+  );
+  const noCatalog = fakeWeb([[catalogOk, () => body("down", 500)], [(u) => u === CHAT, () => chatReply([validReply])]]);
+  const nc = await analyze(oneCand, "ai", { ...opts, fetchImpl: noCatalog.fetchImpl });
+  check("notes: an unreadable catalog is logged", nc.notes.some((n) => n.startsWith("catalog: not readable")));
+
+  // Parameter adaptation: one retry, with the named parameter adapted.
+  const paramWeb = (rejectKey, message) =>
+    fakeWeb([
+      [catalogOk, nanoCatalog],
+      [
+        (u) => u === CHAT,
+        (u, init) => (JSON.parse(init.body)[rejectKey] !== undefined ? json({ error: { message } }, 400) : chatReply([validReply])),
+      ],
+    ]);
+
+  const mt = paramWeb("max_tokens", "Unsupported parameter: 'max_tokens'. Use 'max_completion_tokens' instead.");
+  const mtRes = await analyze(oneCand, "ai", { ...opts, fetchImpl: mt.fetchImpl });
+  const mtSecond = chatCalls(mt)[1] ? JSON.parse(chatCalls(mt)[1].init.body) : {};
+  check(
+    "params: max_tokens rejected, retried once with max_completion_tokens",
+    mtRes.mode.mode === "model" && chatCalls(mt).length === 2 && mtSecond.max_completion_tokens === 1800 && mtSecond.max_tokens === undefined,
+    `calls ${chatCalls(mt).length}`,
+  );
+
+  const tp = paramWeb("temperature", "Unsupported parameter: 'temperature' is not supported with this model.");
+  const tpRes = await analyze(oneCand, "ai", { ...opts, fetchImpl: tp.fetchImpl });
+  const tpSecond = chatCalls(tp)[1] ? JSON.parse(chatCalls(tp)[1].init.body) : {};
+  check(
+    "params: temperature rejected, retried once without it",
+    tpRes.mode.mode === "model" && chatCalls(tp).length === 2 && tpSecond.temperature === undefined && tpSecond.max_tokens === 1800,
+  );
+
+  const rfmt = paramWeb("response_format", "'response_format' is not supported with this model.");
+  const rfmtRes = await analyze(oneCand, "ai", { ...opts, fetchImpl: rfmt.fetchImpl });
+  const rfmtSecond = chatCalls(rfmt)[1] ? JSON.parse(chatCalls(rfmt)[1].init.body) : {};
+  check(
+    "params: response_format rejected, retried once without it",
+    rfmtRes.mode.mode === "model" && chatCalls(rfmt).length === 2 && rfmtSecond.response_format === undefined,
+  );
+
+  const always = fakeWeb([
+    [catalogOk, nanoCatalog],
+    [(u) => u === CHAT, () => json({ error: { message: "max_tokens is not allowed" } }, 400)],
+  ]);
+  const alwaysRes = await analyze(oneCand, "ai", { ...opts, fetchImpl: always.fetchImpl });
+  check(
+    "params: a second 400 is not retried again",
+    chatCalls(always).length === 2 && alwaysRes.mode.mode === "keywords",
+    `calls ${chatCalls(always).length}`,
+  );
+
+  // User-Agent on feed requests.
+  const ecSource = sourceById("ec-digital");
+  const uaWeb = fakeWeb([[onUrl(ecSource.url), () => body(rssDoc([{ title: "AI guidance", link: "https://a.test/ua" }]))]]);
+  await fetchSource(ecSource, "ai", { fetchImpl: uaWeb.fetchImpl, now: NOW });
+  check("user-agent: feed requests send the new User-Agent", uaWeb.calls[0]?.init.headers["User-Agent"] === USER_AGENT_VALUE, uaWeb.calls[0]?.init.headers["User-Agent"]);
+  check("user-agent: the agent name is still honest", /law-monitor-agent\/1\.0/.test(USER_AGENT_VALUE));
+
+  // No GDELT anywhere in the agent code, docs or workflows.
+  const scanned = [
+    "../lib/research/sources.mjs", "../lib/research/feeds.mjs", "../lib/research/run.mjs",
+    "../lib/research/analyze.mjs", "../lib/research/relevance.mjs", "../lib/research/store.mjs",
+    "../scripts/research-agent.mjs", "../docs/RESEARCH_AGENTS.md",
+    "../.github/workflows/research-ai-law.yml", "../.github/workflows/research-privacy-law.yml",
+  ];
+  const gdeltHits = [];
+  for (const f of scanned) {
+    if (/gdelt/i.test(await readFile(new URL(f, import.meta.url), "utf8"))) gdeltHits.push(f);
+  }
+  check("no gdelt: nothing in the agent code, docs or workflows mentions it", gdeltHits.length === 0, gdeltHits.join(", "));
+  check(
+    "no gdelt: no GDELT source, and the removed newsletter is gone",
+    !SOURCES.some((s) => s.kind === "gdelt" || /gdelt/i.test(s.id)) && !SOURCES.some((s) => s.id === "eu-ai-act-newsletter"),
+  );
+}
+
 // K. Report
 // ============================================================================
 const lines = ["# Research agents check\n"];

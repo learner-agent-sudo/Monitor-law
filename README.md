@@ -11,8 +11,8 @@ The app is organized around the project's three stages:
 | Stage | Page | Status |
 |-------|------|--------|
 | **1 — Current laws** | `/` catalog + `/laws/[id]` detail | ✅ Built (5 laws) |
-| **2 — Developments** | `/developments` | 🔎 Preview / data-model demo |
-| **3 — Gap analysis** | `/gap-analysis` | ✅ Built (interactive crosswalk) |
+| **2 — Developments** | `/developments` | ✅ Built (two daily research agents: AI law and privacy law) |
+| **3 — Gap analysis** | `/gap-analysis` | ✅ Built (point-by-point comparison) |
 
 Plus `/requirements` — the shared obligation taxonomy every law is mapped against.
 
@@ -32,7 +32,22 @@ Everything is built around three concepts that mirror the eventual database tabl
 2. **Requirements** (`lib/data/requirements.ts`) — a normalized taxonomy of 20 privacy obligations (lawful basis, consent, breach notification, cross-border transfer, …).
 3. **Mappings** — each law scores itself against every requirement on a 0–3 strictness scale with the obligation text + citation.
 
-Because every law maps onto the *same* requirement list, **gap analysis is a database query, not an essay** (`lib/gap.ts`): comparing two jurisdictions means diffing their strictness scores per requirement and surfacing where the target demands more.
+Because every law maps onto the *same* requirement list, **gap analysis is a database query, not an essay** (`lib/gap.ts`).
+
+### Comparing by meaning, not by wording
+
+A single 0–3 score hides real differences: two laws can both score "Moderate" and require different things, and a law can look empty only because it uses different words. So each requirement is also split into **points of comparison** (`lib/data/facets.json`, 37 in all), such as "what counts as consent" or "how fast a breach must be reported".
+
+- Every law is placed on every point from its own text (`lib/data/facet-answers/<law>.json`): the option it fits, a plain statement of what it requires, the provision, and a verbatim quote.
+- `scripts/check-facets.mjs` fails the build unless every quote is found inside the provision cited.
+- `lib/compare.mjs` compares two jurisdictions point by point. **The points decide** whether the target asks for more, less, the same, or takes a different approach. The 0–3 score can only flag a row as "worth a second look".
+- Each answer file also records the law's own word for six shared ideas ("controller" / "data user" / "business" …), shown as "Same idea, different words".
+
+Only the law's own text counts. Where a rule sits in another statute or in regulations that this repository does not hold, the entry says so.
+
+### Daily research agents
+
+Two GitHub Actions workflows (`research-ai-law.yml`, `research-privacy-law.yml`) run once a day and fill the Developments page with new legal developments in the EU, the US and Asia. See [`docs/RESEARCH_AGENTS.md`](docs/RESEARCH_AGENTS.md).
 
 ## Local development
 
@@ -45,7 +60,7 @@ npm run build    # production build
 ## Roadmap
 
 - **Phase 2** — expand coverage to all US states / Canadian provinces, EU member states, UK, Hong Kong, Singapore, Australia, Japan; add the AI-law domain (EU AI Act, Colorado AI Act, China gen-AI rules, …).
-- **Phase 3** — wire the Stage-2 developments feed to live legislative sources (Congress.gov API, LEGISinfo, EUR-Lex, EU Legislative Observatory) with AI summarization + change detection.
+- **Phase 3** — widen the research agents' sources (LEGISinfo, EUR-Lex, the EU Legislative Observatory, more Asian regulators) and link each development to the law it changes.
 - **Phase 4** — migrate the file-based content to **Supabase (Postgres)**; add user accounts, saved compliance profiles, self-assessment gap reports, and email alerts on law changes.
 
 ## Important
