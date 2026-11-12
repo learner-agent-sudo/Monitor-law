@@ -2045,3 +2045,103 @@ code {
     gap: 6px;
   }
 }
+
+/* ---- Developments feed (research agents) ---- */
+.feed-tabs,
+.feed-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.feed-btn {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+.feed-btn[aria-pressed="true"] {
+  color: var(--text);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.feed-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.feed-count {
+  color: var(--text-faint);
+  font-size: 12px;
+  margin-left: 6px;
+}
+.feed-status {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 4px 0 18px;
+}
+.feed-status summary {
+  cursor: pointer;
+  color: var(--accent);
+  margin-top: 6px;
+}
+.feed-status ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+.feed-status li {
+  margin: 4px 0;
+}
+.feed-err {
+  color: var(--red);
+}
+.feed-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.feed-item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.feed-type {
+  background: rgba(107, 118, 132, 0.15);
+  color: var(--text-muted);
+}
+.feed-kind {
+  background: rgba(163, 113, 247, 0.14);
+  color: var(--purple);
+}
+.feed-title {
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.35;
+  margin: 0;
+}
+.feed-title a {
+  color: var(--text);
+}
+.feed-title a:hover {
+  color: var(--accent);
+}
+.feed-summary {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 0;
+}
+.feed-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  color: var(--text-faint);
+  font-size: 13px;
+  margin-top: auto;
+}
+.feed-ai {
+  color: var(--amber);
+  font-weight: 600;
+}

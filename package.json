@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "check": "node scripts/build-provisions.mjs && node scripts/build-gap-traces.mjs && node scripts/check-quotes.mjs && node scripts/check-citations.mjs && node scripts/check-strictness.mjs && node scripts/check-gap-traces.mjs && node scripts/check-temporal.mjs && node scripts/check-remediation.mjs && node scripts/check-interpret.mjs"
+    "check": "node scripts/build-provisions.mjs && node scripts/build-gap-traces.mjs && node scripts/check-quotes.mjs && node scripts/check-citations.mjs && node scripts/check-strictness.mjs && node scripts/check-gap-traces.mjs && node scripts/check-temporal.mjs && node scripts/check-remediation.mjs && node scripts/check-interpret.mjs && node scripts/check-facets.mjs && node scripts/check-compare.mjs && node scripts/check-research.mjs",
+    "research": "node scripts/research-agent.mjs"
   },
   "dependencies": {
     "next": "14.2.5",

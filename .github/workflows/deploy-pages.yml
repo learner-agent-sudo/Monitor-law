@@ -53,6 +53,14 @@ jobs:
       # things about a document it did not find there. Offline — no API key.
       - name: Check interpretation quote verification
         run: node scripts/check-interpret.mjs
+      # The point-by-point comparison: every law must be placed on every point,
+      # and every placement must quote the law inside the provision it cites.
+      - name: Check points of comparison
+        run: node scripts/check-facets.mjs
+      - name: Check the comparison engine
+        run: node scripts/check-compare.mjs
+      - name: Check the research agents offline
+        run: node scripts/check-research.mjs
       - name: Build static export
         env:
           # Must match the canonical Pages URL casing exactly:
