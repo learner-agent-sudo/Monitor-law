@@ -32,6 +32,7 @@ const COUNTRY_JURISDICTION: Record<string, string> = {
   "United States of America": "us-ca",
   Canada: "ca",
   China: "cn",
+  "South Africa": "za",
   ...Object.fromEntries(EU_MEMBERS.map((c) => [c, "eu"])),
 };
 
@@ -42,6 +43,7 @@ const JURISDICTION_COUNTRIES: Record<string, string[]> = {
   "us-ca": ["United States of America"],
   ca: ["Canada"],
   cn: ["China"],
+  za: ["South Africa"],
   "ca-qc": [],
   hk: [],
 };
@@ -64,6 +66,7 @@ const NOTES: Record<string, string> = {
   "ca-qc": "Québec's provincial regime, the most GDPR-like law in North America.",
   cn: "China's national personal-information law, alongside the Cybersecurity and Data Security Laws.",
   hk: "Special Administrative Region of China with its own, comparatively light-touch data-protection law.",
+  za: "South Africa's comprehensive privacy law, in force since 1 July 2020 and enforced by the Information Regulator.",
 };
 
 const STATUS_LABEL: Record<string, string> = {

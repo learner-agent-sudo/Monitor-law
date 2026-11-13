@@ -136,6 +136,18 @@ export const provenance: Provenance[] = [
       { name: "PCPD Hong Kong", url: "https://www.pcpd.org.hk/" },
     ],
   },
+  {
+    lawId: "popia",
+    status: "source-checked",
+    corpusFile: "corpus/popia.md",
+    sourceRef: "Act 4 of 2013",
+    checkUrl: "https://www.gov.za/documents/protection-personal-information-act",
+    expectedMarkers: ["personal information", "responsible party"],
+    lastReviewed: "2026-11-13",
+    corroboration: [
+      { name: "Information Regulator (South Africa)", url: "https://inforegulator.org.za/" },
+    ],
+  },
 ];
 
 export const provenanceByLaw: Record<string, Provenance> = Object.fromEntries(

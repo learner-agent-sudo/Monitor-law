@@ -6,6 +6,7 @@ import pipedaAnswers from "./data/facet-answers/pipeda.json";
 import quebecLaw25Answers from "./data/facet-answers/quebec-law25.json";
 import piplAnswers from "./data/facet-answers/pipl.json";
 import pdpoAnswers from "./data/facet-answers/pdpo.json";
+import popiaAnswers from "./data/facet-answers/popia.json";
 
 // ---------------------------------------------------------------------------
 // Typed access to the points of comparison.
@@ -88,6 +89,7 @@ const answersByLaw: Record<string, LawFacetAnswers> = {
   "quebec-law25": asAnswers(quebecLaw25Answers),
   pipl: asAnswers(piplAnswers),
   pdpo: asAnswers(pdpoAnswers),
+  popia: asAnswers(popiaAnswers),
 };
 
 /** A law's answers keyed by facet id. Empty for a law with no answers. */

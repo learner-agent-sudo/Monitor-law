@@ -42,6 +42,11 @@ export const jurisdictions: Jurisdiction[] = [
     name: "Hong Kong SAR",
     region: "Asia-Pacific",
     flag: "🇭🇰",
+  },  {
+    id: "za",
+    name: "South Africa",
+    region: "Africa",
+    flag: "🇿🇦",
   },
 ];
 

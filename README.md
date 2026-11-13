@@ -10,7 +10,7 @@ The app is organized around the project's three stages:
 
 | Stage | Page | Status |
 |-------|------|--------|
-| **1 — Current laws** | `/` catalog + `/laws/[id]` detail | ✅ Built (5 laws) |
+| **1 — Current laws** | `/` catalog + `/laws/[id]` detail | ✅ Built (8 laws) |
 | **2 — Developments** | `/developments` | ✅ Built (two daily research agents: AI law and privacy law) |
 | **3 — Gap analysis** | `/gap-analysis` | ✅ Built (point-by-point comparison) |
 
@@ -19,10 +19,13 @@ Plus `/requirements` — the shared obligation taxonomy every law is mapped agai
 ### Jurisdictions covered (MVP slice)
 
 - 🇪🇺 EU — **GDPR**
+- 🇬🇧 United Kingdom — **UK GDPR**
 - 🇺🇸 California — **CCPA / CPRA**
 - 🇨🇦 Canada (Federal) — **PIPEDA**
 - 🇨🇦 Québec — **Law 25**
 - 🇨🇳 China — **PIPL**
+- 🇭🇰 Hong Kong — **PDPO**
+- 🇿🇦 South Africa — **POPIA**
 
 ## How it works — the data model
 

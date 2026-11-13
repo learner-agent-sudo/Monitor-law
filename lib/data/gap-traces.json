@@ -1220,6 +1220,174 @@
     "reviewed": "2026-10-18",
     "degraded": null
   },
+  "popia/data-localization": {
+    "lawId": "popia",
+    "requirementId": "data-localization",
+    "strictness": 0,
+    "sourceType": "statute",
+    "obligation": "No requirement to store personal information in South Africa. Section 72 restricts transfers abroad but does not require data to be kept in the Republic.",
+    "citation": "— no provision; see Cross-border transfer",
+    "provisionsSearched": 137,
+    "termsTried": [
+      "localisation",
+      "stored within the territory",
+      "shall be stored or retained",
+      "within the territory",
+      "remain in the jurisdiction",
+      "free movement / free flow",
+      "free movement shall not be restricted",
+      "critical information infrastructure",
+      "export restriction (the usual near-miss)",
+      "transfer to a third country",
+      "place outside",
+      "processing within or outside the jurisdiction"
+    ],
+    "termsAbsent": [
+      "localisation",
+      "stored within the territory",
+      "within the territory",
+      "free movement shall not be restricted",
+      "critical information infrastructure",
+      "place outside",
+      "processing within or outside the jurisdiction"
+    ],
+    "candidatesFound": 2,
+    "weakOnly": 3,
+    "candidates": [
+      {
+        "key": "s-18",
+        "label": "Section 18",
+        "matched": [
+          "transfer to a third country"
+        ],
+        "excerpt": "information; (g) the fact that, where applicable, the responsible party intends to transfer the information to a third country or international organisation and the level of protection afforded to the information",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      },
+      {
+        "key": "s-71",
+        "label": "Section 71",
+        "matched": [
+          "export restriction (the usual near-miss)"
+        ],
+        "excerpt": "representations in terms of paragraph (a). CHAPTER 9 TRANSBORDER INFORMATION FLOWS Transfers of personal information outside Republic",
+        "truncatedStart": true,
+        "truncatedEnd": false,
+        "named": false
+      }
+    ],
+    "nearest": [
+      "s-18"
+    ],
+    "noNearest": false,
+    "verdict": "No term for storage or localisation appears in the Act: no 'localisation', no 'stored within the territory', no 'remain in the jurisdiction'. The provision reached by 'transfer to a third country' is the s.18 notice duty, which only requires the data subject to be told of a planned transfer abroad. The real constraint on moving data out of the Republic is s.72(1): a responsible party 'may not transfer personal information about a data subject to a third party who is in a foreign country' unless one of its listed conditions is met. Section 72 limits export by conditions; it does not require storage in South Africa.",
+    "practicalEffect": "Keeping personal information in the Republic is the one route that engages none of s.72. Sending it abroad needs one of the s.72(1) conditions, such as an adequate-protection regime, the data subject's consent, or a contract. Export is conditioned rather than forbidden, so the pull towards local storage is real even though no provision requires it.",
+    "elsewhere": null,
+    "handledBy": [
+      {
+        "requirementId": "cross-border-transfer",
+        "name": "Cross-border transfer",
+        "kind": "instead-of",
+        "note": "s.72(1) — the conditions that make export a matter of conditions rather than a free transfer.",
+        "strictness": 3,
+        "citation": "s.72(1)",
+        "obligation": "A transfer to a third party in a foreign country is prohibited unless the recipient is bound by adequate-protection law, binding corporate rules or a binding agreement, or the data subject consents, or a contract or benefit-of-the-data-subject exception applies.",
+        "quoted": true
+      }
+    ],
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
+  "popia/rights-portability": {
+    "lawId": "popia",
+    "requirementId": "rights-portability",
+    "strictness": 0,
+    "sourceType": "statute",
+    "obligation": "No data-portability right: the access right in s.23 gives a record or description in a generally understandable form, not a right to receive or transfer data in a structured, machine-readable format.",
+    "citation": "—",
+    "provisionsSearched": 137,
+    "termsTried": [
+      "portability",
+      "machine-readable",
+      "structured, commonly used format",
+      "transmit to another organisation",
+      "receive the data provided",
+      "direct transfer on request",
+      "computerised form",
+      "copy of the data",
+      "access right (the usual near-miss)",
+      "supply a copy on request"
+    ],
+    "termsAbsent": [
+      "portability",
+      "machine-readable",
+      "structured, commonly used format",
+      "transmit to another organisation",
+      "receive the data provided",
+      "direct transfer on request",
+      "computerised form",
+      "copy of the data"
+    ],
+    "candidatesFound": 6,
+    "weakOnly": 0,
+    "candidates": [
+      {
+        "key": "sched-23",
+        "label": "Schedule item 23",
+        "matched": [
+          "access right (the usual near-miss)"
+        ],
+        "excerpt": "title for the following long title: ‘‘To give effect to the constitutional right of access to any information held by the State and any information that is held by another",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": false
+      },
+      {
+        "key": "s-2",
+        "label": "Section 2",
+        "matched": [
+          "access right (the usual near-miss)"
+        ],
+        "excerpt": "at— (i) balancing the right to privacy against other rights, particularly the right of access to information; and (ii) protecting important interests, including the free",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": true
+      },
+      {
+        "key": "sched-11",
+        "label": "Schedule item 11",
+        "matched": [
+          "access right (the usual near-miss)"
+        ],
+        "excerpt": "Regulator or application, as the case may be; and (c) that the requester will be given access to the record after the expiry of the applicable period contemplated in paragraph",
+        "truncatedStart": true,
+        "truncatedEnd": true,
+        "named": false
+      }
+    ],
+    "nearest": [
+      "s-2"
+    ],
+    "noNearest": false,
+    "verdict": "None of the portability terms appears in the Act: no 'machine-readable', no 'structured', no 'transmit' or 'direct transfer', no 'computerised form'. The only provision reached by a related term is the access right, and s.23(1)(b) gives a record or description of the information 'in a reasonable manner and format' and 'in a form that is generally understandable'. That is a right to be told what is held in a readable form, not a right to receive the data in a structured format and send it to another responsible party. The purpose clause in s.2 is the nearest broad statement and creates no such right.",
+    "practicalEffect": "A data subject can obtain a readable copy or description of their information under s.23, which covers part of what a portability request is for. Moving that data to a new provider in a machine-readable form is not a right the Act gives, so the 0 stands for that part.",
+    "elsewhere": null,
+    "handledBy": [
+      {
+        "requirementId": "rights-access",
+        "name": "Right of access",
+        "kind": "different-approach",
+        "note": "s.23(1) — the access right that covers part of the ground, in a readable form.",
+        "strictness": 2,
+        "citation": "s.23(1)",
+        "obligation": "On proof of identity, a data subject may ask free of charge whether the responsible party holds their information, and may receive a record or description of it, with the third parties who have had access, within a reasonable time and at a prescribed fee, if any.",
+        "quoted": true
+      }
+    ],
+    "reviewed": "2026-10-18",
+    "degraded": null
+  },
   "quebec-law25/data-localization": {
     "lawId": "quebec-law25",
     "requirementId": "data-localization",

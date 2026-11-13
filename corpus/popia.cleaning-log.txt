@@ -1,0 +1,821 @@
+POPIA cleaning log
+source file: 68b5c114-Protection_of_Personal_Information_-_SA.md
+output file: popia.md
+Only printing artifacts are removed. No word of the law is changed.
+Line numbers below are 1-based line numbers in the source file.
+
+Counts
+  publisher note lines removed:     5
+  Afrikaans page lines removed:     70
+  gazette running headers removed:  74
+  Act running headers removed:      74
+  AIDS HELPLINE lines removed:      1
+  page numbers removed:             73
+  margin line numbers removed:      500
+  ambiguous, kept:                  4
+
+Removals
+src line     1 | 1 publisher note         | removed: "Please note that most Acts are published in English and another South African"
+src line     2 | 1 publisher note         | removed: "official language. Currently we only have capacity to publish the English versions."
+src line     3 | 1 publisher note         | removed: "This means that this document will only contain even numbered pages as the other"
+src line     4 | 1 publisher note         | removed: "language is printed on uneven numbered pages."
+src line     5 | 1 publisher note         | removed: ""
+src line   550 | 2 afrikaans page         | removed: "GOVERNMENT GAZETTE, 26 November 2013 No. 37067 17"
+src line   551 | 2 afrikaans page         | removed: ""
+src line   552 | 2 afrikaans page         | removed: "Wet op Beskerming van Persoonlike Inligting, 2013 Wet No. 4 van 2013"
+src line   553 | 2 afrikaans page         | removed: ""
+src line   554 | 2 afrikaans page         | removed: "17"
+src line   555 | 2 afrikaans page         | removed: ""
+src line   556 | 2 afrikaans page         | removed: "(c) samesmelting, koppeling, asook inperking, degradasie, uitwissing of"
+src line   557 | 2 afrikaans page         | removed: "vernietiging van inligting;"
+src line   558 | 2 afrikaans page         | removed: "‘‘Reguleerder’’ die Inligtingsreguleerder ingevolge artikel 39 ingestel;"
+src line   559 | 2 afrikaans page         | removed: "‘‘rekord’’ enige opgetekende inligting—"
+src line   560 | 2 afrikaans page         | removed: "(a) ongeag vorm of medium, met inbegrip van enige van die volgende: 5"
+src line   561 | 2 afrikaans page         | removed: "(i) Skrif op enige materiaal;"
+src line   562 | 2 afrikaans page         | removed: "(ii) inligting geproduseer, opgeteken of gestoor by wyse van enige"
+src line   563 | 2 afrikaans page         | removed: "bandopnemer, rekenaartoerusting, hetsy hardeware of sagteware of"
+src line   564 | 2 afrikaans page         | removed: "beide, of ander toestel, en enige materiaal vervolgens verkry uit die"
+src line   565 | 2 afrikaans page         | removed: "inligting aldus geproduseer, opgeteken of gestoor; 10"
+src line   566 | 2 afrikaans page         | removed: "(iii) etiket, merk, of ander skrif wat enige voorwerp waarvan dit deel uitmaak,"
+src line   567 | 2 afrikaans page         | removed: "of waaraan dit op enige wyse geheg is, identifiseer of beskryf;"
+src line   568 | 2 afrikaans page         | removed: "(iv) boek, kaart, plan, grafiek of tekening;"
+src line   569 | 2 afrikaans page         | removed: "(v) foto, film, negatief, band of ander toestel waarin een of meer visuele"
+src line   570 | 2 afrikaans page         | removed: "beelde vervat is sodat dit geskik is, met of sonder die hulp van ander 15"
+src line   571 | 2 afrikaans page         | removed: "toerusting, vir reproduksie;"
+src line   572 | 2 afrikaans page         | removed: "(b) in die besit of onder die beheer van ’n verantwoordelike party;"
+src line   573 | 2 afrikaans page         | removed: "(c) hetsy dit deur die verantwoordelike party geskep is al dan nie; en"
+src line   574 | 2 afrikaans page         | removed: "(d) ongeag wanneer dit tot stand gekom het;"
+src line   575 | 2 afrikaans page         | removed: "‘‘Republiek’’ die Republiek van Suid-Afrika; 20"
+src line   576 | 2 afrikaans page         | removed: "‘‘spesiale persoonlike inligting’’ persoonlike inligting soos by artikel 26 bedoel;"
+src line   577 | 2 afrikaans page         | removed: "‘‘toestemming’’ enige vrywillige, bepaalde en ingeligte wilsuitdrukking ingevolge"
+src line   578 | 2 afrikaans page         | removed: "waarvan verlof tot die prosessering van persoonlike inligting gegee word;"
+src line   579 | 2 afrikaans page         | removed: "‘‘unieke identifiseerder’’ enige identifiseerder wat aan ’n datasubjek toegewys"
+src line   580 | 2 afrikaans page         | removed: "word en wat deur ’n verantwoordelike party vir doeleindes van die bedrywighede 25"
+src line   581 | 2 afrikaans page         | removed: "van daardie verantwoordelike party gebruik word en waarmee daardie"
+src line   582 | 2 afrikaans page         | removed: "verantwoordelike party die datasubjek op unieke wyse identifiseer;"
+src line   583 | 2 afrikaans page         | removed: "‘‘verantwoordelike party’’ ’n openbare of privaatliggaam of enige ander persoon"
+src line   584 | 2 afrikaans page         | removed: "wat, eiehandig of in samewerking met andere, die oogmerk van en middele van"
+src line   585 | 2 afrikaans page         | removed: "prosessering van persoonlike inligting bepaal; 30"
+src line   586 | 2 afrikaans page         | removed: "‘‘voorgeskryf’’ voorgeskryf by regulasie of by ’n gedragskode; en"
+src line   587 | 2 afrikaans page         | removed: "‘‘Wet op Bevordering van Toegang tot Inligting’’ die Wet op Bevordering van"
+src line   588 | 2 afrikaans page         | removed: "Toegang tot Inligting, 2000 (Wet No. 2 van 2000)."
+src line   589 | 2 afrikaans page         | removed: ""
+src line   590 | 2 afrikaans page         | removed: "Oogmerk van Wet"
+src line   591 | 2 afrikaans page         | removed: ""
+src line   592 | 2 afrikaans page         | removed: "2. Die oogmerk van hierdie Wet is om— 35"
+src line   593 | 2 afrikaans page         | removed: "(a) gevolg te gee aan die grondwetlike reg op privaatheid, deur persoonlike"
+src line   594 | 2 afrikaans page         | removed: "inligting te beskerm wanneer dit deur ’n verantwoordelike party geprosesseer"
+src line   595 | 2 afrikaans page         | removed: "word, onderhewig aan regverdigbare beperkings wat gerig is op die—"
+src line   596 | 2 afrikaans page         | removed: "(i) balansering van die reg op privaatheid teenoor ander regte, in besonder"
+src line   597 | 2 afrikaans page         | removed: "die reg op toegang tot inligting; en 40"
+src line   598 | 2 afrikaans page         | removed: "(ii) beskerming van belangrike belange, met inbegrip van die vrye vloei van"
+src line   599 | 2 afrikaans page         | removed: "inligting binne die Republiek en oor internasionale grense;"
+src line   600 | 2 afrikaans page         | removed: "(b) die wyse waarop persoonlike inligting geprosesseer mag word, te reguleer"
+src line   601 | 2 afrikaans page         | removed: "deur voorwaardes, in harmonie met internasionale standaarde, te vestig wat"
+src line   602 | 2 afrikaans page         | removed: "die minimum vereistes vir die regmatige prosessering van persoonlike 45"
+src line   603 | 2 afrikaans page         | removed: "inligting voorskryf;"
+src line   604 | 2 afrikaans page         | removed: "(c) persone van regte en remedies te voorsien ten einde hul persoonlike inligting"
+src line   605 | 2 afrikaans page         | removed: "teen prosessering wat nie in ooreenstemming met hierdie Wet is nie, te"
+src line   606 | 2 afrikaans page         | removed: "beskerm; en"
+src line   607 | 2 afrikaans page         | removed: "(d) vrywillige en verpligte maatreëls, met inbegrip van die instelling van ’n 50"
+src line   608 | 2 afrikaans page         | removed: "Inligtingsreguleerder, in te stel, ten einde respek vir, en die bevordering,"
+src line   609 | 2 afrikaans page         | removed: "afdwinging en verwesenliking van, die regte wat in hierdie Wet beskerm"
+src line   610 | 2 afrikaans page         | removed: "word, te verseker."
+src line   611 | 2 afrikaans page         | removed: ""
+src line   612 | 2 afrikaans page         | removed: "HOOFSTUK 2"
+src line   613 | 2 afrikaans page         | removed: ""
+src line   614 | 2 afrikaans page         | removed: "TOEPASSINGSBEPALINGS 55"
+src line   615 | 2 afrikaans page         | removed: ""
+src line   616 | 2 afrikaans page         | removed: "Toepassing en uitleg van Wet"
+src line   617 | 2 afrikaans page         | removed: ""
+src line   618 | 2 afrikaans page         | removed: "3. (1) Hierdie Wet is van toepassing op die prosessering van persoonlike inligting—"
+src line   619 | 2 afrikaans page         | removed: ""
+src line    23 | 3 page header            | removed: "2 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line    76 | 3 page header            | removed: "4 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line   145 | 3 page header            | removed: "6 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line   216 | 3 page header            | removed: "8 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line   279 | 3 page header            | removed: "10 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line   349 | 3 page header            | removed: "12 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line   417 | 3 page header            | removed: "14 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line   486 | 3 page header            | removed: "16 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line   620 | 3 page header            | removed: "18 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line   684 | 3 page header            | removed: "20 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line   747 | 3 page header            | removed: "22 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line   813 | 3 page header            | removed: "24 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line   876 | 3 page header            | removed: "26 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line   939 | 3 page header            | removed: "28 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  1003 | 3 page header            | removed: "30 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  1070 | 3 page header            | removed: "32 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  1127 | 3 page header            | removed: "34 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  1189 | 3 page header            | removed: "36 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  1249 | 3 page header            | removed: "38 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  1313 | 3 page header            | removed: "40 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  1378 | 3 page header            | removed: "42 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  1440 | 3 page header            | removed: "44 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  1508 | 3 page header            | removed: "46 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  1573 | 3 page header            | removed: "48 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  1637 | 3 page header            | removed: "50 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  1696 | 3 page header            | removed: "52 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  1762 | 3 page header            | removed: "54 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  1829 | 3 page header            | removed: "56 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  1895 | 3 page header            | removed: "58 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  1960 | 3 page header            | removed: "60 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  2021 | 3 page header            | removed: "62 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  2086 | 3 page header            | removed: "64 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  2149 | 3 page header            | removed: "66 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  2213 | 3 page header            | removed: "68 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  2277 | 3 page header            | removed: "70 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  2344 | 3 page header            | removed: "72 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  2408 | 3 page header            | removed: "74 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  2471 | 3 page header            | removed: "76 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  2535 | 3 page header            | removed: "78 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  2599 | 3 page header            | removed: "80 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  2663 | 3 page header            | removed: "82 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  2726 | 3 page header            | removed: "84 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  2791 | 3 page header            | removed: "86 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  2853 | 3 page header            | removed: "88 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  2914 | 3 page header            | removed: "90 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  2973 | 3 page header            | removed: "92 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  3039 | 3 page header            | removed: "94 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  3101 | 3 page header            | removed: "96 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  3166 | 3 page header            | removed: "98 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  3229 | 3 page header            | removed: "100 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  3293 | 3 page header            | removed: "102 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  3358 | 3 page header            | removed: "104 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  3420 | 3 page header            | removed: "106 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  3456 | 3 page header            | removed: "108 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  3526 | 3 page header            | removed: "110 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  3591 | 3 page header            | removed: "112 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  3662 | 3 page header            | removed: "114 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  3732 | 3 page header            | removed: "116 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  3794 | 3 page header            | removed: "118 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  3862 | 3 page header            | removed: "120 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  3925 | 3 page header            | removed: "122 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  3990 | 3 page header            | removed: "124 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  4068 | 3 page header            | removed: "126 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  4133 | 3 page header            | removed: "128 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  4204 | 3 page header            | removed: "130 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  4274 | 3 page header            | removed: "132 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  4349 | 3 page header            | removed: "134 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  4417 | 3 page header            | removed: "136 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  4484 | 3 page header            | removed: "138 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  4547 | 3 page header            | removed: "140 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  4610 | 3 page header            | removed: "142 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  4678 | 3 page header            | removed: "144 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  4736 | 3 page header            | removed: "146 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line  4805 | 3 page header            | removed: "148 No. 37067 GOVERNMENT GAZETTE, 26 November 2013"
+src line    25 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line    78 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line   147 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line   218 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line   281 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line   351 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line   419 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line   488 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line   622 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line   686 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line   749 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line   815 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line   878 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line   941 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  1005 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  1072 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  1129 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  1191 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  1251 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  1315 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  1380 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  1442 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  1510 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  1575 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  1639 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  1698 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  1764 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  1831 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  1897 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  1962 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  2023 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  2088 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  2151 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  2215 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  2279 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  2346 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  2410 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  2473 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  2537 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  2601 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  2665 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  2728 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  2793 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  2855 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  2916 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  2975 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  3041 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  3103 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  3168 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  3231 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  3295 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  3360 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  3422 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  3458 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  3528 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  3593 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  3664 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  3734 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  3796 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  3864 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  3927 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  3992 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  4070 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  4135 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  4206 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  4276 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  4351 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  4419 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  4486 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  4549 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  4612 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  4680 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  4738 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line  4807 | 3 page header            | removed: "Act No. 4 of 2013 Protection of Personal Information Act, 2013"
+src line    21 | 3 page header            | removed: "### AIDS HELPLINE: 0800-123-22 Prevention is the cure"
+src line    80 | 3 page number            | removed: "4"
+src line   149 | 3 page number            | removed: "6"
+src line   220 | 3 page number            | removed: "8"
+src line   283 | 3 page number            | removed: "10"
+src line   353 | 3 page number            | removed: "12"
+src line   421 | 3 page number            | removed: "14"
+src line   490 | 3 page number            | removed: "16"
+src line   624 | 3 page number            | removed: "18"
+src line   688 | 3 page number            | removed: "20"
+src line   751 | 3 page number            | removed: "22"
+src line   817 | 3 page number            | removed: "24"
+src line   880 | 3 page number            | removed: "26"
+src line   943 | 3 page number            | removed: "28"
+src line  1007 | 3 page number            | removed: "30"
+src line  1074 | 3 page number            | removed: "32"
+src line  1131 | 3 page number            | removed: "34"
+src line  1193 | 3 page number            | removed: "36"
+src line  1253 | 3 page number            | removed: "38"
+src line  1317 | 3 page number            | removed: "40"
+src line  1382 | 3 page number            | removed: "42"
+src line  1444 | 3 page number            | removed: "44"
+src line  1512 | 3 page number            | removed: "46"
+src line  1577 | 3 page number            | removed: "48"
+src line  1641 | 3 page number            | removed: "50"
+src line  1700 | 3 page number            | removed: "52"
+src line  1766 | 3 page number            | removed: "54"
+src line  1833 | 3 page number            | removed: "56"
+src line  1899 | 3 page number            | removed: "58"
+src line  1964 | 3 page number            | removed: "60"
+src line  2025 | 3 page number            | removed: "62"
+src line  2090 | 3 page number            | removed: "64"
+src line  2153 | 3 page number            | removed: "66"
+src line  2217 | 3 page number            | removed: "68"
+src line  2281 | 3 page number            | removed: "70"
+src line  2348 | 3 page number            | removed: "72"
+src line  2412 | 3 page number            | removed: "74"
+src line  2475 | 3 page number            | removed: "76"
+src line  2539 | 3 page number            | removed: "78"
+src line  2603 | 3 page number            | removed: "80"
+src line  2667 | 3 page number            | removed: "82"
+src line  2730 | 3 page number            | removed: "84"
+src line  2795 | 3 page number            | removed: "86"
+src line  2857 | 3 page number            | removed: "88"
+src line  2918 | 3 page number            | removed: "90"
+src line  2977 | 3 page number            | removed: "92"
+src line  3043 | 3 page number            | removed: "94"
+src line  3105 | 3 page number            | removed: "96"
+src line  3170 | 3 page number            | removed: "98"
+src line  3233 | 3 page number            | removed: "100"
+src line  3297 | 3 page number            | removed: "102"
+src line  3362 | 3 page number            | removed: "104"
+src line  3424 | 3 page number            | removed: "106"
+src line  3460 | 3 page number            | removed: "108"
+src line  3530 | 3 page number            | removed: "110"
+src line  3595 | 3 page number            | removed: "112"
+src line  3666 | 3 page number            | removed: "114"
+src line  3736 | 3 page number            | removed: "116"
+src line  3798 | 3 page number            | removed: "118"
+src line  3866 | 3 page number            | removed: "120"
+src line  3929 | 3 page number            | removed: "122"
+src line  3994 | 3 page number            | removed: "124"
+src line  4072 | 3 page number            | removed: "126"
+src line  4137 | 3 page number            | removed: "128"
+src line  4208 | 3 page number            | removed: "130"
+src line  4278 | 3 page number            | removed: "132"
+src line  4353 | 3 page number            | removed: "134"
+src line  4421 | 3 page number            | removed: "136"
+src line  4488 | 3 page number            | removed: "138"
+src line  4551 | 3 page number            | removed: "140"
+src line  4614 | 3 page number            | removed: "142"
+src line  4682 | 3 page number            | removed: "144"
+src line  4740 | 3 page number            | removed: "146"
+src line  4809 | 3 page number            | removed: "148"
+src line    88 | 4 margin number       | "DEFINITIONS AND PURPOSE 5" -> "DEFINITIONS AND PURPOSE" | margin number
+src line    97 | 4 margin number       | "3. Application and interpretation of Act 10" -> "3. Application and interpretation of Act" | reference word + continuation digit
+src line   103 | 4 margin number       | "CHAPTER 3 15" -> "CHAPTER 3" | heading number followed by margin number
+src line   113 | 4 margin number       | "Accountability 20" -> "Accountability" | margin number
+src line   122 | 4 margin number       | "10. Minimality 25" -> "10. Minimality" | margin number
+src line   130 | 4 margin number       | "13. Collection for specific purpose 30" -> "13. Collection for specific purpose" | margin number
+src line   139 | 4 margin number       | "Condition 5 35" -> "Condition 5" | heading number followed by margin number
+src line   158 | 4 margin number       | "Condition 7 5" -> "Condition 7" | heading number followed by margin number
+src line   165 | 4 margin number       | "22. Notification of security compromises 10" -> "22. Notification of security compromises" | margin number
+src line   173 | 4 margin number       | "25. Manner of access 15" -> "25. Manner of access" | margin number
+src line   181 | 4 margin number       | "28. Authorisation concerning data subject’s religious or philosophical beliefs 20" -> "28. Authorisation concerning data subject’s religious or philosophical beliefs" | margin number
+src line   186 | 4 margin number       | "33. Authorisation concerning data subject’s criminal behaviour or biometric 25" -> "33. Authorisation concerning data subject’s criminal behaviour or biometric" | margin number
+src line   194 | 4 margin number       | "35. General authorisation concerning personal information of children 30" -> "35. General authorisation concerning personal information of children" | margin number
+src line   202 | 4 margin number       | "37. Regulator may exempt processing of personal information 35" -> "37. Regulator may exempt processing of personal information" | margin number
+src line   211 | 4 margin number       | "Information Regulator 40" -> "Information Regulator" | margin number
+src line   226 | 4 margin number       | "45. Conflict of interest 5" -> "45. Conflict of interest" | margin number
+src line   231 | 4 margin number       | "50. Establishment of Enforcement Committee 10" -> "50. Establishment of Enforcement Committee" | margin number
+src line   237 | 4 margin number       | "Part B 15" -> "Part B" | heading number followed by margin number
+src line   246 | 4 margin number       | "PRIOR AUTHORISATION 20" -> "PRIOR AUTHORISATION" | margin number
+src line   253 | 4 margin number       | "59. Failure to notify processing subject to prior authorisation 25" -> "59. Failure to notify processing subject to prior authorisation" | margin number
+src line   261 | 4 margin number       | "62. Notification, availability and commencement of code of conduct 30" -> "62. Notification, availability and commencement of code of conduct" | margin number
+src line   266 | 4 margin number       | "67. Review of operation of approved code of conduct 35" -> "67. Review of operation of approved code of conduct" | margin number
+src line   273 | 4 margin number       | "DIRECTORIES AND AUTOMATED DECISION MAKING 40" -> "DIRECTORIES AND AUTOMATED DECISION MAKING" | margin number
+src line   293 | 4 margin number       | "ENFORCEMENT 5" -> "ENFORCEMENT" | margin number
+src line   299 | 4 margin number       | "77. Regulator may decide to take no action on complaint 10" -> "77. Regulator may decide to take no action on complaint" | margin number
+src line   304 | 4 margin number       | "82. Issue of warrants 15" -> "82. Issue of warrants" | margin number
+src line   309 | 4 margin number       | "87. Objection to search and seizure 20" -> "87. Objection to search and seizure" | margin number
+src line   314 | 4 margin number       | "92. Matters referred to Enforcement Committee 25" -> "92. Matters referred to Enforcement Committee" | margin number
+src line   319 | 4 margin number       | "97. Right of appeal 30" -> "97. Right of appeal" | margin number
+src line   327 | 4 margin number       | "100. Obstruction of Regulator 35" -> "100. Obstruction of Regulator" | margin number
+src line   332 | 4 margin number       | "105. Unlawful acts by responsible party in connection with account number 40" -> "105. Unlawful acts by responsible party in connection with account number" | margin number
+src line   338 | 4 margin number       | "CHAPTER 12 45" -> "CHAPTER 12" | heading number followed by margin number
+src line   345 | 4 margin number       | "113. Procedure for making regulations 50" -> "113. Procedure for making regulations" | reference word + continuation digit
+src line   363 | 4 margin number       | "Definitions 5" -> "Definitions" | margin number
+src line   369 | 4 margin number       | "‘‘child’’ means a natural person under the age of 18 years who is not legally 10" -> "‘‘child’’ means a natural person under the age of 18 years who is not legally" | margin number
+src line   374 | 4 margin number       | "action or decision being taken in respect of any matter concerning a child; 15" -> "action or decision being taken in respect of any matter concerning a child;" | margin number
+src line   379 | 4 margin number       | "‘‘de-identify’’, in relation to personal information of a data subject, means to delete 20" -> "‘‘de-identify’’, in relation to personal information of a data subject, means to delete" | margin number
+src line   384 | 4 margin number       | "(c) can be linked by a reasonably foreseeable method to other information that 25" -> "(c) can be linked by a reasonably foreseeable method to other information that" | margin number
+src line   389 | 4 margin number       | "(a) promoting or offering to supply, in the ordinary course of business, any goods 30" -> "(a) promoting or offering to supply, in the ordinary course of business, any goods" | margin number
+src line   394 | 4 margin number       | "recipient’s terminal equipment until it is collected by the recipient; 35" -> "recipient’s terminal equipment until it is collected by the recipient;" | margin number
+src line   399 | 4 margin number       | "‘‘information matching programme’’ means the comparison, whether manually 40" -> "‘‘information matching programme’’ means the comparison, whether manually" | margin number
+src line   404 | 4 margin number       | "action in regard to an identifiable data subject; 45" -> "action in regard to an identifiable data subject;" | margin number
+src line   409 | 4 margin number       | "of the Promotion of Access to Information Act; 50" -> "of the Promotion of Access to Information Act;" | margin number
+src line   414 | 4 margin number       | "of that party; 55" -> "of that party;" | margin number
+src line   427 | 4 margin number       | "national, ethnic or social origin, colour, sexual orientation, age, physical or 5" -> "national, ethnic or social origin, colour, sexual orientation, age, physical or" | margin number
+src line   432 | 4 margin number       | "(c) any identifying number, symbol, e-mail address, physical address, telephone 10" -> "(c) any identifying number, symbol, e-mail address, physical address, telephone" | margin number
+src line   437 | 4 margin number       | "(f) correspondence sent by the person that is implicitly or explicitly of a private 15" -> "(f) correspondence sent by the person that is implicitly or explicitly of a private" | margin number
+src line   442 | 4 margin number       | "the person or if the disclosure of the name itself would reveal information 20" -> "the person or if the disclosure of the name itself would reveal information" | margin number
+src line   447 | 4 margin number       | "profession, but only in such capacity; 25" -> "profession, but only in such capacity;" | margin number
+src line   452 | 4 margin number       | "not by automatic means, concerning personal information, including— 30" -> "not by automatic means, concerning personal information, including—" | margin number
+src line   457 | 4 margin number       | "(c) merging, linking, as well as restriction, degradation, erasure or destruction of 35" -> "(c) merging, linking, as well as restriction, degradation, erasure or destruction of" | margin number
+src line   462 | 4 margin number       | "‘‘Promotion of Access to Information Act’’ means the Promotion of Access to 40" -> "‘‘Promotion of Access to Information Act’’ means the Promotion of Access to" | margin number
+src line   467 | 4 margin number       | "(b) any other functionary or institution when— 45" -> "(b) any other functionary or institution when—" | margin number
+src line   472 | 4 margin number       | "‘‘public record’’ means a record that is accessible in the public domain and which 50" -> "‘‘public record’’ means a record that is accessible in the public domain and which" | margin number
+src line   477 | 4 margin number       | "(i) Writing on any material; 55" -> "(i) Writing on any material;" | margin number
+src line   482 | 4 margin number       | "(iii) label, marking or other writing that identifies or describes any thing of 60" -> "(iii) label, marking or other writing that identifies or describes any thing of" | margin number
+src line   496 | 4 margin number       | "(c) whether or not it was created by a responsible party; and 5" -> "(c) whether or not it was created by a responsible party; and" | margin number
+src line   501 | 4 margin number       | "(a) identifies the data subject; 10" -> "(a) identifies the data subject;" | margin number
+src line   506 | 4 margin number       | "and ‘‘re-identified’’ has a corresponding meaning; 15" -> "and ‘‘re-identified’’ has a corresponding meaning;" | margin number
+src line   511 | 4 margin number       | "‘‘restriction’’ means to withhold from circulation, use or publication any personal 20" -> "‘‘restriction’’ means to withhold from circulation, use or publication any personal" | margin number
+src line   516 | 4 margin number       | "‘‘this Act’’ includes any regulation or code of conduct made under this Act; and 25" -> "‘‘this Act’’ includes any regulation or code of conduct made under this Act; and" | margin number
+src line   522 | 4 margin number       | "Purpose of Act 30" -> "Purpose of Act" | reference word + continuation digit
+src line   528 | 4 margin number       | "(i) balancing the right to privacy against other rights, particularly the right 35" -> "(i) balancing the right to privacy against other rights, particularly the right" | margin number
+src line   533 | 4 margin number       | "establishing conditions, in harmony with international standards, that 40" -> "establishing conditions, in harmony with international standards, that" | margin number
+src line   538 | 4 margin number       | "(d) establish voluntary and compulsory measures, including the establishment of 45" -> "(d) establish voluntary and compulsory measures, including the establishment of" | margin number
+src line   546 | 4 margin number       | "Application and interpretation of Act 50" -> "Application and interpretation of Act" | reference word + continuation digit
+src line   630 | 4 margin number       | "(b) where the responsible party is— 5" -> "(b) where the responsible party is—" | margin number
+src line   635 | 4 margin number       | "(2) (a) This Act applies, subject to paragraph (b), to the exclusion of any provision of 10" -> "(2) (a) This Act applies, subject to paragraph (b), to the exclusion of any provision of" | margin number
+src line   640 | 4 margin number       | "extensive conditions prevail. 15" -> "extensive conditions prevail." | margin number
+src line   645 | 4 margin number       | "and functions relate to the processing of personal information and such 20" -> "and functions relate to the processing of personal information and such" | margin number
+src line   650 | 4 margin number       | "processing information. 25" -> "processing information." | margin number
+src line   657 | 4 margin number       | "(b) ‘‘Processing limitation’’, as referred to in sections 9 to 12; 30" -> "(b) ‘‘Processing limitation’’, as referred to in sections 9 to 12;" | margin number
+src line   662 | 4 margin number       | "(g) ‘‘Security safeguards’’, as referred to in sections 19 to 22; and 35" -> "(g) ‘‘Security safeguards’’, as referred to in sections 19 to 22; and" | margin number
+src line   667 | 4 margin number       | "(b) exempted in terms of section 37 or 38, from one or more of the conditions 40" -> "(b) exempted in terms of section 37 or 38, from one or more of the conditions" | margin number
+src line   672 | 4 margin number       | "(b) Regulator has granted an authorisation in terms of section 27(2), 45" -> "(b) Regulator has granted an authorisation in terms of section 27(2)," | margin number
+src line   677 | 4 margin number       | "(a) provisions of section 35(1) are applicable; or 50" -> "(a) provisions of section 35(1) are applicable; or" | margin number
+src line   682 | 4 margin number       | "of sections 26 and 34 unless the provisions of sections 27 and 35 are applicable in which 55" -> "of sections 26 and 34 unless the provisions of sections 27 and 35 are applicable in which" | margin number
+src line   694 | 4 margin number       | "Chapter 3, read with section 69 insofar as that section relates to direct marketing by 5" -> "Chapter 3, read with section 69 insofar as that section relates to direct marketing by" | margin number
+src line   699 | 4 margin number       | "to be applied, or are to be complied with within a particular sector. 10" -> "to be applied, or are to be complied with within a particular sector." | margin number
+src line   706 | 4 margin number       | "(a) to be notified that— 15" -> "(a) to be notified that—" | margin number
+src line   711 | 4 margin number       | "(b) to establish whether a responsible party holds personal information of that 20" -> "(b) to establish whether a responsible party holds personal information of that" | margin number
+src line   716 | 4 margin number       | "(d) to object, on reasonable grounds relating to his, her or its particular situation 25" -> "(d) to object, on reasonable grounds relating to his, her or its particular situation" | margin number
+src line   721 | 4 margin number       | "or 30" -> "or" | margin number
+src line   726 | 4 margin number       | "(g) not to be subject, under certain circumstances, to a decision which is based 35" -> "(g) not to be subject, under certain circumstances, to a decision which is based" | margin number
+src line   731 | 4 margin number       | "the protection of the personal information of any data subject or to submit a 40" -> "the protection of the personal information of any data subject or to submit a" | margin number
+src line   737 | 4 margin number       | "Exclusions 45" -> "Exclusions" | margin number
+src line   743 | 4 margin number       | "(i) which involves national security, including activities that are aimed at 50" -> "(i) which involves national security, including activities that are aimed at" | margin number
+src line   757 | 4 margin number       | "security measures, 5" -> "security measures," | margin number
+src line   762 | 4 margin number       | "Constitution. 10" -> "Constitution." | margin number
+src line   769 | 4 margin number       | "7. (1) This Act does not apply to the processing of personal information solely for the 15" -> "7. (1) This Act does not apply to the processing of personal information solely for the" | margin number
+src line   774 | 4 margin number       | "journalistic purposes is, by virtue of office, employment or profession, subject to a code 20" -> "journalistic purposes is, by virtue of office, employment or profession, subject to a code" | margin number
+src line   779 | 4 margin number       | "that code. 25" -> "that code." | margin number
+src line   784 | 4 margin number       | "(b) domestic and international standards balancing the— 30" -> "(b) domestic and international standards balancing the—" | margin number
+src line   789 | 4 margin number       | "data subjects; 35" -> "data subjects;" | margin number
+src line   794 | 4 margin number       | "profession. 40" -> "profession." | margin number
+src line   804 | 4 margin number       | "Condition 1 45" -> "Condition 1" | heading number followed by margin number
+src line   826 | 4 margin number       | "Lawfulness of processing 5" -> "Lawfulness of processing" | margin number
+src line   834 | 4 margin number       | "10. Personal information may only be processed if, given the purpose for which it is 10" -> "10. Personal information may only be processed if, given the purpose for which it is" | margin number
+src line   841 | 4 margin number       | "consents to the processing; 15" -> "consents to the processing;" | margin number
+src line   846 | 4 margin number       | "(d) processing protects a legitimate interest of the data subject; 20" -> "(d) processing protects a legitimate interest of the data subject;" | margin number
+src line   851 | 4 margin number       | "(2) (a) The responsible party bears the burden of proof for the data subject’s or 25" -> "(2) (a) The responsible party bears the burden of proof for the data subject’s or" | margin number
+src line   856 | 4 margin number       | "information in terms of subsection (1)(b) to (f) will not be affected. 30" -> "information in terms of subsection (1)(b) to (f) will not be affected." | margin number
+src line   861 | 4 margin number       | "(b) for purposes of direct marketing other than direct marketing by means of 35" -> "(b) for purposes of direct marketing other than direct marketing by means of" | margin number
+src line   868 | 4 margin number       | "12. (1) Personal information must be collected directly from the data subject, except 40" -> "12. (1) Personal information must be collected directly from the data subject, except" | margin number
+src line   873 | 4 margin number       | "(b) the data subject or a competent person where the data subject is a child has 45" -> "(b) the data subject or a competent person where the data subject is a child has" | margin number
+src line   886 | 4 margin number       | "including the prevention, detection, investigation, prosecution and 5" -> "including the prevention, detection, investigation, prosecution and" | margin number
+src line   891 | 4 margin number       | "(iii) for the conduct of proceedings in any court or tribunal that have 10" -> "(iii) for the conduct of proceedings in any court or tribunal that have" | margin number
+src line   896 | 4 margin number       | "(e) compliance would prejudice a lawful purpose of the collection; or 15" -> "(e) compliance would prejudice a lawful purpose of the collection; or" | margin number
+src line   904 | 4 margin number       | "Collection for specific purpose 20" -> "Collection for specific purpose" | margin number
+src line   910 | 4 margin number       | "of section 18(4) are applicable. 25" -> "of section 18(4) are applicable." | margin number
+src line   917 | 4 margin number       | "(a) retention of the record is required or authorised by law; 30" -> "(a) retention of the record is required or authorised by law;" | margin number
+src line   922 | 4 margin number       | "consented to the retention of the record. 35" -> "consented to the retention of the record." | margin number
+src line   927 | 4 margin number       | "(3) A responsible party that has used a record of personal information of a data subject 40" -> "(3) A responsible party that has used a record of personal information of a data subject" | margin number
+src line   932 | 4 margin number       | "record for a period which will afford the data subject a reasonable opportunity, 45" -> "record for a period which will afford the data subject a reasonable opportunity," | margin number
+src line   937 | 4 margin number       | "authorised to retain the record in terms of subsection (1) or (2). 50" -> "authorised to retain the record in terms of subsection (1) or (2)." | margin number
+src line   949 | 4 margin number       | "(a) its accuracy is contested by the data subject, for a period enabling the 5" -> "(a) its accuracy is contested by the data subject, for a period enabling the" | margin number
+src line   954 | 4 margin number       | "(c) the processing is unlawful and the data subject opposes its destruction or 10" -> "(c) the processing is unlawful and the data subject opposes its destruction or" | margin number
+src line   959 | 4 margin number       | "storage, only be processed for purposes of proof, or with the data subject’s consent, or 15" -> "storage, only be processed for purposes of proof, or with the data subject’s consent, or" | margin number
+src line   964 | 4 margin number       | "processing. 20" -> "processing." | margin number
+src line   973 | 4 margin number       | "compatible with the purpose for which it was collected in terms of section 13. 25" -> "compatible with the purpose for which it was collected in terms of section 13." | margin number
+src line   978 | 4 margin number       | "(b) the nature of the information concerned; 30" -> "(b) the nature of the information concerned;" | margin number
+src line   983 | 4 margin number       | "purpose of collection if— 35" -> "purpose of collection if—" | margin number
+src line   988 | 4 margin number       | "(c) further processing is necessary— 40" -> "(c) further processing is necessary—" | margin number
+src line   993 | 4 margin number       | "concerning the collection of revenue as defined in section 1 of the South 45" -> "concerning the collection of revenue as defined in section 1 of the South" | margin number
+src line   998 | 4 margin number       | "(d) the further processing of the information is necessary to prevent or mitigate a 50" -> "(d) the further processing of the information is necessary to prevent or mitigate a" | margin number
+src line  1013 | 4 margin number       | "granted under section 37. 5" -> "granted under section 37." | margin number
+src line  1022 | 4 margin number       | "personal information is complete, accurate, not misleading and updated where 10" -> "personal information is complete, accurate, not misleading and updated where" | margin number
+src line  1029 | 4 margin number       | "Openness 15" -> "Openness" | margin number
+src line  1037 | 4 margin number       | "Notification to data subject when collecting personal information 20" -> "Notification to data subject when collecting personal information" | margin number
+src line  1043 | 4 margin number       | "(b) the name and address of the responsible party; 25" -> "(b) the name and address of the responsible party;" | margin number
+src line  1048 | 4 margin number       | "(f) any particular law authorising or requiring the collection of the information; 30" -> "(f) any particular law authorising or requiring the collection of the information;" | margin number
+src line  1053 | 4 margin number       | "(h) any further information such as the— 35" -> "(h) any further information such as the—" | margin number
+src line  1058 | 4 margin number       | "(iv) existence of the right to object to the processing of personal information 40" -> "(iv) existence of the right to object to the processing of personal information" | margin number
+src line  1063 | 4 margin number       | "information is or is not to be processed, to enable processing in respect of the 45" -> "information is or is not to be processed, to enable processing in respect of the" | margin number
+src line  1068 | 4 margin number       | "information referred to in that subsection; or 50" -> "information referred to in that subsection; or" | margin number
+src line  1080 | 4 margin number       | "subject of the same information or information of the same kind if the purpose of 5" -> "subject of the same information or information of the same kind if the purpose of" | margin number
+src line  1085 | 4 margin number       | "(b) non-compliance would not prejudice the legitimate interests of the data 10" -> "(b) non-compliance would not prejudice the legitimate interests of the data" | margin number
+src line  1090 | 4 margin number       | "punishment of offences; 15" -> "punishment of offences;" | margin number
+src line  1095 | 4 margin number       | "commenced or are reasonably contemplated; or 20" -> "commenced or are reasonably contemplated; or" | margin number
+src line  1100 | 4 margin number       | "(f) the information will— 25" -> "(f) the information will—" | margin number
+src line  1108 | 4 margin number       | "Security measures on integrity and confidentiality of personal information 30" -> "Security measures on integrity and confidentiality of personal information" | margin number
+src line  1114 | 4 margin number       | "(b) unlawful access to or processing of personal information. 35" -> "(b) unlawful access to or processing of personal information." | margin number
+src line  1119 | 4 margin number       | "(b) establish and maintain appropriate safeguards against the risks identified; 40" -> "(b) establish and maintain appropriate safeguards against the risks identified;" | margin number
+src line  1124 | 4 margin number       | "security practices and procedures which may apply to it generally or be required in terms 45" -> "security practices and procedures which may apply to it generally or be required in terms" | margin number
+src line  1138 | 4 margin number       | "responsible party; and 5" -> "responsible party; and" | margin number
+src line  1145 | 4 margin number       | "21. (1) A responsible party must, in terms of a written contract between the 10" -> "21. (1) A responsible party must, in terms of a written contract between the" | margin number
+src line  1150 | 4 margin number       | "reasonable grounds to believe that the personal information of a data subject has been 15" -> "reasonable grounds to believe that the personal information of a data subject has been" | margin number
+src line  1157 | 4 margin number       | "party must notify— 20" -> "party must notify—" | margin number
+src line  1162 | 4 margin number       | "possible after the discovery of the compromise, taking into account the legitimate needs 25" -> "possible after the discovery of the compromise, taking into account the legitimate needs" | margin number
+src line  1167 | 4 margin number       | "Regulator determines that notification will impede a criminal investigation by the public 30" -> "Regulator determines that notification will impede a criminal investigation by the public" | margin number
+src line  1172 | 4 margin number       | "(b) sent by e-mail to the data subject’s last known e-mail address; 35" -> "(b) sent by e-mail to the data subject’s last known e-mail address;" | margin number
+src line  1177 | 4 margin number       | "to allow the data subject to take protective measures against the potential consequences 40" -> "to allow the data subject to take protective measures against the potential consequences" | margin number
+src line  1182 | 4 margin number       | "(c) a recommendation with regard to the measures to be taken by the data subject 45" -> "(c) a recommendation with regard to the measures to be taken by the data subject" | margin number
+src line  1187 | 4 margin number       | "specified, the fact of any compromise to the integrity or confidentiality of personal 50" -> "specified, the fact of any compromise to the integrity or confidentiality of personal" | margin number
+src line  1202 | 4 margin number       | "Access to personal information 5" -> "Access to personal information" | margin number
+src line  1208 | 4 margin number       | "information about the data subject held by the responsible party, including 10" -> "information about the data subject held by the responsible party, including" | margin number
+src line  1213 | 4 margin number       | "(iii) in a reasonable manner and format; and 15" -> "(iii) in a reasonable manner and format; and" | margin number
+src line  1218 | 4 margin number       | "(3) If a data subject is required by a responsible party to pay a fee for services 20" -> "(3) If a data subject is required by a responsible party to pay a fee for services" | margin number
+src line  1223 | 4 margin number       | "(b) may require the applicant to pay a deposit for all or part of the fee. 25" -> "(b) may require the applicant to pay a deposit for all or part of the fee." | margin number
+src line  1228 | 4 margin number       | "(b) The provisions of sections 30 and 61 of the Promotion of Access to Information 30" -> "(b) The provisions of sections 30 and 61 of the Promotion of Access to Information" | margin number
+src line  1234 | 4 margin number       | "Correction of personal information 35" -> "Correction of personal information" | margin number
+src line  1240 | 4 margin number       | "(b) destroy or delete a record of personal information about the data subject that 40" -> "(b) destroy or delete a record of personal information about the data subject that" | margin number
+src line  1245 | 4 margin number       | "(b) destroy or delete the information; 45" -> "(b) destroy or delete the information;" | margin number
+src line  1259 | 4 margin number       | "of the information has been requested but has not been made. 5" -> "of the information has been requested but has not been made." | margin number
+src line  1264 | 4 margin number       | "whom the personal information has been disclosed of those steps. 10" -> "whom the personal information has been disclosed of those steps." | margin number
+src line  1271 | 4 margin number       | "Act apply to requests made in terms of section 23 of this Act. 15" -> "Act apply to requests made in terms of section 23 of this Act." | margin number
+src line  1280 | 4 margin number       | "concerning— 20" -> "concerning—" | margin number
+src line  1285 | 4 margin number       | "relates to— 25" -> "relates to—" | margin number
+src line  1292 | 4 margin number       | "27. (1) The prohibition on processing personal information, as referred to in section 30" -> "27. (1) The prohibition on processing personal information, as referred to in section" | reference word + continuation digit
+src line  1297 | 4 margin number       | "obligation in law; 35" -> "obligation in law;" | margin number
+src line  1302 | 4 margin number       | "the purpose concerned; or 40" -> "the purpose concerned; or" | margin number
+src line  1307 | 4 margin number       | "disproportionate extent; 45" -> "disproportionate extent;" | margin number
+src line  1324 | 4 margin number       | "Authorisation concerning data subject’s religious or philosophical beliefs 5" -> "Authorisation concerning data subject’s religious or philosophical beliefs" | margin number
+src line  1330 | 4 margin number       | "organisations if— 10" -> "organisations if—" | margin number
+src line  1335 | 4 margin number       | "their members or employees or other persons belonging to the institution, if it 15" -> "their members or employees or other persons belonging to the institution, if it" | margin number
+src line  1340 | 4 margin number       | "(2) In the cases referred to in subsection (1)(a), the prohibition does not apply to 20" -> "(2) In the cases referred to in subsection (1)(a), the prohibition does not apply to" | margin number
+src line  1345 | 4 margin number       | "(b) the family members have not objected in writing to the processing. 25" -> "(b) the family members have not objected in writing to the processing." | margin number
+src line  1352 | 4 margin number       | "29. The prohibition on processing personal information concerning a data subject’s 30" -> "29. The prohibition on processing personal information concerning a data subject’s" | margin number
+src line  1357 | 4 margin number       | "or categories of persons, disadvantaged by unfair discrimination. 35" -> "or categories of persons, disadvantaged by unfair discrimination." | margin number
+src line  1364 | 4 margin number       | "federation to which that trade union belongs, if such processing is necessary to achieve 40" -> "federation to which that trade union belongs, if such processing is necessary to achieve" | margin number
+src line  1371 | 4 margin number       | "31. (1) The prohibition on processing personal information concerning a data 45" -> "31. (1) The prohibition on processing personal information concerning a data" | margin number
+src line  1376 | 4 margin number       | "(b) a data subject if such processing is necessary for the purposes of— 50" -> "(b) a data subject if such processing is necessary for the purposes of—" | margin number
+src line  1388 | 4 margin number       | "(aa) an election of the National Assembly or the provincial legislature as 5" -> "(aa) an election of the National Assembly or the provincial legislature as" | margin number
+src line  1393 | 4 margin number       | "(Act No. 108 of 1983); or 10" -> "(Act No. 108 of 1983); or" | margin number
+src line  1400 | 4 margin number       | "32. (1) The prohibition on processing personal information concerning a data 15" -> "32. (1) The prohibition on processing personal information concerning a data" | margin number
+src line  1405 | 4 margin number       | "subject, or for the administration of the institution or professional practice 20" -> "subject, or for the administration of the institution or professional practice" | margin number
+src line  1410 | 4 margin number       | "the medical scheme and the data subject has not objected to the 25" -> "the medical scheme and the data subject has not objected to the" | margin number
+src line  1415 | 4 margin number       | "or making special arrangements in connection with their health or sex life; 30" -> "or making special arrangements in connection with their health or sex life;" | margin number
+src line  1420 | 4 margin number       | "(f) administrative bodies, pension funds, employers or institutions working for 35" -> "(f) administrative bodies, pension funds, employers or institutions working for" | margin number
+src line  1425 | 4 margin number       | "(ii) the reintegration of or support for workers or persons entitled to benefit 40" -> "(ii) the reintegration of or support for workers or persons entitled to benefit" | margin number
+src line  1430 | 4 margin number       | "between the responsible party and the data subject. 45" -> "between the responsible party and the data subject." | margin number
+src line  1435 | 4 margin number       | "connection with their duties to communicate the information to other parties who are 50" -> "connection with their duties to communicate the information to other parties who are" | margin number
+src line  1450 | 4 margin number       | "unless— 5" -> "unless—" | margin number
+src line  1456 | 4 margin number       | "Authorisation concerning data subject’s criminal behaviour or biometric informa- 10" -> "Authorisation concerning data subject’s criminal behaviour or biometric informa-" | margin number
+src line  1462 | 4 margin number       | "criminal law or by responsible parties who have obtained that information in accordance 15" -> "criminal law or by responsible parties who have obtained that information in accordance" | margin number
+src line  1467 | 4 margin number       | "(3) The prohibition on processing any of the categories of personal information 20" -> "(3) The prohibition on processing any of the categories of personal information" | margin number
+src line  1474 | 4 margin number       | "Processing of personal information of children 25" -> "Processing of personal information of children" | margin number
+src line  1483 | 4 margin number       | "35. (1) The prohibition on processing personal information of children, as referred to 30" -> "35. (1) The prohibition on processing personal information of children, as referred to" | margin number
+src line  1488 | 4 margin number       | "(c) necessary to comply with an obligation of international public law; 35" -> "(c) necessary to comply with an obligation of international public law;" | margin number
+src line  1493 | 4 margin number       | "ask for consent, 40" -> "ask for consent," | margin number
+src line  1498 | 4 margin number       | "with the consent of a competent person. 45" -> "with the consent of a competent person." | margin number
+src line  1503 | 4 margin number       | "to protect the personal information of the child. 50" -> "to protect the personal information of the child." | margin number
+src line  1518 | 4 margin number       | "(b) provide notice— 5" -> "(b) provide notice—" | margin number
+src line  1523 | 4 margin number       | "(c) refrain from any action that is intended to encourage or persuade a child to 10" -> "(c) refrain from any action that is intended to encourage or persuade a child to" | margin number
+src line  1529 | 4 margin number       | "CHAPTER 4 15" -> "CHAPTER 4" | heading number followed by margin number
+src line  1537 | 4 margin number       | "processing of such information if the— 20" -> "processing of such information if the—" | margin number
+src line  1544 | 4 margin number       | "responsible party to process personal information, even if that processing is in breach of 25" -> "responsible party to process personal information, even if that processing is in breach of" | margin number
+src line  1549 | 4 margin number       | "processing; or 30" -> "processing; or" | margin number
+src line  1554 | 4 margin number       | "(a) the interests of national security; 35" -> "(a) the interests of national security;" | margin number
+src line  1559 | 4 margin number       | "(e) historical, statistical or research activity; or 40" -> "(e) historical, statistical or research activity; or" | margin number
+src line  1566 | 4 margin number       | "38. (1) Personal information processed for the purpose of discharging a relevant 45" -> "38. (1) Personal information processed for the purpose of discharging a relevant" | margin number
+src line  1571 | 4 margin number       | "(a) of a public body; or 50" -> "(a) of a public body; or" | margin number
+src line  1583 | 4 margin number       | "provision of banking, insurance, investment or other financial services or in 5" -> "provision of banking, insurance, investment or other financial services or in" | margin number
+src line  1589 | 4 margin number       | "CHAPTER 5 10" -> "CHAPTER 5" | heading number followed by margin number
+src line  1599 | 4 margin number       | "39. There is hereby established a juristic person to be known as the Information 15" -> "39. There is hereby established a juristic person to be known as the Information" | margin number
+src line  1604 | 4 margin number       | "favour or prejudice; 20" -> "favour or prejudice;" | margin number
+src line  1611 | 4 margin number       | "40. (1) The powers, duties and functions of the Regulator in terms of this Act are— 25" -> "40. (1) The powers, duties and functions of the Regulator in terms of this Act are—" | margin number
+src line  1616 | 4 margin number       | "(ii) undertaking educational programmes, for the purpose of promoting the 30" -> "(ii) undertaking educational programmes, for the purpose of promoting the" | margin number
+src line  1621 | 4 margin number       | "protection of the personal information of a data subject or of any class of 35" -> "protection of the personal information of a data subject or of any class of" | margin number
+src line  1626 | 4 margin number       | "generally on any matter relevant to the operation, of this Act; 40" -> "generally on any matter relevant to the operation, of this Act;" | margin number
+src line  1631 | 4 margin number       | "such developments on the protection of the personal information of data 45" -> "such developments on the protection of the personal information of data" | margin number
+src line  1647 | 4 margin number       | "information of a data subject, including the need for, or desirability of, 5" -> "information of a data subject, including the need for, or desirability of," | margin number
+src line  1652 | 4 margin number       | "year; 10" -> "year;" | margin number
+src line  1657 | 4 margin number       | "processing of personal information; 15" -> "processing of personal information;" | margin number
+src line  1662 | 4 margin number       | "protection, to the personal information of a data subject; 20" -> "protection, to the personal information of a data subject;" | margin number
+src line  1667 | 4 margin number       | "body; or 25" -> "body; or" | margin number
+src line  1672 | 4 margin number       | "Regulator considers that the information might be used for the 30" -> "Regulator considers that the information might be used for the" | margin number
+src line  1677 | 4 margin number       | "(i) receiving and inviting representations from members of the public on 35" -> "(i) receiving and inviting representations from members of the public on" | margin number
+src line  1682 | 4 margin number       | "the need for, or the desirability of, action by a responsible party in the 40" -> "the need for, or the desirability of, action by a responsible party in the" | margin number
+src line  1687 | 4 margin number       | "complainants in respect of such complaints; 45" -> "complainants in respect of such complaints;" | margin number
+src line  1692 | 4 margin number       | "mechanisms such as mediation and conciliation; and 50" -> "mechanisms such as mediation and conciliation; and" | margin number
+src line  1706 | 4 margin number       | "(ii) on any other matter, including necessary legislative amendments, 5" -> "(ii) on any other matter, including necessary legislative amendments," | margin number
+src line  1711 | 4 margin number       | "codes of conduct; 10" -> "codes of conduct;" | margin number
+src line  1716 | 4 margin number       | "(g) to facilitate cross-border cooperation in the enforcement of privacy laws by 15" -> "(g) to facilitate cross-border cooperation in the enforcement of privacy laws by" | margin number
+src line  1721 | 4 margin number       | "(ii) exercise and perform such other functions, powers, and duties as are 20" -> "(ii) exercise and perform such other functions, powers, and duties as are" | margin number
+src line  1726 | 4 margin number       | "such compromise in accordance with section 22; and 25" -> "such compromise in accordance with section 22; and" | margin number
+src line  1731 | 4 margin number       | "interests of any person or body of persons, publish reports relating generally to the 30" -> "interests of any person or body of persons, publish reports relating generally to the" | margin number
+src line  1736 | 4 margin number       | "1947), will apply, with the necessary changes, to the Regulator. 35" -> "1947), will apply, with the necessary changes, to the Regulator." | margin number
+src line  1743 | 4 margin number       | "(i) A Chairperson; and 40" -> "(i) A Chairperson; and" | margin number
+src line  1748 | 4 margin number       | "practising advocate or attorney or a professor of law at a university; and 45" -> "practising advocate or attorney or a professor of law at a university; and" | margin number
+src line  1753 | 4 margin number       | "may, subject to subsection (4), not perform or undertake to perform any other 50" -> "may, subject to subsection (4), not perform or undertake to perform any other" | margin number
+src line  1758 | 4 margin number       | "(e) The members referred to in paragraph (d) who are appointed in a full-time 55" -> "(e) The members referred to in paragraph (d) who are appointed in a full-time" | margin number
+src line  1772 | 4 margin number       | "(ii) is a public servant; 5" -> "(ii) is a public servant;" | margin number
+src line  1777 | 4 margin number       | "(vi) has been declared by a court to be mentally ill or unfit; or 10" -> "(vi) has been declared by a court to be mentally ill or unfit; or" | margin number
+src line  1782 | 4 margin number       | "Assembly, which recommendation must also indicate which ordinary members must be 15" -> "Assembly, which recommendation must also indicate which ordinary members must be" | margin number
+src line  1787 | 4 margin number       | "(ii) approved by the Assembly by a resolution adopted with a supporting vote of 20" -> "(ii) approved by the Assembly by a resolution adopted with a supporting vote of" | margin number
+src line  1792 | 4 margin number       | "full-time capacity may, notwithstanding the provisions of subsection (1)(c) or (e), only 25" -> "full-time capacity may, notwithstanding the provisions of subsection (1)(c) or (e), only" | margin number
+src line  1797 | 4 margin number       | "President, resign from office. 30" -> "President, resign from office." | margin number
+src line  1802 | 4 margin number       | "removal from office. 35" -> "removal from office." | margin number
+src line  1807 | 4 margin number       | "(i) may suspend a member from office at any time after the start of the 40" -> "(i) may suspend a member from office at any time after the start of the" | margin number
+src line  1813 | 4 margin number       | "Vacancies 45" -> "Vacancies" | margin number
+src line  1819 | 4 margin number       | "(c) is removed from office in terms of section 41(6); 50" -> "(c) is removed from office in terms of section 41(6);" | margin number
+src line  1824 | 4 margin number       | "(b) Any member appointed under this subsection holds office for the rest of the period 55" -> "(b) Any member appointed under this subsection holds office for the rest of the period" | margin number
+src line  1840 | 4 margin number       | "of Access to Information Act; and 5" -> "of Access to Information Act; and" | margin number
+src line  1845 | 4 margin number       | "(2) (a) The members referred to in section 41(1)(d)(i) must exercise their powers and 10" -> "(2) (a) The members referred to in section 41(1)(d)(i) must exercise their powers and" | margin number
+src line  1850 | 4 margin number       | "perform their duties and functions either in terms of this Act or the Promotion of Access 15" -> "perform their duties and functions either in terms of this Act or the Promotion of Access" | margin number
+src line  1856 | 4 margin number       | "Regulator to have regard to certain matters 20" -> "Regulator to have regard to certain matters" | margin number
+src line  1862 | 4 margin number       | "(b) have due regard for the protection of all human rights and social interests that 25" -> "(b) have due regard for the protection of all human rights and social interests that" | margin number
+src line  1867 | 4 margin number       | "(d) consider any developing general international guidelines relevant to the better 30" -> "(d) consider any developing general international guidelines relevant to the better" | margin number
+src line  1872 | 4 margin number       | "(a) objective of the programme relates to a matter of significant public 35" -> "(a) objective of the programme relates to a matter of significant public" | margin number
+src line  1877 | 4 margin number       | "(c) use of an alternative means of achieving that objective would give either of the 40" -> "(c) use of an alternative means of achieving that objective would give either of the" | margin number
+src line  1882 | 4 margin number       | "(e) programme involves information matching on a scale that is excessive, having 45" -> "(e) programme involves information matching on a scale that is excessive, having" | margin number
+src line  1887 | 4 margin number       | "programme. 50" -> "programme." | margin number
+src line  1892 | 4 margin number       | "of section 73, the Regulator must have particular regard to the factors referred to in 55" -> "of section 73, the Regulator must have particular regard to the factors referred to in" | margin number
+src line  1906 | 4 margin number       | "to Information Act, he or she must disclose that interest, as prescribed, as soon as 5" -> "to Information Act, he or she must disclose that interest, as prescribed, as soon as" | margin number
+src line  1911 | 4 margin number       | "member or person concerned must disclose the nature of his or her interest to 10" -> "member or person concerned must disclose the nature of his or her interest to" | margin number
+src line  1916 | 4 margin number       | "relevant matter must, as soon as the non-disclosure is discovered, be reviewed 15" -> "relevant matter must, as soon as the non-disclosure is discovered, be reviewed" | margin number
+src line  1921 | 4 margin number       | "deliberation, or take part in any decision, in relation to the matter in question. 20" -> "deliberation, or take part in any decision, in relation to the matter in question." | margin number
+src line  1926 | 4 margin number       | "(a) may perform all duties relating to the matter in question if a decision has been 25" -> "(a) may perform all duties relating to the matter in question if a decision has been" | margin number
+src line  1931 | 4 margin number       | "interest. 30" -> "interest." | margin number
+src line  1938 | 4 margin number       | "or a magistrate will be entitled to such remuneration, allowances, including allowances 35" -> "or a magistrate will be entitled to such remuneration, allowances, including allowances" | margin number
+src line  1943 | 4 margin number       | "(2) The remuneration, allowances, benefits or privileges of different members of the 40" -> "(2) The remuneration, allowances, benefits or privileges of different members of the" | margin number
+src line  1949 | 4 margin number       | "Staff 45" -> "Staff" | margin number
+src line  1955 | 4 margin number       | "Regulator for the purpose of assisting the Regulator, subject to the Regulator’s 50" -> "Regulator for the purpose of assisting the Regulator, subject to the Regulator’s" | margin number
+src line  1970 | 4 margin number       | "work as may arise through the performance of its functions. 5" -> "work as may arise through the performance of its functions." | margin number
+src line  1975 | 4 margin number       | "(c) In the event that a vacancy occurs in the office of the chief executive officer the 10" -> "(c) In the event that a vacancy occurs in the office of the chief executive officer the" | margin number
+src line  1980 | 4 margin number       | "cross-section of the population of the Republic; and 15" -> "cross-section of the population of the Republic; and" | margin number
+src line  1985 | 4 margin number       | "(5) In exercising its powers in terms of subsections (1) and (4), the Regulator must 20" -> "(5) In exercising its powers in terms of subsections (1) and (4), the Regulator must" | margin number
+src line  1990 | 4 margin number       | "the secondment of an official to the service of the Regulator may not exceed 12 months 25" -> "the secondment of an official to the service of the Regulator may not exceed 12 months" | margin number
+src line  1995 | 4 margin number       | "special knowledge of any matter relating to the work of the Regulator, or obtain the 30" -> "special knowledge of any matter relating to the work of the Regulator, or obtain the" | margin number
+src line  2001 | 4 margin number       | "Powers, duties and functions of chief executive officer 35" -> "Powers, duties and functions of chief executive officer" | margin number
+src line  2007 | 4 margin number       | "referred to in section 47(2); 40" -> "referred to in section 47(2);" | margin number
+src line  2012 | 4 margin number       | "members of staff appointed in terms of section 47(1)(b) and all the 45" -> "members of staff appointed in terms of section 47(1)(b) and all the" | margin number
+src line  2017 | 4 margin number       | "to the Regulator as often as may be required by the Regulator; and 50" -> "to the Regulator as often as may be required by the Regulator; and" | margin number
+src line  2033 | 4 margin number       | "its functions establish one or more committees, which must consist of— 5" -> "its functions establish one or more committees, which must consist of—" | margin number
+src line  2038 | 4 margin number       | "(2) The Regulator may at any time extend the period of an appointment referred to in 10" -> "(2) The Regulator may at any time extend the period of an appointment referred to in" | margin number
+src line  2043 | 4 margin number       | "(4) (a) A committee referred to in subsection (1) must, subject to the directions of the 15" -> "(4) (a) A committee referred to in subsection (1) must, subject to the directions of the" | margin number
+src line  2048 | 4 margin number       | "Regulator. 20" -> "Regulator." | margin number
+src line  2055 | 4 margin number       | "of— 25" -> "of—" | margin number
+src line  2060 | 4 margin number       | "(a) in consultation with the Chief Justice and Minister, appoint a— 30" -> "(a) in consultation with the Chief Justice and Minister, appoint a—" | margin number
+src line  2065 | 4 margin number       | "(b) appoint an advocate or attorney with at least 10 years’ appropriate experience, 35" -> "(b) appoint an advocate or attorney with at least 10 years’ appropriate experience," | margin number
+src line  2070 | 4 margin number       | "proceedings of the Regulator in terms of which a decision is taken with regard to a 40" -> "proceedings of the Regulator in terms of which a decision is taken with regard to a" | margin number
+src line  2076 | 4 margin number       | "Meetings of Regulator 45" -> "Meetings of Regulator" | margin number
+src line  2082 | 4 margin number       | "think fit and must keep minutes of the proceedings. 50" -> "think fit and must keep minutes of the proceedings." | margin number
+src line  2097 | 4 margin number       | "Funds 5" -> "Funds" | margin number
+src line  2103 | 4 margin number       | "and the Promotion of Access to Information Act; and 10" -> "and the Promotion of Access to Information Act; and" | margin number
+src line  2108 | 4 margin number       | "that date. 15" -> "that date." | margin number
+src line  2113 | 4 margin number       | "financial statements in accordance with established accounting practice, principles and 20" -> "financial statements in accordance with established accounting practice, principles and" | margin number
+src line  2118 | 4 margin number       | "as at the end of that financial year. 25" -> "as at the end of that financial year." | margin number
+src line  2125 | 4 margin number       | "purported exercise or performance of any power, duty or function of the Regulator in 30" -> "purported exercise or performance of any power, duty or function of the Regulator in" | margin number
+src line  2132 | 4 margin number       | "information which comes to his or her knowledge in the course of the performance of his 35" -> "information which comes to his or her knowledge in the course of the performance of his" | margin number
+src line  2140 | 4 margin number       | "Duties and responsibilities of Information Officer 40" -> "Duties and responsibilities of Information Officer" | margin number
+src line  2146 | 4 margin number       | "(c) working with the Regulator in relation to investigations conducted pursuant to 45" -> "(c) working with the Regulator in relation to investigations conducted pursuant to" | margin number
+src line  2159 | 4 margin number       | "party has registered them with the Regulator. 5" -> "party has registered them with the Regulator." | margin number
+src line  2166 | 4 margin number       | "(a) such a number of persons, if any, as deputy information officers as is necessary 10" -> "(a) such a number of persons, if any, as deputy information officers as is necessary" | margin number
+src line  2172 | 4 margin number       | "CHAPTER 6 15" -> "CHAPTER 6" | heading number followed by margin number
+src line  2181 | 4 margin number       | "terms of section 58, prior to any processing if that responsible party plans to— 20" -> "terms of section 58, prior to any processing if that responsible party plans to—" | margin number
+src line  2186 | 4 margin number       | "processed by other responsible parties; 25" -> "processed by other responsible parties;" | margin number
+src line  2191 | 4 margin number       | "personal information of children as referred to in section 34, to a third party in 30" -> "personal information of children as referred to in section 34, to a third party in" | margin number
+src line  2196 | 4 margin number       | "for the legitimate interests of the data subject. 35" -> "for the legitimate interests of the data subject." | margin number
+src line  2201 | 4 margin number       | "where the processing departs from that which has been authorised in accordance with 40" -> "where the processing departs from that which has been authorised in accordance with" | margin number
+src line  2208 | 4 margin number       | "(2) Responsible parties may not carry out information processing that has been 45" -> "(2) Responsible parties may not carry out information processing that has been" | margin number
+src line  2223 | 4 margin number       | "must indicate the period within which it plans to conduct this investigation, which 5" -> "must indicate the period within which it plans to conduct this investigation, which" | margin number
+src line  2228 | 4 margin number       | "(6) A statement by the Regulator in terms of subsection (5), to the extent that the 10" -> "(6) A statement by the Regulator in terms of subsection (5), to the extent that the" | margin number
+src line  2233 | 4 margin number       | "in subsections (3) and (4), may presume a decision in its favour and continue with its 15" -> "in subsections (3) and (4), may presume a decision in its favour and continue with its" | margin number
+src line  2241 | 4 margin number       | "CHAPTER 7 20" -> "CHAPTER 7" | heading number followed by margin number
+src line  2249 | 4 margin number       | "(a) incorporate all the conditions for the lawful processing of personal informa- 25" -> "(a) incorporate all the conditions for the lawful processing of personal informa-" | margin number
+src line  2254 | 4 margin number       | "of the sector or sectors of society in which the relevant responsible parties are 30" -> "of the sector or sectors of society in which the relevant responsible parties are" | margin number
+src line  2259 | 4 margin number       | "(c) any specified activity or class of activities; or 35" -> "(c) any specified activity or class of activities; or" | margin number
+src line  2264 | 4 margin number       | "(i) for information matching programmes if such programmes are used 40" -> "(i) for information matching programmes if such programmes are used" | margin number
+src line  2269 | 4 margin number       | "(c) provide for the expiry of the code. 45" -> "(c) provide for the expiry of the code." | margin number
+src line  2287 | 4 margin number       | "(2) The Regulator must give notice in the Gazette that the issuing of a code of conduct 5" -> "(2) The Regulator must give notice in the Gazette that the issuing of a code of conduct" | margin number
+src line  2292 | 4 margin number       | "within such period as is specified in the notice. 10" -> "within such period as is specified in the notice." | margin number
+src line  2297 | 4 margin number       | "(4) The decision as to whether an application for the issuing of a code has been 15" -> "(4) The decision as to whether an application for the issuing of a code has been" | margin number
+src line  2304 | 4 margin number       | "(a) there is published in the Gazette, as soon as reasonably practicable after the 20" -> "(a) there is published in the Gazette, as soon as reasonably practicable after the" | margin number
+src line  2309 | 4 margin number       | "(b) as long as the code remains in force, copies of it are available— 25" -> "(b) as long as the code remains in force, copies of it are available—" | margin number
+src line  2314 | 4 margin number       | "at the Regulator’s offices. 30" -> "at the Regulator’s offices." | margin number
+src line  2320 | 4 margin number       | "Procedure for dealing with complaints 35" -> "Procedure for dealing with complaints" | margin number
+src line  2326 | 4 margin number       | "Regulator must be satisfied that— 40" -> "Regulator must be satisfied that—" | margin number
+src line  2331 | 4 margin number       | "(b) the code provides for the appointment of an independent adjudicator to whom 45" -> "(b) the code provides for the appointment of an independent adjudicator to whom" | margin number
+src line  2336 | 4 margin number       | "(d) the code requires the adjudicator to prepare and submit a report, in a form 50" -> "(d) the code requires the adjudicator to prepare and submit a report, in a form" | margin number
+src line  2341 | 4 margin number       | "nature of complaints made to an adjudicator under the code during the 55" -> "nature of complaints made to an adjudicator under the code during the" | margin number
+src line  2354 | 4 margin number       | "section 74(2) with the Regulator against the determination upon payment of a prescribed 5" -> "section 74(2) with the Regulator against the determination upon payment of a prescribed" | margin number
+src line  2360 | 4 margin number       | "Amendment and revocation of codes of conduct 10" -> "Amendment and revocation of codes of conduct" | margin number
+src line  2367 | 4 margin number       | "Guidelines about codes of conduct 15" -> "Guidelines about codes of conduct" | margin number
+src line  2373 | 4 margin number       | "conduct; and 20" -> "conduct; and" | margin number
+src line  2378 | 4 margin number       | "information for exclusively journalistic purposes where the responsible party is not 25" -> "information for exclusively journalistic purposes where the responsible party is not" | margin number
+src line  2383 | 4 margin number       | "(4) The Regulator must publish guidelines provided under subsection (1) in the 30" -> "(4) The Regulator must publish guidelines provided under subsection (1) in the" | margin number
+src line  2390 | 4 margin number       | "(3) The Regulator must make the register available to the public in the way that the 35" -> "(3) The Regulator must make the register available to the public in the way that the" | margin number
+src line  2396 | 4 margin number       | "Review of operation of approved code of conduct 40" -> "Review of operation of approved code of conduct" | margin number
+src line  2402 | 4 margin number       | "(b) inspect the records of an adjudicator for the code; 45" -> "(b) inspect the records of an adjudicator for the code;" | margin number
+src line  2420 | 4 margin number       | "68. If a code issued under section 60 is in force, failure to comply with the code is 5" -> "68. If a code issued under section 60 is in force, failure to comply with the code is" | margin number
+src line  2427 | 4 margin number       | "BY MEANS OF UNSOLICITED ELECTRONIC COMMUNICATIONS, 10" -> "BY MEANS OF UNSOLICITED ELECTRONIC COMMUNICATIONS," | margin number
+src line  2434 | 4 margin number       | "automatic calling machines, facsimile machines, SMSs or e-mail is prohibited unless the 15" -> "automatic calling machines, facsimile machines, SMSs or e-mail is prohibited unless the" | margin number
+src line  2439 | 4 margin number       | "(i) whose consent is required in terms of subsection (1)(a); and 20" -> "(i) whose consent is required in terms of subsection (1)(a); and" | margin number
+src line  2444 | 4 margin number       | "who is a customer of the responsible party in terms of subsection (1)(b)— 25" -> "who is a customer of the responsible party in terms of subsection (1)(b)—" | margin number
+src line  2449 | 4 margin number       | "(c) if the data subject has been given a reasonable opportunity to object, free of 30" -> "(c) if the data subject has been given a reasonable opportunity to object, free of" | margin number
+src line  2454 | 4 margin number       | "purpose of marketing if the data subject has not initially refused such use. 35" -> "purpose of marketing if the data subject has not initially refused such use." | margin number
+src line  2459 | 4 margin number       | "that such communications cease. 40" -> "that such communications cease." | margin number
+src line  2466 | 4 margin number       | "subscribers available to the public or obtainable through directory enquiry services, in 45" -> "subscribers available to the public or obtainable through directory enquiry services, in" | margin number
+src line  2481 | 4 margin number       | "information or to request verification, confirmation or withdrawal of such information if 5" -> "information or to request verification, confirmation or withdrawal of such information if" | margin number
+src line  2486 | 4 margin number       | "public voice telephony services have been included in a public subscriber directory in 10" -> "public voice telephony services have been included in a public subscriber directory in" | margin number
+src line  2491 | 4 margin number       | "(5) ‘‘Subscriber’’, for purposes of this section, means any person who is party to a 15" -> "(5) ‘‘Subscriber’’, for purposes of this section, means any person who is party to a" | margin number
+src line  2498 | 4 margin number       | "results in legal consequences for him, her or it, or which affects him, her or it to a 20" -> "results in legal consequences for him, her or it, or which affects him, her or it to a" | margin number
+src line  2503 | 4 margin number       | "(2) The provisions of subsection (1) do not apply if the decision— 25" -> "(2) The provisions of subsection (1) do not apply if the decision—" | margin number
+src line  2508 | 4 margin number       | "legitimate interests; or 30" -> "legitimate interests; or" | margin number
+src line  2513 | 4 margin number       | "decision referred to in subsection (1); and 35" -> "decision referred to in subsection (1); and" | margin number
+src line  2519 | 4 margin number       | "CHAPTER 9 40" -> "CHAPTER 9" | heading number followed by margin number
+src line  2527 | 4 margin number       | "(a) the third party who is the recipient of the information is subject to a law, 45" -> "(a) the third party who is the recipient of the information is subject to a law," | margin number
+src line  2532 | 4 margin number       | "processing of personal information relating to a data subject who is a 50" -> "processing of personal information relating to a data subject who is a" | margin number
+src line  2545 | 4 margin number       | "(c) the transfer is necessary for the performance of a contract between the data 5" -> "(c) the transfer is necessary for the performance of a contract between the data" | margin number
+src line  2550 | 4 margin number       | "a third party; or 10" -> "a third party; or" | margin number
+src line  2555 | 4 margin number       | "would be likely to give it. 15" -> "would be likely to give it." | margin number
+src line  2560 | 4 margin number       | "information to a responsible party or operator within that same group of 20" -> "information to a responsible party or operator within that same group of" | margin number
+src line  2567 | 4 margin number       | "ENFORCEMENT 25" -> "ENFORCEMENT" | margin number
+src line  2574 | 4 margin number       | "as referred to in Chapter 3; 30" -> "as referred to in Chapter 3;" | margin number
+src line  2581 | 4 margin number       | "and form alleging interference with the protection of the personal information of a data 35" -> "and form alleging interference with the protection of the personal information of a data" | margin number
+src line  2587 | 4 margin number       | "Mode of complaints to Regulator 40" -> "Mode of complaints to Regulator" | margin number
+src line  2594 | 4 margin number       | "Action on receipt of complaint 45" -> "Action on receipt of complaint" | margin number
+src line  2609 | 4 margin number       | "as the case may be, require no further action in respect of the complaint; 5" -> "as the case may be, require no further action in respect of the complaint;" | margin number
+src line  2614 | 4 margin number       | "and the responsible party to whom the complaint relates of the course of action that the 10" -> "and the responsible party to whom the complaint relates of the course of action that the" | margin number
+src line  2620 | 4 margin number       | "Regulator may decide to take no action on complaint 15" -> "Regulator may decide to take no action on complaint" | margin number
+src line  2626 | 4 margin number       | "of the complaint arose and the date when the complaint was made is such that 20" -> "of the complaint arose and the date when the complaint was made is such that" | margin number
+src line  2631 | 4 margin number       | "continued; 25" -> "continued;" | margin number
+src line  2636 | 4 margin number       | "procedure, the complainant has failed to pursue, or to pursue fully, an avenue 30" -> "procedure, the complainant has failed to pursue, or to pursue fully, an avenue" | margin number
+src line  2641 | 4 margin number       | "of the complaint, it appears to the Regulator that, having regard to all the circumstances 35" -> "of the complaint, it appears to the Regulator that, having regard to all the circumstances" | margin number
+src line  2647 | 4 margin number       | "Referral of complaint to regulatory body 40" -> "Referral of complaint to regulatory body" | margin number
+src line  2653 | 4 margin number       | "part, under this Act after consultation with the body concerned. 45" -> "part, under this Act after consultation with the body concerned." | margin number
+src line  2660 | 4 margin number       | "79. Before proceeding to investigate any matter in terms of this Chapter, the 50" -> "79. Before proceeding to investigate any matter in terms of this Chapter, the" | margin number
+src line  2673 | 4 margin number       | "(i) details of the complaint or, as the case may be, the subject matter of the 5" -> "(i) details of the complaint or, as the case may be, the subject matter of the" | margin number
+src line  2679 | 4 margin number       | "Settlement of complaints 10" -> "Settlement of complaints" | margin number
+src line  2685 | 4 margin number       | "is the subject matter of the complaint or the doing of further actions of a 15" -> "is the subject matter of the complaint or the doing of further actions of a" | margin number
+src line  2691 | 4 margin number       | "Investigation proceedings of Regulator 20" -> "Investigation proceedings of Regulator" | margin number
+src line  2697 | 4 margin number       | "complaint, in the same manner and to the same extent as the High Court; 25" -> "complaint, in the same manner and to the same extent as the High Court;" | margin number
+src line  2702 | 4 margin number       | "(d) at any reasonable time, subject to section 81, enter and search any premises 30" -> "(d) at any reasonable time, subject to section 81, enter and search any premises" | margin number
+src line  2707 | 4 margin number       | "in terms of section 82. 35" -> "in terms of section 82." | margin number
+src line  2714 | 4 margin number       | "(a) a responsible party is interfering with the protection of the personal 40" -> "(a) a responsible party is interfering with the protection of the personal" | margin number
+src line  2719 | 4 margin number       | "or magistrate, may, subject to subsection (2), grant a warrant to enter and search such 45" -> "or magistrate, may, subject to subsection (2), grant a warrant to enter and search such" | margin number
+src line  2724 | 4 margin number       | "examine, operate and test any equipment found there which is used or intended to be 50" -> "examine, operate and test any equipment found there which is used or intended to be" | margin number
+src line  2738 | 4 margin number       | "83. (1) A judge or magistrate must not issue a warrant under section 82 unless satisfied 5" -> "83. (1) A judge or magistrate must not issue a warrant under section 82 unless satisfied" | margin number
+src line  2743 | 4 margin number       | "(i) access was demanded at a reasonable hour and was unreasonably 10" -> "(i) access was demanded at a reasonable hour and was unreasonably" | margin number
+src line  2748 | 4 margin number       | "things referred to in section 82(2); and 15" -> "things referred to in section 82(2); and" | margin number
+src line  2753 | 4 margin number       | "one of urgency or that compliance with that subsection would defeat the object of the 20" -> "one of urgency or that compliance with that subsection would defeat the object of the" | margin number
+src line  2760 | 4 margin number       | "84. (1) A police officer who is assisting a person authorised to conduct an entry and 25" -> "84. (1) A police officer who is assisting a person authorised to conduct an entry and" | margin number
+src line  2765 | 4 margin number       | "the evidence in question would not be found if it were so executed. 30" -> "the evidence in question would not be found if it were so executed." | margin number
+src line  2770 | 4 margin number       | "(4) A person seizing anything in pursuance of a warrant under section 82 must give a 35" -> "(4) A person seizing anything in pursuance of a warrant under section 82 must give a" | margin number
+src line  2775 | 4 margin number       | "warrant considers that it can be done without undue delay. 40" -> "warrant considers that it can be done without undue delay." | margin number
+src line  2780 | 4 margin number       | "person’s right to dignity, freedom, security and privacy. 45" -> "person’s right to dignity, freedom, security and privacy." | margin number
+src line  2785 | 4 margin number       | "(b) allow that person to exercise that right. 50" -> "(b) allow that person to exercise that right." | margin number
+src line  2803 | 4 margin number       | "that is processed in terms of that exemption is not subject to search and seizure 5" -> "that is processed in terms of that exemption is not subject to search and seizure" | margin number
+src line  2810 | 4 margin number       | "(a) any communication between a professional legal adviser and his or her client 10" -> "(a) any communication between a professional legal adviser and his or her client" | margin number
+src line  2815 | 4 margin number       | "connection with or in contemplation of proceedings under or arising out of 15" -> "connection with or in contemplation of proceedings under or arising out of" | margin number
+src line  2820 | 4 margin number       | "and 20" -> "and" | margin number
+src line  2826 | 4 margin number       | "Objection to search and seizure 25" -> "Objection to search and seizure" | margin number
+src line  2832 | 4 margin number       | "article or document, the person executing the warrant or search must, if he or 30" -> "article or document, the person executing the warrant or search must, if he or" | margin number
+src line  2837 | 4 margin number       | "custody until a court of law has made a ruling on the question whether the 35" -> "custody until a court of law has made a ruling on the question whether the" | margin number
+src line  2842 | 4 margin number       | "powers. 40" -> "powers." | margin number
+src line  2849 | 4 margin number       | "(b) if not executed within the time authorised for its execution, 45" -> "(b) if not executed within the time authorised for its execution," | margin number
+src line  2864 | 4 margin number       | "complies with the provisions of this Act. 5" -> "complies with the provisions of this Act." | margin number
+src line  2869 | 4 margin number       | "(b) enable it to identify the action in question. 10" -> "(b) enable it to identify the action in question." | margin number
+src line  2874 | 4 margin number       | "(c) whether or not the person making the request is entitled to make an application 15" -> "(c) whether or not the person making the request is entitled to make an application" | margin number
+src line  2879 | 4 margin number       | "(b) to the extent that it considers appropriate, having regard in particular to any 20" -> "(b) to the extent that it considers appropriate, having regard in particular to any" | margin number
+src line  2886 | 4 margin number       | "90. (1) If the Regulator— 25" -> "90. (1) If the Regulator—" | margin number
+src line  2891 | 4 margin number       | "information of a data subject, 30" -> "information of a data subject," | margin number
+src line  2896 | 4 margin number       | "compliance with the Act as is so specified. 35" -> "compliance with the Act as is so specified." | margin number
+src line  2901 | 4 margin number       | "(b) in a case falling within subsection (1)(b), a statement that the Regulator 40" -> "(b) in a case falling within subsection (1)(b), a statement that the Regulator" | margin number
+src line  2906 | 4 margin number       | "(3) Subject to subsection (5), the period specified in an information notice must not 45" -> "(3) Subject to subsection (5), the period specified in an information notice must not" | margin number
+src line  2911 | 4 margin number       | "it may include in the notice a statement to that effect and a statement of its reasons for 50" -> "it may include in the notice a statement to that effect and a statement of its reasons for" | margin number
+src line  2924 | 4 margin number       | "with any communication between a— 5" -> "with any communication between a—" | margin number
+src line  2929 | 4 margin number       | "contemplation of proceedings under or arising out of this Act (including 10" -> "contemplation of proceedings under or arising out of this Act (including" | margin number
+src line  2934 | 4 margin number       | "with information that would, by revealing evidence of the commission of any offence 15" -> "with information that would, by revealing evidence of the commission of any offence" | margin number
+src line  2940 | 4 margin number       | "Parties to be informed of result of assessment 20" -> "Parties to be informed of result of assessment" | margin number
+src line  2946 | 4 margin number       | "time, to inform the Regulator of any action taken or proposed to be taken to 25" -> "time, to inform the Regulator of any action taken or proposed to be taken to" | margin number
+src line  2951 | 4 margin number       | "assessment under this section if the Regulator considers it in the public interest to do so. 30" -> "assessment under this section if the Regulator considers it in the public interest to do so." | margin number
+src line  2958 | 4 margin number       | "this Act, the Regulator may refer such complaint or other matter to the Enforcement 35" -> "this Act, the Regulator may refer such complaint or other matter to the Enforcement" | margin number
+src line  2963 | 4 margin number       | "Committee, including— 40" -> "Committee, including—" | margin number
+src line  2968 | 4 margin number       | "(c) the period within which the Enforcement Committee must make a finding and 45" -> "(c) the period within which the Enforcement Committee must make a finding and" | margin number
+src line  2984 | 4 margin number       | "thereof; and 5" -> "thereof; and" | margin number
+src line  2989 | 4 margin number       | "terms of the Promotion of Access to Information Act. 10" -> "terms of the Promotion of Access to Information Act." | margin number
+src line  2996 | 4 margin number       | "enforcement notice; 15" -> "enforcement notice;" | margin number
+src line  3001 | 4 margin number       | "(e) an appeal is lodged against the enforcement notice for cancellation or 20" -> "(e) an appeal is lodged against the enforcement notice for cancellation or" | margin number
+src line  3006 | 4 margin number       | "reasonably practicable, in the manner prescribed of any development mentioned in 25" -> "reasonably practicable, in the manner prescribed of any development mentioned in" | margin number
+src line  3013 | 4 margin number       | "interfered or is interfering with the protection of the personal information of a data 30" -> "interfered or is interfering with the protection of the personal information of a data" | margin number
+src line  3018 | 4 margin number       | "from taking such steps; or 35" -> "from taking such steps; or" | margin number
+src line  3023 | 4 margin number       | "(a) a statement indicating the nature of the interference with the protection of the 40" -> "(a) a statement indicating the nature of the interference with the protection of the" | margin number
+src line  3028 | 4 margin number       | "provisions of the notice to be complied with before the end of the period within which 45" -> "provisions of the notice to be complied with before the end of the period within which" | margin number
+src line  3033 | 4 margin number       | "of its reasons for reaching that conclusion, and in that event subsection (3) does not 50" -> "of its reasons for reaching that conclusion, and in that event subsection (3) does not" | margin number
+src line  3050 | 4 margin number       | "notice on the ground that, by reason of a change of circumstances, all or any of the 5" -> "notice on the ground that, by reason of a change of circumstances, all or any of the" | margin number
+src line  3055 | 4 margin number       | "lawful processing of personal information or conditions to which it relates, it may cancel 10" -> "lawful processing of personal information or conditions to which it relates, it may cancel" | margin number
+src line  3062 | 4 margin number       | "jurisdiction for the setting aside or variation of the notice. 15" -> "jurisdiction for the setting aside or variation of the notice." | margin number
+src line  3069 | 4 margin number       | "98. (1) If in an appeal under section 97 the court considers— 20" -> "98. (1) If in an appeal under section 97 the court considers—" | margin number
+src line  3074 | 4 margin number       | "the court must allow the appeal and may set aside the notice or substitute such other 25" -> "the court must allow the appeal and may set aside the notice or substitute such other" | margin number
+src line  3081 | 4 margin number       | "99. (1) A data subject or, at the request of the data subject, the Regulator, may institute 30" -> "99. (1) A data subject or, at the request of the data subject, the Regulator, may institute" | margin number
+src line  3086 | 4 margin number       | "defences against an action for damages: 35" -> "defences against an action for damages:" | margin number
+src line  3091 | 4 margin number       | "particular case; or 40" -> "particular case; or" | margin number
+src line  3096 | 4 margin number       | "loss suffered by a data subject as a result of breach of the provisions of this 45" -> "loss suffered by a data subject as a result of breach of the provisions of this" | margin number
+src line  3111 | 4 margin number       | "established by the Regulator with an appropriate financial institution; 5" -> "established by the Regulator with an appropriate financial institution;" | margin number
+src line  3116 | 4 margin number       | "(c) the balance, if any (in this section referred to as the ‘‘distributable balance’’), 10" -> "(c) the balance, if any (in this section referred to as the ‘‘distributable balance’’)," | margin number
+src line  3121 | 4 margin number       | "capacity. 15" -> "capacity." | margin number
+src line  3126 | 4 margin number       | "considers appropriate. 20" -> "considers appropriate." | margin number
+src line  3131 | 4 margin number       | "an order of Court and must be published in the Gazette and by such other public media 25" -> "an order of Court and must be published in the Gazette and by such other public media" | margin number
+src line  3140 | 4 margin number       | "100. Any person who hinders, obstructs or unlawfully influences the Regulator or any 30" -> "100. Any person who hinders, obstructs or unlawfully influences the Regulator or any" | margin number
+src line  3148 | 4 margin number       | "Obstruction of execution of warrant 35" -> "Obstruction of execution of warrant" | margin number
+src line  3154 | 4 margin number       | "such assistance as he or she may reasonably require for the execution of the 40" -> "such assistance as he or she may reasonably require for the execution of the" | margin number
+src line  3161 | 4 margin number       | "in terms of section 95, is guilty of an offence. 45" -> "in terms of section 95, is guilty of an offence." | margin number
+src line  3178 | 4 margin number       | "to produce any book, document or object before the Regulator who, without sufficient 5" -> "to produce any book, document or object before the Regulator who, without sufficient" | margin number
+src line  3183 | 4 margin number       | "(c) having attended, refuses to be sworn or to make an affirmation as witness after 10" -> "(c) having attended, refuses to be sworn or to make an affirmation as witness after" | margin number
+src line  3188 | 4 margin number       | "or under his or her control, which he or she has been summoned to produce, 15" -> "or under his or her control, which he or she has been summoned to produce," | margin number
+src line  3194 | 4 margin number       | "Unlawful acts by responsible party in connection with account number 20" -> "Unlawful acts by responsible party in connection with account number" | margin number
+src line  3200 | 4 margin number       | "(a) be of a serious or persistent nature; and 25" -> "(a) be of a serious or persistent nature; and" | margin number
+src line  3205 | 4 margin number       | "(ii) such contravention would likely cause substantial damage or distress to 30" -> "(ii) such contravention would likely cause substantial damage or distress to" | margin number
+src line  3210 | 4 margin number       | "to comply with the provisions of section 8. 35" -> "to comply with the provisions of section 8." | margin number
+src line  3215 | 4 margin number       | "by a financial or other institution which enables the data subject, referred to in paragraph 40" -> "by a financial or other institution which enables the data subject, referred to in paragraph" | paragraph/subsection word: always a margin number
+src line  3222 | 4 margin number       | "106. (1) A person who knowingly or recklessly, without the consent of the responsible 45" -> "106. (1) A person who knowingly or recklessly, without the consent of the responsible" | margin number
+src line  3227 | 4 margin number       | "is, subject to subsection (2), guilty of an offence. 50" -> "is, subject to subsection (2), guilty of an offence." | margin number
+src line  3239 | 4 margin number       | "proof of an offence; or 5" -> "proof of an offence; or" | margin number
+src line  3244 | 4 margin number       | "(c) he or she acted in the reasonable belief that he or she would have had the 10" -> "(c) he or she acted in the reasonable belief that he or she would have had the" | margin number
+src line  3249 | 4 margin number       | "(3) A person who sells an account number which he or she has obtained in 15" -> "(3) A person who sells an account number which he or she has obtained in" | margin number
+src line  3254 | 4 margin number       | "(b) subsequently obtained, 20" -> "(b) subsequently obtained," | margin number
+src line  3261 | 4 margin number       | "107. Any person convicted of an offence in terms of this Act, is liable, in the case of 25" -> "107. Any person convicted of an offence in terms of this Act, is liable, in the case of" | margin number
+src line  3266 | 4 margin number       | "(b) section 59, 101, 102, 103(2) or 104(1), to a fine or to imprisonment for a 30" -> "(b) section 59, 101, 102, 103(2) or 104(1), to a fine or to imprisonment for a" | margin number
+src line  3274 | 4 margin number       | "Administrative fines 35" -> "Administrative fines" | margin number
+src line  3280 | 4 margin number       | "(2) A notice referred to in subsection (1) must— 40" -> "(2) A notice referred to in subsection (1) must—" | margin number
+src line  3285 | 4 margin number       | "(d) inform the infringer that, not later than 30 days after the date of service of the 45" -> "(d) inform the infringer that, not later than 30 days after the date of service of the" | margin number
+src line  3290 | 4 margin number       | "(iii) elect to be tried in court on a charge of having committed the alleged 50" -> "(iii) elect to be tried in court on a charge of having committed the alleged" | margin number
+src line  3303 | 4 margin number       | "factors: 5" -> "factors:" | margin number
+src line  3308 | 4 margin number       | "(d) whether or not the contravention raises an issue of public importance; 10" -> "(d) whether or not the contravention raises an issue of public importance;" | margin number
+src line  3313 | 4 margin number       | "(g) any failure to carry out a risk assessment or a failure to operate good policies, 15" -> "(g) any failure to carry out a risk assessment or a failure to operate good policies," | margin number
+src line  3318 | 4 margin number       | "alleged offence in terms of this Act, the Regulator must hand the matter over to the South 20" -> "alleged offence in terms of this Act, the Regulator must hand the matter over to the South" | margin number
+src line  3323 | 4 margin number       | "such statement thereupon has all the effects of a civil judgment lawfully given in that 25" -> "such statement thereupon has all the effects of a civil judgment lawfully given in that" | margin number
+src line  3328 | 4 margin number       | "(7) No prosecution may be instituted against a responsible party if the responsible 30" -> "(7) No prosecution may be instituted against a responsible party if the responsible" | margin number
+src line  3333 | 4 margin number       | "(Act No. 51 of 1977). 35" -> "(Act No. 51 of 1977)." | margin number
+src line  3338 | 4 margin number       | "with the average of the consumer price index, as published from time to time in the 40" -> "with the average of the consumer price index, as published from time to time in the" | margin number
+src line  3346 | 4 margin number       | "Amendment of laws 45" -> "Amendment of laws" | margin number
+src line  3354 | 4 margin number       | "Regulator, prescribe fees to be paid by data subjects— 50" -> "Regulator, prescribe fees to be paid by data subjects—" | margin number
+src line  3370 | 4 margin number       | "(a) the establishment of the Regulator; and 5" -> "(a) the establishment of the Regulator; and" | margin number
+src line  3375 | 4 margin number       | "(b) the manner in which a data subject may submit a request to a responsible party 10" -> "(b) the manner in which a data subject may submit a request to a responsible party" | margin number
+src line  3380 | 4 margin number       | "(e) the form in terms of which an application for a code of conduct must be 15" -> "(e) the form in terms of which an application for a code of conduct must be" | margin number
+src line  3385 | 4 margin number       | "terms of section 74; 20" -> "terms of section 74;" | margin number
+src line  3390 | 4 margin number       | "(j) the settlement of complaints as referred to in section 80; 25" -> "(j) the settlement of complaints as referred to in section 80;" | margin number
+src line  3395 | 4 margin number       | "and 30" -> "and" | margin number
+src line  3402 | 4 margin number       | "section 112(1), must publish a notice in the Gazette— 35" -> "section 112(1), must publish a notice in the Gazette—" | margin number
+src line  3407 | 4 margin number       | "(2) After complying with subsection (1) and after consultation with the Regulator in 40" -> "(2) After complying with subsection (1) and after consultation with the Regulator in" | margin number
+src line  3412 | 4 margin number       | "112(2), must publish a notice in the Gazette— 45" -> "112(2), must publish a notice in the Gazette—" | margin number
+src line  3417 | 4 margin number       | "(4) After complying with subsection (3), the Regulator may— 50" -> "(4) After complying with subsection (3), the Regulator may—" | margin number
+src line  3430 | 4 margin number       | "(b) Subsection (1) or (3) does not apply in respect of any amendment of the 5" -> "(b) Subsection (1) or (3) does not apply in respect of any amendment of the" | margin number
+src line  3437 | 4 margin number       | "(2) The period of one year referred to in subsection (1) may be extended by the 10" -> "(2) The period of one year referred to in subsection (1) may be extended by the" | margin number
+src line  3442 | 4 margin number       | "taking place on the date of commencement of this Act, until the Regulator determines 15" -> "taking place on the date of commencement of this Act, until the Regulator determines" | margin number
+src line  3447 | 4 margin number       | "amendment of those sections in terms of this Act. 20" -> "amendment of those sections in terms of this Act." | margin number
+src line  3454 | 4 margin number       | "provisions of this Act or in respect of different class or classes of information and bodies. 25" -> "provisions of this Act or in respect of different class or classes of information and bodies." | margin number
+
+Ambiguous, kept (for human review)
+src line   205 | ambiguous, kept        | "CHAPTER 5" | reference word, next line does not start with a digit
+src line   291 | ambiguous, kept        | "CHAPTER 10" | reference word, next line does not start with a digit
+src line  1015 | ambiguous, kept        | "Condition 5" | not a reference word; margin sequence broken on this page
+src line  2565 | ambiguous, kept        | "CHAPTER 10" | reference word, next line does not start with a digit
+

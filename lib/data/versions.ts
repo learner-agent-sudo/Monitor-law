@@ -109,6 +109,14 @@ export const versions: Version[] = [
     supersedes: "PDPO as enacted, before the 2012 direct-marketing amendments",
     note: "Verified copy as at 20 April 2018. The 2021 doxxing amendments (Part 6A) are LATER than this consolidation and are therefore not fully reflected in the ingested text — a known gap, not a claim that they do not exist.",
   },
+  {
+    lawId: "popia",
+    authority: "primary",
+    status: "in-force",
+    inForceDate: "2020-07-01",
+    consolidationDate: "2013-11-26",
+    note: "The corpus holds the English text as published in Government Gazette No. 37067 (26 November 2013), not amended since. Commencement was staged: ss.1, 39-54 and 112-113 on 11 April 2014; ss.2-38, 55-109, 111 and 114(1)-(3) on 1 July 2020; ss.110 and 114(4) on 30 June 2021. Section 114(1) gave all processing one year after commencement of s.114 to conform to the Act. The Regulations, outside the corpus, were amended on 17 April 2025.",
+  },
 ];
 
 export const versionsById: Record<string, Version> = Object.fromEntries(

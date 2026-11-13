@@ -100,6 +100,21 @@ shell — another one that needs a human download. Use its PDF/print export.
 
 ---
 
+## 🇿🇦 POPIA — South Africa, Act 4 of 2013
+
+- **Government Gazette (official, English text)** — https://www.gov.za/documents/protection-personal-information-act
+  (Gazette No. 37067, 26 November 2013)
+- Regulator — https://inforegulator.org.za/
+
+The download carried a publisher note, Afrikaans pages, page numbers, running
+headers and margin line numbers from the printed Gazette. `scripts/clean-popia.mjs`
+removed only those printing artifacts; no word of the Act was changed. Its
+line-by-line record is `corpus/popia.cleaning-log.txt`. The front matter of
+`corpus/popia.md` states the commencement dates and that the Regulations,
+which are not in the corpus, were amended on 17 April 2025.
+
+---
+
 ## Re-baselining
 
 The corpus is **pinned, not permanent**. When
