@@ -291,7 +291,7 @@ export function LawCite({ lawId, citation, ev, finding }: LawCiteProps) {
         >
           {phone && (
             <span className="law-pop-bar">
-              <span className="law-pop-bar-title">{law?.shortName ?? lawId}</span>
+              <span className="law-pop-bar-title">Law text</span>
               <button
                 type="button"
                 className="law-pop-close"

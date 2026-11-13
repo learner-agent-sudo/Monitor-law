@@ -94,6 +94,11 @@ a:hover {
   background: var(--bg-hover);
   text-decoration: none;
 }
+/* The page being shown: visibly current, not just hovered */
+.nav a[aria-current="page"] {
+  color: var(--text);
+  background: var(--bg-hover);
+}
 
 /* ---- Page structure ---- */
 main {
@@ -2144,4 +2149,33 @@ code {
 .feed-ai {
   color: var(--amber);
   font-weight: 600;
+}
+
+/* ---- Header on phones ----
+   Brand on the first line; the nav is a single horizontally scrollable row
+   on the second, so the header never wraps into a block of links. */
+@media (max-width: 720px) {
+  .site-header .container {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    height: auto;
+    gap: 4px;
+    padding: 8px 16px;
+  }
+  .nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    min-width: 0;
+    width: 100%;
+  }
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+  .nav a {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
 }
