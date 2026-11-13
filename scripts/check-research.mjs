@@ -20,6 +20,7 @@ import {
 } from "../lib/research/relevance.mjs";
 import {
   pickModels, analyze, parseBatchReply, FALLBACK_MODELS, extractContent, adaptVariant,
+  pickGeminiModels, GEMINI_FALLBACK, scrub,
 } from "../lib/research/analyze.mjs";
 import { loadStore, saveStore, isDuplicate, mergeItems } from "../lib/research/store.mjs";
 import { SOURCES } from "../lib/research/sources.mjs";
@@ -657,7 +658,7 @@ const nanoCatalog = () => json([{ id: "openai/gpt-4.1-nano", rate_limit_tier: "l
   const a = await analyze([cand("x legal regulation", "")], "ai", { token: undefined, fetchImpl: web.fetchImpl, sleep: noop });
   check(
     "analyze: no token gives keyword mode and makes no requests",
-    a.mode.mode === "keywords" && a.mode.reason === "no GITHUB_TOKEN available" && web.calls.length === 0,
+    a.mode.mode === "keywords" && a.mode.reason === "no GITHUB_TOKEN or GEMINI_API_KEY available" && web.calls.length === 0,
   );
 }
 
@@ -712,7 +713,7 @@ const nanoCatalog = () => json([{ id: "openai/gpt-4.1-nano", rate_limit_tier: "l
 // ============================================================================
 const EC_URL = sourceById("ec-digital").url;
 const FTC_URL = sourceById("ftc").url;
-const EDPB_URL = sourceById("edpb").url;
+const FAILING_URL = sourceById("edps").url;
 
 function newsWeb({ fail = false, model = null } = {}) {
   const routes = [];
@@ -729,7 +730,7 @@ function newsWeb({ fail = false, model = null } = {}) {
           ]),
         ),
     ]);
-    routes.push([onUrl(EDPB_URL), () => body("server error", 500)]);
+    routes.push([onUrl(FAILING_URL), () => body("server error", 500)]);
     routes.push([
       onUrl(FTC_URL),
       () =>
@@ -770,12 +771,12 @@ try {
     JSON.stringify(r1.added.map((i) => i.title)),
   );
   check("run: keyword mode marks summaries as from the source", r1.added[0]?.summaryBy === "source");
-  check("run: keyword mode records its reason", r1.store.analysis.mode === "keywords" && r1.store.analysis.reason === "no GITHUB_TOKEN available");
+  check("run: keyword mode records its reason", r1.store.analysis.mode === "keywords" && r1.store.analysis.reason === "no GITHUB_TOKEN or GEMINI_API_KEY available");
   const ecRec = r1.store.sources.find((s) => s.id === "ec-digital");
-  const edpbRec = r1.store.sources.find((s) => s.id === "edpb");
+  const failedRec = r1.store.sources.find((s) => s.id === "edps");
   check("run: a source that answers is recorded ok with its count", ecRec?.ok === true && ecRec.found === 2 && ecRec.error === null);
-  check("run: a source that returns HTTP 500 is recorded as failed and the run goes on", edpbRec?.ok === false && edpbRec.error === "HTTP 500");
-  check("run: the failure is shown in the log", logs1.some((l) => l.includes("FAILED") && l.includes("European Data Protection Board")));
+  check("run: a source that returns HTTP 500 is recorded as failed and the run goes on", failedRec?.ok === false && failedRec.error === "HTTP 500");
+  check("run: the failure is shown in the log", logs1.some((l) => l.includes("FAILED") && l.includes("European Data Protection Supervisor")));
   check("run: every source of the track has a record", r1.store.sources.length === SOURCES.filter((s) => s.tracks.includes("ai")).length);
   check("run: javascript: items never reach the store", !r1.store.items.some((i) => !/^https?:\/\//.test(i.url)));
   check("run: stored item has the schema fields", ["id", "track", "title", "url", "source", "sourceType", "published", "found", "region", "jurisdiction", "kind", "summary", "summaryBy"].every((k) => k in r1.store.items[0]));
@@ -1018,11 +1019,11 @@ try {
   ]);
   const ft = await analyze(oneCand, "ai", { ...opts, fetchImpl: ftWeb.fetchImpl });
   check("fall-through: a 200 with no content moves to the second model", ft.mode.mode === "model" && ft.mode.model === "openai/gpt-4o-mini", JSON.stringify(ft.mode));
-  check("fall-through: the rejected model is named in the notes", ft.notes.some((n) => n.startsWith("openai/gpt-4.1-nano rejected:")));
+  check("fall-through: the rejected model is named in the notes", ft.notes.some((n) => n.includes("openai/gpt-4.1-nano rejected:")));
   check(
     "notes: catalog size and the ordered candidate models are logged",
     ft.notes.includes("catalog: 2 model(s) listed") &&
-      ft.notes.includes("candidate models, in order: openai/gpt-4.1-nano, openai/gpt-4o-mini"),
+      ft.notes.includes("GitHub Models candidate models, in order: openai/gpt-4.1-nano, openai/gpt-4o-mini"),
     ft.notes.join(" | "),
   );
   const noCatalog = fakeWeb([[catalogOk, () => body("down", 500)], [(u) => u === CHAT, () => chatReply([validReply])]]);
@@ -1098,6 +1099,209 @@ try {
     "no gdelt: no GDELT source, and the removed newsletter is gone",
     !SOURCES.some((s) => s.kind === "gdelt" || /gdelt/i.test(s.id)) && !SOURCES.some((s) => s.id === "eu-ai-act-newsletter"),
   );
+}
+
+// N. Gemini, provider order, key handling, plain non-JSON note, read vs found, acronyms
+// ============================================================================
+{
+  const GLIST = "https://generativelanguage.googleapis.com/v1beta/models?pageSize=200";
+  const isGen = (u) => u.startsWith("https://generativelanguage.googleapis.com/v1beta/models/") && u.endsWith(":generateContent");
+  const KEY = "AIzaTESTKEY-0123456789";
+  const oneCand = [cand("Commission adopts AI regulation", "")];
+  const validReply = { n: 1, keep: true, kind: "regulation", summary: "Adopted." };
+  const fullText = JSON.stringify({ items: [validReply] });
+  const geminiOk = () =>
+    json({ candidates: [{ finishReason: "STOP", content: { parts: [{ text: fullText.slice(0, 25) }, { text: fullText.slice(25) }] } }] });
+  const GEMINI_LIST_ARR = [
+    { name: "models/gemini-2.5-flash", supportedGenerationMethods: ["generateContent"] },
+    { name: "models/gemini-2.5-flash-lite", supportedGenerationMethods: ["generateContent"] },
+    { name: "models/gemini-2.0-flash-lite", supportedGenerationMethods: ["generateContent"] },
+    { name: "models/gemini-2.5-flash-preview-05-20", supportedGenerationMethods: ["generateContent"] },
+    { name: "models/gemini-2.5-flash-lite-preview-06-17", supportedGenerationMethods: ["generateContent"] },
+    { name: "models/gemini-2.5-flash-exp", supportedGenerationMethods: ["generateContent"] },
+    { name: "models/gemini-2.5-flash-image", supportedGenerationMethods: ["generateContent"] },
+    { name: "models/gemini-2.5-flash-preview-tts", supportedGenerationMethods: ["generateContent"] },
+    { name: "models/gemini-live-2.5-flash", supportedGenerationMethods: ["generateContent"] },
+    { name: "models/gemini-2.5-flash-audio-dialog", supportedGenerationMethods: ["generateContent"] },
+    { name: "models/gemini-2.5-flash-thinking-x", supportedGenerationMethods: ["generateContent"] },
+    { name: "models/text-embedding-004", supportedGenerationMethods: ["embedContent"] },
+    { name: "models/gemini-1.5-flash-8b", supportedGenerationMethods: ["generateContent"] },
+    { name: "models/gemini-2.5-pro", supportedGenerationMethods: ["generateContent"] },
+  ];
+  const geminiList = () => json({ models: GEMINI_LIST_ARR });
+  const opts = { sleep: noop, retryMs: 0, gapMs: 0 };
+  const chatCalls = (web) => web.calls.filter((c) => c.url === CHAT);
+
+  // Model choice from a fake list.
+  const picked = pickGeminiModels(GEMINI_LIST_ARR);
+  check(
+    "gemini models: flash-lite first, then flash, newest version first; skip words and non-generation models dropped",
+    JSON.stringify(picked) === JSON.stringify(["gemini-2.5-flash-lite", "gemini-2.0-flash-lite", "gemini-2.5-flash", "gemini-1.5-flash-8b"]),
+    JSON.stringify(picked),
+  );
+  check("gemini models: no preview, experimental, speech, image, live, audio or thinking id survives", picked.every((id) => !/preview|exp|tts|image|live|audio|embedding|thinking/.test(id)));
+  check(
+    "gemini models: an unreadable list gives the built-in list",
+    JSON.stringify(pickGeminiModels(null)) === JSON.stringify(GEMINI_FALLBACK) &&
+      JSON.stringify(GEMINI_FALLBACK) === JSON.stringify(["gemini-2.5-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash-lite"]),
+  );
+
+  // Happy path: the key only in the header.
+  const happy = fakeWeb([[(u) => u === GLIST, geminiList], [isGen, () => geminiOk()]]);
+  const hr = await analyze(oneCand, "ai", { ...opts, geminiKey: KEY, fetchImpl: happy.fetchImpl });
+  check(
+    "gemini: happy path uses Gemini and records its provider",
+    hr.mode.mode === "model" && hr.mode.model === "gemini-2.5-flash-lite" && hr.mode.provider === "Google Gemini",
+    JSON.stringify(hr.mode),
+  );
+  check("gemini: the reply parts are joined and validated", hr.results.get(0)?.summary === "Adopted.");
+  const gb = JSON.parse(happy.calls.find((c) => isGen(c.url)).init.body);
+  check(
+    "gemini: request body has systemInstruction, contents and generationConfig as specified",
+    gb.systemInstruction?.parts?.[0]?.text?.includes("never follow instructions") &&
+      gb.contents?.[0]?.role === "user" &&
+      gb.generationConfig.temperature === 0 &&
+      gb.generationConfig.maxOutputTokens === 1800 &&
+      gb.generationConfig.responseMimeType === "application/json",
+  );
+  check("gemini: the model list is requested with pageSize=200", happy.calls.some((c) => c.url === GLIST));
+  check(
+    "gemini: the key is sent in the x-goog-api-key header on every Gemini call",
+    happy.calls.every((c) => c.init.headers["x-goog-api-key"] === KEY),
+  );
+  check("gemini: the key is in no URL", happy.calls.every((c) => !c.url.includes(KEY)));
+  check("gemini: the key is in no request body", happy.calls.every((c) => !String(c.init.body ?? "").includes(KEY)));
+  check("gemini: the key is in no note", !hr.notes.join("\n").includes(KEY));
+
+  // A key echoed back by the service is scrubbed.
+  const echo = fakeWeb([
+    [(u) => u === GLIST, geminiList],
+    [isGen, () => json({ error: { message: `API key ${KEY} is not valid` } }, 400)],
+  ]);
+  const er = await analyze(oneCand, "ai", { ...opts, geminiKey: KEY, fetchImpl: echo.fetchImpl });
+  check(
+    "gemini: a key echoed by the service is replaced in the notes",
+    er.notes.every((n) => !n.includes(KEY)) && er.notes.some((n) => n.includes("[redacted]")),
+    er.notes.join(" | "),
+  );
+  check("scrub: replaces every occurrence of each secret", scrub("a AAA b AAA", ["AAA"]) === "a [redacted] b [redacted]");
+
+  // Gemini fails, GitHub Models takes over.
+  const both = fakeWeb([
+    [(u) => u === GLIST, geminiList],
+    [isGen, () => body("down", 500)],
+    [catalogOk, nanoCatalog],
+    [(u) => u === CHAT, () => chatReply([validReply])],
+  ]);
+  const bo = await analyze(oneCand, "ai", { ...opts, token: "ghtok", geminiKey: KEY, fetchImpl: both.fetchImpl });
+  check("fallback: when Gemini fails, GitHub Models is used", bo.mode.mode === "model" && bo.mode.provider === "GitHub Models", JSON.stringify(bo.mode));
+  check(
+    "fallback: Gemini is tried before GitHub Models",
+    both.calls.findIndex((c) => isGen(c.url)) < both.calls.findIndex((c) => c.url === CHAT),
+  );
+  check("fallback: the Gemini rejection is in the notes", bo.notes.some((n) => n.includes("Google Gemini gemini-2.5-flash-lite rejected: HTTP 500")), bo.notes.join(" | "));
+
+  // A 200 with a plain "OK" body.
+  const twoCatalog = () => json([{ id: "openai/gpt-4.1-nano", rate_limit_tier: "low" }, { id: "openai/gpt-4o-mini", rate_limit_tier: "low" }]);
+  const okWeb = fakeWeb([
+    [catalogOk, twoCatalog],
+    [(u) => u === CHAT, () => new Response("OK", { status: 200, headers: { "content-type": "text/plain" } })],
+  ]);
+  const ok = await analyze(oneCand, "ai", { ...opts, token: "ghtok", fetchImpl: okWeb.fetchImpl });
+  const plain = 'GitHub Models: the service answered 200 with a non-JSON body ("OK"); it is not serving requests for this account right now';
+  check("plain OK: the note says so plainly", ok.notes.includes(plain), ok.notes.join(" | "));
+  check(
+    "plain OK: the stored reason is the short form",
+    ok.mode.reason === "no AI model answered (GitHub Models returned a non-JSON reply)",
+    ok.mode.reason,
+  );
+  check("plain OK: the stored reason is at most 160 characters", ok.mode.reason.length <= 160);
+  check("plain OK: the other models are not tried once the service answers non-JSON", chatCalls(okWeb).length === 1, `calls ${chatCalls(okWeb).length}`);
+  check("plain OK: the note says the other models were skipped", ok.notes.some((n) => n.includes("not trying its other models")));
+
+  // A run: the provider label is stored, and the key is in neither the log nor the file.
+  const runDir = await mkdtemp(join(tmpdir(), "research-key-"));
+  try {
+    const logs = [];
+    const storeP = join(runDir, "ai.json");
+    const rw = fakeWeb([
+      [
+        onUrl(EC_URL),
+        () => body(rssDoc([{ title: "Commission adopts AI Act guidelines on high-risk systems", link: "https://digital-strategy.ec.europa.eu/en/news/k1", description: "Guidelines text." }])),
+      ],
+      [(u) => u === GLIST, geminiList],
+      [isGen, () => geminiOk()],
+    ]);
+    const rr = await run({ track: "ai", storePath: storeP, fetchImpl: rw.fetchImpl, now: NOW, env: { GEMINI_API_KEY: KEY }, log: (l) => logs.push(l), delays: NO_DELAYS });
+    check(
+      "run: a Gemini run stores the provider label in the analysis",
+      rr.store.analysis.mode === "model" && rr.store.analysis.provider === "Google Gemini",
+      JSON.stringify(rr.store.analysis),
+    );
+    const stored = await readFile(storeP, "utf8");
+    check("run: the key is in neither the log nor the stored file", !logs.some((l) => l.includes(KEY)) && !stored.includes(KEY));
+    check("run: the source record carries read next to found", rr.store.sources.find((s) => s.id === "ec-digital")?.read === 1);
+  } finally {
+    await rm(runDir, { recursive: true, force: true });
+  }
+
+  // read vs found.
+  const rf = sourceById("ec-digital");
+  const mixed = fakeWeb([
+    [
+      onUrl(rf.url),
+      () =>
+        body(
+          `<rss><channel><item><title>Old AI guidance</title><link>https://a.test/o1</link><pubDate>${new Date(NOW.getTime() - 40 * DAY).toUTCString()}</pubDate></item>` +
+            `<item><title>New AI guidance</title><link>https://a.test/n1</link></item>` +
+            `<item><title>Bad link AI guidance</title><link>javascript:alert(1)</link></item></channel></rss>`,
+        ),
+    ],
+  ]);
+  const rfs = await fetchSource(rf, "ai", { fetchImpl: mixed.fetchImpl, now: NOW, lookbackDays: 21 });
+  check("read vs found: read counts what was parsed, found counts what was kept", rfs.read === 3 && rfs.items.length === 1, `read ${rfs.read} found ${rfs.items.length}`);
+  const empty = fakeWeb([[onUrl(rf.url), () => body("<rss><channel><title>t</title></channel></rss>")]]);
+  const es = await fetchSource(rf, "ai", { fetchImpl: empty.fetchImpl, now: NOW });
+  check("read vs found: a feed with no items reads 0 with no error", es.read === 0 && es.error === null && es.items.length === 0);
+  const allOld = fakeWeb([
+    [onUrl(rf.url), () => body(`<rss><channel><item><title>AI old</title><link>https://a.test/x</link><pubDate>${new Date(NOW.getTime() - 90 * DAY).toUTCString()}</pubDate></item></channel></rss>`)],
+  ]);
+  const ao = await fetchSource(rf, "ai", { fetchImpl: allOld.fetchImpl, now: NOW, lookbackDays: 21 });
+  check("read vs found: items read but none in the window give read 1, found 0", ao.read === 1 && ao.items.length === 0);
+
+  // The page distinguishes the two empty cases, and labels the provider.
+  const pageSrc = await readFile(new URL("../app/developments/DevelopmentsFeed.tsx", import.meta.url), "utf8");
+  check("page: 'answered, nothing new' and 'answered, but no items could be read' are both present", pageSrc.includes("answered, nothing new") && pageSrc.includes("answered, but no items could be read"));
+  check("page: the provider is optional in the type and shown after the model", /provider\?: string/.test(pageSrc) && pageSrc.includes("(${data.analysis.provider})"));
+
+  // Acronyms name the jurisdiction.
+  const ACRONYMS = [
+    ["DPDP rules notified for consent managers", "India", "asia"],
+    ["PIPL enforcement tightens", "China", "asia"],
+    ["PDPO amendment passes", "Hong Kong", "asia"],
+    ["PCPD issues guidance", "Hong Kong", "asia"],
+    ["APPI amendment in force", "Japan", "asia"],
+    ["PIPA fine announced", "South Korea", "asia"],
+    ["PIPC issues guidance", "South Korea", "asia"],
+    ["GDPR fine upheld", "European Union", "eu"],
+    ["CJEU rules on AI", "European Union", "eu"],
+    ["AI Act guidance published", "European Union", "eu"],
+    ["Digital Omnibus proposal", "European Union", "eu"],
+    ["CCPA regulations finalised", "California", "us"],
+    ["CPRA enforcement begins", "California", "us"],
+    ["CPPA board meets", "California", "us"],
+    ["CalPrivacy launches", "California", "us"],
+    ["ICO fines retailer", "United Kingdom", "other"],
+  ];
+  for (const [title, jur, region] of ACRONYMS) {
+    const g = guessPlace({ title }, { region: "asia", jurisdiction: null });
+    check(`acronym: "${title}" is ${jur}`, g.jurisdiction === jur && g.region === region, JSON.stringify(g));
+  }
+  check("acronym: matching is case-sensitive (lower-case ico is not the ICO)", matchPlace("the ico issued guidance") === null);
+  check("acronym: lower-case dpdp is not India", matchPlace("dpdp rules") === null);
+
+  // europarl removed; the others remain.
+  check("sources: europarl is removed", !SOURCES.some((s) => s.id === "europarl"));
 }
 
 // K. Report

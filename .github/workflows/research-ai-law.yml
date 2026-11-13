@@ -50,6 +50,8 @@ jobs:
       - name: Run the AI-law research agent
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Optional. Empty when the repository has no GEMINI_API_KEY secret; then GitHub Models is used.
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           LOOKBACK_INPUT: ${{ github.event.inputs.lookback_days }}
         run: |
           if [ -n "$LOOKBACK_INPUT" ]; then

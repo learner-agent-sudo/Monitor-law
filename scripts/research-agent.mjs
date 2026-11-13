@@ -45,7 +45,7 @@ async function writeStepSummary(result, track) {
   const { store, added } = result;
   const ok = store.sources.filter((s) => s.ok).length;
   const mode = store.analysis?.mode === "model"
-    ? `model \`${store.analysis.model}\``
+    ? `model \`${store.analysis.model}\`${store.analysis.provider ? ` (${store.analysis.provider})` : ""}`
     : `keyword rules only (${store.analysis?.reason ?? "unknown"})`;
   const lines = [
     `## Research agent: ${track === "ai" ? "AI law" : "privacy law"}`,

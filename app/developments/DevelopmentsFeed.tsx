@@ -10,11 +10,25 @@ export interface SourceStatus {
   name: string;
   type: string;
   ok: boolean;
+  /** Items kept after the look-back, exclude and link filters. */
   found: number;
+  /** Items parsed before any filter. Optional: older data files do not have it. */
+  read?: number;
   error: string | null;
 }
 
-export type Analysis = { mode: "model"; model: string } | { mode: "keywords"; reason: string };
+/** `provider` is optional so that data written before it existed still reads. */
+export type Analysis =
+  | { mode: "model"; model: string; provider?: string }
+  | { mode: "keywords"; reason: string };
+
+/** What a source's status line says. A source that parsed nothing is told apart from one that parsed items and kept none. */
+export function sourceStatusText(s: SourceStatus): string {
+  if (!s.ok) return "did not answer";
+  if (s.found > 0) return `answered, ${s.found} item${s.found === 1 ? "" : "s"}`;
+  if (s.read === 0) return "answered, but no items could be read";
+  return "answered, nothing new";
+}
 
 export interface FeedItem {
   id: string;
@@ -94,13 +108,13 @@ function SourceReport({ data }: { data: TrackData }) {
         <summary>Sources and how summaries were written</summary>
         <p style={{ margin: "8px 0 0" }}>
           {data.analysis?.mode === "model"
-            ? `Summaries marked "AI summary" were written by the model ${data.analysis.model}. Other summaries are the source's own description.`
+            ? `Summaries marked "AI summary" were written by the model ${data.analysis.model}${data.analysis.provider ? ` (${data.analysis.provider})` : ""}. Other summaries are the source's own description.`
             : `No AI model ran${data.analysis?.mode === "keywords" ? ` (${data.analysis.reason})` : ""}. Items were kept by keyword rules and summaries are the source's own description.`}
         </p>
         <ul>
           {data.sources.map((s) => (
             <li key={s.id}>
-              {s.name}: {s.ok ? `answered, ${s.found} item${s.found === 1 ? "" : "s"}` : <span className="feed-err">did not answer</span>}
+              {s.name}: {s.ok ? sourceStatusText(s) : <span className="feed-err">{sourceStatusText(s)}</span>}
               {!s.ok && s.error ? <span className="feed-err"> ({s.error})</span> : null}
               {s.ok && s.error ? <span style={{ color: "var(--text-faint)" }}> ({s.error})</span> : null}
             </li>

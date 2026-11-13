@@ -37,13 +37,41 @@ node scripts/research-agent.mjs --track ai --dry-run
 
 Edit `lib/research/sources.mjs`. Each entry says what the source is, which agents read it, and how to fetch it. A new feed needs an `id`, a `name`, a `type`, `kind: "rss"`, the `tracks` it belongs to, and a `url`. Then run the offline tests.
 
-Recent changes to the list: the EU AI Act Newsletter was removed because its host refuses requests from GitHub's servers. The EDPB, EDPS and European Parliament feeds are kept for now; they failed on the first live run and may recover with the new User-Agent.
+Recent changes to the list: the EU AI Act Newsletter was removed because its host refuses requests from GitHub's servers. The European Parliament feed was removed because its address returns a web page rather than a feed. The EDPB and EDPS feeds are kept for now.
+
+On the page, each source's status line says one of three things: "answered, N items" (items were kept), "answered, nothing new" (the feed was read, but every item was too old or filtered out), or "answered, but no items could be read" (the feed had nothing the agent could parse).
 
 ## The AI model
 
-Summaries come from GitHub Models, GitHub's own free model service. The workflow uses its built-in `GITHUB_TOKEN`, so no key needs to be added.
+The agents use a small AI model to decide which items are real legal developments and to write their summaries. There are two options, tried in this order:
 
-- The agent reads the model catalog and tries the cheapest suitable model first, up to four in order. A model is used only if its first batch of replies can be read. A model that answers with no usable content is passed over for the next one.
+1. **Google Gemini**, if the repository has a secret named `GEMINI_API_KEY`. The owner can add one for free (see below).
+2. **GitHub Models**, GitHub's own built-in model service. It uses the workflow's `GITHUB_TOKEN`, so no key needs to be added. It is used when no Gemini key is set, or when Gemini does not answer usefully.
+
+If neither answers usefully, the agents still run on keyword rules (see below). Nothing breaks.
+
+### Optionally, use Gemini
+
+To use Google Gemini instead of GitHub's built-in model:
+
+1. Get a free key from Google AI Studio (aistudio.google.com/apikey).
+2. In GitHub, open the repository, then Settings, then Secrets and variables, then Actions, then New repository secret.
+3. Name it `GEMINI_API_KEY` and paste the key. Save.
+
+The key is never written to the data files and never appears in the logs. The next scheduled run uses it.
+
+When an item is summarised by a model, the page says which model and which provider wrote it (for example, "written by the model gemini-2.5-flash-lite (Google Gemini)").
+
+### How a model is chosen and used
+
+- For each provider, the agent lists the models it offers and tries them in order, up to four for GitHub Models and three for Gemini. A model is used only if its first batch of replies can be read. A reply with no usable content is passed over for the next model.
+- If a service answers with something that is not a reply at all (for example, a bare "OK"), the agent says so plainly in the notes and does not try its other models in that run.
+- If a model rejects one of the request settings (`max_tokens`, `temperature` or `response_format`), the agent retries that same model once with that setting changed.
+- Every decision is written to the run log and to the GitHub step summary under "Model notes". This includes the models tried in order, why each was rejected (with a short excerpt of the reply), and any failed batch. Notes are not saved in the data files. Keys and tokens are never written in notes or logs.
+
+If a run shows keyword-only results, read "Model notes" in the run's summary first. It says what went wrong. The reason stored with the data is shorter, and the detail is only in the notes.
+
+- The agent reads the model catalog and tries the cheapest suitable model first. A model that answers with no usable content is passed over for the next one.
 - If a model rejects one of the request settings (`max_tokens`, `temperature` or `response_format`), the agent retries that same model once with that setting changed.
 - Every model decision is written to the run log and to the GitHub step summary under "Model notes". This includes the catalog size, the models tried in order, why each was rejected (with a short excerpt of the reply), and any failed batch. Notes are not saved in the data files and never contain the token.
 
