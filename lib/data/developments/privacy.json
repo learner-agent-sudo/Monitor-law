@@ -1,6 +1,6 @@
 {
   "track": "privacy",
-  "checked": "2026-11-13T19:58:29.069Z",
+  "checked": "2026-11-13T20:15:28.062Z",
   "analysis": {
     "mode": "keywords",
     "reason": "no AI model answered (GitHub Models returned a non-JSON reply)"
@@ -227,8 +227,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 23,
-      "read": 23,
+      "found": 24,
+      "read": 24,
       "error": null
     },
     {
@@ -450,6 +450,21 @@
       "jurisdiction": "India",
       "kind": "legislation",
       "summary": "Ransomware Without Data Theft Can Still Trigger Mandatory Breach Reporting Under India’s DPDP Law: K7 CyberSecurity",
+      "summaryBy": "source"
+    },
+    {
+      "id": "2f9299c4a41c",
+      "track": "privacy",
+      "title": "Motorists Allege License Plate Tracking Violates California Privacy Law",
+      "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNdGUyRGx0bHRXZFEzcEJVV2xMU1FNb2RLUnFWSE1CN05LNzhYNlNaNmI5NFZMbk9IU0FTNjJ4dGlrZ3lUa0YxOHVHcFgtMU5mOEZaLWgtM3ViR1EzMmdUdEhRZjNHYlNETVpJdEY0WFNtOW5TWUk5UHBwcDJ3UXQ0X3BzTVhNR0c4TnRoalNFSmxKdDlmX0xQaG5aWkpsamNYMzVhcHZ2QkU4Ymd1d1dpOFE3cnFmSmQyZlJzUUhXWV9hMkhzYjNGYkRYYzVKZmg1X0FwLUx6cTLSAWJBVV95cUxPSUttZnZJMEpteTdMNEJ2TGVZWDVmMGRPcjBaU2hmeFZITFc1MkRINlFBaVZzU2RlLVdYU3YyQVpPTDVkbXpJcjV5UmZaUEFqdTJHVnJOUng1N0pkbmJMUXJNUQ?oc=5",
+      "source": "Mealey's",
+      "sourceType": "news",
+      "published": "2026-11-12",
+      "found": "2026-11-13",
+      "region": "us",
+      "jurisdiction": "California",
+      "kind": "legislation",
+      "summary": "Motorists Allege License Plate Tracking Violates California Privacy Law",
       "summaryBy": "source"
     },
     {
