@@ -82,6 +82,7 @@ If a run shows keyword-only results, read "Model notes" in the run's summary fir
 - A source that fails (for example, an HTTP error or a timeout) is marked as failed in the run record and shown on the page. The other sources still run.
 - If no model is available, the agent uses keyword rules only. Those items get the source's own description as the summary, marked as not AI-written.
 - Keyword rules are strict, because nothing else checks them. An item is kept only if its title is on topic (or the source is on topic by definition), its title reads as a legal development, and its title is not market news, an advert, a webinar, an opinion or a how-to. The on-topic test reads the title and only the first 300 characters of the description, so a long press release that mentions "AI" in passing does not count.
+- The same story from several outlets is kept once. Headlines dated within five days that share the key names, amounts and terms are treated as one story, whatever the wording, and the first one found is kept. Stored items are re-checked with these keyword rules at the start of every run, so an old mistake (for example, India's "CCPA" filed as California's privacy law) is corrected without editing the data.
 - If every source fails, the stored items are left as they were. The page shows that the check ran and that no sources answered.
 - If a run finds nothing new to check, the previous "how summaries were written" note is kept, so the page keeps describing the stored items truthfully.
 

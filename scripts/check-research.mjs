@@ -22,9 +22,9 @@ import {
   pickModels, analyze, parseBatchReply, FALLBACK_MODELS, extractContent, adaptVariant,
   pickGeminiModels, GEMINI_FALLBACK, scrub,
 } from "../lib/research/analyze.mjs";
-import { loadStore, saveStore, isDuplicate, mergeItems } from "../lib/research/store.mjs";
+import { loadStore, saveStore, isDuplicate, mergeItems, sameStory, duplicateReason } from "../lib/research/store.mjs";
 import { SOURCES } from "../lib/research/sources.mjs";
-import { run } from "../lib/research/run.mjs";
+import { run, tidyItems } from "../lib/research/run.mjs";
 
 let failures = 0;
 const results = [];
@@ -807,7 +807,7 @@ try {
 
   // 5. Every source fails: no throw, items unchanged, record updated.
   const failPath = await tmpStorePath(dir, "fail.json");
-  const seed = { track: "ai", checked: null, analysis: null, sources: [], items: [{ id: "keep1", track: "ai", title: "Existing item", url: "https://old.test/x", source: "s", sourceType: "news", published: "2026-11-01", found: "2026-11-01", region: "eu", jurisdiction: "European Union", kind: "other", summary: "Existing.", summaryBy: "source" }] };
+  const seed = { track: "ai", checked: null, analysis: null, sources: [], items: [{ id: "keep1", track: "ai", title: "EU AI Act guidance published", url: "https://old.test/x", source: "s", sourceType: "news", published: "2026-11-01", found: "2026-11-01", region: "eu", jurisdiction: "European Union", kind: "guidance", summary: "EU AI Act guidance published.", summaryBy: "source" }] };
   await writeFile(failPath, JSON.stringify(seed));
   const r5 = await run({ track: "ai", storePath: failPath, fetchImpl: newsWeb({ fail: true }).fetchImpl, now: NOW, env: {}, log: SILENT, delays: NO_DELAYS });
   check("run: every source failing does not throw", r5.store.sources.every((s) => s.ok === false));
@@ -828,11 +828,13 @@ try {
       s = String.fromCharCode(97 + (n % 26)) + s;
       n = Math.floor(n / 26);
     } while (n > 0);
-    return `zq${s}`;
+    // The trailing k keeps the stemmer from folding codes together (zqbe, zqbs -> zqb).
+    return `zq${s}k`;
   };
   const bigItems = (count) =>
     Array.from({ length: count }, (_, i) => ({
-      title: `Regulator issues new AI guidance topic ${code(i)}`,
+      // Only "regulator" and "guidance" are shared, so the same-story rule keeps these apart.
+      title: `AI ${code(i)} regulator guidance`,
       link: `https://digital-strategy.ec.europa.eu/en/news/big${i}`,
       description: "Guidance text.",
     }));
@@ -1302,6 +1304,191 @@ try {
 
   // europarl removed; the others remain.
   check("sources: europarl is removed", !SOURCES.some((s) => s.id === "europarl"));
+}
+
+// O. Same story, India's CCPA, multistate, and the tidy step
+// ============================================================================
+{
+  const TINDER = [
+    "Tinder owner fined €11m by Data Protection Commission",
+    "Ireland fines Tinder owner €11 million for GDPR violations — Politico Europe",
+    "Tinder fined millions – breached EU's data protection rules",
+    "Ireland: Data Protection Commission fines Tinder owner Match Group EUR 11 million over non-compliance with GDPR",
+    "EU fines Tinder owner €11 million over data privacy failures",
+    "Tinder owner fined €11 million for privacy violations",
+    "EU Fines Tinder Owner €11 Million Over Data Privacy Violations",
+  ];
+  const LEADERS = ["EU leaders told to ‘act now’ to stay in AI race with US and China", "EU leaders urged to 'act now' to stay AI competitive"];
+  const CCPA_OLA = "CCPA imposes Rs 10 lakh penalty on Ola over pre-ride ‘tip’ feature, orders discontinuation";
+  const CCPA_DIAL = "CCPA Imposes ₹10 Lakh Penalty On Just Dial For Facilitating Sale Of Ammonium Nitrate";
+  const GM = "General Motors Settles Multistate Driver Privacy Claims";
+  const DAY0 = "2026-11-12";
+  const at = (title, day = DAY0) => ({ title, published: day, found: day });
+  const sameAt = (a, b) => sameStory(at(a), at(b));
+  const news = { type: "news" };
+  const presumedPrivacy = { type: "analysis", presumed: ["privacy"] };
+  const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+
+  // Same story: the positives from the live run, and negatives that must stay apart.
+  const tinderPairs = TINDER.flatMap((a, i) => TINDER.slice(i + 1).map((b) => [a, b]));
+  const tinderMissed = tinderPairs.filter(([a, b]) => !sameAt(a, b));
+  check(
+    `same story: all ${tinderPairs.length} pairs of the Tinder headlines match`,
+    tinderPairs.length === 21 && tinderMissed.length === 0,
+    tinderMissed.map(([a, b]) => `${a.slice(0, 25)} / ${b.slice(0, 25)}`).join("; "),
+  );
+  check("same story: the two 'EU leaders ... act now' headlines match", sameAt(LEADERS[0], LEADERS[1]));
+  check(
+    "same story: the amount written three ways is one amount",
+    sameAt("Tinder owner fined 11 million euros by Data Protection Commission", "Tinder owner fined EUR 11 million by Data Protection Commission") &&
+      sameAt("Tinder owner fined 11 million euros by Data Protection Commission", "Tinder owner fined €11m by Data Protection Commission"),
+  );
+  const NEGATIVE = [
+    [TINDER[0], "Meta fined €11m by Data Protection Commission over Instagram", "a different company"],
+    [CCPA_OLA, CCPA_DIAL, "two different India CCPA penalties"],
+    ["Amazon fined €11m by Data Protection Commission over cookies", "Meta fined €11m by Data Protection Commission over Instagram", "a different company"],
+    ["Texas attorney general sues Google over biometric data", "Texas attorney general sues Meta over biometric data", "a different company, same state"],
+    ["New York fines bank over data breach", "New York fines hospital over data breach", "only generic words in common"],
+    ["Dutch regulator fines TikTok over children's data", "Irish regulator fines Meta over children's data", "a different company and regulator"],
+    ["Japan privacy watchdog warns Toyota over app data", "Japan privacy watchdog warns Honda over app data", "a different company"],
+  ];
+  for (const [a, b, why] of NEGATIVE) check(`not the same story: ${why}`, !sameAt(a, b), `${a.slice(0, 40)} / ${b.slice(0, 40)}`);
+  check("not the same story: the same headline 12 days apart", !sameStory(at(TINDER[0], "2026-11-01"), at(TINDER[0])));
+  check("not the same story: an item with no date", !sameStory({ title: TINDER[0] }, at(TINDER[1])));
+  check(
+    "duplicate: a new report of a stored story is the same-story reason",
+    duplicateReason({ id: "new", ...at(TINDER[4]) }, [{ id: "old", ...at(TINDER[0]) }], { now: NOW }) === "same-story",
+    String(duplicateReason({ id: "new", ...at(TINDER[4]) }, [{ id: "old", ...at(TINDER[0]) }], { now: NOW })),
+  );
+
+  // India's CCPA is not California's privacy law.
+  for (const t of [CCPA_OLA, CCPA_DIAL]) {
+    const short = t.slice(0, 24);
+    check(`India CCPA "${short}...": CCPA is not privacy evidence`, !scoreItem({ title: t }, "privacy", news).onTopic);
+    check(
+      `India CCPA "${short}...": rejected for privacy, even from a presumed source`,
+      !keywordKeep({ title: t }, "privacy", news) && !keywordKeep({ title: t }, "privacy", presumedPrivacy),
+    );
+    check(`India CCPA "${short}...": placed in India`, same(matchPlace(t), { region: "asia", jurisdiction: "India" }), JSON.stringify(matchPlace(t)));
+    check(
+      `India CCPA "${short}...": placed in India from the Asia search too`,
+      same(guessPlace({ title: t }, { region: "asia", jurisdiction: null }), { region: "asia", jurisdiction: "India" }),
+    );
+  }
+  check("India CCPA: California's CCPA rules stay California and privacy", same(matchPlace("CCPA regulations finalised"), { region: "us", jurisdiction: "California" }) && keywordKeep({ title: "CCPA regulations finalised" }, "privacy", news));
+
+  // Multistate actions are US stories.
+  check("multistate: the General Motors settlement is placed in the United States", same(matchPlace(GM), { region: "us", jurisdiction: "United States" }));
+  check("multistate: 'attorneys general' is placed in the United States", same(matchPlace("Attorneys general warn insurers"), { region: "us", jurisdiction: "United States" }));
+  check("multistate: 'state attorneys general' is placed in the United States", same(matchPlace("Coalition of state attorneys general sues app"), { region: "us", jurisdiction: "United States" }));
+  check("multistate: 'multi-state' is placed in the United States", same(matchPlace("Multi-state probe of insurer"), { region: "us", jurisdiction: "United States" }));
+  check("multistate: the General Motors item is kept from its presumed source", keywordKeep({ title: GM }, "privacy", presumedPrivacy));
+
+  // Tidy: the 12 items from the live run.
+  const mk = (title, i, extra = {}) => ({
+    id: `t${i}`,
+    track: "privacy",
+    title,
+    url: `https://news.test/${i}`,
+    source: "Some Outlet",
+    sourceType: "news",
+    published: DAY0,
+    found: DAY0,
+    region: "eu",
+    jurisdiction: "European Union",
+    kind: "enforcement",
+    summary: title,
+    summaryBy: "source",
+    ...extra,
+  });
+  const privacyStore = [
+    ...TINDER.map((t, i) => mk(t, i)),
+    mk(CCPA_OLA, 20, { region: "us", jurisdiction: "California" }),
+    mk(CCPA_DIAL, 21, { region: "us", jurisdiction: "California" }),
+    mk(GM, 22, { source: "Hunton Privacy & Information Security Law", sourceType: "analysis", region: "other", jurisdiction: "Other" }),
+  ];
+  const before = JSON.stringify(privacyStore);
+  const tp = tidyItems(privacyStore, "privacy", { now: NOW });
+  check("tidy: the input is not changed", JSON.stringify(privacyStore) === before);
+  check("tidy: one Tinder item remains", tp.items.filter((i) => /Tinder/.test(i.title)).length === 1, tp.items.map((i) => i.title).join(" | "));
+  check("tidy: no India CCPA items remain", !tp.items.some((i) => /CCPA/.test(i.title)));
+  check("tidy: the General Motors item is placed in the United States", tp.items.find((i) => /General Motors/.test(i.title))?.region === "us");
+  check("tidy: two off-topic items removed, six duplicates collapsed", tp.removed === 2 && tp.collapsed === 6, JSON.stringify({ removed: tp.removed, collapsed: tp.collapsed }));
+  check("tidy: the first-found item of a story is the one kept", tp.items.some((i) => i.id === "t0"));
+
+  const aiStore = [
+    mk(LEADERS[0], 30, { track: "ai", found: "2026-11-12", region: "eu", jurisdiction: "European Union", kind: "legislation" }),
+    mk(LEADERS[1], 31, { track: "ai", found: "2026-11-11", region: "eu", jurisdiction: "European Union", kind: "legislation" }),
+    mk("Council approves new bridge law", 40, { track: "ai", summaryBy: "model", kind: "legislation" }),
+    mk("Bakery opens new shop downtown", 41, { track: "ai" }),
+  ];
+  const ta = tidyItems(aiStore, "ai", { now: NOW });
+  // The two 'act now' headlines are not AI legal news, so keyword rules remove them.
+  check("tidy (ai): the 'act now' headlines are removed, not kept", !ta.items.some((i) => /act now/.test(i.title)) && ta.removed === 3, JSON.stringify({ removed: ta.removed }));
+  check("tidy (ai): a model-decided item is never dropped by keyword rules", ta.items.some((i) => i.id === "t40"));
+  check("tidy (ai): an off-topic keyword item is removed", !ta.items.some((i) => i.id === "t41") && ta.collapsed === 0, JSON.stringify({ collapsed: ta.collapsed }));
+  const twoStory = [
+    mk("AI Act guidance on general-purpose models published", 50, { track: "ai", found: "2026-11-12", kind: "guidance" }),
+    mk("AI Act guidance on general-purpose models out today", 51, { track: "ai", found: "2026-11-11", kind: "guidance" }),
+  ];
+  const tw = tidyItems(twoStory, "ai", { now: NOW });
+  check("tidy (ai): a same-story pair collapses to the earlier-found item", tw.items.length === 1 && tw.items[0].id === "t51" && tw.collapsed === 1, JSON.stringify(tw.items.map((i) => i.id)));
+
+  // Run: the tidy and same-story lines are logged, and the saved file is tidied.
+  const tidyDir = await mkdtemp(join(tmpdir(), "research-tidy-"));
+  try {
+    const path = join(tidyDir, "privacy.json");
+    await writeFile(path, JSON.stringify({ track: "privacy", checked: null, analysis: null, sources: [], items: privacyStore }));
+    const logs = [];
+    const r = await run({ track: "privacy", storePath: path, fetchImpl: fakeWeb([]).fetchImpl, now: NOW, env: {}, log: (l) => logs.push(l), delays: NO_DELAYS });
+    check("run: logs the tidy line", logs.some((l) => l === "Tidy: re-placed 3, removed 2 off-topic, collapsed 6 duplicate(s)."), logs.filter((l) => /Tidy/.test(l)).join(" | "));
+    check("run: logs the same-story line", logs.includes("0 same-story duplicate(s) dropped."), logs.filter((l) => /same-story/.test(l)).join(" | "));
+    const saved = JSON.parse(await readFile(path, "utf8"));
+    check("run: the saved file holds the tidied items", saved.items.length === 2 && r.store.items.length === 2, `saved ${saved.items.length}`);
+  } finally {
+    await rm(tidyDir, { recursive: true, force: true });
+  }
+}
+
+// P. Noise on the AI track, and US federal bodies
+// ============================================================================
+{
+  const news = { type: "news" };
+  const ai = (title) => keywordKeep({ title, description: "" }, "ai", news);
+  const legalIn = (title) => scoreItem({ title, description: "" }, "ai", news).legalInTitle;
+  const asiaSearch = (title) => guessPlace({ title }, { region: "asia", jurisdiction: null });
+  const isUs = (title) => JSON.stringify(asiaSearch(title)) === JSON.stringify({ region: "us", jurisdiction: "United States" });
+
+  // 1. "act now" is a verb, not a legal term.
+  const ACT1 = "EU leaders told to ‘act now’ to stay in AI race with US and China";
+  const ACT2 = "EU leaders urged to 'act now' to stay AI competitive";
+  check("noise: 'act now' (curly quotes) is not kept on the ai track", !ai(ACT1) && !legalIn(ACT1), ACT1);
+  check("noise: 'act now' (straight quotes) is not kept on the ai track", !ai(ACT2) && !legalIn(ACT2), ACT2);
+  check("noise: a real Act is still legal evidence", legalIn("EU AI Act guidance published") && ai("EU AI Act guidance published"));
+
+  // 2. China's National Intelligence Law is not AI regulation.
+  const SOUND = "Soundcore Sleep Earbuds 4 Japan: AI Snore Masking Records Bedroom Audio Nightly for Anker, Bound by China's Intelligence Law";
+  const ROKID = "Rokid Glasses 2 Ships in China With On-Device AI: National Intelligence Law Still Applies";
+  check("noise: 'Intelligence Law' is not legal evidence (Soundcore)", !legalIn(SOUND) && !ai(SOUND), SOUND);
+  check("noise: 'National Intelligence Law' is not legal evidence (Rokid)", !legalIn(ROKID) && !ai(ROKID), ROKID);
+  check("noise: 'Intelligence Law' is not AI-topic evidence", !scoreItem({ title: "Bound by China's Intelligence Law", description: "" }, "ai", news).topicInTitle);
+
+  // 3. Big Law is the law-firm industry.
+  const BIGLAW = "Big Law Cashes In on AI-Driven Solar, Battery Deal Surge in Texas";
+  check("noise: 'Big Law' is not legal evidence", !legalIn(BIGLAW) && !ai(BIGLAW), BIGLAW);
+
+  // 4. US federal bodies place an item in the United States, unless a more specific place matches.
+  const COMMERCE = "Commerce Department Finalizing Long-Awaited AI Remote Access Rule";
+  check("place: 'Commerce Department' is us, from the Asia search", isUs(COMMERCE), JSON.stringify(asiaSearch(COMMERCE)));
+  check("place: 'Department of Commerce' is us", isUs("Department of Commerce adds AI chip rule"));
+  check("place: 'BIS' is us", isUs("BIS tightens AI chip export rule"));
+  check("place: 'Bureau of Industry and Security' is us", isUs("Bureau of Industry and Security issues AI rule"));
+  check("place: 'White House' is us", isUs("White House publishes AI guidance"));
+  check("place: 'Congress' is us", isUs("Congress passes AI bill"));
+  check("place: 'Senate' is us", isUs("Senate votes on AI bill"));
+  check("place: 'FTC' is us", isUs("FTC warns on AI claims"));
+  check("place: a more specific place beats the Commerce Department", matchPlace("Commerce Department rule hits China AI chips")?.jurisdiction === "China", JSON.stringify(matchPlace("Commerce Department rule hits China AI chips")));
+  check("place: a more specific place beats the White House", matchPlace("White House meets Japan on AI")?.jurisdiction === "Japan");
 }
 
 // K. Report
