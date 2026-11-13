@@ -1,9 +1,9 @@
 {
   "track": "privacy",
-  "checked": "2026-11-12T12:42:44.234Z",
+  "checked": "2026-11-13T19:58:29.069Z",
   "analysis": {
     "mode": "keywords",
-    "reason": "no model was usable (openai/gpt-4.1-mini: no usable message content; finish_reason=none; body: OK)"
+    "reason": "no AI model answered (GitHub Models returned a non-JSON reply)"
   },
   "sources": [
     {
@@ -11,39 +11,35 @@
       "name": "European Commission (Digital Strategy)",
       "type": "official",
       "ok": true,
-      "found": 7,
+      "found": 0,
+      "read": 10,
       "error": null
     },
     {
-      "id": "edpb",
-      "name": "European Data Protection Board",
+      "id": "eur-lex-oj",
+      "name": "EU Official Journal (EUR-Lex)",
       "type": "official",
       "ok": false,
       "found": 0,
-      "error": "HTTP 503"
+      "read": 0,
+      "error": "ERR_TLS_CERT_ALTNAME_INVALID"
     },
     {
       "id": "edps",
       "name": "European Data Protection Supervisor",
       "type": "official",
       "ok": true,
-      "found": 6,
+      "found": 2,
+      "read": 10,
       "error": null
-    },
-    {
-      "id": "europarl",
-      "name": "European Parliament press",
-      "type": "official",
-      "ok": false,
-      "found": 0,
-      "error": "response is not a feed"
     },
     {
       "id": "cnil",
       "name": "CNIL (France)",
       "type": "official",
       "ok": true,
-      "found": 8,
+      "found": 2,
+      "read": 10,
       "error": null
     },
     {
@@ -52,6 +48,16 @@
       "type": "official",
       "ok": true,
       "found": 20,
+      "read": 20,
+      "error": null
+    },
+    {
+      "id": "opc-canada",
+      "name": "Office of the Privacy Commissioner of Canada",
+      "type": "official",
+      "ok": true,
+      "found": 0,
+      "read": 667,
       "error": null
     },
     {
@@ -59,15 +65,17 @@
       "name": "Federal Register",
       "type": "official",
       "ok": true,
-      "found": 11,
-      "error": null
+      "found": 2,
+      "read": 4,
+      "error": "1 of 3 queries failed: unexpected response shape"
     },
     {
       "id": "ftc",
       "name": "Federal Trade Commission",
       "type": "official",
       "ok": true,
-      "found": 10,
+      "found": 3,
+      "read": 10,
       "error": null
     },
     {
@@ -75,7 +83,8 @@
       "name": "NIST",
       "type": "official",
       "ok": true,
-      "found": 2,
+      "found": 0,
+      "read": 40,
       "error": null
     },
     {
@@ -84,6 +93,7 @@
       "type": "official",
       "ok": true,
       "found": 100,
+      "read": 100,
       "error": null
     },
     {
@@ -92,6 +102,7 @@
       "type": "official",
       "ok": true,
       "found": 10,
+      "read": 10,
       "error": null
     },
     {
@@ -100,6 +111,7 @@
       "type": "official",
       "ok": true,
       "found": 100,
+      "read": 100,
       "error": null
     },
     {
@@ -108,6 +120,7 @@
       "type": "analysis",
       "ok": false,
       "found": 0,
+      "read": 0,
       "error": "HTTP 520"
     },
     {
@@ -115,7 +128,8 @@
       "name": "Future of Privacy Forum",
       "type": "analysis",
       "ok": true,
-      "found": 5,
+      "found": 1,
+      "read": 10,
       "error": null
     },
     {
@@ -123,7 +137,8 @@
       "name": "Inside Privacy (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 4,
+      "found": 1,
+      "read": 10,
       "error": null
     },
     {
@@ -131,7 +146,8 @@
       "name": "Inside Global Tech (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 5,
+      "found": 2,
+      "read": 10,
       "error": null
     },
     {
@@ -140,6 +156,7 @@
       "type": "analysis",
       "ok": true,
       "found": 0,
+      "read": 10,
       "error": null
     },
     {
@@ -148,6 +165,7 @@
       "type": "analysis",
       "ok": true,
       "found": 0,
+      "read": 10,
       "error": null
     },
     {
@@ -155,7 +173,44 @@
       "name": "Hunton Privacy & Information Security Law",
       "type": "analysis",
       "ok": true,
-      "found": 5,
+      "found": 2,
+      "read": 10,
+      "error": null
+    },
+    {
+      "id": "privacy-world",
+      "name": "Privacy World (Squire Patton Boggs)",
+      "type": "analysis",
+      "ok": true,
+      "found": 3,
+      "read": 10,
+      "error": null
+    },
+    {
+      "id": "debevoise-data",
+      "name": "Debevoise Data Blog",
+      "type": "analysis",
+      "ok": true,
+      "found": 2,
+      "read": 200,
+      "error": null
+    },
+    {
+      "id": "global-policy-watch",
+      "name": "Global Policy Watch (Covington)",
+      "type": "analysis",
+      "ok": true,
+      "found": 3,
+      "read": 10,
+      "error": null
+    },
+    {
+      "id": "law-asia",
+      "name": "Law.asia",
+      "type": "analysis",
+      "ok": true,
+      "found": 10,
+      "read": 10,
       "error": null
     },
     {
@@ -163,7 +218,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 31,
+      "found": 27,
+      "read": 27,
       "error": null
     },
     {
@@ -171,7 +227,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 32,
+      "found": 23,
+      "read": 23,
       "error": null
     },
     {
@@ -179,11 +236,222 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 82,
+      "found": 64,
+      "read": 64,
       "error": null
     }
   ],
   "items": [
+    {
+      "id": "68310e9c0d2e",
+      "track": "privacy",
+      "title": "General Motors Settles Multistate Driver Privacy Claims",
+      "url": "https://www.hunton.com/privacy-and-cybersecurity-law-blog/general-motors-settles-multistate-driver-privacy-claims",
+      "source": "Hunton Privacy & Information Security Law",
+      "sourceType": "analysis",
+      "published": "2026-11-13",
+      "found": "2026-11-13",
+      "region": "other",
+      "jurisdiction": "Other",
+      "kind": "enforcement",
+      "summary": "On October 29, 2026, a bipartisan coalition of attorneys general from 35 states and the District of Columbia announced that General Motors agreed to pay $220 million to settle claims concerning its collection and sale of driver data through its Smart Driver program. Continue Reading &rsaquo;",
+      "summaryBy": "source"
+    },
+    {
+      "id": "f8a3981b4be4",
+      "track": "privacy",
+      "title": "European data protection board updates data transfer guidance",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOdG5sMWhzWVZpd3p5VGwzUktPc2FLVXJkZnAwYUw3T3FNWUNqeVA4V3pRTjJ4SlZPTXhrUmZuU1lBNFR2bjQxdWMwQ2h3cnVscGVyS1E2NnFPTDdXY21nbGVVOTZsdU1kUWdsR3p1WHZVckNMclk4R1hKazVmcFgxcw?oc=5",
+      "source": "Digital Watch Observatory",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-13",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "guidance",
+      "summary": "European data protection board updates data transfer guidance",
+      "summaryBy": "source"
+    },
+    {
+      "id": "226e8aed6334",
+      "track": "privacy",
+      "title": "Tinder owner fined €11m by Data Protection Commission",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPT2drNU5OaXFkSHMzRUdiVnJ1dF9RRHFYZU9oa3NfSXQtVFJza3cwOEtRdnJjT3hOcFkwTHlRTVdObUN5a0VHZjl0NlVWeW1uWFZmVG85QXM1d2tJZUVPSGhVMFUydG1TQS11OUdiSVpVaXJuLXotWnE5b3VnQmVmN19GWWRCMHNFdlJXMGdiYl92eGhnZzNTdFpNaVAxUkM3RVF6WkNOQQ?oc=5",
+      "source": "RTE.ie",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-13",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "enforcement",
+      "summary": "Tinder owner fined €11m by Data Protection Commission",
+      "summaryBy": "source"
+    },
+    {
+      "id": "14c9ecfd9b96",
+      "track": "privacy",
+      "title": "Ireland fines Tinder owner €11 million for GDPR violations — Politico Europe",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPTG1jbUdkQ3l2T3pHaEtRa3E2QzdiTklETE93S2xhZE4xMlk3dFFLenVpOHgzN3NNSTVZd3JCQ2Z6SUxiWi05M3BKMzI1bUE0TWlVSUVNYWlFMjdLY1FMcG5paHpsd0pjYXNLaHo3ZjU5bzFrdnFMVXNRTmJRNkpTalBnZkZFdTdPX1lyZXVLb2ZKUktYWTN4R2J3ekVKY1hyRWR0NXFKcndPTGxSTU8tdmR5UmR3NGhzTnpzbQ?oc=5",
+      "source": "UA.NEWS",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-13",
+      "region": "eu",
+      "jurisdiction": "Ireland",
+      "kind": "enforcement",
+      "summary": "Ireland fines Tinder owner €11 million for GDPR violations — Politico Europe",
+      "summaryBy": "source"
+    },
+    {
+      "id": "5c7fb9e5ecc8",
+      "track": "privacy",
+      "title": "Tinder fined millions – breached EU's data protection rules",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPb2hybDVwcHA4YlBQd0xaRUQ1RjRCT3EybG1fUDVnSmdQOS1YYmwwZkx6MDZPTGlwVjh1d2F3YkRDUExIYjF0cTNtZ3JySkpianFWa2R6b2FfZGVzdV85ZHE4ZjlSZjFvUnVLcllNQnByTnZSa0w2bmo5T1dZSjlGTmE3aDk4M0dXbmVB?oc=5",
+      "source": "Metro Mode",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-13",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "enforcement",
+      "summary": "Tinder fined millions – breached EU's data protection rules",
+      "summaryBy": "source"
+    },
+    {
+      "id": "b80025d24d41",
+      "track": "privacy",
+      "title": "Ireland: Data Protection Commission fines Tinder owner Match Group EUR 11 million over non-compliance with GDPR",
+      "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxOSzRiSExCZHVtdDdMWEdyaklOcXNiMXJaWkVNZXViRjY4TEszS0p5VmctV3UyaDdwcWdDWGxqTWJ1UEZCMDM4V1lybGRRcXNJbW9YSTJPMXN4NGVfU2h1Mzd3NW5RREdjUFZkSG1pZ0dwYklNZVktbXBsZXVyN21xNjFxN2xndS1XTVlQWWlKb2hIb0NWV3o3VVR0RVNwWnlaZGlSS2RUWmtCSVplMy14bHpGWGFjWGsxMXVOM2FYWjlQZi1TMzVBZEFRbEpQenUwZkd2UXlnWkprb3YxYWowWnRGa1d2ZDgxaUltVmxQWDUyLWx2aVE?oc=5",
+      "source": "Business and Human Rights Centre",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-13",
+      "region": "eu",
+      "jurisdiction": "Ireland",
+      "kind": "enforcement",
+      "summary": "Ireland: Data Protection Commission fines Tinder owner Match Group EUR 11 million over non-compliance with GDPR",
+      "summaryBy": "source"
+    },
+    {
+      "id": "1ccc9cca5dce",
+      "track": "privacy",
+      "title": "EU fines Tinder owner €11 million over data privacy failures",
+      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNZHR0akpFaUR6aHNrTFkwQmxPVzBBTHB5bnZ2MnZEbXR1dHFocVVGSUpiWldGbWVfN0xCNV9DU01rXy1IaFlDMmkxNUdXRTdHQkdYdFlGQkh6Wjdqd1ZVWG9OQkFoYkxDU1NaWUFRQ2JMSzluWk5IUEFjTTZNRVFYcGo1akw1RjN1Z3ZybFZfb1lzdEJFM2xiYTA1a2llQWtSTnFYUmVxS3hiV2p4Rm5TRmdUX19SemR0Z3ItbDdNN3pscmo4R1l0eTFMc21pdw?oc=5",
+      "source": "Le Monde.fr",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-13",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "enforcement",
+      "summary": "EU fines Tinder owner €11 million over data privacy failures",
+      "summaryBy": "source"
+    },
+    {
+      "id": "71e8fb51db76",
+      "track": "privacy",
+      "title": "Tinder owner fined €11 million for privacy violations",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPTHVRYWwyTEtYeFhfMXczcGZsMDVjRWFlM3NjRGdSRlg3Zmo5Vnd6WFhSRm9iVVhmVlU0MGV3cXlGU1c3T1U2aEdsNjBIUVdFd01HMDZfLWsyd1pTbGRpYV9fN2ZfaTJUbmxGdkV0VWV6Y3RsdndyeXd0NVdFTnR2RXRrNkNpZ9IBhAFBVV95cUxNN24tZEN0TjdsSG5aalVxZkV2X2JCZE80c3BWRE5PNXllWFFXXzdSamFPZzJjSFNSQ3JZQWFvTkFuVWx1N3JSa3g4ZUNyaDZKYzdPZzBtLVBOUmJqTnZOcGRHaHZvN2ZIVGhLajZhclhNWVUxaWthS1Uzcy1uUkpxZE5ZUVI?oc=5",
+      "source": "Українські Національні Новини (УНН)",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-13",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "enforcement",
+      "summary": "Tinder owner fined €11 million for privacy violations",
+      "summaryBy": "source"
+    },
+    {
+      "id": "86020282d3ee",
+      "track": "privacy",
+      "title": "EU Fines Tinder Owner €11 Million Over Data Privacy Violations",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNczVhZlpUVl9FSlFMTWNsOGpQZ3hLUEd1c3NGQXlKWHdxXzB6LXh0ZG5aNTdWRW0zbi1uRDlTeDkwUFBoUUlhOHA3Rno2Yi02ZzF5bHllX00zdnlqQzNHdWVxYUhJZVRUV1l1dHByLXg1M2hrdkJTOTRJQVZrekpyUmJJUmxiOHl2NW52eUFsVUF2eVNS?oc=5",
+      "source": "BGNES",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-13",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "enforcement",
+      "summary": "EU Fines Tinder Owner €11 Million Over Data Privacy Violations",
+      "summaryBy": "source"
+    },
+    {
+      "id": "88bf42b2c5d1",
+      "track": "privacy",
+      "title": "CCPA imposes Rs 10 lakh penalty on Ola over pre-ride ‘tip’ feature, orders discontinuation",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNRndEczhXWWxGSzZYM1V0Q0ctekxmM2dubUQ0MnNpUHlNbWlQenhtRXo0MURpQmJHeF93ZkFiR2htWFhFbnhJaldoVzNuSFIxV3B4VlBpNGtIdGJwM0tuNkVDMVBETU9xUnFLTnZ1OTFodHJvbTNVeXRDWG9ZRm5WNVlWTENqMHNmT182ZjdybTVIQW14T0ROZjJUV2tzaDdqYzhVT2hiUFU0cVNYR1owUFhVZw?oc=5",
+      "source": "DD News",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-13",
+      "region": "us",
+      "jurisdiction": "California",
+      "kind": "enforcement",
+      "summary": "CCPA imposes Rs 10 lakh penalty on Ola over pre-ride ‘tip’ feature, orders discontinuation",
+      "summaryBy": "source"
+    },
+    {
+      "id": "e0ee4bd24b84",
+      "track": "privacy",
+      "title": "South Korea adds passkeys to updated personal data security guidance",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOZ0xsMHJhTHZ3UFhwTVZ5MmxpalhHQ0syZklQanU3X2s3Y3NzNERUZEltVVAzTWpEdXVGcUJjUHNydnNfMllIZG1QV2ZKYUNvRUtmX2hUU29vaDRfNjVQbnZsb0Q1UnU0a1NrMzhIOTV6eURScUl5dHE3U2taU1IwRXlZRUJid2ptRXZ3U0dfNWtFYlJpTFJ3dm9rS0pLd0xOclJEQWRzNHlZSEk?oc=5",
+      "source": "Biometric Update",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-13",
+      "region": "asia",
+      "jurisdiction": "South Korea",
+      "kind": "guidance",
+      "summary": "South Korea adds passkeys to updated personal data security guidance",
+      "summaryBy": "source"
+    },
+    {
+      "id": "92a5c8e59656",
+      "track": "privacy",
+      "title": "India Data Protection Board Has No Appointed Members as Consent-Manager Rule Takes Effect Friday",
+      "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOTVp1SWZUWTczMXR0Zlk5cnVxcjZOcFlsTF8wUVlKQ05WVjJqRUQ3TWtuc2ljUl9RNXFrdVFPMThOWm5aUXVxUXN5M3gxZWE2ODNOa0tmUW5aSDFsVi1EXzF5SjdpNGdoQ1JRX0pXYWFjT1VaSHd1dWp4SXAtcTQzOE1qVE9TcEcyRG9QUC1DYl9SY1NabktiY2Q0QVFUeXV1TUtkYUsteExXaWQ1aDJmRFpnOHU0anJzWlF5bFRET08zS2taeElHSVpsd2piMV9lTVZlS3MxR3RDbFItaExWNlVn?oc=5",
+      "source": "Tech Times",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-13",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "regulation",
+      "summary": "India Data Protection Board Has No Appointed Members as Consent-Manager Rule Takes Effect Friday",
+      "summaryBy": "source"
+    },
+    {
+      "id": "cea2adb6666d",
+      "track": "privacy",
+      "title": "Data Protection Board Takes Centre Stage As India Advances Digital Privacy Law",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQdnlNUDZNZzF5RGU0YW5FdS1hYWFOV19PbjNETmFCWjZ0U0ExX2FwNjl1aE4zTHpvcTNSOWFzY3U5U3NIaTR6UkpDUEY1bktCSG8zdUlrbk02aHdPTGhnY2F5RmUxbFBYTUhrSENUczZTWktpcEo1Q2JQQ3NCcW1wWW9VRjgxbHJobzh6Y3R6MlFXYUVMNnp3elZyS1o2UQ?oc=5",
+      "source": "The 420.in",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-13",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "legislation",
+      "summary": "Data Protection Board Takes Centre Stage As India Advances Digital Privacy Law",
+      "summaryBy": "source"
+    },
+    {
+      "id": "92cfb609601c",
+      "track": "privacy",
+      "title": "DPDP rules: What changes today and what comes next for banks, insurers and NBFCs",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNUjU3dE9MVnFUVnBFeU1FbjRtWnJiN29paEJndEhsQUFSY0FZRF9hYzB2Vk9NdkZoWGFMaGMyYTRkRDhNSmM1am85YnJRbU9wc1ZqZHdnSDFnNElmZ08wQ2U2OFpOTWZ4QUlkaVRGMktETkkzRFN2NTNpUkN6Y0JhdjlmcmdLMGxNbVVBaHV6Y0FLY2FubkNrRVpCeUZPekdUaWwyTk9ONUE5ZFVROUxLNDBmWDJNQXBXYUZBb2k5UnJlZ9IBxwFBVV95cUxQTjVPRUtwRHZRU3E1MUFiOUhLUmZPYVl6VjVVcW1JcWlkeHdVVEd5OERpaXFWR1JKZ3d1VG5EZUJFeV91ZlpOVnV6VDhtR3VSa3BZbHNWcl9MVEZoWV9CWmtBTlBUOGhhV1QwQTNIUFJvelhKUFhkSDk5Wkp1a1FBcmRyXzRndDhYMi1HR1NIdFc0cFNod2xjQWQwQlJENzhFZjVmbi1meUU1NmFrQkpaelZTODdOUWhDRVRZN09FTzM0LWxrUkh3?oc=5",
+      "source": "CNBC TV18",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-13",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "regulation",
+      "summary": "DPDP rules: What changes today and what comes next for banks, insurers and NBFCs",
+      "summaryBy": "source"
+    },
     {
       "id": "ba33f47fd3b9",
       "track": "privacy",
@@ -242,6 +510,66 @@
       "jurisdiction": "Asia",
       "kind": "regulation",
       "summary": "Indias DPDP Rules Put Ransomware Attacks Under The Scanner, K7 CyberSecurity Flags Hidden Compliance Risks",
+      "summaryBy": "source"
+    },
+    {
+      "id": "1ae6a274fdcf",
+      "track": "privacy",
+      "title": "As the New Congress Turns to AI, it Must Finally Pass a Comprehensive Federal Privacy Law",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPYXdjZ09BYTY2dmlKLWdLaG5qUWNYcU1rMGdCQlBLc2FKU0ctdFlneE5STTdXVVhtOEhiMjFWX2tnY0JZaTBpTEtHc1ZXMHlJTlFRbjF1aGJaZ0FmUUlkMFg3OHhNdHlUaXplNXZHSEIxNXd2MjM1NUtOYzRILUcxVjVPSG5WSndpS3F4aUwyai02UGlBZUZ0eXhjVnJLUm5QZVE5SHZxZVg3b1FyTV8ySnBpeGw?oc=5",
+      "source": "Center for Democracy and Technology",
+      "sourceType": "news",
+      "published": "2026-11-12",
+      "found": "2026-11-13",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "legislation",
+      "summary": "As the New Congress Turns to AI, it Must Finally Pass a Comprehensive Federal Privacy Law",
+      "summaryBy": "source"
+    },
+    {
+      "id": "d1b5eda5c2d2",
+      "track": "privacy",
+      "title": "Meta faces July trial in Washington, DC data privacy lawsuit",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQb1pnQWExd3MyREZOb29RMGZkN2pQc0paZFI0SEFjRmdCYW54aFRjOUlYUTAxckxUenRLMml2VHo1V3dwTXJWbjFxaFRMNzNXZVh5S0JrcDRsRG90YTVHR3Zqbmp1OEZCUEllTmhRY0tUNTYyNWRNbXNFMF9PUGNmbmxJUmFhT0JOcnp6UnBZU0dsN20wTGxNdl9UNWM5NWpHelI3dmxlWGgyek15dnc?oc=5",
+      "source": "Reuters",
+      "sourceType": "news",
+      "published": "2026-11-12",
+      "found": "2026-11-13",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "court",
+      "summary": "Meta faces July trial in Washington, DC data privacy lawsuit",
+      "summaryBy": "source"
+    },
+    {
+      "id": "e85575800604",
+      "track": "privacy",
+      "title": "Ransomware Without Data Theft Can Still Trigger Mandatory Breach Reporting Under India’s DPDP Law: K7 CyberSecurity",
+      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNREI1LTBiV0tGNVFBOHlBUjhtbVBHUDhoaHBGMk9uanliZ1c2d1ZaaHp1dFV0LXhxN0FfeXJPblF1c0ZhX2pQT19faUlUSzZ6ZEhKY2dYNXB5MnNIS3lLUmRJeVVxR0Rjc2FPZHU0SkRsS2hzTzY0TzU3ZzFobVExOXNKdjlubFZLTGhfQTlJRXJlRzIzbVhZY1VReTNkU3gwUk9kaHlxVDVWc2lMX1ZoRlo0X0JxTmFFNlpaRm5uZ1ZPRDVvb044TnFqQWtJYjRTUGYtZmJtMmZNbnRlRm12VEtTaw?oc=5",
+      "source": "CXOToday.com",
+      "sourceType": "news",
+      "published": "2026-11-12",
+      "found": "2026-11-13",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "legislation",
+      "summary": "Ransomware Without Data Theft Can Still Trigger Mandatory Breach Reporting Under India’s DPDP Law: K7 CyberSecurity",
+      "summaryBy": "source"
+    },
+    {
+      "id": "764bed5b87f3",
+      "track": "privacy",
+      "title": "CCPA Imposes ₹10 Lakh Penalty On Just Dial For Facilitating Sale Of Ammonium Nitrate",
+      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQeHNKMG0tOFhpMHVacmJtVm5TY0diNjRNVTJ1X1dMWUM0VldmRXNWWTZfeXJKanBCSzZnV0R3MHhDYzFvWWhIbDhwT1VHbU42YmFLLWpaX0x5SWZZdEk3NDFnNjg1aEV5OWRJcGppV0VkN3ZidWl5azRJOC1ycVZwRmZDLTRIZERhenNmdnA3T2JQSnJ4RmhLX0dWUkZ6cTRIUmdlQ05MYTA4MlB6VVg0ckZaenRGTUVDcEROX1U1UDc1ck5sNkdEcjVLQlLSAcwBQVVfeXFMUHhzSjBtLThYaTB1WnJibVZuU2NHYjY0TVUydV9XTFlDNFZXZkVzVlk2X3lySmpwQks2Z1dEdzB4Q2Mxb1loSGw4cE9VR21ONmJhSy1qWl9MeUlmWXRJNzQxZzY4NWhFeTlkSXBqaVdFZDd2YnVpeWs0STgtcnFWcEZmQy00SGREYXpzZnZwN09iUEpyeEZoS19HVlJGenE0SFJnZUNOTGEwODJQelVYNHJGWnp0Rk1FQ3BETl9VNVA3NXJObDZHRHI1S0JS?oc=5",
+      "source": "Live Law",
+      "sourceType": "news",
+      "published": "2026-11-11",
+      "found": "2026-11-13",
+      "region": "us",
+      "jurisdiction": "California",
+      "kind": "enforcement",
+      "summary": "CCPA Imposes ₹10 Lakh Penalty On Just Dial For Facilitating Sale Of Ammonium Nitrate",
       "summaryBy": "source"
     },
     {
@@ -332,6 +660,21 @@
       "jurisdiction": "Asia",
       "kind": "legislation",
       "summary": "DPDP Act lacks clear safeguards for investigative journalism: Legal experts",
+      "summaryBy": "source"
+    },
+    {
+      "id": "c52f1f1fb8fb",
+      "track": "privacy",
+      "title": "Proposed CCPA regulations advanced by CalPrivacy",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNajV2bUlpbkdRY3hIWmd0TWdSNWdwc0J3enMtMjFtZUY3UW9aTTVGcmxuRVgwV3BSVWpLbF9sdkZBa1lDMFd4cG90WWVpMi1mbDlBWW1ITThqTFdJQ2c0Rm9DS0hVTVVzbmxSNmZPZnJGTVRqeXh0bVpfMmFKLVBPUXBveWZpNTJTQTNYQTBsS3E?oc=5",
+      "source": "McDermott Will & Schulte",
+      "sourceType": "news",
+      "published": "2026-11-10",
+      "found": "2026-11-13",
+      "region": "us",
+      "jurisdiction": "California",
+      "kind": "regulation",
+      "summary": "Proposed CCPA regulations advanced by CalPrivacy",
       "summaryBy": "source"
     },
     {
