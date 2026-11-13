@@ -280,7 +280,8 @@
       "ordered": true,
       "options": [
         { "id": "no", "label": "No", "silent": true },
-        { "id": "yes-when-harm-likely", "label": "Yes, when the breach is likely to harm them" }
+        { "id": "yes-when-harm-likely", "label": "Yes, when the breach is likely to harm them" },
+        { "id": "yes-whenever-compromised", "label": "Yes, whenever their data may have been compromised, harm or not" }
       ]
     },
     {
