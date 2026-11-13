@@ -1,4 +1,5 @@
 import { terms, termsFor, type TermEntry } from "@/lib/facets";
+import { LawCite } from "./LawCite";
 
 // ---------------------------------------------------------------------------
 // The same concept under each law's own word for it.
@@ -15,23 +16,36 @@ function englishOf(entry: TermEntry): string | undefined {
   return (entry as TermEntry & { english?: string }).english;
 }
 
-/** The first law in a jurisdiction that has an entry for this concept. */
-function firstEntry(lawIds: string[], termId: string): TermEntry | null {
+/** The first law in a jurisdiction that has an entry for this concept, and which law it is. */
+function firstEntry(lawIds: string[], termId: string): { entry: TermEntry; lawId: string } | null {
   for (const id of lawIds) {
     const entry: TermEntry | undefined = termsFor(id)[termId];
-    if (entry) return entry;
+    if (entry) return { entry, lawId: id };
   }
   return null;
 }
 
-function TermCell({ entry, label }: { entry: TermEntry | null; label: string }) {
-  if (!entry) return <td className="cmp-muted" data-label={label}>Not yet filled in</td>;
+function TermCell({
+  found,
+  termId,
+  label,
+}: {
+  found: { entry: TermEntry; lawId: string } | null;
+  termId: string;
+  label: string;
+}) {
+  if (!found) return <td className="cmp-muted" data-label={label}>Not yet filled in</td>;
+  const { entry, lawId } = found;
 
   if (entry.term === null) {
     return (
       <td data-label={label}>
         <div className="cmp-muted">{entry.note ?? "No such term in this law."}</div>
-        {entry.citation && <div className="citation">{entry.citation}</div>}
+        {entry.citation && (
+          <div>
+            <LawCite lawId={lawId} citation={entry.citation} ev={"t:" + termId} finding={entry.note} />
+          </div>
+        )}
       </td>
     );
   }
@@ -43,7 +57,11 @@ function TermCell({ entry, label }: { entry: TermEntry | null; label: string }) 
         <strong>{entry.term}</strong>
         {english && <span className="term-english"> [{english}]</span>}
       </div>
-      {entry.citation && <div className="citation">{entry.citation}</div>}
+      {entry.citation && (
+        <div>
+          <LawCite lawId={lawId} citation={entry.citation} ev={"t:" + termId} finding={`This law calls it “${entry.term}”.`} />
+        </div>
+      )}
       {entry.quote && (
         <details className="cmp-disclosure">
           <summary>Wording</summary>
@@ -94,8 +112,8 @@ export function TermsTable({
                 <td>
                   <strong>{concept.concept}</strong>
                 </td>
-                <TermCell entry={firstEntry(sourceLawIds, concept.id)} label={sourceName} />
-                <TermCell entry={firstEntry(targetLawIds, concept.id)} label={targetName} />
+                <TermCell found={firstEntry(sourceLawIds, concept.id)} termId={concept.id} label={sourceName} />
+                <TermCell found={firstEntry(targetLawIds, concept.id)} termId={concept.id} label={targetName} />
               </tr>
             ))}
           </tbody>

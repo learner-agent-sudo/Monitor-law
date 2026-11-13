@@ -30,6 +30,7 @@ import {
   PROVISION_PATTERNS,
 } from "../lib/provisions.mjs";
 import { readRequirements } from "../lib/law-source.mjs";
+import { readFrontMatter, stripFrontMatter, stripCjkLines } from "../lib/corpus-text.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const FACETS_FILE = join(ROOT, "lib", "data", "facets.json");
@@ -108,42 +109,6 @@ function checkFacetsFile(facetsData) {
 }
 
 // ---- corpus ----------------------------------------------------------------
-
-function readFrontMatter(md) {
-  const m = md.match(/^---\n([\s\S]*?)\n---\n/);
-  if (!m) return {};
-  return Object.fromEntries(
-    m[1]
-      .split("\n")
-      .map((l) => l.match(/^(\w+):\s*(.*)$/))
-      .filter(Boolean)
-      .map((x) => [x[1], x[2].trim()]),
-  );
-}
-
-function stripFrontMatter(md) {
-  const m = md.match(/^---\n[\s\S]*?\n---\n/);
-  return m ? md.slice(m[0].length) : md;
-}
-
-/**
- * Same filter as scripts/check-quotes.mjs: for a bilingual CJK+Latin text only,
- * drop the CJK-dominant lines so the English can be matched contiguously.
- */
-function stripCjkLines(text, language = "") {
-  const bilingual = /zh/.test(language) && /en/.test(language);
-  if (!bilingual) return text;
-  const cjk = /[　-〿㐀-䶿一-鿿豈-﫿＀-￯]/g;
-  return text
-    .split("\n")
-    .filter((line) => {
-      const t = line.trim();
-      if (!t) return true;
-      return (t.match(cjk) || []).length / t.length < 0.2;
-    })
-    .join("\n");
-}
-
 /**
  * Everything needed to verify quotes for one law, or null when it has no corpus.
  *

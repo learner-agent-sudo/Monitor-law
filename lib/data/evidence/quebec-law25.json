@@ -1,0 +1,625 @@
+{
+  "lawId": "quebec-law25",
+  "items": {
+    "f:lawful-basis.ground": {
+      "citation": "Private Sector Act s.13",
+      "provision": null,
+      "scope": "file",
+      "before": "the decision;5 (2) of the reasons and the principal factors and parameters that led to the decision; and (3) of the right of the person concerned to have the personal information used to render the decision corrected. The person concerned must be given the opportunity to submit observations to a member of the personnel of the enterprise who is in a position to review the decision. 22021, c. 25, s. 1101. 0 213. ",
+      "match": "No person may communicate to a third person the personal information he holds on another person, unless the person concerned consents to, or this Act provides for, such communication.",
+      "after": "1 , c Such consent must be given expressly when it concerns sensitive personal information. . 21993, c. 17, s. 13; 22021, c. 25, s. 1101. 5 0 14. Consent under this Act must be clear, free and informed and be given for specific purposes. It must be2 requested for each such purpose, in clear and simple language. If the request for consent is made in writing, it1 must be presented separately from any other information",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:lawful-basis.legitimate-interests": {
+      "citation": "Private Sector Act s.4",
+      "provision": null,
+      "scope": "file",
+      "before": "must keep a register of confidentiality incidents. A government regulation may determine the content of the register.1 , c A copy of the register must be sent to the Commission at its request. . 222021, c. 25, s. 1031. 50 2 1 , Updated to 0c April 01 2026 © Québec Official Publisher. 4 1 P-39.1 / 5 of 38 2 5 PROTECTION OF PERSONAL INFORMATION IN THE PRIVATE SECTOR DIVISION II COLLECTION OF PERSONAL INFORMATION 4. ",
+      "match": "Any person carrying on an enterprise who, for a serious and legitimate reason, collects personal information on another person must determine the purposes for collecting the information before doing so.",
+      "after": " 1993, c. 17, s. 4; 1999, c. 40, s. 233; 22021, c. 25, s. 1041. 0 4.1. The personal information concerning a minor under 14 years of age may not be collected from him2 without the consent of the person having parental authority or of the tutor, unless collecting the information is1 clearly for the minor’s benefit., c 22021, c. 25, s. 1041. . 0 2 5.2 Any person collecting personal information on another person may",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:consent.standard": {
+      "citation": "Private Sector Act s.14",
+      "provision": null,
+      "scope": "file",
+      "before": "the enterprise who is in a position to review the decision. 22021, c. 25, s. 1101. 0 213. No person may communicate to a third person the personal information he holds on another person, unless the person concerned consents to, or this Act provides for, such communication.1 , c Such consent must be given expressly when it concerns sensitive personal information. . 21993, c. 17, s. 13; 22021, c. 25, s. 1101. 5 0 14. ",
+      "match": "Consent under this Act must be clear, free and informed and be given for specific purposes.",
+      "after": " It must be2 requested for each such purpose, in clear and simple language. If the request for consent is made in writing, it1 must be presented separately from any other information provided to the person concerned. If the person, concerned so requests, assistance is provided to help him understand the scope of the consent requested.c . 2 The consent of a minor under 14 years of age is given by the person having",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:consent.role": {
+      "citation": "Private Sector Act s.12",
+      "provision": null,
+      "scope": "file",
+      "before": "on which it is stored. 1993, c. 17, s. 10; 2006, c. 22, s. 113. 11. Every person carrying on an enterprise must ensure that any personal information held on another person is up to date and accurate when used to make a decision in relation to the person concerned. The information used to make such a decision is kept for at least one year following the decision. 1993, c. 17, s. 11; 22021, c. 25, s. 10911. 0 12. ",
+      "match": "Unless the person concerned gives his consent, personal information may not be used within the",
+      "after": "2 enterprise except for the purposes for which it was collected. Such consent must be given expressly when it1 concerns sensitive personal information., c . Personal information may, however, be used for another purpose without the consent of the person 2 concerned, but only 5 (1) if it is used for purposes consistent with the purposes for which it was collected; (2) if it is clearly used for the benefit of the",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:consent.withdrawal": {
+      "citation": "Private Sector Act s.8",
+      "provision": null,
+      "scope": "file",
+      "before": "c. 17, s. 7; 1999, c. 40, s. 233; 22021, c. 25, s. 1061. 0 8. Any person who collects personal information from the person concerned must, when the information is2 collected and subsequently on request, inform that person1 , (1) of the purposes for which the information is collected;c . (2) of the means by which the information is collected;2 5 (3) of the rights of access and rectification provided by law; and (4) ",
+      "match": "of the person’s right to withdraw consent to the communication or use of the information collected.",
+      "after": " Updated to 0April 01 2026 © Québec Official Publisher4 1 P-39.1 / 6 of 38 PROTECTION OF PERSONAL INFORMATION IN THE PRIVATE SECTOR If applicable, the person concerned is informed of the name of the third person for whom the information is being collected, the name of the third persons or categories of third persons to whom it is necessary to communicate the information for the purposes referred to in subparagraph 1",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:consent.separate": {
+      "citation": "Private Sector Act s.13",
+      "provision": null,
+      "scope": "file",
+      "before": "to render the decision corrected. The person concerned must be given the opportunity to submit observations to a member of the personnel of the enterprise who is in a position to review the decision. 22021, c. 25, s. 1101. 0 213. No person may communicate to a third person the personal information he holds on another person, unless the person concerned consents to, or this Act provides for, such communication.1 , c ",
+      "match": "Such consent must be given expressly when it concerns sensitive personal information.",
+      "after": " . 21993, c. 17, s. 13; 22021, c. 25, s. 1101. 5 0 14. Consent under this Act must be clear, free and informed and be given for specific purposes. It must be2 requested for each such purpose, in clear and simple language. If the request for consent is made in writing, it1 must be presented separately from any other information provided to the person concerned. If the person, concerned so requests, assistance is",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:notice.timing": {
+      "citation": "Private Sector Act s.8",
+      "provision": null,
+      "scope": "file",
+      "before": "1993, c. 17, s. 6. 7. Any person collecting personal information from another person carrying on an enterprise must, at the request of the person concerned, inform the latter of the source of the information. This section does not apply to a file established for the purposes of an inquiry to prevent, detect or repress a crime or statutory offence. 1993, c. 17, s. 7; 1999, c. 40, s. 233; 22021, c. 25, s. 1061. 0 8. ",
+      "match": "Any person who collects personal information from the person concerned must, when the information is",
+      "after": "2 collected and subsequently on request, inform that person1 , (1) of the purposes for which the information is collected;c . (2) of the means by which the information is collected;2 5 (3) of the rights of access and rectification provided by law; and (4) of the person’s right to withdraw consent to the communication or use of the information collected. Updated to 0April 01 2026 © Québec Official Publisher4 1 P-39.1",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:notice.content": {
+      "citation": "Private Sector Act s.8",
+      "provision": null,
+      "scope": "file",
+      "before": "for whom the information is being collected, the name of the third persons or categories of third persons to whom it is necessary to communicate the information for the purposes referred to in subparagraph 1 of the first paragraph, and the possibility that the information could be communicated outside Québec. On request, the person concerned is also informed of the personal information collected from him, the ",
+      "match": "categories of persons who have access to the information within the enterprise, the duration of the period of time the information will be kept,",
+      "after": " and the contact information of the person in charge of the protection of personal information. The information must be provided to the person concerned in clear and simple language, regardless of the means used to collect the personal information. 1993, c. 17, s. 8; 22021, c. 25, s. 1071. 0 8.1. In addition to the information that must be provided in accordance with section 8, any person who2 collects personal",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:access.right": {
+      "citation": "Private Sector Act s.27",
+      "provision": null,
+      "scope": "file",
+      "before": "17, s. 24; 2006, c. 22, s. 120; 22021, c. 25, s. 1191. 0 25. (Replaced). 2 1 1993, c. 17, s. 25; 22021, c. 25, s. 1191. , 0 c 26. (Replaced).2 . 1 2 1993, c. 17, s. 26; 22021, c. 25, s. 1191. , 5 c0 DIVISION IV.2 21 ACCESS BY PERSONS CONCERNED5, c § 1. — General provisions. 2 5 27. Every person carrying on an enterprise who holds personal information on another person must, at the request of the person concerned, ",
+      "match": "confirm the existence of the personal information, communicate it to the person and allow him to obtain a copy of it.",
+      "after": " At the applicant’s request, computerized personal information must be communicated in the form of a written and intelligible transcript. Unless doing so raises serious practical difficulties, computerized personal information collected from the applicant, and not created or inferred using personal information concerning him, must, at his request, be communicated to him in a structured, commonly used technological",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:access.deadline": {
+      "citation": "Private Sector Act s.32",
+      "provision": null,
+      "scope": "file",
+      "before": "first paragraph, the blood relatives of a deceased person are entitled to receive communication of the information contained in that person’s medical file to the extent that such communication is necessary to ascertain the existence of a genetic or family disease. 1993, c. 17, s. 31. 32. The person in charge of the protection of personal information must reply in writing to the request for access or rectification, ",
+      "match": "promptly and not later than 30 days after the date the request is received.",
+      "after": " Failure to respond within 30 days of the receipt of a request is deemed to be a refusal to grant the request. 1993, c. 17, s. 32; 2006, c. 22, s. 123; 22021, c. 25, s. 1241. 0 33. Access to personal information shall be free of charge.2 1 , However, a reasonable charge may be required from a person requesting the transcription, reproduction or c transmission of such information. . 2 Any person carrying on an",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:deletion.right": {
+      "citation": "Private Sector Act s.23",
+      "provision": null,
+      "scope": "file",
+      "before": "for such purposes. If the person concerned withdraws his consent regarding such use, the personal information must cease to be used for those purposes. 1993, c. 17, s. 22; 2006, c. 22, s. 119; 22021, c. 25, s. 1191. 0 2 § 3. — Destruction or anonymization 1 22021, c. 25, s. 1191. , 0 c 23.2 Where the purposes for which personal information was collected or used are achieved, the person. carrying on an enterprise ",
+      "match": "must destroy the information, or anonymize it to use it for serious and legitimate",
+      "after": "1 2 ,purposes, subject to any preservation period provided for by an Act.5 c . For the purposes of this Act, information concerning a natural person is anonymized if it is, at all times, 2 reasonably foreseeable in the circumstances that it irreversibly no longer allows the person to be identified 5 directly or indirectly. Information anonymized under this Act must be anonymized according to generally accepted best",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:deletion.pass-on": {
+      "citation": "Private Sector Act s.18.3",
+      "provision": null,
+      "scope": "file",
+      "before": "such a case, the person carrying on an enterprise must 5 (1) entrust the mandate or contract in writing; and (2) specify in the mandate or contract the measures the mandatary or the person performing the contract must take to protect the confidentiality of the personal information communicated, to ensure that the information is used only for carrying out the mandate or performing the contract and to ensure that the ",
+      "match": "mandatary or person does not keep the information after the expiry of the mandate or contract.",
+      "after": " A person or body carrying out a mandate or performing a contract of enterprise or for services referred to in the first paragraph must notify the person in charge of the protection of personal information without delay of any violation or attempted violation by any person of any obligation concerning the confidentiality of the information communicated, and must also allow the person in charge of the protection of",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:correction.right": {
+      "citation": "Private Sector Act s.28",
+      "provision": null,
+      "scope": "file",
+      "before": "any person or body authorized by law to collect such information. If the person concerned is handicapped, reasonable accommodation must be provided on request to enable the person to exercise the right of access provided for in this division. 1993, c. 17, s. 27; 2006, c. 22, s. 121; 22021, c. 25, s. 1201. 0 28. In addition to the rights provided under the first paragraph of article 40 of the Civil Code, any person2 ",
+      "match": "may, if personal information concerning him is inaccurate, incomplete or equivocal,",
+      "after": " or if collecting,1 communicating or keeping it are not authorized by law, require that the information be rectified., c 1993, c. 17, s. 28; 22021, c. 25, s. 1211. . 0 2 28.1. The person to whom personal information relates may require any person carrying on an enterprise2 5 to cease disseminating that information or to de-index any hyperlink attached to his name that provides access1 to the information by a",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:correction.pass-on": {
+      "citation": "Private Sector Act s.35",
+      "provision": null,
+      "scope": "file",
+      "before": "Act and the time limit for exercising them. If the applicant so requests, the person in, charge must also help him understand the refusal.c . 1993, c. 17, s. 34; 22021, c. 25, s. 12612 . 50 35. Where the person in charge of the protection of personal information grants a request for rectification,2 he must, in addition to the obligations prescribed in the second paragraph of article 40 of the Civil Code, issue1 ",
+      "match": "free of charge to the person who made the request a copy of any personal information modified or added",
+      "after": " or, as, the case may be, an attestation of the deletion of personal information.c . 1993, c. 17, s. 35; 22021, c. 25, s. 12712 . 05 36. The person holding information that is the subject of a request for access or rectification must, if he2 does not grant the request, retain the information for such time as is necessary to allow the person concerned1 to exhaust the recourses provided by law., c 1993, c. 17, s. 36.",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:portability.right": {
+      "citation": "Private Sector Act s.27",
+      "provision": null,
+      "scope": "file",
+      "before": "personal information must be communicated in the form of a written and intelligible transcript. Unless doing so raises serious practical difficulties, computerized personal information collected from the applicant, and not created or inferred using personal information concerning him, must, at his request, be communicated to him in a structured, commonly used technological format. The information must also be ",
+      "match": "communicated, at the applicant’s request, to any person or body authorized by law to collect such information.",
+      "after": " If the person concerned is handicapped, reasonable accommodation must be provided on request to enable the person to exercise the right of access provided for in this division. 1993, c. 17, s. 27; 2006, c. 22, s. 121; 22021, c. 25, s. 1201. 0 28. In addition to the rights provided under the first paragraph of article 40 of the Civil Code, any person2 may, if personal information concerning him is inaccurate,",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:optout.marketing": {
+      "citation": "Private Sector Act s.12",
+      "provision": null,
+      "scope": "file",
+      "before": "or providing a service requested by the person concerned; or (5) if its use is necessary for study or research purposes or for the production of statistics and if the information is de-identified. In order for a purpose to be consistent within the meaning of subparagraph 1 of the second paragraph, it must have a direct and relevant connection with the purposes for which the information was collected. However, ",
+      "match": "commercial or philanthropic prospection may not be considered a consistent purpose.",
+      "after": " Updated to 0April 01 2026 © Québec Official Publisher4 1 P-39.1 / 8 of 38 PROTECTION OF PERSONAL INFORMATION IN THE PRIVATE SECTOR For the purposes of this Act, personal information is (1) de-identified if it no longer allows the person concerned to be directly identified; (2) sensitive if, due to its nature, in particular its medical, biometric or otherwise intimate nature, or the context of its use or",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:optout.sale": {
+      "citation": "Private Sector Act s.13",
+      "provision": null,
+      "scope": "file",
+      "before": "and (3) of the right of the person concerned to have the personal information used to render the decision corrected. The person concerned must be given the opportunity to submit observations to a member of the personnel of the enterprise who is in a position to review the decision. 22021, c. 25, s. 1101. 0 213. No person may communicate to a third person the personal information he holds on another person, ",
+      "match": "unless the person concerned consents to, or this Act provides for, such communication.",
+      "after": "1 , c Such consent must be given expressly when it concerns sensitive personal information. . 21993, c. 17, s. 13; 22021, c. 25, s. 1101. 5 0 14. Consent under this Act must be clear, free and informed and be given for specific purposes. It must be2 requested for each such purpose, in clear and simple language. If the request for consent is made in writing, it1 must be presented separately from any other information",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:adm.protection": {
+      "citation": "Private Sector Act s.12.1",
+      "provision": null,
+      "scope": "file",
+      "before": "accordingly1 not later than at the time it informs the person of the decision., c . He must also inform the person concerned, at the latter’s request, 2 (1) of the personal information used to render the decision;5 (2) of the reasons and the principal factors and parameters that led to the decision; and (3) of the right of the person concerned to have the personal information used to render the decision corrected. ",
+      "match": "The person concerned must be given the opportunity to submit observations to a member of the personnel of the enterprise who is in a position to review the decision.",
+      "after": " 22021, c. 25, s. 1101. 0 213. No person may communicate to a third person the personal information he holds on another person, unless the person concerned consents to, or this Act provides for, such communication.1 , c Such consent must be given expressly when it concerns sensitive personal information. . 21993, c. 17, s. 13; 22021, c. 25, s. 1101. 5 0 14. Consent under this Act must be clear, free and informed and",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:sensitive.category": {
+      "citation": "Private Sector Act s.12",
+      "provision": null,
+      "scope": "file",
+      "before": "for which the information was collected. However, commercial or philanthropic prospection may not be considered a consistent purpose. Updated to 0April 01 2026 © Québec Official Publisher4 1 P-39.1 / 8 of 38 PROTECTION OF PERSONAL INFORMATION IN THE PRIVATE SECTOR For the purposes of this Act, personal information is (1) de-identified if it no longer allows the person concerned to be directly identified; (2) ",
+      "match": "sensitive if, due to its nature, in particular its medical, biometric or otherwise intimate nature, or the",
+      "after": " context of its use or communication, it entails a high level of reasonable expectation of privacy. Every person carrying on an enterprise who uses de-identified information must take reasonable measures to limit the risk of someone identifying a natural person using de-identified information. 1993, c. 17, s. 12; 22021, c. 25, s. 1101. 0 12.1. Any person carrying on an enterprise who uses personal information to",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:sensitive.rule": {
+      "citation": "Private Sector Act s.13",
+      "provision": null,
+      "scope": "file",
+      "before": "to render the decision corrected. The person concerned must be given the opportunity to submit observations to a member of the personnel of the enterprise who is in a position to review the decision. 22021, c. 25, s. 1101. 0 213. No person may communicate to a third person the personal information he holds on another person, unless the person concerned consents to, or this Act provides for, such communication.1 , c ",
+      "match": "Such consent must be given expressly when it concerns sensitive personal information.",
+      "after": " . 21993, c. 17, s. 13; 22021, c. 25, s. 1101. 5 0 14. Consent under this Act must be clear, free and informed and be given for specific purposes. It must be2 requested for each such purpose, in clear and simple language. If the request for consent is made in writing, it1 must be presented separately from any other information provided to the person concerned. If the person, concerned so requests, assistance is",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:children.rule": {
+      "citation": "Private Sector Act s.4.1",
+      "provision": null,
+      "scope": "file",
+      "before": "Publisher. 4 1 P-39.1 / 5 of 38 2 5 PROTECTION OF PERSONAL INFORMATION IN THE PRIVATE SECTOR DIVISION II COLLECTION OF PERSONAL INFORMATION 4. Any person carrying on an enterprise who, for a serious and legitimate reason, collects personal information on another person must determine the purposes for collecting the information before doing so. 1993, c. 17, s. 4; 1999, c. 40, s. 233; 22021, c. 25, s. 1041. 0 4.1. ",
+      "match": "The personal information concerning a minor under 14 years of age may not be collected from him",
+      "after": "2 without the consent of the person having parental authority or of the tutor, unless collecting the information is1 clearly for the minor’s benefit., c 22021, c. 25, s. 1041. . 0 2 5.2 Any person collecting personal information on another person may collect only the information5 necessary for the purposes determined before collecting it.1 , c Such information must be collected by lawful means. . 21993, c. 17, s. 5;",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:breach.regulator": {
+      "citation": "Private Sector Act s.3.5",
+      "provision": null,
+      "scope": "file",
+      "before": "personal information; or (4) training activities for project participants on the protection of personal information. 22021, c. 25, s. 1031. 0 23.5. Any person carrying on an enterprise who has cause to believe that a confidentiality incident involving personal information the person holds has occurred must take reasonable measures to reduce the risk of injury1 ,and to prevent new incidents of the same nature. c . ",
+      "match": "If the incident presents a risk of serious injury, the person carrying on an enterprise must promptly notify",
+      "after": " 2 the Commission d’accès à l’information established by section 103 of the Act respecting Access to documents 5 held by public bodies and the Protection of personal information (chapter A-2.1). He must also notify any person whose personal information is concerned by the incident, failing which the Commission may order him to do so. He may also notify any person or body that could reduce the risk, by communicating",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:breach.individuals": {
+      "citation": "Private Sector Act s.3.5",
+      "provision": null,
+      "scope": "file",
+      "before": "must take reasonable measures to reduce the risk of injury1 ,and to prevent new incidents of the same nature. c . If the incident presents a risk of serious injury, the person carrying on an enterprise must promptly notify 2 the Commission d’accès à l’information established by section 103 of the Act respecting Access to documents 5 held by public bodies and the Protection of personal information (chapter A-2.1). ",
+      "match": "He must also notify any person whose personal information is concerned by the incident,",
+      "after": " failing which the Commission may order him to do so. He may also notify any person or body that could reduce the risk, by communicating to the person or body only the personal information necessary for that purpose without the consent of the person concerned. In the latter case, the person in charge of the protection of personal information must record the communication of the information. Despite the second",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:breach.records": {
+      "citation": "Private Sector Act s.3.8",
+      "provision": null,
+      "scope": "file",
+      "before": "by a confidentiality incident, a person carrying on an enterprise must consider, in particular, the sensitivity of the information1 concerned, the anticipated consequences of its use and the likelihood that such information will be used for, cinjurious purposes. The person must also consult the person in charge of the protection of personal information within the enterprise.. 2 22021, c. 25, s. 10315 . 0 23.8. ",
+      "match": "A person carrying on an enterprise must keep a register of confidentiality incidents.",
+      "after": " A government regulation may determine the content of the register.1 , c A copy of the register must be sent to the Commission at its request. . 222021, c. 25, s. 1031. 50 2 1 , Updated to 0c April 01 2026 © Québec Official Publisher. 4 1 P-39.1 / 5 of 38 2 5 PROTECTION OF PERSONAL INFORMATION IN THE PRIVATE SECTOR DIVISION II COLLECTION OF PERSONAL INFORMATION 4. Any person carrying on an enterprise who, for a",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:dpo.officer": {
+      "citation": "Private Sector Act s.3.1",
+      "provision": null,
+      "scope": "file",
+      "before": "1 P-39.1 / 3 of 38 PROTECTION OF PERSONAL INFORMATION IN THE PRIVATE SECTOR DIVISION I.1 RESPONSIBILITIES RELATING TO PROTECTION OF PERSONAL INFORMATION 22021, c. 25, s. 1031. 0 23.1. Any person carrying on an enterprise is responsible for protecting the personal information held by the person.1 , c Within the enterprise, the person exercising the highest authority shall see to ensuring that this Act is . ",
+      "match": "implemented and complied with. That person shall exercise the function of person in charge of the protection",
+      "after": " 2 of personal information; he may delegate all or part of that function in writing to any person. 5 The title and contact information of the person in charge of the protection of personal information must be published on the enterprise’s website or, if the enterprise does not have a website, be made available by any other appropriate means. 22021, c. 25, s. 1031. 0 3.2.2 Any person carrying on an enterprise must",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:dpo.local-representative": {
+      "citation": "Private Sector Act s.1",
+      "provision": null,
+      "scope": "file",
+      "before": "for the exercise of the rights conferred by articles 35 to 40 of the Civil Code concerning the protection of personal information, particular rules with respect to personal information relating to other persons which a person collects, holds, uses or communicates to third persons in the course of carrying on an enterprise within the meaning of article 1525 of the Civil Code. The Act applies to such information, ",
+      "match": "whether the enterprise keeps the information itself or through the agency of a third person,",
+      "after": " whatever the nature of its medium and whatever the form in which it is accessible, whether written, graphic, taped, filmed, computerized, or other. This Act also applies to personal information held by a professional order to the extent provided for by the Professional Code (chapter C-26) and to that held by a political party, an independent Member or an independent candidate to the extent provided for by the",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:dpia.duty": {
+      "citation": "Private Sector Act s.3.3",
+      "provision": null,
+      "scope": "file",
+      "before": "and be approved by the person in charge of the protection of personal information.5 Detailed information about those policies and practices, in particular as concerns the content required under the first paragraph, must be published in simple and clear language on the enterprise’s website or, if the enterprise does not have a website, made available by any other appropriate means. 22021, c. 25, s. 1031. 0 23.3. ",
+      "match": "Any person carrying on an enterprise must conduct a privacy impact assessment for any project to",
+      "after": " acquire, develop or overhaul an information system or electronic service delivery system involving the1 ,collection, use, communication, keeping or destruction of personal information. c . For the purposes of such an assessment, the person must consult the person in charge of the protection of 2 personal information within the enterprise from the outset of the project. 5 The person must also ensure that the project",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:dpia.regulator": {
+      "citation": "Private Sector Act s.21.0.2",
+      "provision": null,
+      "scope": "file",
+      "before": "communicates the personal information of its destruction; and (5) provide that the person who communicates the personal information and the Commission must be informed without delay (a) of non-compliance with any condition set out in the agreement; (b) of any failure to comply with the protection measures provided for in the agreement; and (c) of any event that could breach the confidentiality of the information. ",
+      "match": "The agreement must be sent to the Commission and comes into force 30 days after it is received by the",
+      "after": " Commission. 22021, c. 25, s. 1181. 0 221.1. The Commission d’accès à l’information may, on written request and after consulting the 1professional orders concerned, grant a person authorization to receive communication of personal information on professionals regarding their professional activities, without the consent of the professionals concerned, if, cit has reasonable cause to believe . 2 (1) that the",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:transfer.rule": {
+      "citation": "Private Sector Act s.17",
+      "provision": null,
+      "scope": "file",
+      "before": "The person must, in particular, take into account (1) the sensitivity of the information; (2) the purposes for which it is to be used; (3) the protection measures, including those that are contractual, that would apply to it; and (4) the legal framework applicable in the State in which the information would be communicated, including the personal information protection principles applicable in that State. ",
+      "match": "The information may be communicated if the assessment establishes that it would receive adequate",
+      "after": " protection, in particular in light of generally recognized principles regarding the protection of personal information. The communication of the information must be the subject of a written agreement that takes into account, in particular, the results of the assessment and, if applicable, the terms agreed on to mitigate the risks identified in the assessment. The same applies where the person carrying on an",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:transfer.tell-people": {
+      "citation": "Private Sector Act s.8",
+      "provision": null,
+      "scope": "file",
+      "before": "Québec Official Publisher4 1 P-39.1 / 6 of 38 PROTECTION OF PERSONAL INFORMATION IN THE PRIVATE SECTOR If applicable, the person concerned is informed of the name of the third person for whom the information is being collected, the name of the third persons or categories of third persons to whom it is necessary to communicate the information for the purposes referred to in subparagraph 1 of the first paragraph, and ",
+      "match": "the possibility that the information could be communicated outside Québec.",
+      "after": " On request, the person concerned is also informed of the personal information collected from him, the categories of persons who have access to the information within the enterprise, the duration of the period of time the information will be kept, and the contact information of the person in charge of the protection of personal information. The information must be provided to the person concerned in clear and simple",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:localization.rule": {
+      "citation": "Private Sector Act s.17",
+      "provision": null,
+      "scope": "file",
+      "before": "Any person holding personal information on behalf of a person carrying on an enterprise may refer to the latter every request for access or rectification received from a person to whom such information relates. Nothing in this section limits a person’s right to obtain, from a personal information agent, access to, or rectification of, personal information concerning him held by that agent. 1993, c. 17, s. 16. 17. ",
+      "match": "Before communicating personal information outside Québec, a person carrying on an enterprise must conduct a privacy impact assessment.",
+      "after": " The person must, in particular, take into account (1) the sensitivity of the information; (2) the purposes for which it is to be used; (3) the protection measures, including those that are contractual, that would apply to it; and (4) the legal framework applicable in the State in which the information would be communicated, including the personal information protection principles applicable in that State. The",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:records.duty": {
+      "citation": "Private Sector Act s.3.2",
+      "provision": null,
+      "scope": "file",
+      "before": "of person in charge of the protection 2 of personal information; he may delegate all or part of that function in writing to any person. 5 The title and contact information of the person in charge of the protection of personal information must be published on the enterprise’s website or, if the enterprise does not have a website, be made available by any other appropriate means. 22021, c. 25, s. 1031. 0 3.2.2 ",
+      "match": "Any person carrying on an enterprise must establish and implement governance policies and practices",
+      "after": " 1regarding personal information that ensure the protection of such information. Such policies and practices ,must, in particular, provide a framework for the keeping and destruction of the information, define the roles cand responsibilities of the members of its personnel throughout the life cycle of the information and provide a .process for dealing with complaints regarding the protection of the information. The",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:vendor.contract": {
+      "citation": "Private Sector Act s.18.3",
+      "provision": null,
+      "scope": "file",
+      "before": "may, without the consent of the person concerned, communicate2 personal information to any person or body if the information is necessary for carrying out a mandate or1 performing a contract of enterprise or for services entrusted to that person or body by the person carrying on, an enterprise. c . 2 In such a case, the person carrying on an enterprise must 5 (1) entrust the mandate or contract in writing; and (2) ",
+      "match": "specify in the mandate or contract the measures the mandatary or the person performing the contract",
+      "after": " must take to protect the confidentiality of the personal information communicated, to ensure that the information is used only for carrying out the mandate or performing the contract and to ensure that the mandatary or person does not keep the information after the expiry of the mandate or contract. A person or body carrying out a mandate or performing a contract of enterprise or for services referred to in the",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:vendor.direct-duties": {
+      "citation": "Private Sector Act s.18.3",
+      "provision": null,
+      "scope": "file",
+      "before": "protect the confidentiality of the personal information communicated, to ensure that the information is used only for carrying out the mandate or performing the contract and to ensure that the mandatary or person does not keep the information after the expiry of the mandate or contract. A person or body carrying out a mandate or performing a contract of enterprise or for services referred to in the first paragraph ",
+      "match": "must notify the person in charge of the protection of personal information without delay of any",
+      "after": " violation or attempted violation by any person of any obligation concerning the confidentiality of the information communicated, and must also allow the person in charge of the protection of personal information to conduct any verification relating to confidentiality requirements. Subparagraph 2 of the second paragraph does not apply if the mandatary or the person performing the contract is a public body within the",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:security.duty": {
+      "citation": "Private Sector Act s.10",
+      "provision": null,
+      "scope": "file",
+      "before": "default, without any intervention by the person concerned. The first paragraph does not apply to privacy settings for browser cookies. 22021, c. 25, s. 1081. 0 2 DIVISION III 1 ,CONFIDENTIALITY OF PERSONAL INFORMATION c .§ 1. — Retention, use and non-communication of information 2 5 10. A person carrying on an enterprise must take the security measures necessary to ensure the protection of the personal information ",
+      "match": "collected, used, communicated, kept or destroyed and that are reasonable given the sensitivity of the information,",
+      "after": " the purposes for which it is to be used, the quantity and distribution of the information and the medium on which it is stored. 1993, c. 17, s. 10; 2006, c. 22, s. 113. 11. Every person carrying on an enterprise must ensure that any personal information held on another person is up to date and accurate when used to make a decision in relation to the person concerned. The information used to make such a decision is",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:enforcement.fines": {
+      "citation": "Private Sector Act s.90.12",
+      "provision": null,
+      "scope": "file",
+      "before": "PRIVATE SECTOR 90.11. No monetary administrative penalty may be imposed on a person for a failure to comply with this Act if a statement of offence has already been served on the person for a failure to comply with the same provision on the same day, based on the same facts. 22021, c. 25, s. 1591. 0 290.12. The maximum amount of the monetary administrative penalty is $50,000 in the case of a natural 1person and, ",
+      "match": "in all other cases, $10,000,000 or, if greater, the amount corresponding to 2% of worldwide turnover for the preceding fiscal year.,",
+      "after": " c .22021, c. 25, s. 1591. 20 5290.13. The debtor and the Commission may enter into a payment agreement with regard to the amount owing. Such an agreement, or the payment of the amount owing, does not constitute, for the purposes of penal1 ,proceedings or any other administrative penalty under this Act, an acknowledgement of the facts giving rise to cit. . 22021, c. 25, s. 15912 . 05 90.14.2 If the amount owing is",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:enforcement.private-action": {
+      "citation": "Private Sector Act s.93.1",
+      "provision": null,
+      "scope": "file",
+      "before": "director or representative of the legal person who ordered or authorized the act or omission constituting the offence, or1 ,who consented thereto, is a party to the offence and is liable to the prescribed penalty. c 1993, c. 17, s. 93. . 2 5§ 6. — Damages 22021, c. 25, s. 1611. 0 93.1.2 Where the unlawful infringement of a right conferred by this Act or by articles 35 to 40 of the Civil Code causes an injury and ",
+      "match": "the infringement is intentional or results from a gross fault, the court shall award",
+      "after": "1 punitive damages of not less than $1,000., c 22021, c. 25, s. 1611. . 02 25DIVISION VIII 1 ,MISCELLANEOUS PROVISIONS c .94. The provisions of this Act have precedence over those of any subsequent general or special Act which 2would be contrary thereto, unless the latter Act expressly provides that it applies despite this Act. 5 However, they do not have the effect of limiting the protection of personal information",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "t:organisation": {
+      "citation": "Private Sector Act s.3.1",
+      "provision": null,
+      "scope": "file",
+      "before": "services body within the meaning of that Act or by a person other than such a body, on its behalf. 1993, c. 17, s. 3; 2006, c. 22, s. 112; 22023, c. 5, s. 2291. 0 2 3 , c . 5 Updated to 0April 01 2026 © Québec Official Publisher4 1 P-39.1 / 3 of 38 PROTECTION OF PERSONAL INFORMATION IN THE PRIVATE SECTOR DIVISION I.1 RESPONSIBILITIES RELATING TO PROTECTION OF PERSONAL INFORMATION 22021, c. 25, s. 1031. 0 23.1. ",
+      "match": "Any person carrying on an enterprise is responsible for protecting the personal information held by the",
+      "after": " person.1 , c Within the enterprise, the person exercising the highest authority shall see to ensuring that this Act is . implemented and complied with. That person shall exercise the function of person in charge of the protection 2 of personal information; he may delegate all or part of that function in writing to any person. 5 The title and contact information of the person in charge of the protection of personal",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "t:vendor": {
+      "citation": "Private Sector Act s.18.3",
+      "provision": null,
+      "scope": "file",
+      "before": "may, without the consent of the person concerned, communicate2 personal information to any person or body if the information is necessary for carrying out a mandate or1 performing a contract of enterprise or for services entrusted to that person or body by the person carrying on, an enterprise. c . 2 In such a case, the person carrying on an enterprise must 5 (1) entrust the mandate or contract in writing; and (2) ",
+      "match": "specify in the mandate or contract the measures the mandatary or the person performing the contract",
+      "after": " must take to protect the confidentiality of the personal information communicated, to ensure that the information is used only for carrying out the mandate or performing the contract and to ensure that the mandatary or person does not keep the information after the expiry of the mandate or contract. A person or body carrying out a mandate or performing a contract of enterprise or for services referred to in the",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "t:person": {
+      "citation": "Private Sector Act s.8",
+      "provision": null,
+      "scope": "file",
+      "before": "1993, c. 17, s. 6. 7. Any person collecting personal information from another person carrying on an enterprise must, at the request of the person concerned, inform the latter of the source of the information. This section does not apply to a file established for the purposes of an inquiry to prevent, detect or repress a crime or statutory offence. 1993, c. 17, s. 7; 1999, c. 40, s. 233; 22021, c. 25, s. 1061. 0 8. ",
+      "match": "Any person who collects personal information from the person concerned must, when the information is",
+      "after": "2 collected and subsequently on request, inform that person1 , (1) of the purposes for which the information is collected;c . (2) of the means by which the information is collected;2 5 (3) of the rights of access and rectification provided by law; and (4) of the person’s right to withdraw consent to the communication or use of the information collected. Updated to 0April 01 2026 © Québec Official Publisher4 1 P-39.1",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "t:data": {
+      "citation": "Private Sector Act s.2",
+      "provision": null,
+      "scope": "file",
+      "before": "s. 111; 22021, c. 25, s. 10011. 0 1.1. For the purposes of this Act, any person who collects personal information relating to another person2 for a serious and legitimate reason is deemed to be establishing a file within the meaning of the Civil Code1 and the rights concerning such a file conferred by articles 35 to 40 of that Code apply to the personal, information collected. c . 22021, c. 25, s. 1011. 2 0 5 22. ",
+      "match": "Personal information is any information which relates to a natural person and directly or indirectly allows that person to be identified.",
+      "after": "1 , 1993, c. 17, s. 2; 2c 2021, c. 25, s. 1021. . 0 3.2 This Act does not apply2 5 1 (1) to a public body within the meaning of the Act respecting Access to documents held by public bodies, and the Protection of personal information (chapter A-2.1);c . (2) to information held on behalf of a public body by a person other than a public body;2 5 (3) to health and social services information within the meaning of the",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "t:sensitive": {
+      "citation": "Private Sector Act s.13",
+      "provision": null,
+      "scope": "file",
+      "before": "to render the decision corrected. The person concerned must be given the opportunity to submit observations to a member of the personnel of the enterprise who is in a position to review the decision. 22021, c. 25, s. 1101. 0 213. No person may communicate to a third person the personal information he holds on another person, unless the person concerned consents to, or this Act provides for, such communication.1 , c ",
+      "match": "Such consent must be given expressly when it concerns sensitive personal information.",
+      "after": " . 21993, c. 17, s. 13; 22021, c. 25, s. 1101. 5 0 14. Consent under this Act must be clear, free and informed and be given for specific purposes. It must be2 requested for each such purpose, in clear and simple language. If the request for consent is made in writing, it1 must be presented separately from any other information provided to the person concerned. If the person, concerned so requests, assistance is",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "t:regulator": {
+      "citation": "Private Sector Act s.3.5",
+      "provision": null,
+      "scope": "file",
+      "before": "22021, c. 25, s. 1031. 0 23.5. Any person carrying on an enterprise who has cause to believe that a confidentiality incident involving personal information the person holds has occurred must take reasonable measures to reduce the risk of injury1 ,and to prevent new incidents of the same nature. c . If the incident presents a risk of serious injury, the person carrying on an enterprise must promptly notify 2 ",
+      "match": "the Commission d’accès à l’information established by section 103 of the Act respecting Access to documents",
+      "after": " 5 held by public bodies and the Protection of personal information (chapter A-2.1). He must also notify any person whose personal information is concerned by the incident, failing which the Commission may order him to do so. He may also notify any person or body that could reduce the risk, by communicating to the person or body only the personal information necessary for that purpose without the consent of the",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:lawful-basis": {
+      "citation": "Private Sector Act s.12–14",
+      "provision": null,
+      "scope": "file",
+      "before": "the purposes for collecting the information before doing so. 1993, c. 17, s. 4; 1999, c. 40, s. 233; 22021, c. 25, s. 1041. 0 4.1. The personal information concerning a minor under 14 years of age may not be collected from him2 without the consent of the person having parental authority or of the tutor, unless collecting the information is1 clearly for the minor’s benefit., c 22021, c. 25, s. 1041. . 0 2 5.2 ",
+      "match": "Any person collecting personal information on another person may collect only the information",
+      "after": "5 necessary for the purposes determined before collecting it.1 , c Such information must be collected by lawful means. . 21993, c. 17, s. 5; 22021, c. 25, s. 1051. 5 0 6. Any person collecting personal information relating to another person may collect such information only2 from the person concerned, unless the latter consents to collection from third persons.1 , c However, he may, without the consent of the person",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:consent": {
+      "citation": "Private Sector Act s.14",
+      "provision": null,
+      "scope": "file",
+      "before": "on which it is stored. 1993, c. 17, s. 10; 2006, c. 22, s. 113. 11. Every person carrying on an enterprise must ensure that any personal information held on another person is up to date and accurate when used to make a decision in relation to the person concerned. The information used to make such a decision is kept for at least one year following the decision. 1993, c. 17, s. 11; 22021, c. 25, s. 10911. 0 12. ",
+      "match": "Unless the person concerned gives his consent, personal information may not be used within the",
+      "after": "2 enterprise except for the purposes for which it was collected. Such consent must be given expressly when it1 concerns sensitive personal information., c . Personal information may, however, be used for another purpose without the consent of the person 2 concerned, but only 5 (1) if it is used for purposes consistent with the purposes for which it was collected; (2) if it is clearly used for the benefit of the",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:notice-transparency": {
+      "citation": "Private Sector Act s.8, s.8.1",
+      "provision": null,
+      "scope": "file",
+      "before": "on an enterprise is responsible for protecting the personal information held by the person.1 , c Within the enterprise, the person exercising the highest authority shall see to ensuring that this Act is . implemented and complied with. That person shall exercise the function of person in charge of the protection 2 of personal information; he may delegate all or part of that function in writing to any person. 5 ",
+      "match": "The title and contact information of the person in charge of the protection of personal information must be",
+      "after": " published on the enterprise’s website or, if the enterprise does not have a website, be made available by any other appropriate means. 22021, c. 25, s. 1031. 0 3.2.2 Any person carrying on an enterprise must establish and implement governance policies and practices 1regarding personal information that ensure the protection of such information. Such policies and practices ,must, in particular, provide a framework",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:rights-access": {
+      "citation": "Private Sector Act s.27",
+      "provision": null,
+      "scope": "file",
+      "before": "Québec Official Publisher4 1 P-39.1 / 16 of 38 1 , c PROTECTION OF PERSONAL INFORMATION IN THE PRIVATE SECTOR 24. (Replaced). 1993, c. 17, s. 24; 2006, c. 22, s. 120; 22021, c. 25, s. 1191. 0 25. (Replaced). 2 1 1993, c. 17, s. 25; 22021, c. 25, s. 1191. , 0 c 26. (Replaced).2 . 1 2 1993, c. 17, s. 26; 22021, c. 25, s. 1191. , 5 c0 DIVISION IV.2 21 ACCESS BY PERSONS CONCERNED5, c § 1. — General provisions. 2 5 27. ",
+      "match": "Every person carrying on an enterprise who holds personal information on another person must, at the",
+      "after": " request of the person concerned, confirm the existence of the personal information, communicate it to the person and allow him to obtain a copy of it. At the applicant’s request, computerized personal information must be communicated in the form of a written and intelligible transcript. Unless doing so raises serious practical difficulties, computerized personal information collected from the applicant, and not",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:rights-deletion": {
+      "citation": "Private Sector Act s.28.1",
+      "provision": null,
+      "scope": "file",
+      "before": "paragraph of article 40 of the Civil Code, any person2 may, if personal information concerning him is inaccurate, incomplete or equivocal, or if collecting,1 communicating or keeping it are not authorized by law, require that the information be rectified., c 1993, c. 17, s. 28; 22021, c. 25, s. 1211. . 0 2 28.1. The person to whom personal information relates may require any person carrying on an enterprise2 5 ",
+      "match": "to cease disseminating that information or to de-index any hyperlink attached to his name",
+      "after": " that provides access1 to the information by a technological means, if the dissemination of the information contravenes the law or a, court order. c . 2 The person may do likewise, or may require that the hyperlink providing access to the information be re-5 indexed, where the following conditions are met: (1) the dissemination of the information causes the person concerned serious injury in relation to his right to",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:rights-correction": {
+      "citation": "Private Sector Act s.28",
+      "provision": null,
+      "scope": "file",
+      "before": "to enable the person to exercise the right of access provided for in this division. 1993, c. 17, s. 27; 2006, c. 22, s. 121; 22021, c. 25, s. 1201. 0 28. In addition to the rights provided under the first paragraph of article 40 of the Civil Code, any person2 may, if personal information concerning him is inaccurate, incomplete or equivocal, or if collecting,1 communicating or keeping it are not authorized by law, ",
+      "match": "require that the information be rectified.,",
+      "after": " c 1993, c. 17, s. 28; 22021, c. 25, s. 1211. . 0 2 28.1. The person to whom personal information relates may require any person carrying on an enterprise2 5 to cease disseminating that information or to de-index any hyperlink attached to his name that provides access1 to the information by a technological means, if the dissemination of the information contravenes the law or a, court order. c . 2 The person may do",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:rights-portability": {
+      "citation": "Private Sector Act s.27 para.3",
+      "provision": null,
+      "scope": "file",
+      "before": "develop or overhaul an information system or electronic service delivery system involving the1 ,collection, use, communication, keeping or destruction of personal information. c . For the purposes of such an assessment, the person must consult the person in charge of the protection of 2 personal information within the enterprise from the outset of the project. 5 The person must also ensure that the project allows ",
+      "match": "computerized personal information collected from the",
+      "after": " person concerned to be communicated to him in a structured, commonly used technological format. The conduct of a privacy impact assessment under this Act must be proportionate to the sensitivity of the information concerned, the purposes for which it is to be used, the quantity and distribution of the information and the medium on which it is stored. 22021, c. 25, s. 1031. 0 3.4.2 The person in charge of the",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:rights-optout-sale": {
+      "citation": "Private Sector Act s.12",
+      "provision": null,
+      "scope": "file",
+      "before": "or providing a service requested by the person concerned; or (5) if its use is necessary for study or research purposes or for the production of statistics and if the information is de-identified. In order for a purpose to be consistent within the meaning of subparagraph 1 of the second paragraph, it must have a direct and relevant connection with the purposes for which the information was collected. However, ",
+      "match": "commercial or philanthropic prospection may not be considered a consistent purpose.",
+      "after": " Updated to 0April 01 2026 © Québec Official Publisher4 1 P-39.1 / 8 of 38 PROTECTION OF PERSONAL INFORMATION IN THE PRIVATE SECTOR For the purposes of this Act, personal information is (1) de-identified if it no longer allows the person concerned to be directly identified; (2) sensitive if, due to its nature, in particular its medical, biometric or otherwise intimate nature, or the context of its use or",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:rights-automated-decision": {
+      "citation": "Private Sector Act s.12.1",
+      "provision": null,
+      "scope": "file",
+      "before": "communication, it entails a high level of reasonable expectation of privacy. Every person carrying on an enterprise who uses de-identified information must take reasonable measures to limit the risk of someone identifying a natural person using de-identified information. 1993, c. 17, s. 12; 22021, c. 25, s. 1101. 0 12.1. Any person carrying on an enterprise who uses personal information to render a decision based2 ",
+      "match": "exclusively on an automated processing of such information must inform the person concerned accordingly",
+      "after": "1 not later than at the time it informs the person of the decision., c . He must also inform the person concerned, at the latter’s request, 2 (1) of the personal information used to render the decision;5 (2) of the reasons and the principal factors and parameters that led to the decision; and (3) of the right of the person concerned to have the personal information used to render the decision corrected. The person",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:sensitive-data": {
+      "citation": "Private Sector Act s.12, s.14",
+      "provision": null,
+      "scope": "file",
+      "before": "an enterprise must ensure that any personal information held on another person is up to date and accurate when used to make a decision in relation to the person concerned. The information used to make such a decision is kept for at least one year following the decision. 1993, c. 17, s. 11; 22021, c. 25, s. 10911. 0 12. Unless the person concerned gives his consent, personal information may not be used within the2 ",
+      "match": "enterprise except for the purposes for which it was collected. Such consent must be given expressly when it",
+      "after": "1 concerns sensitive personal information., c . Personal information may, however, be used for another purpose without the consent of the person 2 concerned, but only 5 (1) if it is used for purposes consistent with the purposes for which it was collected; (2) if it is clearly used for the benefit of the person concerned; (3) if its use is necessary for the purpose of preventing and detecting fraud or of assessing",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:childrens-data": {
+      "citation": "Private Sector Act s.4.1",
+      "provision": null,
+      "scope": "file",
+      "before": "Publisher. 4 1 P-39.1 / 5 of 38 2 5 PROTECTION OF PERSONAL INFORMATION IN THE PRIVATE SECTOR DIVISION II COLLECTION OF PERSONAL INFORMATION 4. Any person carrying on an enterprise who, for a serious and legitimate reason, collects personal information on another person must determine the purposes for collecting the information before doing so. 1993, c. 17, s. 4; 1999, c. 40, s. 233; 22021, c. 25, s. 1041. 0 4.1. ",
+      "match": "The personal information concerning a minor under 14 years of age may not be collected from him",
+      "after": "2 without the consent of the person having parental authority or of the tutor, unless collecting the information is1 clearly for the minor’s benefit., c 22021, c. 25, s. 1041. . 0 2 5.2 Any person collecting personal information on another person may collect only the information5 necessary for the purposes determined before collecting it.1 , c Such information must be collected by lawful means. . 21993, c. 17, s. 5;",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:breach-notification": {
+      "citation": "Private Sector Act s.3.5–3.8",
+      "provision": null,
+      "scope": "file",
+      "before": "in any document relating to the project; Updated to 0April 01 2026 © Québec Official Publisher4 1 P-39.1 / 4 of 38 PROTECTION OF PERSONAL INFORMATION IN THE PRIVATE SECTOR (3) a description of the project participants’ responsibilities with regard to the protection of personal information; or (4) training activities for project participants on the protection of personal information. 22021, c. 25, s. 1031. 0 23.5. ",
+      "match": "Any person carrying on an enterprise who has cause to believe that a confidentiality incident involving",
+      "after": " personal information the person holds has occurred must take reasonable measures to reduce the risk of injury1 ,and to prevent new incidents of the same nature. c . If the incident presents a risk of serious injury, the person carrying on an enterprise must promptly notify 2 the Commission d’accès à l’information established by section 103 of the Act respecting Access to documents 5 held by public bodies and the",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:dpo-representative": {
+      "citation": "Private Sector Act s.3.1",
+      "provision": null,
+      "scope": "file",
+      "before": "1 P-39.1 / 3 of 38 PROTECTION OF PERSONAL INFORMATION IN THE PRIVATE SECTOR DIVISION I.1 RESPONSIBILITIES RELATING TO PROTECTION OF PERSONAL INFORMATION 22021, c. 25, s. 1031. 0 23.1. Any person carrying on an enterprise is responsible for protecting the personal information held by the person.1 , c Within the enterprise, the person exercising the highest authority shall see to ensuring that this Act is . ",
+      "match": "implemented and complied with. That person shall exercise the function of person in charge of the protection",
+      "after": " 2 of personal information; he may delegate all or part of that function in writing to any person. 5 The title and contact information of the person in charge of the protection of personal information must be published on the enterprise’s website or, if the enterprise does not have a website, be made available by any other appropriate means. 22021, c. 25, s. 1031. 0 3.2.2 Any person carrying on an enterprise must",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:dpia": {
+      "citation": "Private Sector Act s.3.3, s.17",
+      "provision": null,
+      "scope": "file",
+      "before": "and be approved by the person in charge of the protection of personal information.5 Detailed information about those policies and practices, in particular as concerns the content required under the first paragraph, must be published in simple and clear language on the enterprise’s website or, if the enterprise does not have a website, made available by any other appropriate means. 22021, c. 25, s. 1031. 0 23.3. ",
+      "match": "Any person carrying on an enterprise must conduct a privacy impact assessment for any project to",
+      "after": " acquire, develop or overhaul an information system or electronic service delivery system involving the1 ,collection, use, communication, keeping or destruction of personal information. c . For the purposes of such an assessment, the person must consult the person in charge of the protection of 2 personal information within the enterprise from the outset of the project. 5 The person must also ensure that the project",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:cross-border-transfer": {
+      "citation": "Private Sector Act s.17",
+      "provision": null,
+      "scope": "file",
+      "before": "Any person holding personal information on behalf of a person carrying on an enterprise may refer to the latter every request for access or rectification received from a person to whom such information relates. Nothing in this section limits a person’s right to obtain, from a personal information agent, access to, or rectification of, personal information concerning him held by that agent. 1993, c. 17, s. 16. 17. ",
+      "match": "Before communicating personal information outside Québec, a person carrying on an enterprise must",
+      "after": " conduct a privacy impact assessment. The person must, in particular, take into account (1) the sensitivity of the information; (2) the purposes for which it is to be used; (3) the protection measures, including those that are contractual, that would apply to it; and (4) the legal framework applicable in the State in which the information would be communicated, including the personal information protection",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:records-processing": {
+      "citation": "Private Sector Act s.3.2, s.3.8",
+      "provision": null,
+      "scope": "file",
+      "before": "of person in charge of the protection 2 of personal information; he may delegate all or part of that function in writing to any person. 5 The title and contact information of the person in charge of the protection of personal information must be published on the enterprise’s website or, if the enterprise does not have a website, be made available by any other appropriate means. 22021, c. 25, s. 1031. 0 3.2.2 ",
+      "match": "Any person carrying on an enterprise must establish and implement governance policies and practices",
+      "after": " 1regarding personal information that ensure the protection of such information. Such policies and practices ,must, in particular, provide a framework for the keeping and destruction of the information, define the roles cand responsibilities of the members of its personnel throughout the life cycle of the information and provide a .process for dealing with complaints regarding the protection of the information. The",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:vendor-processor": {
+      "citation": "Private Sector Act s.18.3, s.20",
+      "provision": null,
+      "scope": "file",
+      "before": "The person to whom the information is communicated must preserve the confidentiality of the personal information throughout the period during which it may not be communicated without the consent of the person concerned. 2002, c. 19, s. 20; 22021, c. 25, s. 1141. 0 18.3. A person carrying on an enterprise may, without the consent of the person concerned, communicate2 personal information to any person or body ",
+      "match": "if the information is necessary for carrying out a mandate or",
+      "after": "1 performing a contract of enterprise or for services entrusted to that person or body by the person carrying on, an enterprise. c . 2 In such a case, the person carrying on an enterprise must 5 (1) entrust the mandate or contract in writing; and (2) specify in the mandate or contract the measures the mandatary or the person performing the contract must take to protect the confidentiality of the personal information",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:security": {
+      "citation": "Private Sector Act s.10",
+      "provision": null,
+      "scope": "file",
+      "before": "product or service having privacy settings must ensure that those settings provide the highest level of confidentiality by default, without any intervention by the person concerned. The first paragraph does not apply to privacy settings for browser cookies. 22021, c. 25, s. 1081. 0 2 DIVISION III 1 ,CONFIDENTIALITY OF PERSONAL INFORMATION c .§ 1. — Retention, use and non-communication of information 2 5 10. ",
+      "match": "A person carrying on an enterprise must take the security measures necessary to ensure the protection",
+      "after": " of the personal information collected, used, communicated, kept or destroyed and that are reasonable given the sensitivity of the information, the purposes for which it is to be used, the quantity and distribution of the information and the medium on which it is stored. 1993, c. 17, s. 10; 2006, c. 22, s. 113. 11. Every person carrying on an enterprise must ensure that any personal information held on another",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:enforcement-penalties": {
+      "citation": "Private Sector Act s.90.1, s.91",
+      "provision": null,
+      "scope": "file",
+      "before": "payable under section 90.17, as well as the conditions of payment and the amount payable; (4) fix the registration fees payable by personal information agents. In exercising its regulatory power, the Government may define sectors of activity and categories of personal information and files. 1993, c. 17, s. 90; 22021, c. 25, s. 1581. 0 2 § 4.1. — Monetary administrative penalties 1 22021, c. 25, s. 1591., 0 c 90.1.2 ",
+      "match": "A monetary administrative penalty may be imposed by a person designated by the Commission,",
+      "after": " but. 1who is not a member of any of its divisions, on anyone who2 , 5 c (1) does not inform the persons concerned in accordance with sections 7 and 8; . 2 (2) collects, uses, communicates, keeps or destroys personal information in contravention of the law; 5 (3) does not report, where required to do so, a confidentiality incident to the Commission or to the persons concerned; (4) does not take the security measures",
+      "cutStart": true,
+      "cutEnd": true
+    }
+  }
+}

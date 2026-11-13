@@ -100,7 +100,17 @@ export interface RequirementComparison {
   targetStrictness: Strictness;
   sourceObligation: string;
   targetObligation: string;
+  /** The winning target mapping's citation, with the " · ShortName" suffix. */
   targetCitation: string;
+  /** The winning target mapping's own citation, without the suffix. "—" when unmapped. */
+  targetCitationRaw: string;
+  /** The law the winning target mapping comes from; null when the target has no mapping. */
+  targetLawId: string | null;
+  /** The winning source mapping's citation, with the suffix, and without it. */
+  sourceCitation: string;
+  sourceCitationRaw: string;
+  /** The law the winning source mapping comes from; null when the source has no mapping. */
+  sourceLawId: string | null;
   /** Target strictness minus source strictness. Positive means the target is stricter. */
   delta: number;
   /**
@@ -172,6 +182,10 @@ export interface AggregatedMapping {
   strictness: Strictness;
   obligation: string;
   citation: string;
+  /** The winning mapping's own citation, without the " · ShortName" suffix. */
+  citationRaw: string;
+  /** The law the winning mapping comes from; null when the requirement has no mapping. */
+  lawId: string | null;
   /** Does the winning mapping quote the statute, or is it an unevidenced claim? */
   quoted: boolean;
   /** Every law in this jurisdiction, for pulling search traces. */
@@ -204,6 +218,8 @@ export function aggregateByJurisdiction(jurisdictionId: string): Record<string, 
           strictness: winner.mapping.strictness,
           obligation: winner.mapping.obligation,
           citation: `${winner.mapping.citation} · ${winner.law.shortName}`,
+          citationRaw: winner.mapping.citation,
+          lawId: winner.law.id,
           quoted: Boolean(winner.mapping.quote),
           lawIds,
         }
@@ -214,6 +230,8 @@ export function aggregateByJurisdiction(jurisdictionId: string): Record<string, 
           strictness: 0,
           obligation: "Not yet mapped against this jurisdiction's laws.",
           citation: "—",
+          citationRaw: "—",
+          lawId: null,
           quoted: false,
           lawIds,
         };
@@ -262,6 +280,11 @@ export function analyzeGap(sourceJurisdictionId: string, targetJurisdictionId: s
       sourceObligation: s.obligation,
       targetObligation: t.obligation,
       targetCitation: t.citation,
+      targetCitationRaw: t.citationRaw,
+      targetLawId: t.lawId,
+      sourceCitation: s.citation,
+      sourceCitationRaw: s.citationRaw,
+      sourceLawId: s.lawId,
       delta: t.strictness - s.strictness,
       sourceQuoted: s.quoted,
       targetQuoted: t.quoted,

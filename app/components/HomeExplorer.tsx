@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { laws, lawsById, jurisdictionsById, requirements, requirementCategories } from "@/lib/data";
 import { analyzeGap, aggregateByJurisdiction } from "@/lib/gap";
 import { CoverageBadge } from "./CoverageBadge";
+import { LawCite } from "./LawCite";
 import { FILL_BASE, FILL_COVERED, type MapMarker } from "./WorldMap";
 import type { Strictness } from "@/lib/types";
 
@@ -291,7 +292,18 @@ function Comparison({
                         ? `More on: ${more.map((p) => p.label).join("; ")}`
                         : g.targetObligation}
                     </div>
-                    <div className="citation">{g.targetCitation}</div>
+                    <div>
+                      {g.targetLawId ? (
+                        <LawCite
+                          lawId={g.targetLawId}
+                          citation={g.targetCitationRaw}
+                          ev={"m:" + g.requirement.id}
+                          finding={g.targetObligation}
+                        />
+                      ) : (
+                        <span className="citation">{g.targetCitation}</span>
+                      )}
+                    </div>
                   </div>
                 );
               })}

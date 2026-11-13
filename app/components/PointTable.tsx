@@ -1,4 +1,5 @@
 import { sameMeaningDifferentWords, type Point, type PointRelation, type PointSide } from "@/lib/gap";
+import { LawCite } from "./LawCite";
 
 // ---------------------------------------------------------------------------
 // Every point of comparison for one requirement, side by side.
@@ -24,7 +25,7 @@ export function RelationChip({ relation, targetName }: { relation: PointRelation
 /** Chinese wording gets lang="zh" so screen readers and fonts treat it as such. */
 const CJK = /[\u4E00-\u9FFF]/;
 
-function SideCell({ side, label }: { side: PointSide | null; label: string }) {
+function SideCell({ side, facetId, label }: { side: PointSide | null; facetId: string; label: string }) {
   if (!side) return <td className="cmp-muted" data-label={label}>Not yet compared</td>;
   return (
     <td data-label={label}>
@@ -32,7 +33,11 @@ function SideCell({ side, label }: { side: PointSide | null; label: string }) {
         <strong>{side.optionLabel}</strong>
       </div>
       <div className="point-says">{side.says}</div>
-      {side.citation && <div className="citation">{side.citation}</div>}
+      {side.citation && (
+        <div>
+          <LawCite lawId={side.lawId} citation={side.citation} ev={"f:" + facetId} finding={side.says} />
+        </div>
+      )}
       {side.quote && (
         <details className="cmp-disclosure">
           <summary>Wording relied on</summary>
@@ -60,8 +65,8 @@ function PointRow({
         <strong>{point.label}</strong>
         <div className="point-q">{point.question}</div>
       </td>
-      <SideCell side={point.source} label={sourceName} />
-      <SideCell side={point.target} label={targetName} />
+      <SideCell side={point.source} facetId={point.facetId} label={sourceName} />
+      <SideCell side={point.target} facetId={point.facetId} label={targetName} />
       <td>
         <RelationChip relation={point.relation} targetName={targetName} />
         {sameMeaningDifferentWords(point) && (

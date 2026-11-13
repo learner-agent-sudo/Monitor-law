@@ -59,6 +59,10 @@ jobs:
         run: node scripts/check-facets.mjs
       - name: Check the comparison engine
         run: node scripts/check-compare.mjs
+      # Every citation the site shows opens the law text it rests on. An evidence
+      # file that no longer matches the corpus or the answers would show stale text.
+      - name: Check the evidence files are current
+        run: node scripts/build-evidence.mjs --check
       - name: Check the research agents offline
         run: node scripts/check-research.mjs
       - name: Build static export

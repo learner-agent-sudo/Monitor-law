@@ -11,8 +11,10 @@ import {
 import { CoverageBadge } from "@/app/components/CoverageBadge";
 import { Disclaimer } from "@/app/components/Disclaimer";
 import { GapTraceDetails } from "@/app/components/GapTrace";
+import { LawCite } from "@/app/components/LawCite";
 import { PointTable } from "@/app/components/PointTable";
 import { TermsTable } from "@/app/components/TermsTable";
+import { usePreloadEvidence } from "@/lib/evidence";
 import { tracesFor, understatedBy } from "@/lib/gap-traces";
 import type { Strictness } from "@/lib/types";
 
@@ -32,6 +34,19 @@ function Understated({ lawIds, requirementId }: { lawIds: string[]; requirementI
     <span className="understated">
       constrained under {handled.map((h) => h.name).join(" and ")}
     </span>
+  );
+}
+
+/** The requirement-level citation: opens the mapping's law text, or stays plain when unmapped. */
+function RequirementCite({ c }: { c: RequirementComparison }) {
+  if (!c.targetLawId) return <span className="citation">{c.targetCitation}</span>;
+  return (
+    <LawCite
+      lawId={c.targetLawId}
+      citation={c.targetCitationRaw}
+      ev={"m:" + c.requirement.id}
+      finding={c.targetObligation}
+    />
   );
 }
 
@@ -91,9 +106,30 @@ function WhatDiffers({
             p.source && p.target ? (
               <li key={p.facetId}>
                 <strong>{p.label}</strong>: {p.target.says}
-                {p.target.citation && <> <span className="citation">({p.target.citation})</span></>}
+                {p.target.citation && (
+                  <>
+                    {" "}
+                    <LawCite
+                      lawId={p.target.lawId}
+                      citation={p.target.citation}
+                      ev={"f:" + p.facetId}
+                      finding={p.target.says}
+                    />
+                  </>
+                )}
                 <div className="diff-muted">
                   {sourceName}: {p.source.says}
+                  {p.source.citation && (
+                    <>
+                      {" "}
+                      <LawCite
+                        lawId={p.source.lawId}
+                        citation={p.source.citation}
+                        ev={"f:" + p.facetId}
+                        finding={p.source.says}
+                      />
+                    </>
+                  )}
                 </div>
               </li>
             ) : null,
@@ -107,7 +143,7 @@ function WhatDiffers({
       )}
       {c.byScoreOnly && (
         <p className="diff-note">
-          {c.targetObligation} <span className="citation">{c.targetCitation}</span>
+          {c.targetObligation} <RequirementCite c={c} />
         </p>
       )}
     </>
@@ -149,6 +185,11 @@ export default function GapAnalysisPage() {
 
   const result = useMemo(() => analyzeGap(sourceId, targetId), [sourceId, targetId]);
   const sameJurisdiction = sourceId === targetId;
+  // Load the law text for every law on both sides, so it is ready before the first hover.
+  usePreloadEvidence([
+    ...(result.comparisons[0]?.sourceLawIds ?? []),
+    ...(result.comparisons[0]?.targetLawIds ?? []),
+  ]);
   const sourceName = result.source.name;
   const targetName = result.target.name;
 
@@ -337,7 +378,7 @@ export default function GapAnalysisPage() {
                               <div className="diff-muted">
                                 {targetName}&apos;s rule is also rated firmer overall:{" "}
                                 {c.targetObligation}{" "}
-                                <span className="citation">({c.targetCitation})</span>
+                                <RequirementCite c={c} />
                               </div>
                             )}
                           </td>
@@ -403,7 +444,7 @@ export default function GapAnalysisPage() {
                             </div>
                             <div className="diff-note">
                               {targetName}&apos;s rule: {c.targetObligation}{" "}
-                              <span className="citation">({c.targetCitation})</span>
+                              <RequirementCite c={c} />
                             </div>
                           </td>
                         </tr>
@@ -455,7 +496,7 @@ export default function GapAnalysisPage() {
                             {c.byScoreOnly ? (
                               <p className="diff-note">
                                 {c.targetObligation}{" "}
-                                <span className="citation">{c.targetCitation}</span>
+                                <RequirementCite c={c} />
                               </p>
                             ) : c.verdict === "same" ? (
                               <>
