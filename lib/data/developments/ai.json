@@ -1,6 +1,6 @@
 {
   "track": "ai",
-  "checked": "2026-11-13T20:15:49.680Z",
+  "checked": "2026-11-14T00:44:54.201Z",
   "analysis": {
     "mode": "keywords",
     "reason": "no AI model answered (GitHub Models returned a non-JSON reply)"
@@ -22,7 +22,7 @@
       "ok": false,
       "found": 0,
       "read": 0,
-      "error": "ERR_TLS_CERT_ALTNAME_INVALID"
+      "error": "response is not a feed"
     },
     {
       "id": "edps",
@@ -66,7 +66,7 @@
       "type": "official",
       "ok": true,
       "found": 1,
-      "read": 3,
+      "read": 1,
       "error": null
     },
     {
@@ -92,8 +92,8 @@
       "name": "Congress bills (GovInfo)",
       "type": "official",
       "ok": true,
-      "found": 100,
-      "read": 100,
+      "found": 99,
+      "read": 99,
       "error": null
     },
     {
@@ -101,7 +101,7 @@
       "name": "California Attorney General",
       "type": "official",
       "ok": true,
-      "found": 10,
+      "found": 9,
       "read": 10,
       "error": null
     },
@@ -137,7 +137,7 @@
       "name": "Inside Privacy (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 1,
+      "found": 0,
       "read": 10,
       "error": null
     },
@@ -146,7 +146,7 @@
       "name": "Inside Global Tech (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -182,7 +182,7 @@
       "name": "Privacy World (Squire Patton Boggs)",
       "type": "analysis",
       "ok": true,
-      "found": 3,
+      "found": 2,
       "read": 10,
       "error": null
     },
@@ -200,7 +200,7 @@
       "name": "Global Policy Watch (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 3,
+      "found": 4,
       "read": 10,
       "error": null
     },
@@ -218,8 +218,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 26,
-      "read": 26,
+      "found": 13,
+      "read": 13,
       "error": null
     },
     {
@@ -227,8 +227,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 32,
-      "read": 32,
+      "found": 31,
+      "read": 31,
       "error": null
     },
     {
@@ -236,8 +236,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 61,
-      "read": 61,
+      "found": 60,
+      "read": 60,
       "error": null
     }
   ],
@@ -375,6 +375,36 @@
       "jurisdiction": "Indonesia",
       "kind": "regulation",
       "summary": "Indonesia eyes first AI copyright rules in Southeast Asia",
+      "summaryBy": "source"
+    },
+    {
+      "id": "71d437ba2043",
+      "track": "ai",
+      "title": "Will the Senate's BAAJA Bill Let AI Giants Outmuscle Utilities",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQMERNVFFSU08xeHpiWTBIWTZ2V3Z4cTNidUZHNGhaOUNqaGVEYWJpZW9FQVBaV20xYTNZNVA2RjVLdi1yZEZvY3Njc2VvZENjN095SkMyZlEzTHNpMG9ZZmIzcm9yX3NoY1VRZ2d4LU53MUlGQndnRGYwVHZoU2gzVHBvVG9EM1pNejRaTUVfYnlwNmhleWptWUlTRXBXYjAtM0VSeFpEdkZfM1Y0OGfSAbMBQVVfeXFMT3F3ZjkyZHFJQ2ZITzl5TmcyQXF4M1ByQ2NQbVNxbTZLR3BtSFBxd0Jfc3dabW1ZMi1qd2U2ZzY0YWlRSFgwMmxhTzRhcHdieXNBaXlKRFB1NTFtMWhXM3VUR21iOTdiUGl3Q0JnOGhTVTRtVlZhbjJ0NWRQN0JKb0Q4QjZxeFMwSlY2UTBLeG5oQy1zYnNTT1otR3pqeEhNdHdObjBURkhIRnJjbDhBUGVfTVE?oc=5",
+      "source": "Crude Oil Prices Today | OilPrice.com",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-14",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "legislation",
+      "summary": "Will the Senate's BAAJA Bill Let AI Giants Outmuscle Utilities",
+      "summaryBy": "source"
+    },
+    {
+      "id": "0b93f912e8c1",
+      "track": "ai",
+      "title": "China’s Ping An Bank adopts board-level AI rules in a first for listed banks",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNcS0xZEwwM1RvTDlXMjd1S2NObmR5Zm1KLVVILWRLckdHbi1fdEJ1bWwxVWVzVkRTSnNkNnk4a3J4Q1c4blhaV3JsM2tkWXYyUDBmOWpkTVVuZ0toTzVyZUx0QVhuYjhCbEQzenB4TE5MdDlwRnI5MDMwcDlEbS0zZy1TYjB5VjhDQ084MzRUWVV0b3hVRFozQTJESG5EQ09BQTctWnlKYWJsY1V1cDViemdaaEZjdw?oc=5",
+      "source": "Compliance Week",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-14",
+      "region": "asia",
+      "jurisdiction": "China",
+      "kind": "regulation",
+      "summary": "China’s Ping An Bank adopts board-level AI rules in a first for listed banks",
       "summaryBy": "source"
     },
     {
@@ -708,6 +738,36 @@
       "summaryBy": "source"
     },
     {
+      "id": "584888a0420c",
+      "track": "ai",
+      "title": "What California’s new law means for legal teams using AI and whether other states could follow suit",
+      "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxQNlh2SWpWYzQ1MDl4UHhjWWQyTS1JSUJlWWoyTnUxX0VZZ1hhdEU2Z0Q5bVg3TFB3dGpiY2FnZ1B2LVVYdTZyMHVib05VRWlHMVlTWTdCWTJ6YlJJSW42QXE2TUx2MVVjVzByQ2doRVQwMDVOTmxwVGZyenEtX2tpLS1nQmctYVBGaDNKYVl2Z2w2LTdOTF9CbVZUeWctT2J1OE4tUER2WkdOdTVYUnBLandYVENMWFZUX1poc3g3dnh5S2NYQm1WUHFPZ201TEY1ckF2cDVmYW5ZTFB0VjBYOFRYdDFSX1RramFOWnFFQ1ZGTmJGWGxsX0gwRQ?oc=5",
+      "source": "KESQ",
+      "sourceType": "news",
+      "published": "2026-11-12",
+      "found": "2026-11-14",
+      "region": "us",
+      "jurisdiction": "California",
+      "kind": "legislation",
+      "summary": "What California’s new law means for legal teams using AI and whether other states could follow suit",
+      "summaryBy": "source"
+    },
+    {
+      "id": "e397a6498825",
+      "track": "ai",
+      "title": "Anwar says AI Governance Bill to complement cybersecurity, data laws",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNcDhYV0Z5LUxnTm5LUENIUnhjUExYX1E3M1NqY2VLY196VGJ4OHlwc1VVZVQzUFBTdmxRcmxBYnM3N0NWeE9IdjVCUGxJSjJhUENEaHB5WS0teUhib2hXcUFKSE5Va2dtY3NfeHNUVjVBWTQ0R0syZ09DcWJzZmlWZFZpTW1jcy00YTJIUXdVVnFqUER6VUdvYW9aNDAtODVpVnk1SlVtR0ZiR211OUJJZXZxazlvZ9IBuwFBVV95cUxPQ1B5WklsSVZiV1FtbTFFN3BxVzh2a1BqOVU0Ukg1cWxoWDYzbHdmcC1oaUVrZU52UFFScW8zeUszT3VZMHVhbWZ6dUFKVWNJZl9raVNnZ3V5VmVnUlBYM3dUVVVSdjJrZ2lLaldWNjNlWGxHWkNIdDF1S2xSQkNiNnNRNmxUV05OVDNMNzd6bVFGZXFCeVpaeUJWRURSS0FPQVFiYmZkTGROclNwRTM2WmwzNTN0QkE1d2pN?oc=5",
+      "source": "NST Online",
+      "sourceType": "news",
+      "published": "2026-11-12",
+      "found": "2026-11-14",
+      "region": "asia",
+      "jurisdiction": "Asia",
+      "kind": "legislation",
+      "summary": "Anwar says AI Governance Bill to complement cybersecurity, data laws",
+      "summaryBy": "source"
+    },
+    {
       "id": "0b05a266f540",
       "track": "ai",
       "title": "Inside Greece's new AI Act framework",
@@ -963,6 +1023,21 @@
       "summaryBy": "source"
     },
     {
+      "id": "615c1689d849",
+      "track": "ai",
+      "title": "EU Draft Cloud and AI Act: Lawmakers Push for Tech Sovereignty - News and Statistics",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQS3dvTldpdkNCUF9fTVlsWmtHZVczclRXLTY1ZlcyeVVyYkxSVXpSdmxGa25tV1VQQUFPLWZUc29uM3F2cVdpUHVhNF9PR0U2dHQ0QURHRnpydFFfaWVFekhGaDhVcXRsN3U0d24xUUdnR2NPcF9VN2VxTVlLenJGSExXWW5xN2MzdTRmN3BSaFRMUDFyMDlqWm5RX0wwNXQ2OEpIUzVRQmNpTUg1?oc=5",
+      "source": "IndexBox",
+      "sourceType": "news",
+      "published": "2026-11-11",
+      "found": "2026-11-14",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "legislation",
+      "summary": "EU Draft Cloud and AI Act: Lawmakers Push for Tech Sovereignty - News and Statistics",
+      "summaryBy": "source"
+    },
+    {
       "id": "0f29bee9ed48",
       "track": "ai",
       "title": "AI regulation: The EU–US sovereignty contest",
@@ -1200,6 +1275,21 @@
       "jurisdiction": "Australia",
       "kind": "regulation",
       "summary": "After OpenAI breach, Australia targets AI ‘misaligned behaviour’ with tougher rules",
+      "summaryBy": "source"
+    },
+    {
+      "id": "0f09490767e4",
+      "track": "ai",
+      "title": "Fear of compliance, not compliance, is holding European AI back: Opsiocloud opens AI for business efficiency with compliance, training and follow-up as standard",
+      "url": "https://news.google.com/rss/articles/CBMiuwJBVV95cUxQeVRtTWNzME5QcXpPYWRZZ3p6ZmRtTlk3V1FWSkpJRnJxUnFsNFYyZ3U5SEFWU1czSy1lM0FIbDZIckVoNE1OaFc3emJHalBCXzFiY3dkMGYwcjFSY3JReU0wQmZFc1pXMEhUaWptN1ZZNUQ2OG1zdEQ0WE1ZelBYd0ZCTXhCdGw2bFlFVDA5M25KbEszdVNpcEdaNFJaNjQ3dzQxTEIwSFo5VkFPRW1rQ2pzNFljU2tjMGd0YlZGS0V5N3NFYzg1cmlnVGFqalNBcW1LN3NjWGVOeUFheEVqbGhUZTVPbHhtb3dEb1JBWnduSy1iSDRVX21UVFp6U0g1MVNnZm1SaTBTc1hpNHU4R2RYZm5CdnFPblhKc05ieV9mVFI3WnQ0N3FEVDVpVjBBUFRlQW90ZUxBV1k?oc=5",
+      "source": "markets.businessinsider.com",
+      "sourceType": "news",
+      "published": "2026-11-10",
+      "found": "2026-11-14",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "standard",
+      "summary": "Fear of compliance, not compliance, is holding European AI back: Opsiocloud opens AI for business efficiency with compliance, training and follow-up as standard",
       "summaryBy": "source"
     },
     {
