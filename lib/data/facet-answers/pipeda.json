@@ -1,0 +1,259 @@
+{
+  "lawId": "pipeda",
+  "answers": {
+    "lawful-basis.ground": {
+      "option": "consent-unless-exempt",
+      "says": "Consent is required for collecting, using or disclosing personal information unless an exception applies (s.7). The purpose must also be one a reasonable person would consider appropriate (s.5(3)).",
+      "citation": "Sch.1 Principle 4.3; PIPEDA s.5(3), s.7",
+      "quote": "The knowledge and consent of the individual are required for the collection, use, or disclosure of personal information, except where inappropriate"
+    },
+    "lawful-basis.legitimate-interests": {
+      "option": "no",
+      "says": "No. There is no legitimate-interests ground. Collection without knowledge or consent is allowed only in the cases listed in s.7(1).",
+      "citation": "PIPEDA s.7(1)",
+      "quote": "an organization may collect personal information without the knowledge or consent of the individual only if"
+    },
+    "consent.standard": {
+      "option": "implied-can-count",
+      "says": "Implied consent is generally appropriate where information is less sensitive. Express consent should generally be sought for sensitive information, a recommendation only (s.5(2)). Consent must be understandable to the person (s.6.1).",
+      "citation": "Sch.1 Principle 4.3.6; PIPEDA s.6.1",
+      "quote": "Implied consent would generally be appropriate when the information is less sensitive"
+    },
+    "consent.role": {
+      "option": "the-default-rule",
+      "ownTerm": "knowledge and consent",
+      "says": "Consent is the default rule: collection, use or disclosure needs the individual's knowledge and consent, with exceptions the Act lists (s.7, s.7.2, s.7.3, s.7.4 and others).",
+      "citation": "Sch.1 Principle 4.3.1",
+      "quote": "Consent is required for the collection of personal information and the subsequent use or disclosure of this information"
+    },
+    "consent.withdrawal": {
+      "option": "yes-with-limits",
+      "says": "Yes, but subject to legal or contractual restrictions and reasonable notice. The organisation must tell the person what withdrawing will mean.",
+      "citation": "Sch.1 Principle 4.3.8",
+      "quote": "An individual may withdraw consent at any time, subject to legal or contractual restrictions and reasonable notice"
+    },
+    "consent.separate": {
+      "option": "no",
+      "says": "No separate or express consent is required by law for higher-risk uses. Express consent should generally be sought for sensitive information, but that is a recommendation only (s.5(2)).",
+      "citation": "Sch.1 Principle 4.3.6",
+      "quote": "An organization should generally seek express consent when the information is likely to be considered sensitive"
+    },
+    "notice.timing": {
+      "option": "at-or-before-collection",
+      "says": "Purposes must be identified at or before collection (Sch.1 4.2). The organisation must make a reasonable effort to advise the person of the purposes (4.3.2). The wording on telling people at collection (4.2.3) is 'should'.",
+      "citation": "Sch.1 Principle 4.2",
+      "quote": "shall be identified by the organization at or before the time the information is collected"
+    },
+    "notice.content": {
+      "option": "purposes-and-recipients",
+      "says": "The basics: the types of information held and a general account of their use, how to get access, the accountable contact, and related organisations that get the data (Sch.1 4.8.2). No retention periods or rights list.",
+      "citation": "Sch.1 Principle 4.8.2",
+      "quote": "a description of the type of personal information held by the organization, including a general account of its use"
+    },
+    "access.right": {
+      "option": "copy-plus-details",
+      "says": "The person can get confirmation that data is held, access to it, and an account of its use and of the third parties it was disclosed to (Sch.1 4.9.1).",
+      "citation": "Sch.1 Principle 4.9.1",
+      "quote": "the organization shall provide an account of the use that has been made or is being made of this information"
+    },
+    "access.deadline": {
+      "option": "fixed-deadline",
+      "says": "Within 30 days of receiving the request (s.8(3)). The time may be extended by up to 30 more days in listed cases, with written notice (s.8(4)). A late response is a deemed refusal (s.8(5)).",
+      "citation": "PIPEDA s.8(3)",
+      "quote": "shall respond to a request with due diligence and in any case not later than thirty days after receipt of the request"
+    },
+    "deletion.right": {
+      "option": "duty-only",
+      "says": "No general right to have data deleted. Personal information shall be kept only as long as needed (Sch.1 4.5), and should be destroyed when no longer needed (4.5.3). Inaccurate data can be amended or deleted on challenge (4.9.5).",
+      "citation": "Sch.1 Principle 4.5",
+      "quote": "Personal information shall be retained only as long as necessary for the fulfilment of those purposes"
+    },
+    "deletion.pass-on": {
+      "option": "no",
+      "says": "No. The Act gives no right to have data deleted, so there is nothing to pass on. The nearest rule: after a successful correction, the amended information goes to third parties with access, where appropriate.",
+      "citation": "Sch.1 Principle 4.9.5",
+      "quote": "Where appropriate, the amended information shall be transmitted to third parties having access to the information in question"
+    },
+    "correction.right": {
+      "option": "yes",
+      "says": "Yes. If the person shows information is inaccurate or incomplete, the organisation must amend it as required, by correction, deletion or addition (Sch.1 4.9.5).",
+      "citation": "Sch.1 Principle 4.9.5",
+      "quote": "When an individual successfully demonstrates the inaccuracy or incompleteness of personal information, the organization shall amend the information as required"
+    },
+    "correction.pass-on": {
+      "option": "yes",
+      "says": "Yes, where appropriate: amended information must be sent to third parties that have access to the information in question (Sch.1 4.9.5).",
+      "citation": "Sch.1 Principle 4.9.5",
+      "quote": "Where appropriate, the amended information shall be transmitted to third parties having access to the information in question"
+    },
+    "portability.right": {
+      "option": "none",
+      "says": "No. The Act gives no right to move data to another organisation. The nearest rule: access must be given in a form that is generally understandable (Sch.1 4.9.4).",
+      "citation": "Sch.1 Principle 4.9.4",
+      "quote": "The requested information shall be provided or made available in a form that is generally understandable"
+    },
+    "optout.marketing": {
+      "option": "opt-in",
+      "says": "Consent is needed first (Sch.1 4.3.1) and can be withdrawn at any time (4.3.8). Consent may be implied, for example through an opt-out checkbox for sharing with others (4.3.7(b)). There is no marketing-specific rule.",
+      "citation": "Sch.1 Principle 4.3.1",
+      "quote": "Consent is required for the collection of personal information and the subsequent use or disclosure of this information"
+    },
+    "optout.sale": {
+      "option": "needs-consent-or-ground",
+      "says": "Passing data to others is a disclosure that needs consent (Sch.1 4.3.1) unless a listed exception applies (s.7(3)). The Act has no separate sale rule and no opt-out right.",
+      "citation": "Sch.1 Principle 4.3.1",
+      "quote": "Consent is required for the collection of personal information and the subsequent use or disclosure of this information"
+    },
+    "adm.protection": {
+      "option": "none",
+      "says": "The Act has no rule on decisions made only by automated means. The nearest rule: information used to decide about a person must be accurate enough to minimise inappropriate decisions (Sch.1 4.6.1).",
+      "citation": "Sch.1 Principle 4.6.1",
+      "quote": "to minimize the possibility that inappropriate information may be used to make a decision about the individual"
+    },
+    "sensitive.category": {
+      "option": "sensitivity-is-a-factor",
+      "says": "No fixed list. Sensitivity is a factor: medical and income records are almost always sensitive, but any information can be sensitive depending on the context (Sch.1 4.3.4).",
+      "citation": "Sch.1 Principle 4.3.4",
+      "quote": "any information can be sensitive, depending on the context"
+    },
+    "sensitive.rule": {
+      "option": "no-special-rule",
+      "says": "No separate rule for sensitive data. Sensitivity must be taken into account in choosing the form of consent (Sch.1 4.3.4). Express consent should generally be sought for it, a recommendation only (4.3.6).",
+      "citation": "Sch.1 Principle 4.3.4",
+      "quote": "In determining the form of consent to use, organizations shall take into account the sensitivity of the information"
+    },
+    "children.rule": {
+      "option": "someone-acts-for-child",
+      "says": "No age limit and no special children's rule. Consent can be given by an authorised representative, such as a legal guardian (Sch.1 4.3.6).",
+      "citation": "Sch.1 Principle 4.3.6",
+      "quote": "Consent can also be given by an authorized representative (such as a legal guardian or a person having power of attorney)"
+    },
+    "breach.regulator": {
+      "option": "yes-no-fixed-time",
+      "ownTerm": "breach of security safeguards",
+      "says": "Yes: a report to the Commissioner is due as soon as feasible after the organisation determines a breach has occurred, where it creates a real risk of significant harm (s.10.1(1), (2)).",
+      "citation": "PIPEDA s.10.1(2)",
+      "quote": "as soon as feasible after the organization determines that the breach has occurred"
+    },
+    "breach.individuals": {
+      "option": "yes-when-harm-likely",
+      "ownTerm": "real risk of significant harm",
+      "says": "Yes, where it is reasonable to believe the breach creates a real risk of significant harm to the individual. Notice must be direct, conspicuous and given as soon as feasible (s.10.1(3) to (6)).",
+      "citation": "PIPEDA s.10.1(3)",
+      "quote": "if it is reasonable in the circumstances to believe that the breach creates a real risk of significant harm to the individual"
+    },
+    "breach.records": {
+      "option": "yes",
+      "says": "Yes: every breach of security safeguards involving personal information under the organisation's control must be recorded, and the records must be given to the Commissioner on request (s.10.3).",
+      "citation": "PIPEDA s.10.3(1)",
+      "quote": "keep and maintain a record of every breach of security safeguards involving personal information under its control"
+    },
+    "dpo.officer": {
+      "option": "always",
+      "ownTerm": "designated individual accountable for compliance",
+      "says": "Yes, every organisation must designate one or more individuals accountable for its compliance, and make their identity known on request (Sch.1 4.1, 4.1.2).",
+      "citation": "Sch.1 Principle 4.1",
+      "quote": "and shall designate an individual or individuals who are accountable for the organization"
+    },
+    "dpo.local-representative": {
+      "option": "no",
+      "says": "No. The Act does not require an organisation based abroad to appoint a representative in Canada.",
+      "citation": "—"
+    },
+    "dpia.duty": {
+      "option": "no",
+      "says": "No. The Act has no duty to assess risks before a risky use of data. Breaches are assessed for real risk of significant harm after they occur (s.10.1(1)).",
+      "citation": "—"
+    },
+    "dpia.regulator": {
+      "option": "no",
+      "says": "No. The Act does not require the Commissioner to be consulted on, or sent, any risk assessment.",
+      "citation": "—"
+    },
+    "transfer.rule": {
+      "option": "stays-responsible",
+      "says": "Nothing is needed in advance. The organisation stays responsible for information it passes to a third party for processing, and must use contracts or other means to give comparable protection (Sch.1 4.1.3).",
+      "citation": "Sch.1 Principle 4.1.3",
+      "quote": "The organization shall use contractual or other means to provide a comparable level of protection while the information is being processed by a third party"
+    },
+    "transfer.tell-people": {
+      "option": "no",
+      "says": "No specific duty to tell people before their data goes abroad. The nearest rule: a new purpose must be identified, and consent obtained, before the information is used for it (Sch.1 4.2.4).",
+      "citation": "Sch.1 Principle 4.2.4",
+      "quote": "Unless the new purpose is required by law, the consent of the individual is required before information can be used for that purpose"
+    },
+    "localization.rule": {
+      "option": "no",
+      "says": "No. The Act does not require personal information to be stored inside Canada.",
+      "citation": "—"
+    },
+    "records.duty": {
+      "option": "policies-and-practices",
+      "says": "The purposes of collection must be documented (Sch.1 4.2.1), new purposes documented (4.5.1), and policies and practices implemented (4.1.4). No detailed record of each processing activity is required.",
+      "citation": "Sch.1 Principle 4.2.1",
+      "quote": "The organization shall document the purposes for which personal information is collected"
+    },
+    "vendor.contract": {
+      "option": "stays-responsible",
+      "says": "The organisation stays responsible for information a third party processes for it. It must use contractual or other means to give comparable protection while the information is being processed (Sch.1 4.1.3).",
+      "citation": "Sch.1 Principle 4.1.3",
+      "quote": "The organization shall use contractual or other means to provide a comparable level of protection while the information is being processed by a third party"
+    },
+    "vendor.direct-duties": {
+      "option": "no",
+      "says": "No duty is aimed at vendors as such. The organisation that hands data to a third party for processing stays responsible for it. A vendor is bound only where it is itself an organisation covered by the Act.",
+      "citation": "Sch.1 Principle 4.1.3",
+      "quote": "An organization is responsible for personal information in its possession or custody, including information that has been transferred to a third party for processing"
+    },
+    "security.duty": {
+      "option": "general-standard",
+      "says": "A general standard: personal information must be protected by safeguards appropriate to its sensitivity (Sch.1 4.7). The measures listed, such as passwords, encryption and need-to-know access, are examples that should be considered (4.7.3).",
+      "citation": "Sch.1 Principle 4.7",
+      "quote": "Personal information shall be protected by security safeguards appropriate to the sensitivity of the information"
+    },
+    "enforcement.fines": {
+      "option": "courts-only",
+      "says": "No. The Commissioner cannot fine. Knowingly breaching certain rules (breach reporting, breach records, whistleblower protection) is an offence prosecuted in court, with fines up to $10,000 or $100,000 (s.28).",
+      "citation": "PIPEDA s.28",
+      "quote": "an offence punishable on summary conviction and liable to a fine not exceeding $10,000"
+    },
+    "enforcement.private-action": {
+      "option": "limited",
+      "says": "Only after a complaint and the Commissioner's report (or a discontinued investigation), and only for matters listed in s.14(1). Damages are available from the Federal Court (s.16(c)).",
+      "citation": "PIPEDA s.14(1)",
+      "quote": "apply to the Court for a hearing in respect of any matter in respect of which the complaint was made"
+    }
+  },
+  "terms": {
+    "organisation": {
+      "term": "organization",
+      "citation": "PIPEDA s.4(1)",
+      "quote": "This Part applies to every organization in respect of personal information that"
+    },
+    "vendor": {
+      "term": "third party",
+      "citation": "Sch.1 Principle 4.1.3",
+      "quote": "information that has been transferred to a third party for processing"
+    },
+    "person": {
+      "term": "individual",
+      "citation": "PIPEDA s.2(1)",
+      "quote": "means information about an identifiable individual"
+    },
+    "data": {
+      "term": "personal information",
+      "citation": "PIPEDA s.3",
+      "quote": "rules to govern the collection, use and disclosure of personal information"
+    },
+    "sensitive": {
+      "term": "sensitive",
+      "citation": "Sch.1 Principle 4.3.4",
+      "quote": "almost always considered to be sensitive"
+    },
+    "regulator": {
+      "term": "Commissioner",
+      "citation": "PIPEDA s.2(1)",
+      "quote": "means the Privacy Commissioner appointed under section 53 of the"
+    }
+  }
+}

@@ -5,6 +5,7 @@ import { CoverageBadge } from "@/app/components/CoverageBadge";
 import { Disclaimer } from "@/app/components/Disclaimer";
 import { provenanceByLaw, STATUS_LABEL as VERIFY_LABEL } from "@/lib/data/verification";
 import { GapTraceDetails } from "@/app/components/GapTrace";
+import { LawCite } from "@/app/components/LawCite";
 import { traceFor } from "@/lib/gap-traces";
 import type { Strictness } from "@/lib/types";
 
@@ -165,7 +166,13 @@ function CategoryRows({
               )}
               {trace && <GapTraceDetails trace={trace} />}
             </td>
-            <td className="citation">{m ? m.citation : "—"}</td>
+            <td>
+              {m ? (
+                <LawCite lawId={law.id} citation={m.citation} ev={"m:" + req.id} finding={m.obligation} />
+              ) : (
+                <span className="citation">—</span>
+              )}
+            </td>
           </tr>
         );
       })}

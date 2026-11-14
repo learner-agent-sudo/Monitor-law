@@ -1,0 +1,545 @@
+{
+  "lawId": "pipeda",
+  "items": {
+    "f:lawful-basis.ground": {
+      "citation": "Sch.1 Principle 4.3; PIPEDA s.5(3), s.7",
+      "provision": "Schedule 1, clause 4.3",
+      "scope": "provision",
+      "before": "4.3 Principle 3 - Consent ",
+      "match": "The knowledge and consent of the individual are required for the collection, use, or disclosure of personal information, except where inappropriate.",
+      "after": " Note: In certain circumstances personal information can be collected, used, or disclosed without the knowledge and consent of the individual. For example, legal, medical, or security reasons may make it impossible or impractical to seek consent. When information is being collected for the detection and prevention of fraud or for law enforcement, seeking the consent of the individual might defeat the purpose of collecting the information. Seeking consent may be impossible or inappropriate when the individual is a minor, seriously ill, or mentally incapacitated. In addition, organizations that do not have a direct relationship with the individual may not always be able to seek consent. For example, seeking consent may be impractical for a charity or a direct-marketing firm that wishes to acquire a mailing list from another organization. In such cases, the organization providing the list would be expected to obtain consent before disclosing personal information.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:lawful-basis.legitimate-interests": {
+      "citation": "PIPEDA s.7(1)",
+      "provision": "Section 7",
+      "scope": "provision",
+      "before": "7 (1) For the purpose of clause 4.3 of Schedule 1, and despite the note that accompanies that clause, ",
+      "match": "an organization may collect personal information without the knowledge or consent of the individual only if",
+      "after": " (a) the collection is clearly in the interests of the individual and consent cannot be obtained in a timely way; (b) it is reasonable to expect that the collection with the knowledge or consent of the individual would compromise the availability or the accuracy of the information and the collection is reasonable for purposes related to investigating a breach of an agreement or a contravention of the laws of Canada",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:consent.standard": {
+      "citation": "Sch.1 Principle 4.3.6; PIPEDA s.6.1",
+      "provision": "Schedule 1, clause 4.3.6",
+      "scope": "provision",
+      "before": "4.3.6 The way in which an organization seeks consent may vary, depending on the circumstances and the type of information collected. An organization should generally seek express consent when the information is likely to be considered sensitive. ",
+      "match": "Implied consent would generally be appropriate when the information is less sensitive.",
+      "after": " Consent can also be given by an authorized representative (such as a legal guardian or a person having power of attorney).",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:consent.role": {
+      "citation": "Sch.1 Principle 4.3.1",
+      "provision": "Schedule 1, clause 4.3.1",
+      "scope": "provision",
+      "before": "4.3.1 ",
+      "match": "Consent is required for the collection of personal information and the subsequent use or disclosure of this information.",
+      "after": " Typically, an organization will seek consent for the use or disclosure of the information at the time of collection. In certain circumstances, consent with respect to use or disclosure may be sought after the information has been collected but before use (for example, when an organization wants to use information for a purpose not previously identified).",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:consent.withdrawal": {
+      "citation": "Sch.1 Principle 4.3.8",
+      "provision": "Schedule 1, clause 4.3.8",
+      "scope": "provision",
+      "before": "4.3.8 ",
+      "match": "An individual may withdraw consent at any time, subject to legal or contractual restrictions and reasonable notice.",
+      "after": " The organization shall inform the individual of the implications of such withdrawal.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:consent.separate": {
+      "citation": "Sch.1 Principle 4.3.6",
+      "provision": "Schedule 1, clause 4.3.6",
+      "scope": "provision",
+      "before": "4.3.6 The way in which an organization seeks consent may vary, depending on the circumstances and the type of information collected. ",
+      "match": "An organization should generally seek express consent when the information is likely to be considered sensitive.",
+      "after": " Implied consent would generally be appropriate when the information is less sensitive. Consent can also be given by an authorized representative (such as a legal guardian or a person having power of attorney).",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:notice.timing": {
+      "citation": "Sch.1 Principle 4.2",
+      "provision": "Schedule 1, clause 4.2",
+      "scope": "provision",
+      "before": "4.2 Principle 2 — Identifying Purposes The purposes for which personal information is collected ",
+      "match": "shall be identified by the organization at or before the time the information is collected.",
+      "after": "",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:notice.content": {
+      "citation": "Sch.1 Principle 4.8.2",
+      "provision": "Schedule 1, clause 4.8.2",
+      "scope": "provision",
+      "before": "4.8.2 The information made available shall include (a) the name or title, and the address, of the person who is accountable for the organization’s policies and practices and to whom complaints or inquiries can be forwarded; (b) the means of gaining access to personal information held by the organization; (c) ",
+      "match": "a description of the type of personal information held by the organization, including a general account of its use;",
+      "after": " (d) a copy of any brochures or other information that explain the organization’s policies, standards, or codes; and (e) what personal information is made available to related organizations (e.g., subsidiaries).",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:access.right": {
+      "citation": "Sch.1 Principle 4.9.1",
+      "provision": "Schedule 1, clause 4.9.1",
+      "scope": "provision",
+      "before": "4.9.1 Upon request, an organization shall inform an individual whether or not the organization holds personal information about the individual. Organizations are encouraged to indicate the source of this information. The organization shall allow the individual access to this information. However, the organization may choose to make sensitive medical information available through a medical practitioner. In addition, ",
+      "match": "the organization shall provide an account of the use that has been made or is being made of this information",
+      "after": " and an account of the third parties to which it has been disclosed.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:access.deadline": {
+      "citation": "PIPEDA s.8(3)",
+      "provision": "Section 8",
+      "scope": "provision",
+      "before": "8 (1) A request under clause 4.9 of Schedule 1 must be made in writing. Assistance (2) An organization shall assist any individual who informs the organization that they need assistance in preparing a request to the organization. Time limit (3) An organization ",
+      "match": "shall respond to a request with due diligence and in any case not later than thirty days after receipt of the request.",
+      "after": " Extension of time limit (4) An organization may extend the time limit - (a) for a maximum of thirty days if (i) meeting the time limit would unreasonably interfere with the activities of the organization, or (ii) the time required to undertake any consultations necessary to respond to the request would make the time limit impracticable to meet; or (b) for the period that is necessary in order to be able to convert",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:deletion.right": {
+      "citation": "Sch.1 Principle 4.5",
+      "provision": "Schedule 1, clause 4.5",
+      "scope": "provision",
+      "before": "4.5 Principle 5 —Limiting Use, Disclosure, and Retention Personal information shall not be used or disclosed for purposes other than those for which it was collected, except with the consent of the individual or as required by law. ",
+      "match": "Personal information shall be retained only as long as necessary for the fulfilment of those purposes.",
+      "after": "",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:deletion.pass-on": {
+      "citation": "Sch.1 Principle 4.9.5",
+      "provision": "Schedule 1, clause 4.9.5",
+      "scope": "provision",
+      "before": "4.9.5 When an individual successfully demonstrates the inaccuracy or incompleteness of personal information, the organization shall amend the information as required. Depending upon the nature of the information challenged, amendment involves the correction, deletion, or addition of information. ",
+      "match": "Where appropriate, the amended information shall be transmitted to third parties having access to the information in question.",
+      "after": "",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:correction.right": {
+      "citation": "Sch.1 Principle 4.9.5",
+      "provision": "Schedule 1, clause 4.9.5",
+      "scope": "provision",
+      "before": "4.9.5 ",
+      "match": "When an individual successfully demonstrates the inaccuracy or incompleteness of personal information, the organization shall amend the information as required.",
+      "after": " Depending upon the nature of the information challenged, amendment involves the correction, deletion, or addition of information. Where appropriate, the amended information shall be transmitted to third parties having access to the information in question.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:correction.pass-on": {
+      "citation": "Sch.1 Principle 4.9.5",
+      "provision": "Schedule 1, clause 4.9.5",
+      "scope": "provision",
+      "before": "4.9.5 When an individual successfully demonstrates the inaccuracy or incompleteness of personal information, the organization shall amend the information as required. Depending upon the nature of the information challenged, amendment involves the correction, deletion, or addition of information. ",
+      "match": "Where appropriate, the amended information shall be transmitted to third parties having access to the information in question.",
+      "after": "",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:portability.right": {
+      "citation": "Sch.1 Principle 4.9.4",
+      "provision": "Schedule 1, clause 4.9.4",
+      "scope": "provision",
+      "before": "4.9.4 An organization shall respond to an individual’s request within a reasonable time and at minimal or no cost to the individual. ",
+      "match": "The requested information shall be provided or made available in a form that is generally understandable.",
+      "after": " For example, if the organization uses abbreviations or codes to record information, an explanation shall be provided.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:optout.marketing": {
+      "citation": "Sch.1 Principle 4.3.1",
+      "provision": "Schedule 1, clause 4.3.1",
+      "scope": "provision",
+      "before": "4.3.1 ",
+      "match": "Consent is required for the collection of personal information and the subsequent use or disclosure of this information.",
+      "after": " Typically, an organization will seek consent for the use or disclosure of the information at the time of collection. In certain circumstances, consent with respect to use or disclosure may be sought after the information has been collected but before use (for example, when an organization wants to use information for a purpose not previously identified).",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:optout.sale": {
+      "citation": "Sch.1 Principle 4.3.1",
+      "provision": "Schedule 1, clause 4.3.1",
+      "scope": "provision",
+      "before": "4.3.1 ",
+      "match": "Consent is required for the collection of personal information and the subsequent use or disclosure of this information.",
+      "after": " Typically, an organization will seek consent for the use or disclosure of the information at the time of collection. In certain circumstances, consent with respect to use or disclosure may be sought after the information has been collected but before use (for example, when an organization wants to use information for a purpose not previously identified).",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:adm.protection": {
+      "citation": "Sch.1 Principle 4.6.1",
+      "provision": "Schedule 1, clause 4.6.1",
+      "scope": "provision",
+      "before": "4.6.1 The extent to which personal information shall be accurate, complete, and up-to-date will depend upon the use of the information, taking into account the interests of the individual. Information shall be sufficiently accurate, complete, and up-to-date ",
+      "match": "to minimize the possibility that inappropriate information may be used to make a decision about the individual.",
+      "after": "",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:sensitive.category": {
+      "citation": "Sch.1 Principle 4.3.4",
+      "provision": "Schedule 1, clause 4.3.4",
+      "scope": "provision",
+      "before": "4.3.4 The form of the consent sought by the organization may vary, depending upon the circumstances and the type of information. In determining the form of consent to use, organizations shall take into account the sensitivity of the information. Although some information (for example, medical records and income records) is almost always considered to be sensitive, ",
+      "match": "any information can be sensitive, depending on the context.",
+      "after": " For example, the names and addresses of subscribers to a newsmagazine would generally not be considered sensitive information. However, the names and addresses of subscribers to some special-interest magazines might be considered sensitive.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:sensitive.rule": {
+      "citation": "Sch.1 Principle 4.3.4",
+      "provision": "Schedule 1, clause 4.3.4",
+      "scope": "provision",
+      "before": "4.3.4 The form of the consent sought by the organization may vary, depending upon the circumstances and the type of information. ",
+      "match": "In determining the form of consent to use, organizations shall take into account the sensitivity of the information.",
+      "after": " Although some information (for example, medical records and income records) is almost always considered to be sensitive, any information can be sensitive, depending on the context. For example, the names and addresses of subscribers to a newsmagazine would generally not be considered sensitive information. However, the names and addresses of subscribers to some special-interest magazines might be considered sensitive.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:children.rule": {
+      "citation": "Sch.1 Principle 4.3.6",
+      "provision": "Schedule 1, clause 4.3.6",
+      "scope": "provision",
+      "before": "4.3.6 The way in which an organization seeks consent may vary, depending on the circumstances and the type of information collected. An organization should generally seek express consent when the information is likely to be considered sensitive. Implied consent would generally be appropriate when the information is less sensitive. ",
+      "match": "Consent can also be given by an authorized representative (such as a legal guardian or a person having power of attorney).",
+      "after": "",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:breach.regulator": {
+      "citation": "PIPEDA s.10.1(2)",
+      "provision": "Section 10.1",
+      "scope": "provision",
+      "before": "10.1 (1) An organization shall report to the Commissioner any breach of security safeguards involving personal information under its control if it is reasonable in the circumstances to believe that the breach creates a real risk of significant harm to an individual. Report requirements (2) The report shall contain the prescribed information and shall be made in the prescribed form and manner ",
+      "match": "as soon as feasible after the organization determines that the breach has occurred.",
+      "after": " Notification to individual (3) Unless otherwise prohibited by law, an organization shall notify an individual of any breach of security safeguards involving the individual’s personal information under the organization’s control if it is reasonable in the circumstances to believe that the breach creates a real risk of significant harm to the individual. Contents of notification (4) The notification shall contain",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:breach.individuals": {
+      "citation": "PIPEDA s.10.1(3)",
+      "provision": "Section 10.1",
+      "scope": "provision",
+      "before": "The report shall contain the prescribed information and shall be made in the prescribed form and manner as soon as feasible after the organization determines that the breach has occurred. Notification to individual (3) Unless otherwise prohibited by law, an organization shall notify an individual of any breach of security safeguards involving the individual’s personal information under the organization’s control ",
+      "match": "if it is reasonable in the circumstances to believe that the breach creates a real risk of significant harm to the individual.",
+      "after": " Contents of notification (4) The notification shall contain sufficient information to allow the individual to understand the significance to them of the breach and to take steps, if any are possible, to reduce the risk of harm that could result from it or to mitigate that harm. It shall also contain any other prescribed information. Form and manner (5) The notification shall be conspicuous and shall be given",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:breach.records": {
+      "citation": "PIPEDA s.10.3(1)",
+      "provision": "Section 10.3",
+      "scope": "provision",
+      "before": "10.3 (1) An organization shall, in accordance with any prescribed requirements, ",
+      "match": "keep and maintain a record of every breach of security safeguards involving personal information under its control.",
+      "after": " Provision to Commissioner (2) An organization shall, on request, provide the Commissioner with access to, or a copy of, a record. 2015, c. 32, s. 10 DIVISION 2Remedies Filing of Complaints Contravention",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:dpo.officer": {
+      "citation": "Sch.1 Principle 4.1",
+      "provision": "Schedule 1, clause 4.1",
+      "scope": "provision",
+      "before": "4.1 Principle 1 — Accountability An organization is responsible for personal information under its control ",
+      "match": "and shall designate an individual or individuals who are accountable for the organization’",
+      "after": "s compliance with the following principles.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:transfer.rule": {
+      "citation": "Sch.1 Principle 4.1.3",
+      "provision": "Schedule 1, clause 4.1.3",
+      "scope": "provision",
+      "before": "4.1.3 An organization is responsible for personal information in its possession or custody, including information that has been transferred to a third party for processing. ",
+      "match": "The organization shall use contractual or other means to provide a comparable level of protection while the information is being processed by a third party.",
+      "after": "",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:transfer.tell-people": {
+      "citation": "Sch.1 Principle 4.2.4",
+      "provision": "Schedule 1, clause 4.2.4",
+      "scope": "provision",
+      "before": "4.2.4 When personal information that has been collected is to be used for a purpose not previously identified, the new purpose shall be identified prior to use. ",
+      "match": "Unless the new purpose is required by law, the consent of the individual is required before information can be used for that purpose.",
+      "after": " For an elaboration on consent, please refer to the Consent principle (Clause 4.3).",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:records.duty": {
+      "citation": "Sch.1 Principle 4.2.1",
+      "provision": "Schedule 1, clause 4.2.1",
+      "scope": "provision",
+      "before": "4.2.1 ",
+      "match": "The organization shall document the purposes for which personal information is collected",
+      "after": " in order to comply with the Openness principle (Clause 4.8) and the Individual Access principle (Clause 4.9).",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:vendor.contract": {
+      "citation": "Sch.1 Principle 4.1.3",
+      "provision": "Schedule 1, clause 4.1.3",
+      "scope": "provision",
+      "before": "4.1.3 An organization is responsible for personal information in its possession or custody, including information that has been transferred to a third party for processing. ",
+      "match": "The organization shall use contractual or other means to provide a comparable level of protection while the information is being processed by a third party.",
+      "after": "",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:vendor.direct-duties": {
+      "citation": "Sch.1 Principle 4.1.3",
+      "provision": "Schedule 1, clause 4.1.3",
+      "scope": "provision",
+      "before": "4.1.3 ",
+      "match": "An organization is responsible for personal information in its possession or custody, including information that has been transferred to a third party for processing.",
+      "after": " The organization shall use contractual or other means to provide a comparable level of protection while the information is being processed by a third party.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:security.duty": {
+      "citation": "Sch.1 Principle 4.7",
+      "provision": "Schedule 1, clause 4.7",
+      "scope": "provision",
+      "before": "4.7 Principle 7 — Safeguards ",
+      "match": "Personal information shall be protected by security safeguards appropriate to the sensitivity of the information.",
+      "after": "",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:enforcement.fines": {
+      "citation": "PIPEDA s.28",
+      "provision": "Section 28",
+      "scope": "provision",
+      "before": "28 Every organization that knowingly contravenes subsection 8(8), section 10.1 or subsection 10.3(1) or 27.1(1) or that obstructs the Commissioner or the Commissioner’s delegate in the investigation of a complaint or in conducting an audit is guilty of (a) ",
+      "match": "an offence punishable on summary conviction and liable to a fine not exceeding $10,000;",
+      "after": " or (b) an indictable offence and liable to a fine not exceeding $100,000. 2000, c. 5, s. 28 2015, c. 32, s. 24 Review of Part by parliamentary committee \\*29 (1) The administration of this Part shall, every five years after this Part comes into force, be reviewed by the committee of the House of Commons, or of both Houses of Parliament, that may be designated or established by Parliament for that purpose. \\*\\[Note: Part 1 in force January 1, 2001, _see_ SI/2000-29.\\] Review and report (2) The committee shall undertake a review of the provisions and operation of this Part and shall, within a year after the review is undertaken or within any further period that the House of Commons may authorize, submit a report to Parliament that includes a statement of any changes to this Part or its administration that the committee recommends. DIVISION 5Transitional Provisions Application",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:enforcement.private-action": {
+      "citation": "PIPEDA s.14(1)",
+      "provision": "Section 14",
+      "scope": "provision",
+      "before": "14 (1) A complainant may, after receiving the Commissioner’s report or being notified under subsection 12.2(3) that the investigation of the complaint has been discontinued, ",
+      "match": "apply to the Court for a hearing in respect of any matter in respect of which the complaint was made,",
+      "after": " or that is referred to in the Commissioner’s report, and that is referred to in clause 4.1.3, 4.2, 4.3.3, 4.4, 4.6, 4.7 or 4.8 of Schedule 1, in clause 4.3, 4.5 or 4.9 of that Schedule as modified or clarified by Division 1 or 1.1, in subsection 5(3) or 8(6) or (7), in section 10 or in Division 1.1. Time for application (2) A complainant shall make an application within one year after the report or notification is sent or within any longer period that the Court may, either before or after the expiry of that year, allow. For greater certainty (3) For greater certainty, subsections (1) and (2) apply in the same manner to complaints referred to in subsection 11(2) as to complaints referred to in subsection 11(1). 2000, c. 5, s. 14 2010, c. 23, s. 85 2015, c. 32, s. 13 Commissioner may apply or appear",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "t:organisation": {
+      "citation": "PIPEDA s.4(1)",
+      "provision": "Section 4",
+      "scope": "provision",
+      "before": "4 (1) ",
+      "match": "This Part applies to every organization in respect of personal information that",
+      "after": " (a) the organization collects, uses or discloses in the course of commercial activities; or (b) is about an employee of, or an applicant for employment with, the organization and that the organization collects, uses or discloses in connection with the operation of a federal work, undertaking or business. Application (1.1) This Part applies to an organization set out in column 1 of Schedule 4 in respect of personal",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "t:vendor": {
+      "citation": "Sch.1 Principle 4.1.3",
+      "provision": "Schedule 1, clause 4.1.3",
+      "scope": "provision",
+      "before": "4.1.3 An organization is responsible for personal information in its possession or custody, including ",
+      "match": "information that has been transferred to a third party for processing.",
+      "after": " The organization shall use contractual or other means to provide a comparable level of protection while the information is being processed by a third party.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "t:person": {
+      "citation": "PIPEDA s.2(1)",
+      "provision": "Section 2",
+      "scope": "provision",
+      "before": "or any bodily substance of the individual or information derived from the testing or examination of a body part or bodily substance of the individual; (d) information that is collected in the course of providing health services to the individual; or (e) information that is collected incidentally to the provision of health services to the individual. (_renseignement personnel sur la santé_) _personal information_ ",
+      "match": "means information about an identifiable individual.",
+      "after": " (_renseignement personnel_) _prescribed_ means prescribed by regulation. (_Version anglaise seulement_) _record_ includes any correspondence, memorandum, book, plan, map, drawing, diagram, pictorial or graphic work, photograph, film, microform, sound recording, videotape, machine-readable record and any other documentary material, regardless of physical form or characteristics, and any copy of any of those things.",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "t:data": {
+      "citation": "PIPEDA s.3",
+      "provision": "Section 3",
+      "scope": "provision",
+      "before": "3 The purpose of this Part is to establish, in an era in which technology increasingly facilitates the circulation and exchange of information, ",
+      "match": "rules to govern the collection, use and disclosure of personal information",
+      "after": " in a manner that recognizes the right of privacy of individuals with respect to their personal information and the need of organizations to collect, use or disclose personal information for purposes that a reasonable person would consider appropriate in the circumstances. Application Application",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "t:sensitive": {
+      "citation": "Sch.1 Principle 4.3.4",
+      "provision": "Schedule 1, clause 4.3.4",
+      "scope": "provision",
+      "before": "4.3.4 The form of the consent sought by the organization may vary, depending upon the circumstances and the type of information. In determining the form of consent to use, organizations shall take into account the sensitivity of the information. Although some information (for example, medical records and income records) is ",
+      "match": "almost always considered to be sensitive,",
+      "after": " any information can be sensitive, depending on the context. For example, the names and addresses of subscribers to a newsmagazine would generally not be considered sensitive information. However, the names and addresses of subscribers to some special-interest magazines might be considered sensitive.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "t:regulator": {
+      "citation": "PIPEDA s.2(1)",
+      "provision": "Section 2",
+      "scope": "provision",
+      "before": "assets; and (f) any other prescribed arrangement between two or more organizations to conduct a business activity. (_transaction commerciale_) _commercial activity_ means any particular transaction, act or conduct or any regular course of conduct that is of a commercial character, including the selling, bartering or leasing of donor, membership or other fundraising lists. (_activité commerciale_) _Commissioner_ ",
+      "match": "means the Privacy Commissioner appointed under section 53 of the",
+      "after": " _Privacy Act_. (_commissaire_) _Court_ means the Federal Court. (_Cour_) _federal work, undertaking or business_ means any work, undertaking or business that is within the legislative authority of Parliament. It includes - (a) a work, undertaking or business that is operated or carried on for or in connection with navigation and shipping, whether inland or maritime, including the operation of ships and",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:lawful-basis": {
+      "citation": "PIPEDA s.3, s.5(3); Sch.1 Principle 4.3",
+      "provision": "Section 3",
+      "scope": "provision",
+      "before": "3 The purpose of this Part is to establish, in an era in which technology increasingly facilitates the circulation and exchange of information, rules to govern the collection, use and disclosure of personal information in a manner that recognizes the right of privacy of individuals with respect to their personal information and the need of organizations to collect, use or disclose personal information ",
+      "match": "for purposes that a reasonable person would consider appropriate in the circumstances.",
+      "after": " Application Application",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:consent": {
+      "citation": "Sch.1 Principle 4.3 (Consent)",
+      "provision": "Schedule 1, clause 4.3",
+      "scope": "provision",
+      "before": "4.3 Principle 3 - Consent ",
+      "match": "The knowledge and consent of the individual are required for the collection, use, or disclosure of personal information, except where inappropriate.",
+      "after": " Note: In certain circumstances personal information can be collected, used, or disclosed without the knowledge and consent of the individual. For example, legal, medical, or security reasons may make it impossible or impractical to seek consent. When information is being collected for the detection and prevention of fraud or for law enforcement, seeking the consent of the individual might defeat the purpose of collecting the information. Seeking consent may be impossible or inappropriate when the individual is a minor, seriously ill, or mentally incapacitated. In addition, organizations that do not have a direct relationship with the individual may not always be able to seek consent. For example, seeking consent may be impractical for a charity or a direct-marketing firm that wishes to acquire a mailing list from another organization. In such cases, the organization providing the list would be expected to obtain consent before disclosing personal information.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:notice-transparency": {
+      "citation": "Sch.1 Principle 4.8 (Openness)",
+      "provision": "Schedule 1, clause 4.8",
+      "scope": "provision",
+      "before": "4.8 Principle 8 — Openness ",
+      "match": "An organization shall make readily available to individuals specific information about its policies and practices relating to the management of personal information.",
+      "after": "",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:rights-access": {
+      "citation": "Sch.1 Principle 4.9 (Individual Access)",
+      "provision": "Schedule 1, clause 4.9",
+      "scope": "provision",
+      "before": "4.9 Principle 9 — Individual Access ",
+      "match": "Upon request, an individual shall be informed of the existence, use, and disclosure of his or her personal information and shall be given access to that information.",
+      "after": " An individual shall be able to challenge the accuracy and completeness of the information and have it amended as appropriate. Note: In certain situations, an organization may not be able to provide access to all the personal information it holds about an individual. Exceptions to the access requirement should be limited and specific. The reasons for denying access should be provided to the individual upon request. Exceptions may include information that is prohibitively costly to provide, information that contains references to other individuals, information that cannot be disclosed for legal, security, or commercial proprietary reasons, and information that is subject to solicitor-client or litigation privilege.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:rights-deletion": {
+      "citation": "Sch.1 Principle 4.5.3",
+      "provision": "Schedule 1, clause 4.5.3",
+      "scope": "provision",
+      "before": "4.5.3 ",
+      "match": "Personal information that is no longer required to fulfil the identified purposes should be destroyed, erased, or made anonymous.",
+      "after": " Organizations shall develop guidelines and implement procedures to govern the destruction of personal information.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:rights-correction": {
+      "citation": "Sch.1 Principle 4.9.5",
+      "provision": "Schedule 1, clause 4.9.5",
+      "scope": "provision",
+      "before": "4.9.5 ",
+      "match": "When an individual successfully demonstrates the inaccuracy or incompleteness of personal information, the organization shall amend the information as required.",
+      "after": " Depending upon the nature of the information challenged, amendment involves the correction, deletion, or addition of information. Where appropriate, the amended information shall be transmitted to third parties having access to the information in question.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:rights-optout-sale": {
+      "citation": "Sch.1 Principle 4.3.8",
+      "provision": "Schedule 1, clause 4.3.8",
+      "scope": "provision",
+      "before": "4.3.8 ",
+      "match": "An individual may withdraw consent at any time, subject to legal or contractual restrictions and reasonable notice.",
+      "after": " The organization shall inform the individual of the implications of such withdrawal.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:sensitive-data": {
+      "citation": "Sch.1 Principle 4.3.4",
+      "provision": "Schedule 1, clause 4.3.4",
+      "scope": "provision",
+      "before": "4.3.4 The form of the consent sought by the organization may vary, depending upon the circumstances and the type of information. ",
+      "match": "In determining the form of consent to use, organizations shall take into account the sensitivity of the information.",
+      "after": " Although some information (for example, medical records and income records) is almost always considered to be sensitive, any information can be sensitive, depending on the context. For example, the names and addresses of subscribers to a newsmagazine would generally not be considered sensitive information. However, the names and addresses of subscribers to some special-interest magazines might be considered sensitive.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:breach-notification": {
+      "citation": "PIPEDA s.10.1",
+      "provision": "Section 10.1",
+      "scope": "provision",
+      "before": "10.1 (1) ",
+      "match": "An organization shall report to the Commissioner any breach of security safeguards involving personal information under its control if it is reasonable in the circumstances to believe that the breach creates a real risk of significant harm to an individual.",
+      "after": " Report requirements (2) The report shall contain the prescribed information and shall be made in the prescribed form and manner as soon as feasible after the organization determines that the breach has occurred. Notification to individual (3) Unless otherwise prohibited by law, an organization shall notify an individual of any breach of security safeguards involving the individual’s personal information under the",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:dpo-representative": {
+      "citation": "Sch.1 Principle 4.1 (Accountability)",
+      "provision": "Schedule 1, clause 4.1",
+      "scope": "provision",
+      "before": "4.1 Principle 1 — Accountability ",
+      "match": "An organization is responsible for personal information under its control and shall designate an individual or individuals who are accountable for the organization’",
+      "after": "s compliance with the following principles.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:cross-border-transfer": {
+      "citation": "OPC transfer guidelines; Principle 4.1.3",
+      "provision": "Schedule 1, clause 4.1.3",
+      "scope": "provision",
+      "before": "4.1.3 An organization is responsible for personal information in its possession or custody, including information that has been transferred to a third party for processing. ",
+      "match": "The organization shall use contractual or other means to provide a comparable level of protection while the information is being processed by a third party.",
+      "after": "",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:records-processing": {
+      "citation": "PIPEDA s.10.3",
+      "provision": "Section 10.3",
+      "scope": "provision",
+      "before": "10.3 (1) ",
+      "match": "An organization shall, in accordance with any prescribed requirements, keep and maintain a record of every breach of security safeguards involving personal information under its control.",
+      "after": " Provision to Commissioner (2) An organization shall, on request, provide the Commissioner with access to, or a copy of, a record. 2015, c. 32, s. 10 DIVISION 2Remedies Filing of Complaints Contravention",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:vendor-processor": {
+      "citation": "Sch.1 Principle 4.1.3",
+      "provision": "Schedule 1, clause 4.1.3",
+      "scope": "provision",
+      "before": "4.1.3 ",
+      "match": "An organization is responsible for personal information in its possession or custody, including information that has been transferred to a third party for processing.",
+      "after": " The organization shall use contractual or other means to provide a comparable level of protection while the information is being processed by a third party.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:security": {
+      "citation": "Sch.1 Principle 4.7 (Safeguards)",
+      "provision": "Schedule 1, clause 4.7",
+      "scope": "provision",
+      "before": "4.7 Principle 7 — Safeguards ",
+      "match": "Personal information shall be protected by security safeguards appropriate to the sensitivity of the information.",
+      "after": "",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:enforcement-penalties": {
+      "citation": "PIPEDA ss.14–16",
+      "provision": "Section 16",
+      "scope": "provision",
+      "before": "16 ",
+      "match": "The Court may, in addition to any other remedies it may give,",
+      "after": " (a) order an organization to correct its practices in order to comply with Divisions 1 and 1.1; (b) order an organization to publish a notice of any action taken or proposed to be taken to correct its practices, whether or not ordered to correct them under paragraph (a); and (c) award damages to the complainant, including damages for any humiliation that the complainant has suffered. 2000, c. 5, s. 16 2015, c. 32, s. 14 Summary hearings",
+      "cutStart": false,
+      "cutEnd": false
+    }
+  }
+}

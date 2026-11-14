@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { laws, lawsById, jurisdictionsById, requirements, requirementCategories } from "@/lib/data";
 import { analyzeGap, aggregateByJurisdiction } from "@/lib/gap";
 import { CoverageBadge } from "./CoverageBadge";
+import { LawCite } from "./LawCite";
 import { FILL_BASE, FILL_COVERED, type MapMarker } from "./WorldMap";
 import type { Strictness } from "@/lib/types";
 
@@ -31,6 +32,7 @@ const COUNTRY_JURISDICTION: Record<string, string> = {
   "United States of America": "us-ca",
   Canada: "ca",
   China: "cn",
+  "South Africa": "za",
   ...Object.fromEntries(EU_MEMBERS.map((c) => [c, "eu"])),
 };
 
@@ -41,6 +43,7 @@ const JURISDICTION_COUNTRIES: Record<string, string[]> = {
   "us-ca": ["United States of America"],
   ca: ["Canada"],
   cn: ["China"],
+  za: ["South Africa"],
   "ca-qc": [],
   hk: [],
 };
@@ -63,6 +66,7 @@ const NOTES: Record<string, string> = {
   "ca-qc": "Québec's provincial regime, the most GDPR-like law in North America.",
   cn: "China's national personal-information law, alongside the Cybersecurity and Data Security Laws.",
   hk: "Special Administrative Region of China with its own, comparatively light-touch data-protection law.",
+  za: "South Africa's comprehensive privacy law, in force since 1 July 2020 and enforced by the Information Regulator.",
 };
 
 const STATUS_LABEL: Record<string, string> = {
@@ -230,6 +234,31 @@ function Comparison({
   gap: ReturnType<typeof analyzeGap> | null;
   onSwap: () => void;
 }) {
+  // The "In substance" column only makes sense for exactly two jurisdictions:
+  // the verdict runs from the first selected to the second, as the callout says.
+  const showSubstance = ids.length === 2 && gap !== null;
+  // A row flagged for a second look reads as such, whatever its points say.
+  const substanceByReq: Record<string, string> = gap
+    ? Object.fromEntries(
+        gap.comparisons.map((c) => [c.requirement.id, c.needsSecondLook ? "second-look" : c.verdict]),
+      )
+    : {};
+  const verdictChip = (verdict: string | undefined) => {
+    if (!gap || !verdict) return null;
+    const target = gap.target.name;
+    const chip: Record<string, { cls: string; text: string }> = {
+      more: { cls: "rel-more", text: `${target} asks for more` },
+      mixed: { cls: "rel-more", text: `${target} asks for more` },
+      less: { cls: "rel-less", text: `${target} asks for less` },
+      same: { cls: "rel-same", text: "Same in substance" },
+      different: { cls: "rel-different", text: "Different approach" },
+      neither: { cls: "rel-unknown", text: "Neither deals with this" },
+      "second-look": { cls: "rel-second", text: "Worth a second look" },
+    };
+    const c = chip[verdict];
+    return c ? <span className={`rel-chip ${c.cls}`}>{c.text}</span> : null;
+  };
+
   return (
     <section className="detail-section">
       <h2 className="detail-title">Comparing {ids.length} jurisdictions</h2>
@@ -256,13 +285,31 @@ function Comparison({
           </div>
           {gap.gaps.length > 0 ? (
             <div className="gap-list">
-              {gap.gaps.map((g) => (
-                <div key={g.requirement.id} className="gap-row">
-                  <div className="gap-req">{g.requirement.name}</div>
-                  <div className="gap-oblig">{g.targetObligation}</div>
-                  <div className="citation">{g.targetCitation}</div>
-                </div>
-              ))}
+              {gap.gaps.map((g) => {
+                const more = g.points.filter((p) => p.relation === "more");
+                return (
+                  <div key={g.requirement.id} className="gap-row">
+                    <div className="gap-req">{g.requirement.name}</div>
+                    <div className="gap-oblig">
+                      {more.length > 0
+                        ? `More on: ${more.map((p) => p.label).join("; ")}`
+                        : g.targetObligation}
+                    </div>
+                    <div>
+                      {g.targetLawId ? (
+                        <LawCite
+                          lawId={g.targetLawId}
+                          citation={g.targetCitationRaw}
+                          ev={"m:" + g.requirement.id}
+                          finding={g.targetObligation}
+                        />
+                      ) : (
+                        <span className="citation">{g.targetCitation}</span>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           ) : (
             <p className="detail-note" style={{ margin: 0 }}>
@@ -285,6 +332,7 @@ function Comparison({
                   {jurisdictionsById[id].flag} {jurisdictionsById[id].name}
                 </th>
               ))}
+              {showSubstance && <th>In substance</th>}
             </tr>
           </thead>
           <tbody>
@@ -292,7 +340,7 @@ function Comparison({
               <Fragment key={category}>
                 <tr>
                   <td
-                    colSpan={1 + ids.length}
+                    colSpan={1 + ids.length + (showSubstance ? 1 : 0)}
                     style={{
                       background: "var(--bg)",
                       color: "var(--text-faint)",
@@ -320,6 +368,7 @@ function Comparison({
                           </td>
                         );
                       })}
+                      {showSubstance && <td>{verdictChip(substanceByReq[req.id])}</td>}
                     </tr>
                   ))}
               </Fragment>

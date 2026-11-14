@@ -1,48 +1,106 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { jurisdictions } from "@/lib/data";
-import { analyzeGap } from "@/lib/gap";
-import { CoverageBadge } from "@/app/components/CoverageBadge";
+import { analyzeGap, type RequirementComparison } from "@/lib/gap";
 import { Disclaimer } from "@/app/components/Disclaimer";
-import { GapTraceDetails } from "@/app/components/GapTrace";
-import { tracesFor, understatedBy } from "@/lib/gap-traces";
+import { GapCard, type GapMode } from "@/app/components/GapCard";
+import { TermsTable } from "@/app/components/TermsTable";
+import { usePreloadEvidence } from "@/lib/evidence";
 
-/**
- * Marks a score that is correct but reads as less than it is.
- *
- * A jurisdiction can impose nothing under one requirement while constraining
- * the same ground firmly under its neighbour — the GDPR requires no storage
- * location yet lets data leave the EEA only on Chapter V's conditions. Left
- * unmarked, that 0 sits beside California's genuine nil and says the opposite
- * of the truth.
- */
-function Understated({ lawIds, requirementId }: { lawIds: string[]; requirementId: string }) {
-  const handled = understatedBy(lawIds, requirementId);
-  if (!handled.length) return null;
+const DEFAULT_SOURCE = "ca"; // "I comply with Canada"
+const DEFAULT_TARGET = "cn"; // "...gap to China?"
+const KNOWN_IDS = new Set(jurisdictions.map((j) => j.id));
+
+/** A list of cards for one group of requirements. */
+function CardList({
+  items,
+  mode,
+  sourceName,
+  targetName,
+}: {
+  items: RequirementComparison[];
+  mode: GapMode;
+  sourceName: string;
+  targetName: string;
+}) {
   return (
-    <span className="understated">
-      constrained under {handled.map((h) => h.name).join(" and ")}
-    </span>
+    <div className="gap-list">
+      {items.map((c) => (
+        <GapCard
+          key={c.requirement.id}
+          c={c}
+          mode={mode}
+          sourceName={sourceName}
+          targetName={targetName}
+        />
+      ))}
+    </div>
+  );
+}
+
+/** A long tail of requirements sits in a disclosure: open when short, closed when long. */
+function Collapsible({
+  count,
+  children,
+}: {
+  count: number;
+  children: ReactNode;
+}) {
+  return (
+    <details className="cmp-section" open={count <= 4}>
+      <summary>
+        Show {count} {count === 1 ? "requirement" : "requirements"}
+      </summary>
+      {children}
+    </details>
   );
 }
 
 export default function GapAnalysisPage() {
-  const [sourceId, setSourceId] = useState("ca"); // "I comply with Canada"
-  const [targetId, setTargetId] = useState("cn"); // "...gap to China?"
+  const [sourceId, setSourceId] = useState(DEFAULT_SOURCE);
+  const [targetId, setTargetId] = useState(DEFAULT_TARGET);
+  // The URL is read once on mount and written from then on. Until the read
+  // has happened, writing would overwrite the shared link with the defaults.
+  const [urlReady, setUrlReady] = useState(false);
+
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const from = params.get("from");
+      const to = params.get("to");
+      if (from && KNOWN_IDS.has(from)) setSourceId(from);
+      if (to && KNOWN_IDS.has(to)) setTargetId(to);
+    } catch {
+      // Keep the defaults when the URL cannot be read.
+    }
+    setUrlReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!urlReady) return;
+    try {
+      const query = `?from=${encodeURIComponent(sourceId)}&to=${encodeURIComponent(targetId)}`;
+      window.history.replaceState(null, "", query);
+    } catch {
+      // The page works without the shareable URL.
+    }
+  }, [urlReady, sourceId, targetId]);
 
   const result = useMemo(() => analyzeGap(sourceId, targetId), [sourceId, targetId]);
   const sameJurisdiction = sourceId === targetId;
+  // Load the law text for every law on both sides, so it is ready before the first hover.
+  usePreloadEvidence([
+    ...(result.comparisons[0]?.sourceLawIds ?? []),
+    ...(result.comparisons[0]?.targetLawIds ?? []),
+  ]);
+  const sourceName = result.source.name;
+  const targetName = result.target.name;
 
-  // Requirements where BOTH regimes are silent. Counting these as "already
-  // covered" would turn two absences into a reassurance, which is the exact
-  // error a gap-analysis tool must not make: nothing here says a duty does not
-  // exist elsewhere — in a sectoral statute, in guidance, or in contract.
-  const nilBoth = useMemo(() => result.covered.filter((c) => c.neitherAddresses), [result]);
-  const trulyCovered = useMemo(
-    () => result.covered.filter((c) => !c.neitherAddresses),
-    [result],
-  );
+  const swap = () => {
+    setSourceId(targetId);
+    setTargetId(sourceId);
+  };
 
   return (
     <>
@@ -50,9 +108,16 @@ export default function GapAnalysisPage() {
       <h1 className="page-title">Cross-jurisdiction gap analysis</h1>
       <p className="page-lead">
         Pick the regime you already comply with, then the regime you want to comply with. The tool
-        surfaces every obligation where the target demands <em>more or different</em> than your
-        current baseline — a prioritized list of gaps to close.
+        shows where the target asks for more than your current baseline, where it takes a different
+        approach, and where the two already line up.
       </p>
+      <div className="cmp-howto">
+        <strong>How to read this.</strong> Each requirement is broken into the points that are
+        actually compared in practice. Each law is placed on every point from its own text, with the
+        passage quoted, and two laws are then compared by what they require, not by the words they
+        use. Each card shows the target&apos;s position first and yours beside it; open &ldquo;All
+        points&rdquo; on a card for the full side-by-side table.
+      </div>
 
       <div className="controls">
         <div className="control">
@@ -65,7 +130,15 @@ export default function GapAnalysisPage() {
             ))}
           </select>
         </div>
-        <div className="arrow">→</div>
+        <button
+          type="button"
+          className="swap-btn"
+          aria-label="Swap the two jurisdictions"
+          title="Swap the two jurisdictions"
+          onClick={swap}
+        >
+          ⇄
+        </button>
         <div className="control">
           <label htmlFor="target">I want to comply with</label>
           <select id="target" value={targetId} onChange={(e) => setTargetId(e.target.value)}>
@@ -82,161 +155,139 @@ export default function GapAnalysisPage() {
         <p className="empty">Select two different jurisdictions to compare.</p>
       ) : (
         <>
-          <div className="stat-row">
-            <div className="stat gap">
+          <nav className="stat-row" aria-label="Jump to a group of requirements">
+            <a className="stat stat-link" data-group="gap" href="#sec-gaps">
               <div className="num">{result.gaps.length}</div>
-              <div className="lbl">
-                Gaps to close moving to {result.target.name}
-              </div>
-            </div>
-            <div className="stat covered">
-              <div className="num">{result.covered.length - nilBoth.length}</div>
-              <div className="lbl">Requirements already met or exceeded</div>
-            </div>
-            {nilBoth.length > 0 && (
-              <div className="stat">
-                <div className="num">{nilBoth.length}</div>
-                <div className="lbl">
-                  Neither regime addresses — silence on both sides, not coverage
-                </div>
-              </div>
+              <div className="lbl">Requirements where {targetName} asks for more</div>
+            </a>
+            {result.different.length > 0 && (
+              <a className="stat stat-link" data-group="different" href="#sec-different">
+                <div className="num">{result.different.length}</div>
+                <div className="lbl">Different approach: read both</div>
+              </a>
             )}
-          </div>
+            {result.secondLook.length > 0 && (
+              <a className="stat stat-link" data-group="second" href="#sec-second">
+                <div className="num">{result.secondLook.length}</div>
+                <div className="lbl">Worth a second look</div>
+              </a>
+            )}
+            <a className="stat stat-link" data-group="covered" href="#sec-covered">
+              <div className="num">{result.covered.length}</div>
+              <div className="lbl">Same in substance, or {sourceName} already asks for more</div>
+            </a>
+            {result.neither.length > 0 && (
+              <a className="stat stat-link" data-group="neither" href="#sec-neither">
+                <div className="num">{result.neither.length}</div>
+                <div className="lbl">Neither law deals with this</div>
+              </a>
+            )}
+          </nav>
+          <p className="gap-hint">
+            Hover or tap any § citation to read the law text it rests on.
+          </p>
 
-          <h2 className="section">
-            Gaps — where {result.target.name} demands more than {result.source.name}
+          <h2 className="section gap-section" id="sec-gaps">
+            Where {targetName} asks for more than {sourceName}
           </h2>
           {result.gaps.length === 0 ? (
             <p className="empty">
-              No additional obligations detected. Complying with {result.source.name} broadly meets
-              or exceeds {result.target.name} across the tracked requirements.
+              No additional obligations detected. Complying with {sourceName} broadly meets or
+              exceeds {targetName} across the tracked requirements.
             </p>
           ) : (
-            <div className="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th style={{ width: "20%" }}>Requirement</th>
-                    <th style={{ width: "13%" }}>Your baseline</th>
-                    <th style={{ width: "13%" }}>Target</th>
-                    <th>What the target additionally requires</th>
-                    <th style={{ width: "16%" }}>Citation</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {result.gaps.map((c) => (
-                    <tr key={c.requirement.id}>
-                      <td>
-                        <div className="req-name">{c.requirement.name}</div>
-                        <div className="req-cat">{c.requirement.category}</div>
-                      </td>
-                      <td>
-                        <CoverageBadge level={c.sourceStrictness} />
-                        <Understated lawIds={c.sourceLawIds} requirementId={c.requirement.id} />
-                      </td>
-                      <td>
-                        <CoverageBadge level={c.targetStrictness} />
-                        <Understated lawIds={c.targetLawIds} requirementId={c.requirement.id} />
-                      </td>
-                      <td style={{ color: "var(--text-muted)" }}>
-                        {c.targetObligation}
-                        {/* A gap is the difference between two scores, and where
-                            the baseline score rests on no quoted text it is the
-                            unevidenced half driving the conclusion. Show it. */}
-                        {!c.sourceQuoted &&
-                          tracesFor(c.sourceLawIds, c.requirement.id).map((t) => (
-                            <GapTraceDetails key={t.lawId} trace={t} showLaw />
-                          ))}
-                      </td>
-                      <td className="citation">{c.targetCitation}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <CardList
+              items={result.gaps}
+              mode="gap"
+              sourceName={sourceName}
+              targetName={targetName}
+            />
           )}
 
-          <h2 className="section">Already covered</h2>
-          <div className="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th style={{ width: "24%" }}>Requirement</th>
-                  <th style={{ width: "15%" }}>Your baseline</th>
-                  <th style={{ width: "15%" }}>Target</th>
-                  <th>Target obligation</th>
-                </tr>
-              </thead>
-              <tbody>
-                {trulyCovered.map((c) => (
-                  <tr key={c.requirement.id}>
-                    <td>
-                      <div className="req-name">{c.requirement.name}</div>
-                    </td>
-                    <td>
-                      <CoverageBadge level={c.sourceStrictness} />
-                    </td>
-                    <td>
-                      <CoverageBadge level={c.targetStrictness} />
-                    </td>
-                    <td style={{ color: "var(--text-muted)" }}>{c.targetObligation}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {nilBoth.length > 0 && (
+          {result.different.length > 0 && (
             <>
-              <h2 className="section">Neither regime addresses</h2>
+              <h2 className="section gap-section" id="sec-different">
+                Different approach
+              </h2>
+              <p className="cmp-intro">
+                Both laws deal with these points, but not in the same way. Neither is simply stricter
+                here, so read both placements before drawing a conclusion.
+              </p>
+              <CardList
+                items={result.different}
+                mode="different"
+                sourceName={sourceName}
+                targetName={targetName}
+              />
+            </>
+          )}
+
+          {result.secondLook.length > 0 && (
+            <>
+              <h2 className="section gap-section" id="sec-second">
+                Worth a second look
+              </h2>
+              <p className="cmp-intro">
+                On the points compared here, {sourceName} already matches or goes further than{" "}
+                {targetName}. But {targetName}&apos;s rule is rated firmer overall, usually because it
+                spells out more detail than these points capture. Read {targetName}&apos;s rule before
+                treating these as covered.
+              </p>
+              <CardList
+                items={result.secondLook}
+                mode="second"
+                sourceName={sourceName}
+                targetName={targetName}
+              />
+            </>
+          )}
+
+          <h2 className="section gap-section" id="sec-covered">
+            Same in substance, or {sourceName} already asks for more
+          </h2>
+          {result.covered.length === 0 ? (
+            <p className="empty">No requirements fall in this group.</p>
+          ) : (
+            <Collapsible count={result.covered.length}>
+              <CardList
+                items={result.covered}
+                mode="covered"
+                sourceName={sourceName}
+                targetName={targetName}
+              />
+            </Collapsible>
+          )}
+
+          {result.neither.length > 0 && (
+            <>
+              <h2 className="section gap-section" id="sec-neither">
+                Neither law deals with this
+              </h2>
               <p className="page-lead" style={{ marginBottom: 16 }}>
                 Both instruments are silent on these, so there is no gap <em>between</em> them —
-                which is not the same as there being no obligation. Each row carries the search
+                which is not the same as there being no obligation. Each card carries the search
                 behind it: how many provisions were read, which words appear nowhere in the
                 instrument, and which provisions came closest. Where a regime constrains the same
                 ground from another direction — restricting export rather than mandating storage,
-                say — the row says which requirement to read instead.
+                say — the card says which requirement to read instead.
               </p>
-              <div className="table-wrap">
-                <table>
-                  <thead>
-                    <tr>
-                      <th style={{ width: "24%" }}>Requirement</th>
-                      <th style={{ width: "15%" }}>{result.source.name}</th>
-                      <th style={{ width: "15%" }}>{result.target.name}</th>
-                      <th>What was searched</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {nilBoth.map((c) => (
-                      <tr key={c.requirement.id}>
-                        <td>
-                          <div className="req-name">{c.requirement.name}</div>
-                          <div className="req-cat">{c.requirement.category}</div>
-                        </td>
-                        <td>
-                          <CoverageBadge level={c.sourceStrictness} />
-                          <Understated lawIds={c.sourceLawIds} requirementId={c.requirement.id} />
-                        </td>
-                        <td>
-                          <CoverageBadge level={c.targetStrictness} />
-                          <Understated lawIds={c.targetLawIds} requirementId={c.requirement.id} />
-                        </td>
-                        <td style={{ color: "var(--text-muted)" }}>
-                          {[
-                            ...tracesFor(c.sourceLawIds, c.requirement.id),
-                            ...tracesFor(c.targetLawIds, c.requirement.id),
-                          ].map((t) => (
-                            <GapTraceDetails key={t.lawId} trace={t} showLaw />
-                          ))}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+              <Collapsible count={result.neither.length}>
+                <CardList
+                  items={result.neither}
+                  mode="neither"
+                  sourceName={sourceName}
+                  targetName={targetName}
+                />
+              </Collapsible>
             </>
           )}
+
+          <TermsTable
+            sourceLawIds={result.comparisons[0]?.sourceLawIds ?? []}
+            targetLawIds={result.comparisons[0]?.targetLawIds ?? []}
+            sourceName={sourceName}
+            targetName={targetName}
+          />
         </>
       )}
 

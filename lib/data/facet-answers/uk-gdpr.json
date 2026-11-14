@@ -1,0 +1,262 @@
+{
+  "lawId": "uk-gdpr",
+  "answers": {
+    "lawful-basis.ground": {
+      "option": "listed-ground",
+      "says": "Processing is lawful only if one of six listed grounds applies, such as consent, a contract, a legal obligation, vital interests, a public task or a legitimate interest.",
+      "citation": "Art. 6 UK GDPR",
+      "quote": "Processing shall be lawful only if and to the extent that at least one of the following applies"
+    },
+    "lawful-basis.legitimate-interests": {
+      "option": "yes-with-balancing",
+      "says": "Yes. Processing for the legitimate interests of the controller or a third party is lawful unless those interests are overridden by the person's rights, with extra care for children. Recognised legitimate interests are listed separately.",
+      "ownTerm": "legitimate interests",
+      "citation": "Art. 6 UK GDPR",
+      "quote": "processing is necessary for the purposes of the legitimate interests pursued by the controller or by a third party, except where such interests are overridden"
+    },
+    "consent.standard": {
+      "option": "must-be-express",
+      "says": "Consent must be freely given, specific, informed and unambiguous, and shown by a statement or a clear affirmative action. Silence does not meet that test.",
+      "citation": "Art. 4(11) UK GDPR",
+      "quote": "or by a clear affirmative action, signifies agreement to the processing of personal data"
+    },
+    "consent.role": {
+      "option": "one-ground-of-several",
+      "says": "Consent is one lawful ground among six. It is not the default; contract, legal obligation, public task, vital interests and legitimate interests also work.",
+      "citation": "Art. 6 UK GDPR",
+      "quote": "the data subject has given consent to the processing of his or her personal data for one"
+    },
+    "consent.withdrawal": {
+      "option": "yes-any-time",
+      "says": "Yes, at any time. The person must be told of this before giving consent, withdrawal must be as easy as giving it, and earlier processing stays lawful.",
+      "citation": "Art. 7(3) UK GDPR",
+      "quote": "The data subject shall have the right to withdraw his or her consent at any time"
+    },
+    "consent.separate": {
+      "option": "for-sensitive-data",
+      "says": "Explicit consent is needed to use special category (sensitive) data, unless another exception applies. Separate consent is not required for passing data to others. Explicit consent is also one route for some transfers abroad.",
+      "citation": "Art. 9(2) UK GDPR",
+      "quote": "the data subject has given explicit consent to the processing of those personal data"
+    },
+    "notice.timing": {
+      "option": "at-or-before-collection",
+      "says": "Each person must be given the information at the time their data is obtained. Where data comes from elsewhere, it must be given within a reasonable period and at the latest within one month.",
+      "citation": "Art. 13 UK GDPR",
+      "quote": "at the time when personal data are obtained, provide the data subject with all"
+    },
+    "notice.content": {
+      "option": "detailed-list",
+      "says": "A long prescribed list must be given: identity and contact details, purposes, legal basis, recipients, retention period, the person's rights (including withdrawal and complaints) and whether providing data is required.",
+      "citation": "Art. 13(2) UK GDPR",
+      "quote": "the period for which the personal data will be stored, or if that is not possible, the criteria"
+    },
+    "access.right": {
+      "option": "copy-plus-details",
+      "says": "A person may get confirmation that their data is processed, access to it, and details of purposes, categories, recipients, retention period and source where the data was not collected from them.",
+      "citation": "Art. 15 UK GDPR",
+      "quote": "case, access to the personal data and the following information"
+    },
+    "access.deadline": {
+      "option": "fixed-deadline",
+      "says": "Within one month of the request, which is the applicable time period. It can be extended by two further months in the cases listed in Article 12A(3).",
+      "citation": "Art. 12A UK GDPR",
+      "quote": "means the period of one month beginning with the relevant time, subject to paragraph 3"
+    },
+    "deletion.right": {
+      "option": "right-to-request",
+      "says": "Yes. A person can require erasure without undue delay where a listed ground applies, such as data no longer needed or consent withdrawn. Exceptions include freedom of expression and legal claims.",
+      "citation": "Art. 17 UK GDPR",
+      "quote": "the erasure of personal data concerning him or her without undue delay"
+    },
+    "deletion.pass-on": {
+      "option": "yes",
+      "says": "Yes. Erasure must be communicated to each recipient to whom the data was disclosed, unless that is impossible or involves disproportionate effort. The person can ask who the recipients are.",
+      "citation": "Art. 19 UK GDPR",
+      "quote": "shall communicate any rectification or erasure of personal data or restriction of processing"
+    },
+    "correction.right": {
+      "option": "yes",
+      "says": "Yes. A person can have inaccurate personal data rectified without undue delay, and can have incomplete data completed.",
+      "citation": "Art. 16 UK GDPR",
+      "quote": "the rectification of inaccurate personal data concerning him or her"
+    },
+    "correction.pass-on": {
+      "option": "yes",
+      "says": "Yes. A rectification must be communicated to each recipient who already holds the data, unless that is impossible or involves disproportionate effort.",
+      "citation": "Art. 19 UK GDPR",
+      "quote": "shall communicate any rectification or erasure of personal data or restriction of processing"
+    },
+    "portability.right": {
+      "option": "direct-transfer",
+      "says": "A person can receive the data they provided in a structured, commonly used, machine-readable format, and have it sent directly to another controller where technically feasible. This covers consent or contract, automated processing only.",
+      "citation": "Art. 20 UK GDPR",
+      "quote": "have the personal data transmitted directly from one controller to another"
+    },
+    "optout.marketing": {
+      "option": "opt-out",
+      "says": "A person can object at any time to direct marketing, and the organisation must then stop using the data for it. This text does not require consent before marketing.",
+      "citation": "Art. 21 UK GDPR",
+      "quote": "have the right to object at any time to processing of personal data concerning him or her for"
+    },
+    "optout.sale": {
+      "option": "needs-consent-or-ground",
+      "says": "Passing data to others is processing, so it needs a lawful ground first (Art. 6). A person can also object under Art. 21 to processing based on legitimate interests.",
+      "citation": "Art. 6 UK GDPR",
+      "quote": "Processing shall be lawful only if and to the extent that at least one of the following applies"
+    },
+    "adm.protection": {
+      "option": "refuse-or-human-review",
+      "says": "For significant decisions made solely by automated processing, the person must get information, can make representations, can obtain human intervention and can contest the decision. The text does not expressly say they may refuse.",
+      "ownTerm": "significant decision",
+      "citation": "Art. 22C UK GDPR",
+      "quote": "enable the data subject to obtain human intervention on the part of the controller in relation to such decisions"
+    },
+    "sensitive.category": {
+      "option": "defined-list",
+      "says": "Yes. Special categories are listed: racial or ethnic origin, political opinions, religious or philosophical beliefs, trade union membership, genetic and biometric data, health, and sex life or sexual orientation.",
+      "ownTerm": "special categories of personal data",
+      "citation": "Art. 9 UK GDPR",
+      "quote": "data concerning health or data concerning a natural person's sex life or sexual orientation shall be prohibited"
+    },
+    "sensitive.rule": {
+      "option": "banned-unless-exception",
+      "says": "Processing special category data is prohibited unless one of the exceptions in Article 9(2) applies, such as explicit consent, employment or social security law, or vital interests.",
+      "citation": "Art. 9 UK GDPR",
+      "quote": "data concerning health or data concerning a natural person's sex life or sexual orientation shall be prohibited"
+    },
+    "children.rule": {
+      "option": "parental-consent-below-age",
+      "says": "For online services offered directly to a child, a child aged 13 or over can consent alone. Below 13, consent must be given or authorised by a parent or holder of parental responsibility, with reasonable efforts to check.",
+      "citation": "Art. 8(1) UK GDPR",
+      "quote": "processing shall be lawful only if and to the extent that consent is given or authorised by the"
+    },
+    "breach.regulator": {
+      "option": "yes-fixed-time",
+      "says": "Yes, unless the breach is unlikely to risk people's rights and freedoms. Notify the Commissioner without undue delay and, where feasible, within 72 hours; late notice must give reasons.",
+      "citation": "Art. 33(1) UK GDPR",
+      "quote": "where feasible, not later than 72 hours after having become aware of it, notify the personal data"
+    },
+    "breach.individuals": {
+      "option": "yes-when-harm-likely",
+      "says": "Yes. People affected must be told without undue delay when the breach is likely to result in a high risk to their rights and freedoms.",
+      "citation": "Art. 34(1) UK GDPR",
+      "quote": "When the personal data breach is likely to result in a high risk to the rights and"
+    },
+    "breach.records": {
+      "option": "yes",
+      "says": "Yes. The controller must document every personal data breach, including the facts of it, whether or not it is reported.",
+      "citation": "Art. 33(5) UK GDPR",
+      "quote": "The controller shall document any personal data breaches, comprising the facts"
+    },
+    "dpo.officer": {
+      "option": "in-listed-cases",
+      "says": "Only for public authorities, organisations whose core activities need regular and systematic large-scale monitoring of people, or large-scale processing of sensitive or criminal-offence data.",
+      "ownTerm": "data protection officer",
+      "citation": "Art. 37(1) UK GDPR",
+      "quote": "the processing is carried out by a public authority or body"
+    },
+    "dpo.local-representative": {
+      "option": "yes",
+      "says": "Yes. A controller or processor outside the UK that is caught by the law must designate a UK representative in writing, unless an exemption applies, such as occasional, low-risk processing.",
+      "citation": "Art. 27 UK GDPR",
+      "quote": "the controller or the processor shall designate in writing"
+    },
+    "dpia.duty": {
+      "option": "in-listed-cases",
+      "says": "Yes, before processing likely to be a high risk, an impact assessment must be carried out. Article 35(3) gives examples, such as large-scale use of sensitive data or systematic public monitoring.",
+      "ownTerm": "data protection impact assessment",
+      "citation": "Art. 35 UK GDPR",
+      "quote": "carry out an assessment of the impact of the envisaged processing operations on the protection"
+    },
+    "dpia.regulator": {
+      "option": "in-some-cases",
+      "says": "Yes, in some cases. If an impact assessment shows a high risk that cannot be mitigated, the controller must consult the Commissioner before the processing starts.",
+      "citation": "Art. 36(1) UK GDPR",
+      "quote": "protection impact assessment under Article 35 indicates that the processing would result in a"
+    },
+    "transfer.rule": {
+      "option": "safeguards-or-assessment",
+      "says": "Data may go abroad only where UK regulations approve the destination, appropriate safeguards apply (meeting the data protection test), or a listed exception applies. The old general transfer principle, Art. 44, was omitted in 2026.",
+      "citation": "Art. 44A UK GDPR",
+      "quote": "is approved by regulations under Article 45A that are in force at the time of the transfer"
+    },
+    "transfer.tell-people": {
+      "option": "told",
+      "says": "Yes. Where a controller intends to transfer data to a third country, the person must be told that, and about the safeguards relied on. Explicit consent is only one exception route, not a general requirement.",
+      "citation": "Art. 13(1) UK GDPR",
+      "quote": "the fact that the controller intends to transfer personal data to a"
+    },
+    "localization.rule": {
+      "option": "no",
+      "says": "The law has no rule requiring personal data to be stored in the UK. It only sets conditions on sending data abroad, in Chapter V."
+    },
+    "records.duty": {
+      "option": "detailed-record",
+      "says": "Controllers must keep a record of each processing activity under their responsibility, with listed contents. Processors must keep a similar record of processing carried out for each controller.",
+      "citation": "Art. 30 UK GDPR",
+      "quote": "shall maintain a record of processing activities under its responsibility"
+    },
+    "vendor.contract": {
+      "option": "contract-with-set-terms",
+      "says": "A processor may act only under a binding contract or other legal act that sets out the subject-matter, duration, nature and purpose of the processing, and the duties listed in Article 28(3).",
+      "citation": "Art. 28(3) UK GDPR",
+      "quote": "that is binding on the processor with regard to the controller and that sets"
+    },
+    "vendor.direct-duties": {
+      "option": "yes",
+      "says": "Yes. A processor must itself notify the controller of a breach without undue delay, and must keep data secure and keep records. It is liable for damage only where it breaks duties aimed at processors.",
+      "citation": "Art. 33(2) UK GDPR",
+      "quote": "The processor shall notify the controller without undue delay after becoming aware"
+    },
+    "security.duty": {
+      "option": "named-measures",
+      "says": "Controllers and processors must use appropriate technical and organisational measures. The text names pseudonymisation and encryption, ongoing confidentiality and resilience, restoring access, and regular testing.",
+      "citation": "Art. 32(1) UK GDPR",
+      "quote": "the pseudonymisation and encryption of personal data"
+    },
+    "enforcement.fines": {
+      "option": "turnover-based",
+      "says": "Yes. The Commissioner can fine up to £17.5m or 4% of worldwide annual turnover, whichever is higher, for the most serious breaches. A lower tier is £8.7m or 2%.",
+      "citation": "Art. 83(5) UK GDPR",
+      "quote": "of the total worldwide annual turnover of the preceding financial year, whichever is higher"
+    },
+    "enforcement.private-action": {
+      "option": "general",
+      "says": "Yes. Anyone who suffers material or non-material damage from a breach can claim compensation from the controller or processor. A processor is liable only for breaches of duties aimed at processors.",
+      "citation": "Art. 82(1) UK GDPR",
+      "quote": "Any person who has suffered material or non-material damage as a result of an"
+    }
+  },
+  "terms": {
+    "organisation": {
+      "term": "controller",
+      "citation": "Art. 4(7) UK GDPR",
+      "quote": "‘controller’ means the natural or legal person, public authority, agency or other body"
+    },
+    "vendor": {
+      "term": "processor",
+      "citation": "Art. 4(8) UK GDPR",
+      "quote": "‘processor’ means a natural or legal person, public authority, agency or other body"
+    },
+    "person": {
+      "term": "data subject",
+      "citation": "Art. 4(1) UK GDPR",
+      "quote": "person (‘data subject’); an identifiable natural person is one who can be identified"
+    },
+    "data": {
+      "term": "personal data",
+      "citation": "Art. 4(1) UK GDPR",
+      "quote": "‘personal data’ means any information relating to an identified or identifiable natural"
+    },
+    "sensitive": {
+      "term": "special categories of personal data",
+      "citation": "Art. 9 UK GDPR",
+      "quote": "Processing of special categories of personal data"
+    },
+    "regulator": {
+      "term": "the Commissioner",
+      "citation": "Art. 4 UK GDPR",
+      "quote": "‘the Commissioner’ means the Information Commissioner"
+    }
+  }
+}

@@ -1,0 +1,95 @@
+name: Research agent - privacy law
+
+# Daily: looks for new privacy and data-protection developments in the EU, the US
+# and Asia and writes them to lib/data/developments/privacy.json. See
+# docs/RESEARCH_AGENTS.md.
+#
+# Scheduled runs only start from the repository's default branch, so this file
+# must be on the default branch for the schedule to fire.
+
+on:
+  schedule:
+    - cron: "47 21 * * *"
+  workflow_dispatch:
+    inputs:
+      lookback_days:
+        description: "How many days back to look (leave empty for the default)"
+        required: false
+  push:
+    branches:
+      - claude/privacy-ai-law-monitor-lybwto
+      - claude/legal-research-website-jyihm4
+    paths:
+      - "lib/research/**"
+      - "scripts/research-agent.mjs"
+      - ".github/workflows/research-privacy-law.yml"
+
+permissions:
+  contents: write
+  models: read
+  actions: write
+
+# Both research workflows share this group so their commits never race.
+concurrency:
+  group: research-agents
+  cancel-in-progress: false
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check the research code offline
+        run: node scripts/check-research.mjs
+
+      - name: Run the privacy-law research agent
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Optional. Empty when the repository has no GEMINI_API_KEY secret; then GitHub Models is used.
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          LOOKBACK_INPUT: ${{ github.event.inputs.lookback_days }}
+        run: |
+          if [ -n "$LOOKBACK_INPUT" ]; then
+            node scripts/research-agent.mjs --track privacy --lookback-days "$LOOKBACK_INPUT"
+          else
+            node scripts/research-agent.mjs --track privacy
+          fi
+
+      - name: Commit the results
+        id: commit
+        run: |
+          git config user.name "law-monitor-agent"
+          git config user.email "law-monitor-agent@users.noreply.github.com"
+          git add lib/data/developments/privacy.json
+          if git diff --cached --quiet; then
+            echo "No change to privacy.json; nothing to commit."
+            exit 0
+          fi
+          git commit -m "Research agent: privacy law update $(date -u +%Y-%m-%d)"
+          for attempt in 1 2 3; do
+            if git pull --rebase origin "$GITHUB_REF_NAME" && git push origin HEAD:"$GITHUB_REF_NAME"; then
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; rebasing and retrying."
+            git rebase --abort 2>/dev/null || true
+            sleep 5
+          done
+          echo "Could not push after 3 attempts." >&2
+          exit 1
+
+      # A commit pushed by a workflow does not trigger other workflows, so the
+      # site would not rebuild by itself. Start the Pages deploy explicitly.
+      # Only on the default branch: the feature branches are not deployed.
+      - name: Rebuild the site with the new data
+        if: steps.commit.outputs.changed == 'true' && github.ref_name == github.event.repository.default_branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh workflow run deploy-pages.yml --ref "$GITHUB_REF_NAME"

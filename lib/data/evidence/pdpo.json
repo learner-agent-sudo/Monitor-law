@@ -1,0 +1,475 @@
+{
+  "lawId": "pdpo",
+  "items": {
+    "f:lawful-basis.ground": {
+      "citation": "DPP1(1)",
+      "provision": "Data Protection Principle 1",
+      "scope": "provision",
+      "before": "1. Principle 1—purpose and manner of collection of personal data (1) Personal data shall not be collected unless— (a) ",
+      "match": "the data is collected for a lawful purpose directly related to a function or activity of the data user who is to use",
+      "after": " the data; (b) subject to paragraph (c), the collection of the data is necessary for or directly related to that purpose; and (c) the data is adequate but not excessive in relation to that purpose. (2) Personal data shall be collected by means which are— (a) lawful; and (b) fair in the circumstances of the case. (3) Where the person from whom personal data is or is to be collected is the data subject, all",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:lawful-basis.legitimate-interests": {
+      "citation": "DPP1(1)",
+      "provision": "Data Protection Principle 1",
+      "scope": "provision",
+      "before": "1. Principle 1—purpose and manner of collection of personal data (1) ",
+      "match": "Personal data shall not be collected unless",
+      "after": "— (a) the data is collected for a lawful purpose directly related to a function or activity of the data user who is to use the data; (b) subject to paragraph (c), the collection of the data is necessary for or directly related to that purpose; and (c) the data is adequate but not excessive in relation to that purpose. (2) Personal data shall be collected by means which are— (a) lawful; and (b) fair in the",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:consent.standard": {
+      "citation": "s.2(3)(a)",
+      "provision": "Section 2",
+      "scope": "provision",
+      "before": "the data— (i) under the direct control of the data user; or (ii) on behalf of the data user; use (使用), in relation to personal data, includes disclose or transfer the data; would be likely to prejudice (相當可能損害) includes would prejudice. (2) (Repealed 18 of 2012 s. 3) (3) Where under this Ordinance an act may be done with the prescribed consent of a person (and howsoever the person is described), such consent— (a) ",
+      "match": "means the express consent of the person given voluntarily;",
+      "after": " (b) does not include any consent which has been withdrawn by notice in writing served on the person to whom the consent has been given (but without prejudice to so Last updated date Verified Copy 1.10.2022 Personal Data (Privacy) Ordinance Part 1 1-18 Section 2 Cap. 486 much of that act that has been done pursuant to the consent at any time before the notice is so served). (4) Subject to section 64A, any reference",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:consent.role": {
+      "citation": "DPP3(1)",
+      "provision": "Data Protection Principle 3",
+      "scope": "provision",
+      "before": "3. Principle 3—use of personal data (1) ",
+      "match": "Personal data shall not, without the prescribed consent of the data subject, be used for a new purpose.",
+      "after": " (Amended 18 of 2012 s. 40) (2) A relevant person in relation to a data subject may, on his or her behalf, give the prescribed consent required for using his or her personal data for a new purpose if— (a) the data subject is— (i) a minor; (ii) incapable of managing his or her own affairs; or (iii) mentally incapacitated within the meaning of section 2 of the Mental Health Ordinance (Cap. 136); (b) the data subject",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:consent.withdrawal": {
+      "citation": "s.2(3)(b)",
+      "provision": "Section 2",
+      "scope": "provision",
+      "before": "on behalf of the data user; use (使用), in relation to personal data, includes disclose or transfer the data; would be likely to prejudice (相當可能損害) includes would prejudice. (2) (Repealed 18 of 2012 s. 3) (3) Where under this Ordinance an act may be done with the prescribed consent of a person (and howsoever the person is described), such consent— (a) means the express consent of the person given voluntarily; (b) ",
+      "match": "does not include any consent which has been withdrawn by notice in writing served on the person to whom the consent has been given",
+      "after": " (but without prejudice to so Last updated date Verified Copy 1.10.2022 Personal Data (Privacy) Ordinance Part 1 1-18 Section 2 Cap. 486 much of that act that has been done pursuant to the consent at any time before the notice is so served). (4) Subject to section 64A, any reference in this Ordinance to the effect that a data user (howsoever described)— (Amended 18 of 2012 s. 3; 17 of 2018 s. 126) (a) has",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:consent.separate": {
+      "citation": "DPP3(1); s.35K(1)(a)",
+      "provision": "Data Protection Principle 3",
+      "scope": "provision",
+      "before": "3. Principle 3—use of personal data (1) ",
+      "match": "Personal data shall not, without the prescribed consent of the data subject, be used for a new purpose.",
+      "after": " (Amended 18 of 2012 s. 40) (2) A relevant person in relation to a data subject may, on his or her behalf, give the prescribed consent required for using his or her personal data for a new purpose if— (a) the data subject is— (i) a minor; (ii) incapable of managing his or her own affairs; or (iii) mentally incapacitated within the meaning of section 2 of the Mental Health Ordinance (Cap. 136); (b) the data subject",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:notice.timing": {
+      "citation": "DPP1(3)",
+      "provision": "Data Protection Principle 1",
+      "scope": "provision",
+      "before": "for a lawful purpose directly related to a function or activity of the data user who is to use the data; (b) subject to paragraph (c), the collection of the data is necessary for or directly related to that purpose; and (c) the data is adequate but not excessive in relation to that purpose. (2) Personal data shall be collected by means which are— (a) lawful; and (b) fair in the circumstances of the case. (3) ",
+      "match": "Where the person from whom personal data is or is to be collected is the data subject, all practicable steps shall be taken",
+      "after": " to ensure that— (Amended 18 of 2012 s. 40) (a) he is explicitly or implicitly informed, on or before collecting the data, of— (i) whether it is obligatory or voluntary for him to supply the data; and (ii) where it is obligatory for him to supply the data, the consequences for him if he fails to supply the data; and (b) he is explicitly informed— Last updated date Verified Copy 20.4.2018 Personal Data (Privacy)",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:notice.content": {
+      "citation": "DPP1(3)",
+      "provision": "Data Protection Principle 1",
+      "scope": "provision",
+      "before": "him to supply the data; and (ii) where it is obligatory for him to supply the data, the consequences for him if he fails to supply the data; and (b) he is explicitly informed— Last updated date Verified Copy 20.4.2018 Personal Data (Privacy) Ordinance Schedule 1 S1-4 Section 2 Cap. 486 (i) on or before collecting the data, of— (A) the purpose (in general or specific terms) for which the data is to be used; and (B) ",
+      "match": "the classes of persons to whom the data may be transferred;",
+      "after": " and (ii) on or before first use of the data for the purpose for which it was collected, of— (Amended 18 of 2012 s. 40) (A) his rights to request access to and to request the correction of the data; and (B) the name or job title, and address, of the individual who is to handle any such request made to the data user, (Replaced 18 of 2012 s. 40) unless to comply with the provisions of this subsection would be likely",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:access.right": {
+      "citation": "s.18(1)",
+      "provision": "Section 18",
+      "scope": "provision",
+      "before": "18. Data access request (1) An individual, or a relevant person on behalf of an individual, may make a request— (a) to be informed by a data user whether the data user holds personal data of which the individual is the data subject; (b) if the data user holds such data, ",
+      "match": "to be supplied by the data user with a copy of such data.",
+      "after": " (2) A data access request under both paragraphs of subsection (1) shall be treated as being a single request, and the provisions of this Ordinance shall be construed accordingly. Last updated date Verified Copy 20.4.2018 Personal Data (Privacy) Ordinance Part 5—Division 1 5-4 Section 19 Cap. 486 (3) A data access request under paragraph (a) of subsection (1) may, in the absence of evidence to the contrary, be",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:access.deadline": {
+      "citation": "s.19(1)",
+      "provision": "Section 19",
+      "scope": "provision",
+      "before": "19. Compliance with data access request (1) Subject to subsection (2) and sections 20 and 28(5), ",
+      "match": "a data user must comply with a data access request within 40 days",
+      "after": " after receiving the request by— Last updated date Verified Copy 20.4.2018 Personal Data (Privacy) Ordinance Part 5—Division 1 5-6 Section 19 Cap. 486 (a) if the data user holds any personal data which is the subject of the request— (i) informing the requestor in writing that the data user holds the data; and (ii) supplying a copy of the data; or (b) if the data user does not hold any personal data which is the",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:deletion.right": {
+      "citation": "s.26(1)",
+      "provision": "Section 26",
+      "scope": "provision",
+      "before": "26. Erasure of personal data no longer required (1) A data user ",
+      "match": "must take all practicable steps to erase personal data held by the data user",
+      "after": " where the data is no longer required for the purpose (including any directly related purpose) for which the data was used unless— (Amended 18 of 2012 s. 17) (a) any such erasure is prohibited under any law; or (b) it is in the public interest (including historical interest) for the data not to be erased. (2) For the avoidance of doubt, it is hereby declared that— (a) a data user must take all practicable steps to erase personal data in accordance with subsection (1) notwithstanding that any other data user controls (whether in whole or in part) the processing of the data; (Amended 18 of 2012 s. 17) (b) the first-mentioned data user shall not be liable in an action for damages at the suit of the second-mentioned data user in respect of any such erasure. Last updated date Verified Copy 20.4.2018 Personal Data (Privacy) Ordinance Part 5—Division 3 5-34 Section 27 Cap. 486",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:deletion.pass-on": {
+      "citation": "s.26(2)(a)",
+      "provision": "Section 26",
+      "scope": "provision",
+      "before": "26. Erasure of personal data no longer required (1) A data user must take all practicable steps to erase personal data held by the data user where the data is no longer required for the purpose (including any directly related purpose) for which the data was used unless— (Amended 18 of 2012 s. 17) (a) any such erasure is prohibited under any law; or (b) it is in the public interest (including historical interest) for the data not to be erased. (2) For the avoidance of doubt, it is hereby declared that— (a) a data user ",
+      "match": "must take all practicable steps to erase personal data in accordance with subsection (1)",
+      "after": " notwithstanding that any other data user controls (whether in whole or in part) the processing of the data; (Amended 18 of 2012 s. 17) (b) the first-mentioned data user shall not be liable in an action for damages at the suit of the second-mentioned data user in respect of any such erasure. Last updated date Verified Copy 20.4.2018 Personal Data (Privacy) Ordinance Part 5—Division 3 5-34 Section 27 Cap. 486",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:correction.right": {
+      "citation": "s.22(1)",
+      "provision": "Section 22",
+      "scope": "provision",
+      "before": "22 Cap. 486 (1) Subject to subsections (1A) and (2), where— (Amended 18 of 2012 s. 15) (a) a copy of personal data has been supplied by a data user in compliance with a data access request; and (b) the individual, or a relevant person on behalf of the individual, who is the data subject considers that the data is inaccurate, (Amended 18 of 2012 s. 15) then that individual or relevant person, as the case may be, ",
+      "match": "may make a request that the data user make the necessary",
+      "after": " correction to the data. (1A) If a person is a relevant person in relation to an individual only because the person has been authorized in writing by the individual to make a data access request on behalf of the individual, the person is not entitled to make a data correction request. (Added 18 of 2012 s. 15) (2) A data user who, in relation to personal data— (a) does not hold the data; but (b) controls the",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:correction.pass-on": {
+      "citation": "s.23(1)(c)",
+      "provision": "Section 23",
+      "scope": "provision",
+      "before": "with a copy of the data as so corrected; and (c) subject to subsection (3), if— (i) the data has been disclosed to a third party during the 12 months immediately preceding the day on which the correction is made; and (ii) the data user has no reason to believe that the third party has ceased using the data for the purpose (including any directly related purpose) for which the data was disclosed to the third party, ",
+      "match": "take all practicable steps to supply the third party with a copy of the data as so corrected",
+      "after": " accompanied by a notice in writing stating the reasons for the correction. Last updated date Verified Copy 20.4.2018 Personal Data (Privacy) Ordinance Part 5—Division 2 5-26 Section 24 Cap. 486 (2) A data user who is unable to comply with subsection (1) in relation to a data correction request within the period specified in that subsection shall— (a) before the expiration of that period— (i) by notice in writing",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:portability.right": {
+      "citation": "s.18(1)",
+      "provision": "Section 18",
+      "scope": "provision",
+      "before": "18. Data access request (1) An individual, or a relevant person on behalf of an individual, may make a request— (a) to be informed by a data user whether the data user holds personal data of which the individual is the data subject; (b) if the data user holds such data, ",
+      "match": "to be supplied by the data user with a copy of such data.",
+      "after": " (2) A data access request under both paragraphs of subsection (1) shall be treated as being a single request, and the provisions of this Ordinance shall be construed accordingly. Last updated date Verified Copy 20.4.2018 Personal Data (Privacy) Ordinance Part 5—Division 1 5-4 Section 19 Cap. 486 (3) A data access request under paragraph (a) of subsection (1) may, in the absence of evidence to the contrary, be",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:optout.marketing": {
+      "citation": "s.35E(1); s.35G(1)",
+      "provision": "Section 35",
+      "scope": "provision",
+      "before": "Part comes into operation; relevant personal data (有關個人資料), in relation to a data subject, means any personal data of the data subject over the use of which a data user had control immediately before the commencement date. Editorial Note: Commencement date : 1 April 2013 35E. Data user must not use personal data in direct marketing without data subject’s consent (1) A data user who has complied with section 35C ",
+      "match": "must not use the data subject’s personal data in direct marketing unless",
+      "after": "— (a) the data user has received the data subject’s consent to the intended use of personal data, as described in the information provided by the data user under section 35C(2)(b), either generally or selectively; (b) if the consent is given orally, the data user has, within 14 days from receiving the consent, sent a written confirmation to the data subject, confirming— (i) the date of receipt of the consent; (ii)",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:optout.sale": {
+      "citation": "DPP3(1)",
+      "provision": "Data Protection Principle 3",
+      "scope": "provision",
+      "before": "3. Principle 3—use of personal data (1) ",
+      "match": "Personal data shall not, without the prescribed consent of the data subject, be used for a new purpose.",
+      "after": " (Amended 18 of 2012 s. 40) (2) A relevant person in relation to a data subject may, on his or her behalf, give the prescribed consent required for using his or her personal data for a new purpose if— (a) the data subject is— (i) a minor; (ii) incapable of managing his or her own affairs; or (iii) mentally incapacitated within the meaning of section 2 of the Mental Health Ordinance (Cap. 136); (b) the data subject",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:sensitive.category": {
+      "citation": "DPP4(1)",
+      "provision": "Data Protection Principle 4",
+      "scope": "provision",
+      "before": "4. Principle 4—security of personal data (1) All practicable steps shall be taken to ensure that any personal data (including data in a form in which access to or processing of the data is not practicable) held by a data user is protected against unauthorized or accidental access, processing, erasure, loss or use having particular regard to— (Amended 18 of 2012 s. 40; 17 of 2018 s. 129) (a) ",
+      "match": "the kind of data and the harm that could result",
+      "after": " if any of those things should occur; (b) the physical location where the data is stored; (Amended 18 of 2012 s. 40) (c) any security measures incorporated (whether by automated means or otherwise) into any equipment in which the data is stored; (Amended 18 of 2012 s. 40) (d) any measures taken for ensuring the integrity, prudence and competence of persons having access to the data; and (e) any measures taken for",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:sensitive.rule": {
+      "citation": "DPP4(1)(a)",
+      "provision": "Data Protection Principle 4",
+      "scope": "provision",
+      "before": "4. Principle 4—security of personal data (1) All practicable steps shall be taken to ensure that any personal data (including data in a form in which access to or processing of the data is not practicable) held by a data user is protected against unauthorized or accidental access, processing, erasure, loss or use having particular regard to— (Amended 18 of 2012 s. 40; 17 of 2018 s. 129) (a) ",
+      "match": "the kind of data and the harm that could result if any of",
+      "after": " those things should occur; (b) the physical location where the data is stored; (Amended 18 of 2012 s. 40) (c) any security measures incorporated (whether by automated means or otherwise) into any equipment in which the data is stored; (Amended 18 of 2012 s. 40) (d) any measures taken for ensuring the integrity, prudence and competence of persons having access to the data; and (e) any measures taken for ensuring the",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:children.rule": {
+      "citation": "s.2(1); DPP3(2)",
+      "provision": "Section 2",
+      "scope": "provision",
+      "before": "Ordinance Part 1 1-14 Section 2 Cap. 486 (i) in the case of an investigation initiated by a complaint, means the data user specified in the complaint; (ii) in any other case, means the data user the subject of the investigation; (d) an enforcement notice, means the data user on whom the notice is served; relevant person (有關人士), in relation to an individual (howsoever the individual is described), means— (a) ",
+      "match": "where the individual is a minor, a person who has parental responsibility for the minor;",
+      "after": " (b) where the individual is incapable of managing his own affairs, a person who has been appointed by a court to manage those affairs; (c) where the individual is mentally incapacitated within the meaning of section 2 of the Mental Health Ordinance (Cap. 136)— (i) a person appointed under section 44A, 59O or 59Q of that Ordinance to be the guardian of that individual; or (ii) if the guardianship of that individual",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:breach.records": {
+      "citation": "s.27(1)",
+      "provision": "Section 27",
+      "scope": "provision",
+      "before": "27. Log book to be kept by data user (1) ",
+      "match": "A data user shall keep and maintain a log book",
+      "after": "— (a) for the purposes of this Part; (b) in the Chinese or English language; and (c) such that any particulars entered in the log book pursuant to this section are not erased therefrom before the expiration of— (i) subject to subparagraph (ii), 4 years after the day on which they were so entered; (ii) such longer or shorter period as may be prescribed, either generally or in any particular case, by regulations made",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:dpo.officer": {
+      "citation": "DPP1(3)",
+      "provision": "Data Protection Principle 1",
+      "scope": "provision",
+      "before": "Section 2 Cap. 486 (i) on or before collecting the data, of— (A) the purpose (in general or specific terms) for which the data is to be used; and (B) the classes of persons to whom the data may be transferred; and (ii) on or before first use of the data for the purpose for which it was collected, of— (Amended 18 of 2012 s. 40) (A) his rights to request access to and to request the correction of the data; and (B) ",
+      "match": "the name or job title, and address, of the individual who is to handle any such request",
+      "after": " made to the data user, (Replaced 18 of 2012 s. 40) unless to comply with the provisions of this subsection would be likely to prejudice the purpose for which the data was collected and that purpose is specified in Part 8 of this Ordinance as a purpose in relation to which personal data is exempt from the provisions of data protection principle 6. (Amended 18 of 2012 s. 40; E.R. 1 of 2013)",
+      "cutStart": true,
+      "cutEnd": false
+    },
+    "f:dpo.local-representative": {
+      "citation": "s.3(1)",
+      "provision": null,
+      "scope": "file",
+      "before": "any conduct by a person by virtue Last updated date Verified Copy 1.10.2022 Personal Data (Privacy) Ordinance Part 1 1-22 Section 3 Cap. 486 of which he has or could become a disqualified person or a suspended person under the Rules of Racing and Instructions by the Stewards of the Hong Kong Jockey Club, as in force from time to time, is seriously improper conduct. (Amended 34 of 1999 s. 3) 3. Application (1) ",
+      "match": "This Ordinance binds the Government.",
+      "after": " (2) (*Not adopted as the laws of HKSAR) Editorial Note: See Decision of the Standing Committee of the National People’s Congress Concerning the Handling of the Laws Previously in Force in Hong Kong in accordance with Article 160 of the Basic Law of the Hong Kong Special Administrative Region of the People’s Republic of China which is published in Hong Kong e-Legislation as Instrument A206. 4. Data protection",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:transfer.rule": {
+      "citation": "s.33 (not yet in operation)",
+      "provision": "Section 33",
+      "scope": "provision",
+      "before": "33. Prohibition against transfer of personal data to place outside Hong Kong except in specified circumstances (Not yet in operation) (1) This section shall not apply to personal data other than personal data the collection, holding, processing or use of which— (a) takes place in Hong Kong; or (b) is controlled by a data user whose principal place of business is in Hong Kong. (2) ",
+      "match": "A data user shall not transfer personal data to a place outside Hong Kong unless",
+      "after": "— (a) the place is specified for the purposes of this section in a notice under subsection (3); (b) the user has reasonable grounds for believing that there is in force in that place any law which is substantially similar to, or serves the same purposes as, this Ordinance; (c) the data subject has consented in writing to the transfer; (d) the user has reasonable grounds for believing that, in all the circumstances",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:records.duty": {
+      "citation": "DPP5",
+      "provision": "Data Protection Principle 5",
+      "scope": "provision",
+      "before": "5. Principle 5—information to be generally available All practicable steps shall be taken to ensure that a person can— (a) ",
+      "match": "ascertain a data user’s policies and practices in relation to personal data;",
+      "after": " (b) be informed of the kind of personal data held by a data user; (c) be informed of the main purposes for which personal data held by a data user is or is to be used. (Amended 18 of 2012 s. 40)",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:vendor.contract": {
+      "citation": "DPP2(3)",
+      "provision": "Data Protection Principle 2",
+      "scope": "provision",
+      "before": "steps must be taken to ensure that personal data is not kept longer than is necessary for the fulfillment of the purpose (including any directly related purpose) for which the data is or is to be used. (Amended 18 of 2012 s. 40) (3) Without limiting subsection (2), if a data user engages a data processor, whether within or outside Hong Kong, to process personal data on the data user’s behalf, the data user must ",
+      "match": "adopt contractual or other means to prevent any personal data transferred to the data processor",
+      "after": " from being kept longer than is necessary for processing of the data. (Added 18 of 2012 s. 40) (4) In subsection (3)— Last updated date Verified Copy 20.4.2018 Personal Data (Privacy) Ordinance Schedule 1 S1-8 Section 3 Cap. 486 data processor (資料處理者) means a person who— (a) processes personal data on behalf of another person; and (b) does not process the data for any of the person’s own purposes. (Added 18 of 2012",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:vendor.direct-duties": {
+      "citation": "DPP4(2)",
+      "provision": "Data Protection Principle 4",
+      "scope": "provision",
+      "before": "in which the data is stored; (Amended 18 of 2012 s. 40) (d) any measures taken for ensuring the integrity, prudence and competence of persons having access to the data; and (e) any measures taken for ensuring the secure transmission of the data. (2) Without limiting subsection (1), if a data user engages a data processor, whether within or outside Hong Kong, to process personal data on the data user’s behalf, ",
+      "match": "the data user must adopt contractual or other means to prevent",
+      "after": " unauthorized or Last updated date Verified Copy 20.4.2018 Personal Data (Privacy) Ordinance Schedule 1 S1-12 Section 5 Cap. 486 accidental access, processing, erasure, loss or use of the data transferred to the data processor for processing. (Added 18 of 2012 s. 40) (3) In subsection (2)— data processor (資料處理者) has the same meaning given by subsection (4) of data protection principle 2. (Added 18 of 2012 s. 40)",
+      "cutStart": true,
+      "cutEnd": false
+    },
+    "f:security.duty": {
+      "citation": "DPP4(1)",
+      "provision": "Data Protection Principle 4",
+      "scope": "provision",
+      "before": "4. Principle 4—security of personal data (1) ",
+      "match": "All practicable steps shall be taken to ensure that",
+      "after": " any personal data (including data in a form in which access to or processing of the data is not practicable) held by a data user is protected against unauthorized or accidental access, processing, erasure, loss or use having particular regard to— (Amended 18 of 2012 s. 40; 17 of 2018 s. 129) (a) the kind of data and the harm that could result if any of those things should occur; (b) the physical location where the",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:enforcement.fines": {
+      "citation": "s.50A(1)",
+      "provision": "Section 50",
+      "scope": "provision",
+      "before": "that the investigation has not been completed and, in any such case— (i) the Commissioner shall, without prejudice to any other matters to be included in such notice, specify in the notice the reasons as to why he is of the opinion referred to in paragraph (b); and (ii) the other provisions of this Ordinance (including this section) shall be construed accordingly. 50A. Offences relating to enforcement notices (1) ",
+      "match": "A data user who contravenes an enforcement notice commits",
+      "after": " an offence and is liable— (a) on a first conviction— (i) to a fine at level 5 and to imprisonment for 2 years; and (ii) if the offence continues after the conviction, to a daily penalty of $1,000; and (b) on a second or subsequent conviction— Last updated date Verified Copy 8.10.2021 Personal Data (Privacy) Ordinance Part 7 7-54 Section 50B Cap. 486 (i) to a fine at level 6 and to imprisonment for 2 years; and (ii)",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:enforcement.private-action": {
+      "citation": "s.66(1)",
+      "provision": "Section 66",
+      "scope": "provision",
+      "before": "66. Compensation (1) Subject to subsection (4), an individual who suffers damage by reason of a contravention— (a) of a requirement under this Ordinance; (b) by a data user; and (c) which relates, whether in whole or in part, to personal data of which that individual is the data subject, ",
+      "match": "shall be entitled to compensation from that data user for that damage.",
+      "after": " (2) For the avoidance of doubt, it is hereby declared that damage referred to in subsection (1) may be or include injury to feelings. (3) In any proceedings brought against any person by virtue of this section it shall be a defence to show that— (a) he had taken such care as in all the circumstances was reasonably required to avoid the contravention concerned; or (b) in any case where the contravention concerned",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "t:organisation": {
+      "citation": "s.2(1)",
+      "provision": "Section 2",
+      "scope": "provision",
+      "before": "means a request under section 18; data correction request (改正資料要求) means a request under section 22(1); data protection principle (保障資料原則) means any of the data protection principles set out in Schedule 1; Last updated date Verified Copy 1.10.2022 Personal Data (Privacy) Ordinance Part 1 1-6 Section 2 Cap. 486 data subject (資料當事人), in relation to personal data, means the individual who is the subject of the data; ",
+      "match": "data user (資料使用者), in relation to personal data, means a person who, either alone or jointly or in common with other persons,",
+      "after": " controls the collection, holding, processing or use of the data; data user return (資料使用者申報表) means a return submitted to the Commissioner under section 14(4) and, if applicable, corrected under section 14A(5); (Replaced 18 of 2012 s. 3) disclosing (披露), in relation to personal data, includes disclosing information inferred from the data; document (文件) includes, in addition to a document in writing— (a) a disc, tape",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "t:vendor": {
+      "citation": "DPP2(4)",
+      "provision": "Data Protection Principle 2",
+      "scope": "provision",
+      "before": "or outside Hong Kong, to process personal data on the data user’s behalf, the data user must adopt contractual or other means to prevent any personal data transferred to the data processor from being kept longer than is necessary for processing of the data. (Added 18 of 2012 s. 40) (4) In subsection (3)— Last updated date Verified Copy 20.4.2018 Personal Data (Privacy) Ordinance Schedule 1 S1-8 Section 3 Cap. 486 ",
+      "match": "data processor (資料處理者) means a person who",
+      "after": "— (a) processes personal data on behalf of another person; and (b) does not process the data for any of the person’s own purposes. (Added 18 of 2012 s. 40)",
+      "cutStart": true,
+      "cutEnd": false
+    },
+    "t:person": {
+      "citation": "s.2(1)",
+      "provision": "Section 2",
+      "scope": "provision",
+      "before": "expression of opinion) in any document, and includes a personal identifier; data access request (查閱資料要求) means a request under section 18; data correction request (改正資料要求) means a request under section 22(1); data protection principle (保障資料原則) means any of the data protection principles set out in Schedule 1; Last updated date Verified Copy 1.10.2022 Personal Data (Privacy) Ordinance Part 1 1-6 Section 2 Cap. 486 ",
+      "match": "data subject (資料當事人), in relation to personal data, means the individual who is the subject of the data;",
+      "after": " data user (資料使用者), in relation to personal data, means a person who, either alone or jointly or in common with other persons, controls the collection, holding, processing or use of the data; data user return (資料使用者申報表) means a return submitted to the Commissioner under section 14(4) and, if applicable, corrected under section 14A(5); (Replaced 18 of 2012 s. 3) disclosing (披露), in relation to personal data, includes",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "t:data": {
+      "citation": "s.2(1)",
+      "provision": "Section 2",
+      "scope": "provision",
+      "before": "(a) is (whether in whole or in part) for the purpose of producing or verifying data that; or (b) produces or verifies data in respect of which it is reasonable to believe that it is practicable that the data, may be used (whether immediately or at any subsequent time) for the purpose of taking adverse action against any of those data subjects; matching procedure request (核對程序要求) means a request under section 31(1); ",
+      "match": "personal data (個人資料) means any data",
+      "after": "— (a) relating directly or indirectly to a living individual; (b) from which it is practicable for the identity of the individual to be directly or indirectly ascertained; and (c) in a form in which access to or processing of the data is practicable; Last updated date Verified Copy 1.10.2022 Personal Data (Privacy) Ordinance Part 1 1-12 Section 2 Cap. 486 personal data system (個人資料系統) means any system, whether or",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "t:regulator": {
+      "citation": "s.2(1)",
+      "provision": "Section 2",
+      "scope": "provision",
+      "before": "Ordinance Part 1 1-4 Section 2 Cap. 486 approved code of practice (核准實務守則) means a code of practice approved under section 12; change notice (變更通知) means a notice served on the Commissioner under section 14(8) and, if applicable, corrected under section 14A(5); (Added 18 of 2012 s. 3) code of practice (實務守則) includes— (a) a standard; (b) a specification; and (c) any other documentary form of practical guidance; ",
+      "match": "Commissioner (專員) means the Privacy Commissioner for Personal Data established under section 5(1);",
+      "after": " Committee (諮詢委員會) means the Personal Data (Privacy) Advisory Committee established under section 11(1); complainant (投訴人) means the individual, or the relevant person on behalf of an individual, who has made a complaint; complaint (投訴) means a complaint under section 37; correction (改正), in relation to personal data, means rectification, erasure or completion; daily penalty (每日罰款) means a penalty for each day on",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:lawful-basis": {
+      "citation": "DPP1 (Schedule 1)",
+      "provision": "Data Protection Principle 1",
+      "scope": "provision",
+      "before": "1. Principle 1—purpose and manner of collection of personal data (1) Personal data shall not be collected unless— (a) ",
+      "match": "the data is collected for a lawful purpose directly related",
+      "after": " to a function or activity of the data user who is to use the data; (b) subject to paragraph (c), the collection of the data is necessary for or directly related to that purpose; and (c) the data is adequate but not excessive in relation to that purpose. (2) Personal data shall be collected by means which are— (a) lawful; and (b) fair in the circumstances of the case. (3) Where the person from whom personal data is",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:consent": {
+      "citation": "s.2(3); DPP3; Part 6A",
+      "provision": "Section 2",
+      "scope": "provision",
+      "before": "the data— (i) under the direct control of the data user; or (ii) on behalf of the data user; use (使用), in relation to personal data, includes disclose or transfer the data; would be likely to prejudice (相當可能損害) includes would prejudice. (2) (Repealed 18 of 2012 s. 3) (3) Where under this Ordinance an act may be done with the prescribed consent of a person (and howsoever the person is described), such consent— (a) ",
+      "match": "means the express consent of the person given",
+      "after": " voluntarily; (b) does not include any consent which has been withdrawn by notice in writing served on the person to whom the consent has been given (but without prejudice to so Last updated date Verified Copy 1.10.2022 Personal Data (Privacy) Ordinance Part 1 1-18 Section 2 Cap. 486 much of that act that has been done pursuant to the consent at any time before the notice is so served). (4) Subject to section 64A,",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:notice-transparency": {
+      "citation": "DPP1(3); DPP5",
+      "provision": "Data Protection Principle 5",
+      "scope": "provision",
+      "before": "5. Principle 5—information to be generally available All practicable steps shall be taken to ensure that a person can— (a) ",
+      "match": "ascertain a data user’s policies and practices in relation",
+      "after": " to personal data; (b) be informed of the kind of personal data held by a data user; (c) be informed of the main purposes for which personal data held by a data user is or is to be used. (Amended 18 of 2012 s. 40)",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:rights-access": {
+      "citation": "PDPO DPP6; ss.18–19",
+      "provision": "Data Protection Principle 6",
+      "scope": "provision",
+      "before": "6. Principle 6—access to personal data A data subject shall be entitled to— (a) ",
+      "match": "ascertain whether a data user holds personal data of",
+      "after": " which he is the data subject; (b) request access to personal data— (i) within a reasonable time; (ii) at a fee, if any, that is not excessive; (iii) in a reasonable manner; and (iv) in a form that is intelligible; (c) be given reasons if a request referred to in paragraph (b) is refused; (d) object to a refusal referred to in paragraph (c); Last updated date Verified Copy 20.4.2018 Personal Data (Privacy) Ordinance Schedule 1 S1-14 Section 6 Cap. 486 (e) request the correction of personal data; (f) be given reasons if a request referred to in paragraph (e) is refused; and (g) object to a refusal referred to in paragraph (f). Last updated date Verified Copy 20.4.2018 Personal Data (Privacy) Ordinance Schedule 2 S2-2 Section 1 Cap. 486 Schedule 2 [ss. 5(7), 10(2)(c) & 71] Finances, etc. of Commissioner",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:rights-deletion": {
+      "citation": "DPP2(2)",
+      "provision": "Data Protection Principle 2",
+      "scope": "provision",
+      "before": "purpose) for which the data is or is to be used by the third party; and (ii) that data was inaccurate at the time of such disclosure, that the third party— (A) is informed that the data is inaccurate; and (B) is provided with such particulars as will enable the third party to rectify the data having regard to that purpose. (Amended 18 of 2012 s. 40) (2) All practicable steps must be taken to ensure that personal ",
+      "match": "data is not kept longer than is necessary for the fulfillment of",
+      "after": " the purpose (including any directly related purpose) for which the data is or is to be used. (Amended 18 of 2012 s. 40) (3) Without limiting subsection (2), if a data user engages a data processor, whether within or outside Hong Kong, to process personal data on the data user’s behalf, the data user must adopt contractual or other means to prevent any personal data transferred to the data processor from being kept",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:rights-correction": {
+      "citation": "PDPO DPP6; ss.22–23",
+      "provision": "Data Protection Principle 6",
+      "scope": "provision",
+      "before": "6. Principle 6—access to personal data A data subject shall be entitled to— (a) ascertain whether a data user holds personal data of which he is the data subject; (b) request access to personal data— (i) within a reasonable time; (ii) at a fee, if any, that is not excessive; (iii) in a reasonable manner; and (iv) in a form that is intelligible; (c) be given reasons if a request referred to in paragraph (b) is refused; (d) object to a refusal referred to in paragraph (c); Last updated date Verified Copy 20.4.2018 Personal Data (Privacy) Ordinance Schedule 1 S1-14 Section 6 Cap. 486 (e) ",
+      "match": "request the correction of personal data;",
+      "after": " (f) be given reasons if a request referred to in paragraph (e) is refused; and (g) object to a refusal referred to in paragraph (f). Last updated date Verified Copy 20.4.2018 Personal Data (Privacy) Ordinance Schedule 2 S2-2 Section 1 Cap. 486 Schedule 2 [ss. 5(7), 10(2)(c) & 71] Finances, etc. of Commissioner",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:rights-optout-sale": {
+      "citation": "PDPO Part 6A (ss.35A–35M)",
+      "provision": "Section 35",
+      "scope": "provision",
+      "before": "to a fine of $500,000 and to imprisonment for 3 years. (4) In any proceedings for an offence under subsection (3), it is a defence for the data user charged to prove that the data user took all reasonable precautions and exercised all due diligence to avoid the commission of the offence. Last updated date Verified Copy 5.12.2014 Personal Data (Privacy) Ordinance Part 6A—Division 2 6A-16 Section 35G Cap. 486 35G. ",
+      "match": "Data subject may require data user to cease to",
+      "after": " use personal data in direct marketing (1) A data subject may, at any time, require a data user to cease to use the data subject’s personal data in direct marketing. (2) Subsection (1) applies irrespective of whether the data subject— (a) has received from the data user the information required to be provided in relation to the use of personal data under section 35C(2); or (b) has earlier given consent to the data",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:cross-border-transfer": {
+      "citation": "PDPO s.33 (not in operation)",
+      "provision": "Section 33",
+      "scope": "provision",
+      "before": "33. ",
+      "match": "Prohibition against transfer of personal data to place outside",
+      "after": " Hong Kong except in specified circumstances (Not yet in operation) (1) This section shall not apply to personal data other than personal data the collection, holding, processing or use of which— (a) takes place in Hong Kong; or (b) is controlled by a data user whose principal place of business is in Hong Kong. (2) A data user shall not transfer personal data to a place outside Hong Kong unless— (a) the place is",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:records-processing": {
+      "citation": "DPP2",
+      "provision": "Data Protection Principle 2",
+      "scope": "provision",
+      "before": "2. Principle 2—",
+      "match": "accuracy and duration of retention of personal data",
+      "after": " (1) All practicable steps shall be taken to ensure that— (a) personal data is accurate having regard to the purpose (including any directly related purpose) for which the personal data is or is to be used; (b) where there are reasonable grounds for believing that personal data is inaccurate having regard to the purpose (including any directly related purpose) for which the data is or is to be used— (Amended 18 of",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:vendor-processor": {
+      "citation": "DPP2(3); DPP4(2)",
+      "provision": "Data Protection Principle 2",
+      "scope": "provision",
+      "before": "steps must be taken to ensure that personal data is not kept longer than is necessary for the fulfillment of the purpose (including any directly related purpose) for which the data is or is to be used. (Amended 18 of 2012 s. 40) (3) Without limiting subsection (2), if a data user engages a data processor, whether within or outside Hong Kong, to process personal data on the data user’s behalf, the data user must ",
+      "match": "adopt contractual or other means to prevent",
+      "after": " any personal data transferred to the data processor from being kept longer than is necessary for processing of the data. (Added 18 of 2012 s. 40) (4) In subsection (3)— Last updated date Verified Copy 20.4.2018 Personal Data (Privacy) Ordinance Schedule 1 S1-8 Section 3 Cap. 486 data processor (資料處理者) means a person who— (a) processes personal data on behalf of another person; and (b) does not process the data for",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:security": {
+      "citation": "DPP4",
+      "provision": "Data Protection Principle 4",
+      "scope": "provision",
+      "before": "4. Principle 4—security of personal data (1) All practicable steps shall be taken to ensure that any ",
+      "match": "personal data (including data in a form in which access to",
+      "after": " or processing of the data is not practicable) held by a data user is protected against unauthorized or accidental access, processing, erasure, loss or use having particular regard to— (Amended 18 of 2012 s. 40; 17 of 2018 s. 129) (a) the kind of data and the harm that could result if any of those things should occur; (b) the physical location where the data is stored; (Amended 18 of 2012 s. 40) (c) any security",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:enforcement-penalties": {
+      "citation": "PDPO ss.50, 64; Part 6A",
+      "provision": "Section 50",
+      "scope": "provision",
+      "before": "50. Enforcement notices (1) If, following the completion of an investigation, the Commissioner is of the opinion that the relevant data user is contravening or has contravened a requirement under this Ordinance, the Commissioner may serve on the data user a notice in writing, ",
+      "match": "directing the data user to remedy and,",
+      "after": " if appropriate, prevent any recurrence of the contravention. (Replaced 18 of 2012 s. 28) (1A) An enforcement notice under subsection (1) must— (a) state that the Commissioner is of the opinion referred to in subsection (1) and the reason for that opinion; (b) specify— (i) the requirement which, in the opinion of the Commissioner, is being or has been contravened; and (ii) the act or omission that constitutes the",
+      "cutStart": false,
+      "cutEnd": true
+    }
+  }
+}

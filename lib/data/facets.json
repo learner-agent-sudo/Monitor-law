@@ -1,0 +1,452 @@
+{
+  "about": "Points of comparison. Each requirement is split into the concrete questions a practitioner actually compares. Every law is placed on every point from its own text, so two laws are compared by what they require, not by the words they use. In an ordered point the options run from least demanding to most demanding. An option marked silent means the law does not deal with the point.",
+  "terms": [
+    { "id": "organisation", "concept": "The organisation that decides why and how personal data is used" },
+    { "id": "vendor", "concept": "A company that handles the data on that organisation's behalf" },
+    { "id": "person", "concept": "The person the data is about" },
+    { "id": "data", "concept": "The information the law protects" },
+    { "id": "sensitive", "concept": "The kinds of data given extra protection" },
+    { "id": "regulator", "concept": "The authority that enforces the law" }
+  ],
+  "facets": [
+    {
+      "id": "lawful-basis.ground",
+      "requirementId": "lawful-basis",
+      "label": "What is needed before data may be used",
+      "question": "What must an organisation have before it may use personal data?",
+      "ordered": false,
+      "options": [
+        { "id": "nothing-specific", "label": "Nothing specific: use is allowed unless a rule forbids it", "silent": true },
+        { "id": "fair-purpose", "label": "A lawful, reasonable purpose; the law lists no grounds" },
+        { "id": "consent-unless-exempt", "label": "Consent, unless a listed exception applies" },
+        { "id": "listed-ground", "label": "One of a closed list of legal grounds" }
+      ]
+    },
+    {
+      "id": "lawful-basis.legitimate-interests",
+      "requirementId": "lawful-basis",
+      "label": "Relying on the organisation's own interests",
+      "question": "Can an organisation rely on its own legitimate interests instead of consent?",
+      "ordered": false,
+      "options": [
+        { "id": "not-needed", "label": "The question does not arise: no ground is needed", "silent": true },
+        { "id": "no", "label": "No: there is no such ground" },
+        { "id": "yes-with-balancing", "label": "Yes, after weighing them against the person's interests" }
+      ]
+    },
+    {
+      "id": "consent.standard",
+      "requirementId": "consent",
+      "label": "What counts as consent",
+      "question": "Where consent is needed, what counts as valid consent?",
+      "ordered": true,
+      "options": [
+        { "id": "not-defined", "label": "The law sets no standard", "silent": true },
+        { "id": "implied-can-count", "label": "Implied consent can be enough, depending on how sensitive the data is" },
+        { "id": "must-be-express", "label": "A clear, informed, affirmative act; silence never counts" }
+      ]
+    },
+    {
+      "id": "consent.role",
+      "requirementId": "consent",
+      "label": "How much of the law runs on consent",
+      "question": "When is consent needed?",
+      "ordered": false,
+      "options": [
+        { "id": "only-for-specific-uses", "label": "Only for particular uses the law names" },
+        { "id": "one-ground-of-several", "label": "It is one legal ground among several" },
+        { "id": "the-default-rule", "label": "It is the default rule, with listed exceptions" }
+      ]
+    },
+    {
+      "id": "consent.withdrawal",
+      "requirementId": "consent",
+      "label": "Taking consent back",
+      "question": "Can a person take their consent back?",
+      "ordered": true,
+      "options": [
+        { "id": "not-provided", "label": "The law does not provide for it", "silent": true },
+        { "id": "yes-with-limits", "label": "Yes, subject to formalities or legal and contractual limits" },
+        { "id": "yes-any-time", "label": "Yes, at any time" }
+      ]
+    },
+    {
+      "id": "consent.separate",
+      "requirementId": "consent",
+      "label": "Separate consent for higher-risk uses",
+      "question": "Is separate, explicit or express consent required for higher-risk uses?",
+      "ordered": true,
+      "options": [
+        { "id": "no", "label": "No", "silent": true },
+        { "id": "for-sensitive-data", "label": "Yes, for sensitive data" },
+        { "id": "for-several-uses", "label": "Yes, for several uses: sensitive data, passing data to others, sending it abroad" }
+      ]
+    },
+    {
+      "id": "notice.timing",
+      "requirementId": "notice-transparency",
+      "label": "When people must be told",
+      "question": "Must people be told how their data will be used, and when?",
+      "ordered": true,
+      "options": [
+        { "id": "no-duty", "label": "No duty to tell them", "silent": true },
+        { "id": "policy-available", "label": "A policy must be available, but need not be given to each person" },
+        { "id": "at-or-before-collection", "label": "Each person must be told at or before collection" }
+      ]
+    },
+    {
+      "id": "notice.content",
+      "requirementId": "notice-transparency",
+      "label": "How much the notice must cover",
+      "question": "What must the notice cover?",
+      "ordered": true,
+      "options": [
+        { "id": "nothing-set", "label": "Nothing is prescribed", "silent": true },
+        { "id": "purposes-and-recipients", "label": "The basics: purposes and who receives the data" },
+        { "id": "detailed-list", "label": "A long prescribed list, including how long data is kept and the person's rights" }
+      ]
+    },
+    {
+      "id": "access.right",
+      "requirementId": "rights-access",
+      "label": "What the person can obtain",
+      "question": "What can a person obtain about their own data?",
+      "ordered": true,
+      "options": [
+        { "id": "no-right", "label": "Nothing: there is no right of access", "silent": true },
+        { "id": "copy-of-data", "label": "Confirmation that data is held, and a copy" },
+        { "id": "copy-plus-details", "label": "A copy, plus details of how it is used: purposes, recipients, sources" }
+      ]
+    },
+    {
+      "id": "access.deadline",
+      "requirementId": "rights-access",
+      "label": "Time limit for answering",
+      "question": "How quickly must the organisation answer an access request?",
+      "ordered": true,
+      "options": [
+        { "id": "none-stated", "label": "No time limit is stated", "silent": true },
+        { "id": "prompt-no-fixed-time", "label": "Promptly, with no fixed number of days" },
+        { "id": "fixed-deadline", "label": "Within a fixed number of days" }
+      ]
+    },
+    {
+      "id": "deletion.right",
+      "requirementId": "rights-deletion",
+      "label": "Getting data deleted",
+      "question": "Can a person make the organisation delete their data?",
+      "ordered": true,
+      "options": [
+        { "id": "no-rule", "label": "The law has no deletion rule", "silent": true },
+        { "id": "duty-only", "label": "No right for the person; the organisation must itself delete data it no longer needs" },
+        { "id": "right-to-request", "label": "Yes: the person can require deletion, subject to exceptions" }
+      ]
+    },
+    {
+      "id": "deletion.pass-on",
+      "requirementId": "rights-deletion",
+      "label": "Telling others to delete",
+      "question": "Must the organisation tell others who hold the data to delete it too?",
+      "ordered": true,
+      "options": [
+        { "id": "no", "label": "No", "silent": true },
+        { "id": "yes", "label": "Yes" }
+      ]
+    },
+    {
+      "id": "correction.right",
+      "requirementId": "rights-correction",
+      "label": "Getting data corrected",
+      "question": "Can a person have wrong data about them corrected?",
+      "ordered": true,
+      "options": [
+        { "id": "no-right", "label": "No", "silent": true },
+        { "id": "yes", "label": "Yes" }
+      ]
+    },
+    {
+      "id": "correction.pass-on",
+      "requirementId": "rights-correction",
+      "label": "Passing corrections on",
+      "question": "Must a correction be passed on to those who already received the data?",
+      "ordered": true,
+      "options": [
+        { "id": "no", "label": "No", "silent": true },
+        { "id": "yes", "label": "Yes" }
+      ]
+    },
+    {
+      "id": "portability.right",
+      "requirementId": "rights-portability",
+      "label": "Moving data elsewhere",
+      "question": "Can a person take their data to another organisation?",
+      "ordered": true,
+      "options": [
+        { "id": "none", "label": "No", "silent": true },
+        { "id": "usable-copy", "label": "They can get it in a commonly used electronic format" },
+        { "id": "direct-transfer", "label": "They can also have it sent straight to another organisation" }
+      ]
+    },
+    {
+      "id": "optout.marketing",
+      "requirementId": "rights-optout-sale",
+      "label": "Direct marketing",
+      "question": "What control do people have over use of their data for direct marketing?",
+      "ordered": true,
+      "options": [
+        { "id": "none", "label": "None", "silent": true },
+        { "id": "opt-out", "label": "They can tell the organisation to stop" },
+        { "id": "opt-in", "label": "Their consent is needed first, and they can still stop it later" }
+      ]
+    },
+    {
+      "id": "optout.sale",
+      "requirementId": "rights-optout-sale",
+      "label": "Selling or passing data to others",
+      "question": "What control do people have over their data being sold or passed to others?",
+      "ordered": true,
+      "options": [
+        { "id": "no-control", "label": "None", "silent": true },
+        { "id": "opt-out", "label": "It is allowed until the person opts out" },
+        { "id": "needs-consent-or-ground", "label": "It needs consent or another legal ground in the first place" }
+      ]
+    },
+    {
+      "id": "adm.protection",
+      "requirementId": "rights-automated-decision",
+      "label": "Decisions made by machine alone",
+      "question": "What protection do people have against decisions made only by automated means?",
+      "ordered": true,
+      "options": [
+        { "id": "none", "label": "None", "silent": true },
+        { "id": "told-or-explained", "label": "They must be told, or can ask for an explanation" },
+        { "id": "refuse-or-human-review", "label": "They can refuse the decision or have a person review it" }
+      ]
+    },
+    {
+      "id": "sensitive.category",
+      "requirementId": "sensitive-data",
+      "label": "Whether sensitive data is singled out",
+      "question": "Does the law single out sensitive kinds of data?",
+      "ordered": true,
+      "options": [
+        { "id": "no-category", "label": "No", "silent": true },
+        { "id": "sensitivity-is-a-factor", "label": "No fixed list; sensitivity is a factor that raises the standard" },
+        { "id": "defined-list", "label": "Yes: a defined list with its own rules" }
+      ]
+    },
+    {
+      "id": "sensitive.rule",
+      "requirementId": "sensitive-data",
+      "label": "The main rule for sensitive data",
+      "question": "What is the main rule for using sensitive data?",
+      "ordered": true,
+      "options": [
+        { "id": "no-special-rule", "label": "No special rule", "silent": true },
+        { "id": "person-can-limit", "label": "It may be used, but the person can limit the use" },
+        { "id": "express-consent", "label": "It needs express or separate consent" },
+        { "id": "banned-unless-exception", "label": "It is banned unless a listed exception applies" }
+      ]
+    },
+    {
+      "id": "children.rule",
+      "requirementId": "childrens-data",
+      "label": "Children's data",
+      "question": "How does the law protect children's data?",
+      "ordered": true,
+      "options": [
+        { "id": "no-specific-rule", "label": "No specific rule", "silent": true },
+        { "id": "someone-acts-for-child", "label": "No age limit; a parent or guardian may act for the child" },
+        { "id": "parental-consent-below-age", "label": "Below a set age, a parent's consent is required" }
+      ]
+    },
+    {
+      "id": "breach.regulator",
+      "requirementId": "breach-notification",
+      "label": "Telling the regulator about a breach",
+      "question": "Must the organisation tell the regulator about a data breach?",
+      "ordered": true,
+      "options": [
+        { "id": "no", "label": "No", "silent": true },
+        { "id": "yes-no-fixed-time", "label": "Yes, promptly, with no fixed number of hours" },
+        { "id": "yes-fixed-time", "label": "Yes, within a fixed time" }
+      ]
+    },
+    {
+      "id": "breach.individuals",
+      "requirementId": "breach-notification",
+      "label": "Telling the people affected",
+      "question": "Must the people affected by a breach be told?",
+      "ordered": true,
+      "options": [
+        { "id": "no", "label": "No", "silent": true },
+        { "id": "yes-when-harm-likely", "label": "Yes, when the breach is likely to harm them" },
+        { "id": "yes-whenever-compromised", "label": "Yes, whenever their data may have been compromised, harm or not" }
+      ]
+    },
+    {
+      "id": "breach.records",
+      "requirementId": "breach-notification",
+      "label": "Keeping a record of breaches",
+      "question": "Must the organisation keep a record of breaches?",
+      "ordered": true,
+      "options": [
+        { "id": "no", "label": "No", "silent": true },
+        { "id": "yes", "label": "Yes" }
+      ]
+    },
+    {
+      "id": "dpo.officer",
+      "requirementId": "dpo-representative",
+      "label": "A person in charge of data protection",
+      "question": "Must someone be put in charge of data protection?",
+      "ordered": true,
+      "options": [
+        { "id": "no", "label": "No", "silent": true },
+        { "id": "in-listed-cases", "label": "Only for certain organisations or volumes of data" },
+        { "id": "always", "label": "Yes, every organisation" }
+      ]
+    },
+    {
+      "id": "dpo.local-representative",
+      "requirementId": "dpo-representative",
+      "label": "A local representative for foreign organisations",
+      "question": "Must an organisation based abroad appoint a representative in the territory?",
+      "ordered": true,
+      "options": [
+        { "id": "no", "label": "No", "silent": true },
+        { "id": "yes", "label": "Yes" }
+      ]
+    },
+    {
+      "id": "dpia.duty",
+      "requirementId": "dpia",
+      "label": "Assessing risk beforehand",
+      "question": "Must the organisation assess the risks before a risky use of data?",
+      "ordered": true,
+      "options": [
+        { "id": "no", "label": "No", "silent": true },
+        { "id": "in-listed-cases", "label": "Yes, in the cases the law lists" }
+      ]
+    },
+    {
+      "id": "dpia.regulator",
+      "requirementId": "dpia",
+      "label": "Involving the regulator in the assessment",
+      "question": "Must the regulator be consulted on, or sent, the assessment?",
+      "ordered": true,
+      "options": [
+        { "id": "no", "label": "No", "silent": true },
+        { "id": "in-some-cases", "label": "Yes, in some cases" }
+      ]
+    },
+    {
+      "id": "transfer.rule",
+      "requirementId": "cross-border-transfer",
+      "label": "What is needed to send data abroad",
+      "question": "What is needed before personal data may be sent out of the territory?",
+      "ordered": true,
+      "options": [
+        { "id": "no-restriction", "label": "Nothing: no restriction is in force", "silent": true },
+        { "id": "stays-responsible", "label": "Nothing in advance; the sender stays responsible and must protect the data by contract" },
+        { "id": "safeguards-or-assessment", "label": "An adequacy finding, approved safeguards or a documented risk assessment" },
+        { "id": "state-mechanism-plus-consent", "label": "A state review, certification or filed standard contract, plus separate consent" }
+      ]
+    },
+    {
+      "id": "transfer.tell-people",
+      "requirementId": "cross-border-transfer",
+      "label": "Telling people their data goes abroad",
+      "question": "Must people be told, or asked, before their data goes abroad?",
+      "ordered": true,
+      "options": [
+        { "id": "no", "label": "No", "silent": true },
+        { "id": "told", "label": "They must be told" },
+        { "id": "separate-consent", "label": "They must be told and give separate consent" }
+      ]
+    },
+    {
+      "id": "localization.rule",
+      "requirementId": "data-localization",
+      "label": "Keeping data inside the territory",
+      "question": "Must personal data be stored inside the territory?",
+      "ordered": true,
+      "options": [
+        { "id": "no", "label": "No", "silent": true },
+        { "id": "for-some-operators", "label": "Yes, for certain operators or volumes of data" },
+        { "id": "generally", "label": "Yes, as a general rule" }
+      ]
+    },
+    {
+      "id": "records.duty",
+      "requirementId": "records-processing",
+      "label": "Written records of how data is used",
+      "question": "What must the organisation keep in writing about how it uses data?",
+      "ordered": true,
+      "options": [
+        { "id": "nothing", "label": "Nothing", "silent": true },
+        { "id": "policies-and-practices", "label": "Documented policies and practices" },
+        { "id": "detailed-record", "label": "A detailed record of each processing activity" }
+      ]
+    },
+    {
+      "id": "vendor.contract",
+      "requirementId": "vendor-processor",
+      "label": "What must be in place with a vendor",
+      "question": "When a vendor handles data for the organisation, what must be in place?",
+      "ordered": true,
+      "options": [
+        { "id": "nothing-specific", "label": "Nothing specific", "silent": true },
+        { "id": "stays-responsible", "label": "The organisation stays responsible and must protect the data by contract or other means" },
+        { "id": "contract-with-set-terms", "label": "A contract containing terms the law spells out" }
+      ]
+    },
+    {
+      "id": "vendor.direct-duties",
+      "requirementId": "vendor-processor",
+      "label": "Duties placed on the vendor itself",
+      "question": "Does the law put duties directly on the vendor?",
+      "ordered": true,
+      "options": [
+        { "id": "no", "label": "No", "silent": true },
+        { "id": "yes", "label": "Yes" }
+      ]
+    },
+    {
+      "id": "security.duty",
+      "requirementId": "security",
+      "label": "How security is required",
+      "question": "How does the law require personal data to be kept secure?",
+      "ordered": true,
+      "options": [
+        { "id": "none", "label": "It does not", "silent": true },
+        { "id": "general-standard", "label": "A general standard (reasonable or appropriate safeguards), left to the organisation" },
+        { "id": "named-measures", "label": "A general standard plus measures the law names, such as encryption, access controls, training or testing" }
+      ]
+    },
+    {
+      "id": "enforcement.fines",
+      "requirementId": "enforcement-penalties",
+      "label": "Fines from the regulator",
+      "question": "Can the regulator itself impose fines?",
+      "ordered": true,
+      "options": [
+        { "id": "courts-only", "label": "No: only a court can fine, after prosecution" },
+        { "id": "fixed-caps", "label": "Yes, up to a fixed amount" },
+        { "id": "turnover-based", "label": "Yes, up to a share of worldwide turnover" }
+      ]
+    },
+    {
+      "id": "enforcement.private-action",
+      "requirementId": "enforcement-penalties",
+      "label": "Individuals suing",
+      "question": "Can an individual take the organisation to court for compensation?",
+      "ordered": true,
+      "options": [
+        { "id": "no", "label": "No", "silent": true },
+        { "id": "limited", "label": "Only for certain violations, or only after a complaint to the regulator" },
+        { "id": "general", "label": "Yes, for damage caused by a breach of the law" }
+      ]
+    }
+  ]
+}

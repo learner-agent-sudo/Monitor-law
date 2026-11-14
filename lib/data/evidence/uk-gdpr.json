@@ -1,0 +1,615 @@
+{
+  "lawId": "uk-gdpr",
+  "items": {
+    "f:lawful-basis.ground": {
+      "citation": "Art. 6 UK GDPR",
+      "provision": "Article 6",
+      "scope": "provision",
+      "before": "Article 6 Lawfulness of processing 1 ",
+      "match": "Processing shall be lawful only if and to the extent that at least one of the following applies:",
+      "after": " a the data subject has given consent to the processing of his or her personal data for one or more specific purposes; b processing is necessary for the performance of a contract to which the data subject is party or in order to take steps at the request of the data subject prior to entering into a contract; c processing is necessary for compliance with a legal obligation to which the controller is subject;",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:lawful-basis.legitimate-interests": {
+      "citation": "Art. 6 UK GDPR",
+      "provision": "Article 6",
+      "scope": "provision",
+      "before": "d processing is necessary in order to protect the vital interests of the data subject or of another natural person; F41 e processing is necessary for the performance of a task [ of the controller] carried out F42 in the public interest or [ a task carried out] in the exercise of official authority vested in the controller; F43 [ ea processing is necessary for the purposes of a recognised legitimate interest;] f ",
+      "match": "processing is necessary for the purposes of the legitimate interests pursued by the controller or by a third party, except where such interests are overridden",
+      "after": " by the interests or fundamental rights and freedoms of the data subject which require protection of personal data, in particular where the data subject is a child. F44 [ Points (ea) and (f)] of the first subparagraph shall not apply to processing carried out by public authorities in the performance of their tasks. F45 2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . F46 3 The basis for the",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:consent.standard": {
+      "citation": "Art. 4(11) UK GDPR",
+      "provision": "Article 4",
+      "scope": "provision",
+      "before": "the direct authority of the controller or processor, are authorised to process personal data; F20 [ 10A ‘public authority’ and ‘public body’ are to be interpreted in accordance with section 7 of the 2018 Act and provision made under that section;] 11 ‘consent’ of the data subject means any freely given, specific, informed and unambiguous indication of the data subject's wishes by which he or she, by a statement ",
+      "match": "or by a clear affirmative action, signifies agreement to the processing of personal data",
+      "after": " F21 relating to him or her [ (and see paragraphs 6 and 7 of this Article)]; 12 ‘personal data breach’ means a breach of security leading to the accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data transmitted, stored or otherwise processed; 13 ‘genetic data’ means personal data relating to the inherited or acquired genetic characteristics of a natural person",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:consent.role": {
+      "citation": "Art. 6 UK GDPR",
+      "provision": "Article 6",
+      "scope": "provision",
+      "before": "Article 6 Lawfulness of processing 1 Processing shall be lawful only if and to the extent that at least one of the following applies: a ",
+      "match": "the data subject has given consent to the processing of his or her personal data for one",
+      "after": " or more specific purposes; b processing is necessary for the performance of a contract to which the data subject is party or in order to take steps at the request of the data subject prior to entering into a contract; c processing is necessary for compliance with a legal obligation to which the controller is subject; Regulation (EU) 2016/679 of the European Parliament and of the Council of 27... 53 CHAPTER II",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:consent.withdrawal": {
+      "citation": "Art. 7(3) UK GDPR",
+      "provision": "Article 7",
+      "scope": "provision",
+      "before": "Article 7 Conditions for consent 1 Where processing is based on consent, the controller shall be able to demonstrate that the data subject has consented to processing of his or her personal data. 2 If the data subject's consent is given in the context of a written declaration which also concerns other matters, the request for consent shall be presented in a manner which is clearly distinguishable from the other matters, in an intelligible and easily accessible form, using clear and plain language. Any part of such a declaration which constitutes an infringement of this Regulation shall not be binding. 3 ",
+      "match": "The data subject shall have the right to withdraw his or her consent at any time.",
+      "after": " The withdrawal of consent shall not affect the lawfulness of processing based on consent before its withdrawal. Prior to giving consent, the data subject shall be informed thereof. It shall be as easy to withdraw as to give consent. 4 When assessing whether consent is freely given, utmost account shall be taken of whether, inter alia, the performance of a contract, including the provision of a service, is conditional on consent to the processing of personal data that is not necessary for the performance of that contract.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:consent.separate": {
+      "citation": "Art. 9(2) UK GDPR",
+      "provision": "Article 9",
+      "scope": "provision",
+      "before": "opinions, religious or philosophical beliefs, or trade union membership, and the processing of genetic data, biometric data for the purpose of uniquely identifying a natural person, data concerning health or data concerning a natural person's sex life or sexual orientation shall be prohibited. F64 2 Paragraph 1 shall not apply if [ the processing is based on Article 6(1) and] one of the following applies: a ",
+      "match": "the data subject has given explicit consent to the processing of those personal data",
+      "after": " F65 for one or more specified purposes, except where [ domestic law provides] that the prohibition referred to in paragraph 1 may not be lifted by the data subject; b processing is necessary for the purposes of carrying out the obligations and exercising specific rights of the controller or of the data subject in the field of employment and F66 social security and social protection law in so far as it is authorised",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:notice.timing": {
+      "citation": "Art. 13 UK GDPR",
+      "provision": "Article 13",
+      "scope": "provision",
+      "before": "Article 13 Information to be provided where personal data are collected from the data subject 1 Where personal data relating to a data subject are collected from the data subject, the controller shall, ",
+      "match": "at the time when personal data are obtained, provide the data subject with all",
+      "after": " of the following information: a the identity and the contact details of the controller and, where applicable, of the controller's representative; b the contact details of the data protection officer, where applicable; c the purposes of the processing for which the personal data are intended as well as the legal basis for the processing; d where the processing is based on point (f) of Article 6(1), the legitimate",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:notice.content": {
+      "citation": "Art. 13(2) UK GDPR",
+      "provision": "Article 13",
+      "scope": "provision",
+      "before": "or 47, or the second subparagraph of Article 49(1), [ the safeguards relied on] and the means by which to obtain a copy of them or where they have been made available. 2 In addition to the information referred to in paragraph 1, the controller shall, at the time when personal data are obtained, provide the data subject with the following further information necessary to ensure fair and transparent processing: a ",
+      "match": "the period for which the personal data will be stored, or if that is not possible, the criteria",
+      "after": " used to determine that period; b the existence of the right to request from the controller access to and rectification or erasure of personal data or restriction of processing concerning the data subject or to object to processing as well as the right to data portability; c where the processing is based on point (a) of Article 6(1) or point (a) of Article 9(2), the existence of the right to withdraw consent at any",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:access.right": {
+      "citation": "Art. 15 UK GDPR",
+      "provision": "Article 15",
+      "scope": "provision",
+      "before": "Article 15 Right of access by the data subject 1 The data subject shall have the right to obtain from the controller confirmation as to whether or not personal data concerning him or her are being processed, and, where that is the ",
+      "match": "case, access to the personal data and the following information:",
+      "after": " a the purposes of the processing; b the categories of personal data concerned; c the recipients or categories of recipient to whom the personal data have been or will be disclosed, in particular recipients in third countries or international organisations; d where possible, the envisaged period for which the personal data will be stored, or, if not possible, the criteria used to determine that period; e the",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:access.deadline": {
+      "citation": "Art. 12A UK GDPR",
+      "provision": "Article 12",
+      "scope": "provision",
+      "before": "11(4)(b) (with reg. 5); 2020 c. 1, Sch. 5 para. 1(1) F105 Art. 12(8) omitted (31.12.2020) by virtue of The Data Protection, Privacy and Electronic Communications (Amendments etc) (EU Exit) Regulations 2019 (S.I. 2019/419), reg. 1(2), Sch. 1 para. 11(5) (with reg. 5, Sch. 1 para. 80); 2020 c. 1, Sch. 5 para. 1(1) F106 [ Article 12A. Meaning of “applicable time period” 1 In Article 12, “the applicable time period” ",
+      "match": "means the period of one month beginning with the relevant time, subject to paragraph 3.",
+      "after": " 2 “The relevant time” means the latest of the following— a when the controller receives the request in question; Regulation (EU) 2016/679 of the European Parliament and of the Council of 27... 65 CHAPTER III Section 2 Document Generated: 2026-07-16 Changes to legislation: Regulation (EU) 2016/679 of the European Parliament and of the Council is up to date with all changes known to be in force on or before 16 July",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:deletion.right": {
+      "citation": "Art. 17 UK GDPR",
+      "provision": "Article 17",
+      "scope": "provision",
+      "before": "Article 17 Right to erasure (‘right to be forgotten’) 1 The data subject shall have the right to obtain from the controller ",
+      "match": "the erasure of personal data concerning him or her without undue delay",
+      "after": " and the controller shall have the obligation to erase personal data without undue delay where one of the following grounds applies: a the personal data are no longer necessary in relation to the purposes for which they were collected or otherwise processed; b the data subject withdraws consent on which the processing is based according to point (a) of Article 6(1), or point (a) of Article 9(2), and where there is",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:deletion.pass-on": {
+      "citation": "Art. 19 UK GDPR",
+      "provision": "Article 19",
+      "scope": "provision",
+      "before": "Article 19 Notification obligation regarding rectification or erasure of personal data or restriction of processing The controller ",
+      "match": "shall communicate any rectification or erasure of personal data or restriction of processing",
+      "after": " carried out in accordance with Article 16, Article 17(1) and Article 18 to each recipient to whom the personal data have been disclosed, unless this proves impossible or involves disproportionate effort. The controller shall inform the data subject about those recipients if the data subject requests it.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:correction.right": {
+      "citation": "Art. 16 UK GDPR",
+      "provision": "Article 16",
+      "scope": "provision",
+      "before": "Article 16 Right to rectification The data subject shall have the right to obtain from the controller without undue delay ",
+      "match": "the rectification of inaccurate personal data concerning him or her.",
+      "after": " Taking into account the purposes of the processing, the data subject shall have the right to have incomplete personal data completed, including by means of providing a supplementary statement. Regulation (EU) 2016/679 of the European Parliament and of the Council of 27... 71 CHAPTER III Section 3 Document Generated: 2026-07-16 Changes to legislation: Regulation (EU) 2016/679 of the European Parliament and of the Council is up to date with all changes known to be in force on or before 16 July 2026. There are changes that may be brought into force at a future date. Changes that have been made appear in the content and are referenced with annotations. (See end of Document for details) View outstanding changes",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:correction.pass-on": {
+      "citation": "Art. 19 UK GDPR",
+      "provision": "Article 19",
+      "scope": "provision",
+      "before": "Article 19 Notification obligation regarding rectification or erasure of personal data or restriction of processing The controller ",
+      "match": "shall communicate any rectification or erasure of personal data or restriction of processing",
+      "after": " carried out in accordance with Article 16, Article 17(1) and Article 18 to each recipient to whom the personal data have been disclosed, unless this proves impossible or involves disproportionate effort. The controller shall inform the data subject about those recipients if the data subject requests it.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:portability.right": {
+      "citation": "Art. 20 UK GDPR",
+      "provision": "Article 20",
+      "scope": "provision",
+      "before": "hindrance from the controller to which the personal data have been provided, where: a the processing is based on consent pursuant to point (a) of Article 6(1) or point (a) of Article 9(2) or on a contract pursuant to point (b) of Article 6(1); and b the processing is carried out by automated means. 2 In exercising his or her right to data portability pursuant to paragraph 1, the data subject shall have the right to ",
+      "match": "have the personal data transmitted directly from one controller to another,",
+      "after": " where technically feasible. 3 The exercise of the right referred to in paragraph 1 of this Article shall be without prejudice to Article 17. That right shall not apply to processing necessary for the performance of a task carried out in the public interest or in the exercise of official authority vested in the controller. 4 The right referred to in paragraph 1 shall not adversely affect the rights and freedoms of",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:optout.marketing": {
+      "citation": "Art. 21 UK GDPR",
+      "provision": "Article 21",
+      "scope": "provision",
+      "before": "6(1), including profiling based on those provisions. The controller shall no longer process the personal data unless the controller demonstrates compelling legitimate grounds for the processing which override the interests, rights and freedoms of the data subject or for the establishment, exercise or defence of legal claims. 2 Where personal data are processed for direct marketing purposes, the data subject shall ",
+      "match": "have the right to object at any time to processing of personal data concerning him or her for",
+      "after": " such marketing, which includes profiling to the extent that it is related to such direct marketing. 3 Where the data subject objects to processing for direct marketing purposes, the personal data shall no longer be processed for such purposes. 4 At the latest at the time of the first communication with the data subject, the right referred to in paragraphs 1 and 2 shall be explicitly brought to the attention of the",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:optout.sale": {
+      "citation": "Art. 6 UK GDPR",
+      "provision": "Article 6",
+      "scope": "provision",
+      "before": "Article 6 Lawfulness of processing 1 ",
+      "match": "Processing shall be lawful only if and to the extent that at least one of the following applies:",
+      "after": " a the data subject has given consent to the processing of his or her personal data for one or more specific purposes; b processing is necessary for the performance of a contract to which the data subject is party or in order to take steps at the request of the data subject prior to entering into a contract; c processing is necessary for compliance with a legal obligation to which the controller is subject;",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:adm.protection": {
+      "citation": "Art. 22C UK GDPR",
+      "provision": "Article 22",
+      "scope": "provision",
+      "before": "safeguards for the data subject’s rights, freedoms and legitimate interests are in place which comply with paragraph 2 and any regulations under Article 22D(3). 2 The safeguards must consist of or include measures which— a provide the data subject with information about decisions described in paragraph 1 taken in relation to the data subject; b enable the data subject to make representations about such decisions; c ",
+      "match": "enable the data subject to obtain human intervention on the part of the controller in relation to such decisions;",
+      "after": " d enable the data subject to contest such decisions. Article 22D Further provision about automated decision-making 1 The Secretary of State may by regulations provide that, for the purposes of Article 22A(1)(a), there is, or is not, to be taken to be meaningful human involvement in the taking of a decision in cases described in the regulations. 2 The Secretary of State may by regulations provide that, for the",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:sensitive.category": {
+      "citation": "Art. 9 UK GDPR",
+      "provision": "Article 9",
+      "scope": "provision",
+      "before": "Article 9 Processing of special categories of personal data 1 Processing of personal data revealing racial or ethnic origin, political opinions, religious or philosophical beliefs, or trade union membership, and the processing of genetic data, biometric data for the purpose of uniquely identifying a natural person, ",
+      "match": "data concerning health or data concerning a natural person's sex life or sexual orientation shall be prohibited.",
+      "after": " F64 2 Paragraph 1 shall not apply if [ the processing is based on Article 6(1) and] one of the following applies: a the data subject has given explicit consent to the processing of those personal data F65 for one or more specified purposes, except where [ domestic law provides] that the prohibition referred to in paragraph 1 may not be lifted by the data subject; b processing is necessary for the purposes of",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:sensitive.rule": {
+      "citation": "Art. 9 UK GDPR",
+      "provision": "Article 9",
+      "scope": "provision",
+      "before": "Article 9 Processing of special categories of personal data 1 Processing of personal data revealing racial or ethnic origin, political opinions, religious or philosophical beliefs, or trade union membership, and the processing of genetic data, biometric data for the purpose of uniquely identifying a natural person, ",
+      "match": "data concerning health or data concerning a natural person's sex life or sexual orientation shall be prohibited.",
+      "after": " F64 2 Paragraph 1 shall not apply if [ the processing is based on Article 6(1) and] one of the following applies: a the data subject has given explicit consent to the processing of those personal data F65 for one or more specified purposes, except where [ domestic law provides] that the prohibition referred to in paragraph 1 may not be lifted by the data subject; b processing is necessary for the purposes of",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:children.rule": {
+      "citation": "Art. 8(1) UK GDPR",
+      "provision": "Article 8",
+      "scope": "provision",
+      "before": "Article 8 Conditions applicable to child's consent in relation to information society services 1 Where point (a) of Article 6(1) applies, in relation to the offer of information society services directly to a child, the processing of the personal data of a child shall be lawful where F55 F56 the child is at least [ 13 years old]. Where the child is below the age [ of 13 years], such ",
+      "match": "processing shall be lawful only if and to the extent that consent is given or authorised by the",
+      "after": " holder of parental responsibility over the child. F57 ... 2 The controller shall make reasonable efforts to verify in such cases that consent is given or authorised by the holder of parental responsibility over the child, taking into consideration available technology. F58 [ 2A The Secretary of State may by regulations— a amend paragraph 1 so as to change the age for the time being specified in that paragraph (but",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:breach.regulator": {
+      "citation": "Art. 33(1) UK GDPR",
+      "provision": "Article 33",
+      "scope": "provision",
+      "before": "Article 33 F184 Notification of a personal data breach to [ the Commissioner] 1 In the case of a personal data breach, the controller shall without undue delay and, ",
+      "match": "where feasible, not later than 72 hours after having become aware of it, notify the personal data",
+      "after": " F185 breach to [ the Commissioner], unless the personal data breach is unlikely to result in a risk F186 to the rights and freedoms of natural persons. Where [ the notification under this paragraph] is not made within 72 hours, it shall be accompanied by reasons for the delay. 2 The processor shall notify the controller without undue delay after becoming aware of a personal data breach. 3 The notification referred",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:breach.individuals": {
+      "citation": "Art. 34(1) UK GDPR",
+      "provision": "Article 34",
+      "scope": "provision",
+      "before": "Article 34 Communication of a personal data breach to the data subject 1 ",
+      "match": "When the personal data breach is likely to result in a high risk to the rights and",
+      "after": " freedoms of natural persons, the controller shall communicate the personal data breach to the data subject without undue delay. 2 The communication to the data subject referred to in paragraph 1 of this Article shall describe in clear and plain language the nature of the personal data breach and contain at least the information and measures referred to in points (b), (c) and (d) of Article 33(3). 3 The",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:breach.records": {
+      "citation": "Art. 33(5) UK GDPR",
+      "provision": "Article 33",
+      "scope": "provision",
+      "before": "Generated: 2026-07-16 Changes to legislation: Regulation (EU) 2016/679 of the European Parliament and of the Council is up to date with all changes known to be in force on or before 16 July 2026. There are changes that may be brought into force at a future date. Changes that have been made appear in the content and are referenced with annotations. (See end of Document for details) View outstanding changes 5 ",
+      "match": "The controller shall document any personal data breaches, comprising the facts",
+      "after": " relating to the personal data breach, its effects and the remedial action taken. That documentation F187 shall enable [ the Commissioner] to verify compliance with this Article. Textual Amendments F184 Words in Art. 33 heading substituted (31.12.2020) by The Data Protection, Privacy and Electronic Communications (Amendments etc) (EU Exit) Regulations 2019 (S.I. 2019/419), reg. 1(2), Sch. 1 para. 27(2) (with reg.",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:dpo.officer": {
+      "citation": "Art. 37(1) UK GDPR",
+      "provision": "Article 37",
+      "scope": "provision",
+      "before": "Article 37 Designation of the data protection officer 1 The controller and the processor shall designate a data protection officer in any case where: F205 a ",
+      "match": "the processing is carried out by a public authority or body,",
+      "after": " except for courts [ and tribunals] acting in their judicial capacity; b the core activities of the controller or the processor consist of processing operations which, by virtue of their nature, their scope and/or their purposes, require regular and systematic monitoring of data subjects on a large scale; or X1 [ c the core activities of the controller or the processor consist of processing on a large scale of",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:dpo.local-representative": {
+      "citation": "Art. 27 UK GDPR",
+      "provision": "Article 27",
+      "scope": "provision",
+      "before": "Article 27 F162 Representatives of controllers or processors not established in [ the United Kingdom] 1 Where Article 3(2) applies, ",
+      "match": "the controller or the processor shall designate in writing",
+      "after": " F163 a representative in [ the United Kingdom]. 2 The obligation laid down in paragraph 1 of this Article shall not apply to: a processing which is occasional, does not include, on a large scale, processing of special categories of data as referred to in Article 9(1) or processing of personal data relating to criminal convictions and offences referred to in Article 10, and is unlikely to result in a risk to the",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:dpia.duty": {
+      "citation": "Art. 35 UK GDPR",
+      "provision": "Article 35",
+      "scope": "provision",
+      "before": "Article 35 Data protection impact assessment 1 Where a type of processing in particular using new technologies, and taking into account the nature, scope, context and purposes of the processing, is likely to result in a high risk to the rights and freedoms of natural persons, the controller shall, prior to the processing, ",
+      "match": "carry out an assessment of the impact of the envisaged processing operations on the protection",
+      "after": " of personal data. A single assessment may address a set of similar processing operations that present similar high risks. 2 The controller shall seek the advice of the data protection officer, where designated, when carrying out a data protection impact assessment. 3 A data protection impact assessment referred to in paragraph 1 shall in particular be required in the case of: a a systematic and extensive evaluation",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:dpia.regulator": {
+      "citation": "Art. 36(1) UK GDPR",
+      "provision": "Article 36",
+      "scope": "provision",
+      "before": "Article 36 Prior consultation F195 1 The controller shall consult [ the Commissioner] prior to processing where a data ",
+      "match": "protection impact assessment under Article 35 indicates that the processing would result in a",
+      "after": " high risk in the absence of measures taken by the controller to mitigate the risk. Regulation (EU) 2016/679 of the European Parliament and of the Council of 27... 91 CHAPTER IV Section 3 Document Generated: 2026-07-16 Changes to legislation: Regulation (EU) 2016/679 of the European Parliament and of the Council is up to date with all changes known to be in force on or before 16 July 2026. There are changes that may",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:transfer.rule": {
+      "citation": "Art. 44A UK GDPR",
+      "provision": "Article 44",
+      "scope": "provision",
+      "before": "Article 44 General principle for transfers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Textual Amendments F256 Art. 44 omitted (5.2.2026) by virtue of Data (Use and Access) Act 2025 (c. 18), s. 142(1), Sch. 7 para. 2(1); S.I. 2026/82, reg. 2(z9) F257 [ Article 44A General principles for transfers 1 A controller or processor may transfer personal data to a third country or an international organisation only if— a the condition in paragraph 2 is met, and b the transfer is carried out in compliance with the other provisions of this Regulation. 2 The condition is met if the transfer— a ",
+      "match": "is approved by regulations under Article 45A that are in force at the time of the transfer,",
+      "after": " b is made subject to appropriate safeguards (see Article 46), or c is made in reliance on a derogation for specific situations (see Article 49). 3 A transfer may not be made in reliance on paragraph 2(b) or (c) if, or to the extent that, it would breach a restriction in regulations under Article 49A.] Textual Amendments F257 Art. 44A inserted (5.2.2026) by Data (Use and Access) Act 2025 (c. 18), s. 142(1), Sch. 7 para. 2(2); S.I. 2026/82, reg. 2(z9) F258",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "f:transfer.tell-people": {
+      "citation": "Art. 13(1) UK GDPR",
+      "provision": "Article 13",
+      "scope": "provision",
+      "before": "2026-07-16 Changes to legislation: Regulation (EU) 2016/679 of the European Parliament and of the Council is up to date with all changes known to be in force on or before 16 July 2026. There are changes that may be brought into force at a future date. Changes that have been made appear in the content and are referenced with annotations. (See end of Document for details) View outstanding changes f where applicable, ",
+      "match": "the fact that the controller intends to transfer personal data to a",
+      "after": " F107 third country or international organisation and the existence or absence of [ relevant F108 [ regulations under Article 45A]], or in the case of transfers referred to in Article 46 F109 or 47, or the second subparagraph of Article 49(1), [ the safeguards relied on] and the means by which to obtain a copy of them or where they have been made available. 2 In addition to the information referred to in paragraph",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:records.duty": {
+      "citation": "Art. 30 UK GDPR",
+      "provision": "Article 30",
+      "scope": "provision",
+      "before": "Article 30 Records of processing activities 1 Each controller and, where applicable, the controller's representative, ",
+      "match": "shall maintain a record of processing activities under its responsibility.",
+      "after": " That record shall contain all of the following information: a the name and contact details of the controller and, where applicable, the joint controller, the controller's representative and the data protection officer; b the purposes of the processing; c a description of the categories of data subjects and of the categories of personal data; d the categories of recipients to whom the personal data have been or will",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "f:vendor.contract": {
+      "citation": "Art. 28(3) UK GDPR",
+      "provision": "Article 28",
+      "scope": "provision",
+      "before": "prior specific or general written authorisation of the controller. In the case of general written authorisation, the processor shall inform the controller of any intended changes concerning the addition or replacement of other processors, thereby giving the controller the opportunity to object to such changes. 3 Processing by a processor shall be governed by a contract or other legal act under F166 [ domestic law], ",
+      "match": "that is binding on the processor with regard to the controller and that sets",
+      "after": " out the subject-matter and duration of the processing, the nature and purpose of the processing, the type of personal data and categories of data subjects and the obligations and rights of the controller. That contract or other legal act shall stipulate, in particular, that the processor: a processes the personal data only on documented instructions from the controller, including with regard to transfers of",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:vendor.direct-duties": {
+      "citation": "Art. 33(2) UK GDPR",
+      "provision": "Article 33",
+      "scope": "provision",
+      "before": "shall without undue delay and, where feasible, not later than 72 hours after having become aware of it, notify the personal data F185 breach to [ the Commissioner], unless the personal data breach is unlikely to result in a risk F186 to the rights and freedoms of natural persons. Where [ the notification under this paragraph] is not made within 72 hours, it shall be accompanied by reasons for the delay. 2 ",
+      "match": "The processor shall notify the controller without undue delay after becoming aware",
+      "after": " of a personal data breach. 3 The notification referred to in paragraph 1 shall at least: a describe the nature of the personal data breach including where possible, the categories and approximate number of data subjects concerned and the categories and approximate number of personal data records concerned; b communicate the name and contact details of the data protection officer or other contact point where more",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:security.duty": {
+      "citation": "Art. 32(1) UK GDPR",
+      "provision": "Article 32",
+      "scope": "provision",
+      "before": "into account the state of the art, the costs of implementation and the nature, scope, context and purposes of processing as well as the risk of varying likelihood and severity for the rights and freedoms of natural persons, the controller and the processor shall implement appropriate technical and organisational measures to ensure a level of security appropriate to the risk, including inter alia as appropriate: a ",
+      "match": "the pseudonymisation and encryption of personal data;",
+      "after": " b the ability to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems and services; c the ability to restore the availability and access to personal data in a timely manner in the event of a physical or technical incident; Regulation (EU) 2016/679 of the European Parliament and of the Council of 27... 87 CHAPTER IV Section 2 Document Generated: 2026-07-16 Changes to",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:enforcement.fines": {
+      "citation": "Art. 83(5) UK GDPR",
+      "provision": "Article 83",
+      "scope": "provision",
+      "before": "or negligently, for the same or linked processing operations, infringes several provisions of this Regulation, the total amount of the administrative fine shall not exceed the amount specified for the gravest infringement. 4 Infringements of the following provisions shall, in accordance with paragraph 2, be F374 subject to administrative fines up to [ £8,700,000], or in the case of an undertaking, up to 2 % ",
+      "match": "of the total worldwide annual turnover of the preceding financial year, whichever is higher:",
+      "after": " a the obligations of the controller and the processor pursuant to Articles 8, 11, 25 to 39 and 42 and 43; b the obligations of the certification body pursuant to Articles 42 and 43; c the obligations of the monitoring body pursuant to Article 41(4). 5 Infringements of the following provisions shall, in accordance with paragraph 2, be F375 subject to administrative fines up to [ £17,500,000], or in the case of an",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "f:enforcement.private-action": {
+      "citation": "Art. 82(1) UK GDPR",
+      "provision": "Article 82",
+      "scope": "provision",
+      "before": "Article 82 Right to compensation and liability 1 ",
+      "match": "Any person who has suffered material or non-material damage as a result of an",
+      "after": " infringement of this Regulation shall have the right to receive compensation from the controller or processor for the damage suffered. 2 Any controller involved in processing shall be liable for the damage caused by processing which infringes this Regulation. A processor shall be liable for the damage caused by processing only where it has not complied with obligations of this Regulation specifically directed to",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "t:organisation": {
+      "citation": "Art. 4(7) UK GDPR",
+      "provision": "Article 4",
+      "scope": "provision",
+      "before": "that such additional information is kept separately and is subject to technical and organisational measures to ensure that the personal data are not attributed to an identified or identifiable natural person; 6 ‘filing system’ means any structured set of personal data which are accessible according to specific criteria, whether centralised, decentralised or dispersed on a functional or geographical basis; 7 ",
+      "match": "‘controller’ means the natural or legal person, public authority, agency or other body",
+      "after": " which, alone or jointly with others, determines the purposes and means of the processing F18 of personal data [ (but see section 6 of the 2018 Act)]; 8 ‘processor’ means a natural or legal person, public authority, agency or other body which processes personal data on behalf of the controller; 9 ‘recipient’ means a natural or legal person, public authority, agency or another body, to which the personal data are",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "t:vendor": {
+      "citation": "Art. 4(8) UK GDPR",
+      "provision": "Article 4",
+      "scope": "provision",
+      "before": "any structured set of personal data which are accessible according to specific criteria, whether centralised, decentralised or dispersed on a functional or geographical basis; 7 ‘controller’ means the natural or legal person, public authority, agency or other body which, alone or jointly with others, determines the purposes and means of the processing F18 of personal data [ (but see section 6 of the 2018 Act)]; 8 ",
+      "match": "‘processor’ means a natural or legal person, public authority, agency or other body",
+      "after": " which processes personal data on behalf of the controller; 9 ‘recipient’ means a natural or legal person, public authority, agency or another body, to which the personal data are disclosed, whether a third party or not. However, public authorities which may receive personal data in the framework of a particular inquiry in F19 accordance with [ domestic law] shall not be regarded as recipients; the processing of",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "t:person": {
+      "citation": "Art. 4(1) UK GDPR",
+      "provision": "Article 4",
+      "scope": "provision",
+      "before": "Article 4 Definitions F16 [ 1.] For the purposes of this Regulation: F17 A1 [ ‘the 2018 Act’ means the Data Protection Act 2018; A2 ‘domestic law’ means the law of the United Kingdom or of a part of the United Kingdom; A3 ‘the Commissioner’ means the Information Commissioner (see section 114 of the 2018 Act);] 1 ‘personal data’ means any information relating to an identified or identifiable natural ",
+      "match": "person (‘data subject’); an identifiable natural person is one who can be identified,",
+      "after": " directly or indirectly, in particular by reference to an identifier such as a name, an identification number, location data, an online identifier or to one or more factors specific to the physical, physiological, genetic, mental, economic, cultural or social identity of that natural person; 2 ‘processing’ means any operation or set of operations which is performed on personal data or on sets of personal data,",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "t:data": {
+      "citation": "Art. 4(1) UK GDPR",
+      "provision": "Article 4",
+      "scope": "provision",
+      "before": "Article 4 Definitions F16 [ 1.] For the purposes of this Regulation: F17 A1 [ ‘the 2018 Act’ means the Data Protection Act 2018; A2 ‘domestic law’ means the law of the United Kingdom or of a part of the United Kingdom; A3 ‘the Commissioner’ means the Information Commissioner (see section 114 of the 2018 Act);] 1 ",
+      "match": "‘personal data’ means any information relating to an identified or identifiable natural",
+      "after": " person (‘data subject’); an identifiable natural person is one who can be identified, directly or indirectly, in particular by reference to an identifier such as a name, an identification number, location data, an online identifier or to one or more factors specific to the physical, physiological, genetic, mental, economic, cultural or social identity of that natural person; 2 ‘processing’ means any operation or",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "t:sensitive": {
+      "citation": "Art. 9 UK GDPR",
+      "provision": "Article 9",
+      "scope": "provision",
+      "before": "Article 9 ",
+      "match": "Processing of special categories of personal data",
+      "after": " 1 Processing of personal data revealing racial or ethnic origin, political opinions, religious or philosophical beliefs, or trade union membership, and the processing of genetic data, biometric data for the purpose of uniquely identifying a natural person, data concerning health or data concerning a natural person's sex life or sexual orientation shall be prohibited. F64 2 Paragraph 1 shall not apply if [ the",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "t:regulator": {
+      "citation": "Art. 4 UK GDPR",
+      "provision": "Article 4",
+      "scope": "provision",
+      "before": "Article 4 Definitions F16 [ 1.] For the purposes of this Regulation: F17 A1 [ ‘the 2018 Act’ means the Data Protection Act 2018; A2 ‘domestic law’ means the law of the United Kingdom or of a part of the United Kingdom; A3 ",
+      "match": "‘the Commissioner’ means the Information Commissioner",
+      "after": " (see section 114 of the 2018 Act);] 1 ‘personal data’ means any information relating to an identified or identifiable natural person (‘data subject’); an identifiable natural person is one who can be identified, directly or indirectly, in particular by reference to an identifier such as a name, an identification number, location data, an online identifier or to one or more factors specific to the physical,",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:lawful-basis": {
+      "citation": "Art. 6 UK GDPR",
+      "provision": "Article 6",
+      "scope": "provision",
+      "before": "Article 6 Lawfulness of processing 1 ",
+      "match": "Processing shall be lawful only if and to the extent that at least one of the following applies:",
+      "after": " a the data subject has given consent to the processing of his or her personal data for one or more specific purposes; b processing is necessary for the performance of a contract to which the data subject is party or in order to take steps at the request of the data subject prior to entering into a contract; c processing is necessary for compliance with a legal obligation to which the controller is subject;",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:consent": {
+      "citation": "Arts. 4(11), 7 UK GDPR",
+      "provision": "Article 7",
+      "scope": "provision",
+      "before": "Article 7 Conditions for consent 1 ",
+      "match": "Where processing is based on consent, the controller shall be able to demonstrate that the data subject has consented to processing of his or her personal data.",
+      "after": " 2 If the data subject's consent is given in the context of a written declaration which also concerns other matters, the request for consent shall be presented in a manner which is clearly distinguishable from the other matters, in an intelligible and easily accessible form, using clear and plain language. Any part of such a declaration which constitutes an infringement of this Regulation shall not be binding. 3 The data subject shall have the right to withdraw his or her consent at any time. The withdrawal of consent shall not affect the lawfulness of processing based on consent before its withdrawal. Prior to giving consent, the data subject shall be informed thereof. It shall be as easy to withdraw as to give consent. 4 When assessing whether consent is freely given, utmost account shall be taken of whether, inter alia, the performance of a contract, including the provision of a service, is conditional on consent to the processing of personal data that is not necessary for the performance of that contract.",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:notice-transparency": {
+      "citation": "Arts. 12–14 UK GDPR",
+      "provision": "Article 12",
+      "scope": "provision",
+      "before": "Article 12 Transparent information, communication and modalities for the exercise of the rights of the data subject 1 The controller shall take appropriate measures to provide any information referred F89 to in Articles 13 and 14 and any communication [ made under or by virtue of Articles 15 to 22D] and 34 relating to processing to the data subject ",
+      "match": "in a concise, transparent, intelligible and easily accessible form, using clear and plain language,",
+      "after": " in particular for any information addressed specifically to a child. The information shall be provided in writing, or by other means, including, where appropriate, by electronic means. When requested by the data subject, Regulation (EU) 2016/679 of the European Parliament and of the Council of 27... 63 CHAPTER III Section 1 Document Generated: 2026-07-16 Changes to legislation: Regulation (EU) 2016/679 of the",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:rights-access": {
+      "citation": "Art. 15 UK GDPR",
+      "provision": "Article 15",
+      "scope": "provision",
+      "before": "Article 15 Right of access by the data subject 1 ",
+      "match": "The data subject shall have the right to obtain from the controller confirmation as to",
+      "after": " whether or not personal data concerning him or her are being processed, and, where that is the case, access to the personal data and the following information: a the purposes of the processing; b the categories of personal data concerned; c the recipients or categories of recipient to whom the personal data have been or will be disclosed, in particular recipients in third countries or international organisations; d",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:rights-deletion": {
+      "citation": "Art. 17 UK GDPR",
+      "provision": "Article 17",
+      "scope": "provision",
+      "before": "Article 17 Right to erasure (‘right to be forgotten’) 1 ",
+      "match": "The data subject shall have the right to obtain from the controller the erasure of personal data concerning him or her without undue delay",
+      "after": " and the controller shall have the obligation to erase personal data without undue delay where one of the following grounds applies: a the personal data are no longer necessary in relation to the purposes for which they were collected or otherwise processed; b the data subject withdraws consent on which the processing is based according to point (a) of Article 6(1), or point (a) of Article 9(2), and where there is",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:rights-correction": {
+      "citation": "Art. 16 UK GDPR",
+      "provision": "Article 16",
+      "scope": "provision",
+      "before": "Article 16 Right to rectification ",
+      "match": "The data subject shall have the right to obtain from the controller without undue delay the rectification of inaccurate personal data concerning him or her.",
+      "after": " Taking into account the purposes of the processing, the data subject shall have the right to have incomplete personal data completed, including by means of providing a supplementary statement. Regulation (EU) 2016/679 of the European Parliament and of the Council of 27... 71 CHAPTER III Section 3 Document Generated: 2026-07-16 Changes to legislation: Regulation (EU) 2016/679 of the European Parliament and of the Council is up to date with all changes known to be in force on or before 16 July 2026. There are changes that may be brought into force at a future date. Changes that have been made appear in the content and are referenced with annotations. (See end of Document for details) View outstanding changes",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:rights-portability": {
+      "citation": "Art. 20 UK GDPR",
+      "provision": "Article 20",
+      "scope": "provision",
+      "before": "Article 20 Right to data portability 1 ",
+      "match": "The data subject shall have the right to receive the personal data concerning him or",
+      "after": " her, which he or she has provided to a controller, in a structured, commonly used and machine-readable format and have the right to transmit those data to another controller without hindrance from the controller to which the personal data have been provided, where: a the processing is based on consent pursuant to point (a) of Article 6(1) or point (a) of Article 9(2) or on a contract pursuant to point (b) of",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:rights-optout-sale": {
+      "citation": "Art. 21 UK GDPR",
+      "provision": "Article 21",
+      "scope": "provision",
+      "before": "data concerning him or her which is F143 based on point (e) [ , (ea)] or (f) of Article 6(1), including profiling based on those provisions. The controller shall no longer process the personal data unless the controller demonstrates compelling legitimate grounds for the processing which override the interests, rights and freedoms of the data subject or for the establishment, exercise or defence of legal claims. 2 ",
+      "match": "Where personal data are processed for direct marketing purposes, the data subject shall have the right to object at any time to processing of personal data concerning him or her for such marketing,",
+      "after": " which includes profiling to the extent that it is related to such direct marketing. 3 Where the data subject objects to processing for direct marketing purposes, the personal data shall no longer be processed for such purposes. 4 At the latest at the time of the first communication with the data subject, the right referred to in paragraphs 1 and 2 shall be explicitly brought to the attention of the data subject and",
+      "cutStart": true,
+      "cutEnd": true
+    },
+    "m:rights-automated-decision": {
+      "citation": "Art. 22 UK GDPR (substituted); DUAA 2025 s.80(1)",
+      "provision": "Article 22",
+      "scope": "provision",
+      "before": "Article 22 Automated individual decision-making, including profiling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Textual Amendments F147 ",
+      "match": "Ch. 3 Section 4A substituted for Art. 22 (19.6.2025 for specified purposes, 5.2.2026 in so far as not",
+      "after": " already in force) by Data (Use and Access) Act 2025 (c. 18), ss. 80(1), 142(1)(2)(h); S.I. 2026/82, reg. 2(j) (with reg. 5) Textual Amendments F142 Words in Ch. 3 Section 4 heading omitted (5.2.2026) by virtue of Data (Use and Access) Act 2025 (c. 18), s. 142(1), Sch. 6 para. 6; S.I. 2026/82, reg. 2(z8) (with reg. 5) F147 [ Section 4A Automated individual decision-making Article 22A Automated processing and",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:sensitive-data": {
+      "citation": "Art. 9 UK GDPR",
+      "provision": "Article 9",
+      "scope": "provision",
+      "before": "Article 9 Processing of special categories of personal data 1 ",
+      "match": "Processing of personal data revealing racial or ethnic origin, political opinions, religious or philosophical beliefs, or trade union membership,",
+      "after": " and the processing of genetic data, biometric data for the purpose of uniquely identifying a natural person, data concerning health or data concerning a natural person's sex life or sexual orientation shall be prohibited. F64 2 Paragraph 1 shall not apply if [ the processing is based on Article 6(1) and] one of the following applies: a the data subject has given explicit consent to the processing of those personal",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:childrens-data": {
+      "citation": "Art. 8(1) UK GDPR",
+      "provision": "Article 8",
+      "scope": "provision",
+      "before": "Article 8 Conditions applicable to child's consent in relation to information society services 1 Where point (a) of Article 6(1) applies, in relation to the offer of information society services directly to a child, the processing of the personal data of a child shall be lawful where F55 F56 ",
+      "match": "the child is at least [ 13 years old].",
+      "after": " Where the child is below the age [ of 13 years], such processing shall be lawful only if and to the extent that consent is given or authorised by the holder of parental responsibility over the child. F57 ... 2 The controller shall make reasonable efforts to verify in such cases that consent is given or authorised by the holder of parental responsibility over the child, taking into consideration available",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:breach-notification": {
+      "citation": "Arts. 33–34 UK GDPR",
+      "provision": "Article 33",
+      "scope": "provision",
+      "before": "Article 33 F184 Notification of a personal data breach to [ the Commissioner] 1 In the case of a personal data breach, the controller shall without undue delay and, ",
+      "match": "where feasible, not later than 72 hours after having become aware of it, notify the personal data",
+      "after": " F185 breach to [ the Commissioner], unless the personal data breach is unlikely to result in a risk F186 to the rights and freedoms of natural persons. Where [ the notification under this paragraph] is not made within 72 hours, it shall be accompanied by reasons for the delay. 2 The processor shall notify the controller without undue delay after becoming aware of a personal data breach. 3 The notification referred",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:dpo-representative": {
+      "citation": "Arts. 27, 37–39 UK GDPR",
+      "provision": "Article 37",
+      "scope": "provision",
+      "before": "Article 37 Designation of the data protection officer 1 ",
+      "match": "The controller and the processor shall designate a data protection officer in any case",
+      "after": " where: F205 a the processing is carried out by a public authority or body, except for courts [ and tribunals] acting in their judicial capacity; b the core activities of the controller or the processor consist of processing operations which, by virtue of their nature, their scope and/or their purposes, require regular and systematic monitoring of data subjects on a large scale; or X1 [ c the core activities of the",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:dpia": {
+      "citation": "Art. 35 UK GDPR",
+      "provision": "Article 35",
+      "scope": "provision",
+      "before": "Article 35 Data protection impact assessment 1 Where a type of processing in particular using new technologies, and taking into account the nature, scope, context and purposes of the processing, is likely to result in a high risk to the rights and freedoms of natural persons, ",
+      "match": "the controller shall, prior to the processing, carry out an assessment of the impact of the envisaged processing operations on the protection of personal data.",
+      "after": " A single assessment may address a set of similar processing operations that present similar high risks. 2 The controller shall seek the advice of the data protection officer, where designated, when carrying out a data protection impact assessment. 3 A data protection impact assessment referred to in paragraph 1 shall in particular be required in the case of: a a systematic and extensive evaluation of personal",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:cross-border-transfer": {
+      "citation": "Art. 44 UK GDPR (omitted); DUAA 2025 Sch. 7 para. 2(1)",
+      "provision": "Article 44",
+      "scope": "provision",
+      "before": "Article 44 General principle for transfers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Textual Amendments F256 ",
+      "match": "Art. 44 omitted (5.2.2026) by virtue of Data (Use and Access) Act 2025",
+      "after": " (c. 18), s. 142(1), Sch. 7 para. 2(1); S.I. 2026/82, reg. 2(z9) F257 [ Article 44A General principles for transfers 1 A controller or processor may transfer personal data to a third country or an international organisation only if— a the condition in paragraph 2 is met, and b the transfer is carried out in compliance with the other provisions of this Regulation. 2 The condition is met if the transfer— a is approved by regulations under Article 45A that are in force at the time of the transfer, b is made subject to appropriate safeguards (see Article 46), or c is made in reliance on a derogation for specific situations (see Article 49). 3 A transfer may not be made in reliance on paragraph 2(b) or (c) if, or to the extent that, it would breach a restriction in regulations under Article 49A.] Textual Amendments F257 Art. 44A inserted (5.2.2026) by Data (Use and Access) Act 2025 (c. 18), s. 142(1), Sch. 7 para. 2(2); S.I. 2026/82, reg. 2(z9) F258",
+      "cutStart": false,
+      "cutEnd": false
+    },
+    "m:records-processing": {
+      "citation": "Art. 30 UK GDPR",
+      "provision": "Article 30",
+      "scope": "provision",
+      "before": "Article 30 Records of processing activities 1 Each controller and, where applicable, the controller's representative, ",
+      "match": "shall maintain a record of processing activities under its responsibility.",
+      "after": " That record shall contain all of the following information: a the name and contact details of the controller and, where applicable, the joint controller, the controller's representative and the data protection officer; b the purposes of the processing; c a description of the categories of data subjects and of the categories of personal data; d the categories of recipients to whom the personal data have been or will",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:vendor-processor": {
+      "citation": "Art. 28 UK GDPR",
+      "provision": "Article 28",
+      "scope": "provision",
+      "before": "Article 28 Processor 1 Where processing is to be carried out on behalf of a controller, ",
+      "match": "the controller shall use only processors providing sufficient guarantees to implement appropriate technical and organisational measures",
+      "after": " in such a manner that processing will meet the requirements of this Regulation and ensure the protection of the rights of the data subject. 2 The processor shall not engage another processor without prior specific or general written authorisation of the controller. In the case of general written authorisation, the processor shall inform the controller of any intended changes concerning the addition or replacement",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:security": {
+      "citation": "Art. 32 UK GDPR",
+      "provision": "Article 32",
+      "scope": "provision",
+      "before": "Article 32 Security of processing 1 Taking into account the state of the art, the costs of implementation and the nature, scope, context and purposes of processing as well as the risk of varying likelihood and severity for the rights and freedoms of natural persons, ",
+      "match": "the controller and the processor shall implement appropriate technical and organisational measures to ensure a level of security appropriate to the risk,",
+      "after": " including inter alia as appropriate: a the pseudonymisation and encryption of personal data; b the ability to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems and services; c the ability to restore the availability and access to personal data in a timely manner in the event of a physical or technical incident; Regulation (EU) 2016/679 of the European Parliament and of",
+      "cutStart": false,
+      "cutEnd": true
+    },
+    "m:enforcement-penalties": {
+      "citation": "Art. 83(5)–(6) UK GDPR",
+      "provision": "Article 83",
+      "scope": "provision",
+      "before": "annual turnover of the preceding financial year, whichever is higher: a the obligations of the controller and the processor pursuant to Articles 8, 11, 25 to 39 and 42 and 43; b the obligations of the certification body pursuant to Articles 42 and 43; c the obligations of the monitoring body pursuant to Article 41(4). 5 Infringements of the following provisions shall, in accordance with paragraph 2, be F375 ",
+      "match": "subject to administrative fines up to [ £17,500,000], or in the case of an undertaking, up to 4",
+      "after": " % of the total worldwide annual turnover of the preceding financial year, whichever is higher: a the basic principles for processing, including conditions for consent, pursuant to Articles 5, 6, 7 and 9; F376 b the data subjects' rights pursuant to Articles 12 to [ 21]; F377 [ ba Article 22B or 22C (restrictions on, and safeguards for, automated decision-making);] c the transfers of personal data to a recipient in",
+      "cutStart": true,
+      "cutEnd": true
+    }
+  }
+}

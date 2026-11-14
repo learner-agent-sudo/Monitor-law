@@ -1,0 +1,279 @@
+{
+  "lawId": "pipl",
+  "answers": {
+    "lawful-basis.ground": {
+      "option": "listed-ground",
+      "says": "Processing needs one of seven listed grounds: consent, contract or HR necessity, legal duty, public health or emergency, public-interest news, lawfully public data, or another law's ground.",
+      "citation": "PIPL Art. 13",
+      "quote": "符合下列情形之一的，个人信息处理者方可处理个人信息"
+    },
+    "lawful-basis.legitimate-interests": {
+      "option": "no",
+      "says": "No general legitimate-interests ground. Apart from consent, the Art. 13 grounds are closed and cover contracts, legal duties, emergencies, public-interest news and lawfully public data, not the handler's own interests.",
+      "citation": "PIPL Art. 13",
+      "quote": "符合下列情形之一的，个人信息处理者方可处理个人信息"
+    },
+    "consent.standard": {
+      "option": "must-be-express",
+      "says": "Consent must be voluntary, fully informed and clearly given. The law does not expressly say silence never counts, but 'clearly given' rules out inferring consent from silence or implied conduct.",
+      "ownTerm": "明确作出 (clearly given)",
+      "citation": "PIPL Art. 14",
+      "quote": "该同意应当由个人在充分知情的前提下自愿、明确作出"
+    },
+    "consent.role": {
+      "option": "the-default-rule",
+      "says": "Consent is the default: processing needs it unless one of the listed grounds in Art. 13(2) to (7) applies. Consent is also one of the seven grounds in Art. 13(1).",
+      "citation": "PIPL Art. 13",
+      "quote": "应当取得个人同意，但是有前款第二项至第七项规定情形的，不需取得个人同意"
+    },
+    "consent.withdrawal": {
+      "option": "yes-any-time",
+      "says": "A person may withdraw consent (Art. 15), and the statute sets no time limit or formalities. Withdrawal does not undo processing already done, and the handler must offer an easy way to withdraw.",
+      "citation": "PIPL Art. 15",
+      "quote": "个人有权撤回其同意"
+    },
+    "consent.separate": {
+      "option": "for-several-uses",
+      "says": "Separate consent is needed for sensitive data (Art. 29), for passing data to other handlers (Art. 23), for public disclosure (Art. 25) and for sending data abroad (Art. 39).",
+      "ownTerm": "单独同意 (separate consent)",
+      "citation": "PIPL Art. 29",
+      "quote": "处理敏感个人信息应当取得个人的单独同意"
+    },
+    "notice.timing": {
+      "option": "at-or-before-collection",
+      "says": "Before processing begins, the handler must tell the person the listed matters, prominently and in clear, plain language. Changes to those matters must also be notified (Art. 17).",
+      "citation": "PIPL Art. 17",
+      "quote": "在处理个人信息前，应当以显著方式"
+    },
+    "notice.content": {
+      "option": "detailed-list",
+      "says": "The notice must cover the handler's name and contact, purposes, methods, data categories and retention period, and how to exercise rights (Art. 17). Sensitive data also needs necessity and impact (Art. 30).",
+      "citation": "PIPL Art. 17",
+      "quote": "个人信息的处理目的、处理方式，处理的个人信息种类、保存期限"
+    },
+    "access.right": {
+      "option": "copy-of-data",
+      "says": "A person may consult and copy their personal information (Art. 45). This right does not list purposes, recipients or sources; Art. 48 separately lets a person ask for an explanation of the handler's processing rules.",
+      "ownTerm": "查阅、复制 (consult and copy)",
+      "citation": "PIPL Art. 45",
+      "quote": "个人有权向个人信息处理者查阅、复制其个人信息"
+    },
+    "access.deadline": {
+      "option": "prompt-no-fixed-time",
+      "says": "The handler must provide the data promptly on request (Art. 45). No fixed number of days is set. A refusal of any rights request must be explained, and the person may sue in court (Art. 50).",
+      "citation": "PIPL Art. 45",
+      "quote": "个人请求查阅、复制其个人信息的，个人信息处理者应当及时提供"
+    },
+    "deletion.right": {
+      "option": "right-to-request",
+      "says": "The handler must delete data on its own initiative in listed cases, and if it does not, the person may require deletion (Art. 47). Exceptions: legal retention periods, or where deletion is technically infeasible (processing must then stop).",
+      "citation": "PIPL Art. 47",
+      "quote": "个人信息处理者未删除的，个人有权请求删除"
+    },
+    "deletion.pass-on": {
+      "option": "no",
+      "says": "No duty to tell other holders of the data to delete it. The nearest rule: an entrusted party must return or delete the data when the entrustment ends (Art. 21).",
+      "citation": "PIPL Art. 21",
+      "quote": "受托人应当将个人信息返还个人信息处理者或者予以删除"
+    },
+    "correction.right": {
+      "option": "yes",
+      "says": "A person who finds their personal information inaccurate or incomplete may ask the handler to correct or complete it (Art. 46). The handler must verify the information and correct it promptly.",
+      "ownTerm": "更正、补充 (correct or complete)",
+      "citation": "PIPL Art. 46",
+      "quote": "有权请求个人信息处理者更正、补充"
+    },
+    "correction.pass-on": {
+      "option": "no",
+      "says": "No duty to pass corrections on to earlier recipients. The handler must verify and promptly correct or complete the data on request (Art. 46).",
+      "citation": "PIPL Art. 46",
+      "quote": "个人信息处理者应当对其个人信息予以核实，并及时更正、补充"
+    },
+    "portability.right": {
+      "option": "direct-transfer",
+      "says": "A person may ask for their data to be transferred to a handler they designate (Art. 45). The handler must provide a route for this, but only where the CAC's conditions are met, so the detail depends on regulations.",
+      "ownTerm": "转移至其指定的个人信息处理者 (transfer to a designated handler)",
+      "citation": "PIPL Art. 45",
+      "quote": "个人请求将个人信息转移至其指定的个人信息处理者"
+    },
+    "optout.marketing": {
+      "option": "opt-out",
+      "says": "For marketing or push based on automated decisions, the handler must offer a non-targeted option or an easy way to refuse (Art. 24). A general right to restrict or refuse processing also applies (Art. 44).",
+      "ownTerm": "便捷的拒绝方式 (convenient way to refuse)",
+      "citation": "PIPL Art. 24",
+      "quote": "或者向个人提供便捷的拒绝方式"
+    },
+    "optout.sale": {
+      "option": "needs-consent-or-ground",
+      "says": "Passing data to another handler needs separate consent (Art. 23), and public disclosure needs separate consent (Art. 25). A person cannot merely opt out afterwards; consent or another ground comes first.",
+      "citation": "PIPL Art. 23",
+      "quote": "并取得个人的单独同意"
+    },
+    "adm.protection": {
+      "option": "refuse-or-human-review",
+      "says": "For decisions with a major effect on a person, made solely by automated means, the person may demand an explanation and refuse the decision (Art. 24). The statute does not expressly require human review.",
+      "ownTerm": "自动化决策 (automated decision-making)",
+      "citation": "PIPL Art. 24",
+      "quote": "有权拒绝个人信息处理者仅通过自动化决策的方式作出决定"
+    },
+    "sensitive.category": {
+      "option": "defined-list",
+      "says": "Sensitive personal information is a defined list (Art. 28): biometrics, religious belief, specific identity, medical health, financial accounts, whereabouts, and data of anyone under 14.",
+      "ownTerm": "敏感个人信息 (sensitive personal information)",
+      "citation": "PIPL Art. 28",
+      "quote": "敏感个人信息是一旦泄露或者非法使用，容易导致自然人的人格尊严受到侵害"
+    },
+    "sensitive.rule": {
+      "option": "express-consent",
+      "says": "Sensitive data may be used only for a specific purpose, with sufficient necessity and strict protection (Art. 28). Its use needs separate consent, or written consent where a law requires it (Art. 29).",
+      "citation": "PIPL Art. 29",
+      "quote": "处理敏感个人信息应当取得个人的单独同意"
+    },
+    "children.rule": {
+      "option": "parental-consent-below-age",
+      "says": "For anyone under 14, the handler must get consent from a parent or guardian (Art. 31) and must adopt special processing rules. Under-14 data is also treated as sensitive data (Art. 28).",
+      "citation": "PIPL Art. 31",
+      "quote": "应当取得未成年人的父母或者其他监护人的同意"
+    },
+    "breach.regulator": {
+      "option": "yes-no-fixed-time",
+      "says": "After an actual or possible leak, the handler must immediately take remedial measures and notify the authority in charge of personal information protection (Art. 57). No fixed number of hours is set.",
+      "citation": "PIPL Art. 57",
+      "quote": "应当立即采取补救措施，并通知履行个人信息保护职责的部门和个人"
+    },
+    "breach.individuals": {
+      "option": "yes-when-harm-likely",
+      "says": "Affected people must be notified of an actual or possible leak (Art. 57). The duty is not gated on likely harm; notice may be skipped only where measures effectively prevent harm, and the authority can require it.",
+      "citation": "PIPL Art. 57",
+      "quote": "并通知履行个人信息保护职责的部门和个人"
+    },
+    "breach.records": {
+      "option": "no",
+      "says": "No rule requires a register of breaches. The nearest rule: handlers must record their processing for impact assessments in listed high-risk cases (Art. 55).",
+      "citation": "PIPL Art. 55",
+      "quote": "并对处理情况进行记录"
+    },
+    "dpo.officer": {
+      "option": "in-listed-cases",
+      "says": "Handlers that reach a volume set by the CAC must appoint a person in charge of personal information protection (Art. 52). The threshold is set by regulation, not in the statute itself.",
+      "ownTerm": "个人信息保护负责人 (person in charge of personal information protection)",
+      "citation": "PIPL Art. 52",
+      "quote": "应当指定个人信息保护负责人"
+    },
+    "dpo.local-representative": {
+      "option": "yes",
+      "says": "Overseas handlers covered by Art. 3(2) must set up a dedicated body or designate a representative in China, and report its name and contact details to the authority (Art. 53).",
+      "ownTerm": "专门机构或者指定代表 (dedicated body or designated representative)",
+      "citation": "PIPL Art. 53",
+      "quote": "应当在中华人民共和国境内设立专门机构或者指定代表"
+    },
+    "dpia.duty": {
+      "option": "in-listed-cases",
+      "says": "An impact assessment must be done beforehand for listed cases: sensitive data, automated decisions, entrusting, sharing or disclosing data, overseas transfers, and other significant impacts (Art. 55).",
+      "ownTerm": "个人信息保护影响评估 (personal information protection impact assessment)",
+      "citation": "PIPL Art. 55",
+      "quote": "个人信息处理者应当事前进行个人信息保护影响评估"
+    },
+    "dpia.regulator": {
+      "option": "no",
+      "says": "The assessment need not be sent to or approved by the regulator. The report and processing records must be kept for at least three years (Art. 56). The regulator may separately require a compliance audit (Art. 64).",
+      "citation": "PIPL Art. 56",
+      "quote": "个人信息保护影响评估报告和处理情况记录应当至少保存三年"
+    },
+    "transfer.rule": {
+      "option": "state-mechanism-plus-consent",
+      "says": "Before sending data abroad, the handler needs a CAC security assessment, a certification, or a CAC standard contract (Art. 38, Art. 40), plus separate consent (Art. 39). Treaties may set other conditions.",
+      "ownTerm": "个人信息跨境提供 (cross-border provision of personal information)",
+      "citation": "PIPL Art. 38",
+      "quote": "确需向中华人民共和国境外提供个人信息的，应当具备下列条件之一"
+    },
+    "transfer.tell-people": {
+      "option": "separate-consent",
+      "says": "Before data goes abroad, the handler must tell the person the overseas recipient's name and contact details, purposes, methods and data types, and how to exercise rights there, and get separate consent (Art. 39).",
+      "citation": "PIPL Art. 39",
+      "quote": "并取得个人的单独同意"
+    },
+    "localization.rule": {
+      "option": "for-some-operators",
+      "says": "Critical information infrastructure operators and handlers reaching the CAC volume threshold must store data collected or generated in China inside China (Art. 40). State bodies must also store data domestically (Art. 36).",
+      "ownTerm": "境内存储 (storage within China)",
+      "citation": "PIPL Art. 40",
+      "quote": "应当将在中华人民共和国境内收集和产生的个人信息存储在境内"
+    },
+    "records.duty": {
+      "option": "policies-and-practices",
+      "says": "Handlers must adopt internal management systems and operating procedures (Art. 51) and publish their processing rules (Art. 7). A detailed record is required only for listed high-risk processing (Art. 55).",
+      "citation": "PIPL Art. 51",
+      "quote": "制定内部管理制度和操作规程"
+    },
+    "vendor.contract": {
+      "option": "contract-with-set-terms",
+      "says": "A handler that entrusts processing must agree a contract on purpose, period, method, data types, protective measures and both parties' rights and duties, and must supervise the entrusted party (Art. 21).",
+      "ownTerm": "委托处理 (entrusted processing)",
+      "citation": "PIPL Art. 21",
+      "quote": "应当与受托人约定委托处理的目的、期限、处理方式"
+    },
+    "vendor.direct-duties": {
+      "option": "yes",
+      "says": "The entrusted party must take necessary measures to keep the data secure and help the handler meet its duties (Art. 59). It must also keep to the contract and cannot sub-entrust without the handler's consent (Art. 21).",
+      "citation": "PIPL Art. 59",
+      "quote": "采取必要措施保障所处理的个人信息的安全"
+    },
+    "security.duty": {
+      "option": "named-measures",
+      "says": "Handlers must take a general standard of protection (Art. 9) and specific measures: internal rules, data classification, encryption and de-identification, access control, staff training and an emergency plan (Art. 51).",
+      "citation": "PIPL Art. 51",
+      "quote": "采取相应的加密、去标识化等安全技术措施"
+    },
+    "enforcement.fines": {
+      "option": "turnover-based",
+      "says": "The authority can fine serious violations up to RMB 50 million or 5% of prior-year turnover (Art. 66). The statute says prior-year turnover, not worldwide turnover, and does not say which cap applies.",
+      "citation": "PIPL Art. 66",
+      "quote": "并处五千万元以下或者上一年度营业额百分之五以下罚款"
+    },
+    "enforcement.private-action": {
+      "option": "general",
+      "says": "A person can sue for compensation. The handler must bear tort liability unless it proves it was not at fault (Art. 69). Prosecutors and designated organisations may also sue for violations affecting many people (Art. 70).",
+      "citation": "PIPL Art. 69",
+      "quote": "应当承担损害赔偿等侵权责任"
+    }
+  },
+  "terms": {
+    "organisation": {
+      "term": "个人信息处理者",
+      "english": "personal information handler",
+      "citation": "PIPL Art. 73",
+      "quote": "个人信息处理者，是指在个人信息处理活动中自主决定处理目的、处理方式的组织、个人"
+    },
+    "vendor": {
+      "term": "受托人",
+      "english": "entrusted party (processor)",
+      "citation": "PIPL Art. 21",
+      "quote": "个人信息处理者委托处理个人信息的，应当与受托人约定"
+    },
+    "person": {
+      "term": "个人",
+      "english": "individual",
+      "citation": "PIPL Art. 44",
+      "quote": "个人对其个人信息的处理享有知情权、决定权"
+    },
+    "data": {
+      "term": "个人信息",
+      "english": "personal information",
+      "citation": "PIPL Art. 4",
+      "quote": "个人信息是以电子或者其他方式记录的与已识别或者可识别的自然人有关的各种信息"
+    },
+    "sensitive": {
+      "term": "敏感个人信息",
+      "english": "sensitive personal information",
+      "citation": "PIPL Art. 28",
+      "quote": "敏感个人信息是一旦泄露或者非法使用，容易导致自然人的人格尊严受到侵害"
+    },
+    "regulator": {
+      "term": "履行个人信息保护职责的部门",
+      "english": "the authorities performing personal information protection duties",
+      "citation": "PIPL Art. 60",
+      "quote": "前两款规定的部门统称为履行个人信息保护职责的部门"
+    }
+  }
+}

@@ -1,0 +1,268 @@
+{
+  "lawId": "popia",
+  "answers": {
+    "lawful-basis.ground": {
+      "option": "listed-ground",
+      "says": "Processing is allowed only on one of six listed grounds: consent, a contract, a legal obligation, the person's legitimate interest, a public-law duty, or the legitimate interests of the organisation or a third party.",
+      "citation": "s.11(1)",
+      "quote": "Personal information may only be processed if"
+    },
+    "lawful-basis.legitimate-interests": {
+      "option": "yes-with-balancing",
+      "says": "Yes. Pursuing the legitimate interests of the organisation or a third party is one of the listed grounds. The person may object on reasonable grounds, and processing must then stop. The Act sets no formal weighing test.",
+      "citation": "s.11(1)(f)",
+      "quote": "processing is necessary for pursuing the legitimate interests of the responsible party or of a third party to whom the information is supplied"
+    },
+    "consent.standard": {
+      "option": "must-be-express",
+      "says": "Consent must be voluntary, specific and informed, and must be an expression of will permitting the processing. The organisation must be able to prove it. The Act does not say in terms that silence never counts.",
+      "citation": "s.1 (\"consent\")",
+      "quote": "any voluntary, specific and informed expression of will in terms of which permission is given for the processing of personal information"
+    },
+    "consent.role": {
+      "option": "one-ground-of-several",
+      "says": "Consent is one of six grounds for processing, with no priority over the others. The others include a contract, a legal obligation, protecting the person's legitimate interest, a public-law duty and legitimate interests.",
+      "citation": "s.11(1)(a)",
+      "quote": "the data subject or a competent person where the data subject is a child consents to the processing"
+    },
+    "consent.withdrawal": {
+      "option": "yes-any-time",
+      "says": "Yes. The person may withdraw consent at any time. Processing done before the withdrawal stays lawful, and processing on the other grounds is not affected.",
+      "citation": "s.11(2)(b)",
+      "quote": "may withdraw his, her or its consent, as referred to in subsection (1)(a), at any time"
+    },
+    "consent.separate": {
+      "option": "no",
+      "says": "No. Consent is needed for some processing, such as special personal information, children's data and transfers abroad, but the Act does not require separate or express consent for any of them.",
+      "citation": "s.27(1)(a)",
+      "quote": "processing is carried out with the consent of a data subject referred to in section 26"
+    },
+    "notice.timing": {
+      "option": "at-or-before-collection",
+      "says": "Where information is collected directly from the person, the organisation must take reasonably practicable steps to make them aware before it is collected. Other collection: before, or as soon as reasonably practicable after.",
+      "citation": "s.18(2)(a)",
+      "quote": "if the personal information is collected directly from the data subject, before the information is collected"
+    },
+    "notice.content": {
+      "option": "detailed-list",
+      "says": "A long list must be covered: the source, the organisation's name and address, purpose, whether supply is voluntary, consequences, any transfer abroad, recipients, and the person's rights. Retention period is not listed.",
+      "citation": "s.18(1)(h)(iii)",
+      "quote": "existence of the right of access to and the right to rectify the information collected"
+    },
+    "access.right": {
+      "option": "copy-plus-details",
+      "ownTerm": "access to personal information",
+      "says": "Free confirmation that the organisation holds the person's data, then a record or description of it and the identity of third parties who have had access. Purposes and sources are not listed, so this is only partly the broader option.",
+      "citation": "s.23(1)(b)",
+      "quote": "the record or a description of the personal information about the data subject held by the responsible party"
+    },
+    "access.deadline": {
+      "option": "prompt-no-fixed-time",
+      "says": "The record must be provided within a reasonable time, with no fixed number of days. Any fee is prescribed, and a written fee estimate must be given before the services are provided.",
+      "citation": "s.23(1)(b)(i)",
+      "quote": "within a reasonable time; (ii) at a prescribed fee, if any"
+    },
+    "deletion.right": {
+      "option": "right-to-request",
+      "says": "Yes. The person may ask for deletion of inaccurate, irrelevant, excessive, out-of-date, incomplete, misleading or unlawfully obtained information, and of records no longer authorised to keep. A note or evidence may be given instead.",
+      "citation": "s.24(1)",
+      "quote": "A data subject may, in the prescribed manner, request a responsible party to"
+    },
+    "deletion.pass-on": {
+      "option": "yes",
+      "says": "Qualified yes. After a deletion or correction, the organisation must tell each recipient of the steps taken, if they affect decisions about the person and it is reasonably practicable. The Act does not require recipients to delete.",
+      "citation": "s.24(3)",
+      "quote": "inform each person or body or responsible party to whom the personal information has been disclosed of those steps"
+    },
+    "correction.right": {
+      "option": "yes",
+      "says": "Yes. A person may ask for inaccurate, incomplete, misleading, out-of-date, irrelevant or excessive information to be corrected, and the organisation must act as soon as reasonably practicable.",
+      "citation": "s.24(1)(a)",
+      "quote": "correct or delete personal information about the data subject in its possession or under its control"
+    },
+    "correction.pass-on": {
+      "option": "yes",
+      "says": "Qualified yes. If a correction changes information that affects decisions about the person, the organisation must, where reasonably practicable, tell each person or body the information was disclosed to.",
+      "citation": "s.24(3)",
+      "quote": "inform each person or body or responsible party to whom the personal information has been disclosed of those steps"
+    },
+    "portability.right": {
+      "option": "none",
+      "says": "No general portability right. The nearest thing is s.14(6)(d): a request to transmit data to another automated processing system obliges the organisation to restrict processing. The Act does not clearly require the transfer itself.",
+      "citation": "s.14(6)(d)",
+      "quote": "requests to transmit the personal data into another automated processing system"
+    },
+    "optout.marketing": {
+      "option": "opt-out",
+      "ownTerm": "direct marketing",
+      "says": "The person may object at any time to direct marketing, and processing must then stop. Unsolicited electronic marketing (email, SMS, automatic calls, fax) is stricter: consent first, or an existing customer who can object (s.69).",
+      "citation": "s.11(3)(b)",
+      "quote": "for purposes of direct marketing other than direct marketing by means of unsolicited electronic communications"
+    },
+    "optout.sale": {
+      "option": "needs-consent-or-ground",
+      "says": "Passing data to others is processing (s.1), so it needs one of the s.11(1) grounds first. Once the organisation relies on the legitimate-interest grounds in s.11(1)(d)-(f), the person may object (s.11(3)(a)).",
+      "citation": "s.11(1)",
+      "quote": "Personal information may only be processed if"
+    },
+    "adm.protection": {
+      "option": "refuse-or-human-review",
+      "ownTerm": "automated decision making",
+      "says": "A decision with legal consequences, or a substantial effect, may not be based solely on automated profiling, unless an exception applies. The Act does not expressly give a human review right; the nearest is this ban.",
+      "citation": "s.71(1)",
+      "quote": "may not be subject to a decision which results in legal consequences for him, her or it"
+    },
+    "sensitive.category": {
+      "option": "defined-list",
+      "ownTerm": "special personal information",
+      "says": "Yes. Special personal information is a defined list: religious or philosophical beliefs, race or ethnic origin, trade union membership, political persuasion, health or sex life, biometric information, and criminal behaviour.",
+      "citation": "s.26(a)",
+      "quote": "the religious or philosophical beliefs, race or ethnic origin, trade union membership, political persuasion, health or sex life or biometric information of a data subject"
+    },
+    "sensitive.rule": {
+      "option": "banned-unless-exception",
+      "says": "Special personal information may not be processed unless a listed exception applies. The main exceptions are the person's consent, legal claims, and the authorisations for particular bodies and purposes in ss.27-33.",
+      "citation": "s.26",
+      "quote": "A responsible party may, subject to section 27, not process personal information concerning"
+    },
+    "children.rule": {
+      "option": "parental-consent-below-age",
+      "ownTerm": "competent person",
+      "says": "A child (under 18) may not have their data processed unless a competent person gives prior consent, or another listed exception applies. The consenter need not be a parent; any person legally competent to consent for the child qualifies.",
+      "citation": "s.35(1)(a)",
+      "quote": "carried out with the prior consent of a competent person"
+    },
+    "breach.regulator": {
+      "option": "yes-no-fixed-time",
+      "says": "Yes. The Regulator must be notified as soon as reasonably possible after the compromise is discovered, where there are reasonable grounds to believe data was accessed or acquired by an unauthorised person. No fixed number of hours applies.",
+      "citation": "s.22(2)",
+      "quote": "must be made as soon as reasonably possible after the discovery of the compromise"
+    },
+    "breach.individuals": {
+      "option": "yes-whenever-compromised",
+      "ownTerm": "security compromise",
+      "says": "Yes. Notify the person whenever there are reasonable grounds to believe their data was accessed or acquired by an unauthorised person. There is no harm test. Delay is allowed only if a public body or the Regulator so determines (s.22(3)).",
+      "citation": "s.22(1)",
+      "quote": "Where there are reasonable grounds to believe that the personal information of a data subject has been accessed or acquired by any unauthorised person"
+    },
+    "breach.records": {
+      "option": "no",
+      "says": "No. Section 22 requires notice of compromises but no register of them. The nearest duty is s.17, which requires documentation of all processing operations, not breaches."
+    },
+    "dpo.officer": {
+      "option": "always",
+      "ownTerm": "information officer",
+      "says": "Yes, for every organisation. The head of each private body is its information officer by definition, and must be registered with the Regulator (s.55(2)). Deputy information officers are designated as necessary (s.56).",
+      "citation": "s.1 (\"information officer\")",
+      "quote": "private body means the head of a private body as contemplated in section 1"
+    },
+    "dpo.local-representative": {
+      "option": "no",
+      "says": "No. The Act reaches a foreign organisation that uses automated or non-automated means in the Republic (s.3(1)(b)(ii)), but it requires no local representative.",
+      "citation": "s.3(1)(b)(ii)",
+      "quote": "not domiciled in the Republic, but makes use of automated or non-automated means in the Republic"
+    },
+    "dpia.duty": {
+      "option": "in-listed-cases",
+      "ownTerm": "prior authorisation",
+      "says": "Not the organisation's own assessment. For listed risky processing (unique identifiers linked across bodies, criminal information for third parties, credit reporting, some foreign transfers), the Regulator's prior authorisation comes first.",
+      "citation": "s.57(1)",
+      "quote": "must obtain prior authorisation from the Regulator, in terms of section 58, prior to any processing"
+    },
+    "dpia.regulator": {
+      "option": "in-some-cases",
+      "says": "Yes, for the listed cases. The organisation must notify the Regulator, and may not start the processing until the Regulator completes its investigation or confirms no detailed investigation will follow (s.58(1)-(2)).",
+      "citation": "s.58(1)",
+      "quote": "Information processing as contemplated in section 57(1) must be notified as such by the responsible party to the Regulator"
+    },
+    "transfer.rule": {
+      "option": "safeguards-or-assessment",
+      "says": "Data may go abroad if the recipient is bound by a law, binding corporate rules or a binding agreement giving adequate protection. Other routes are consent or a contract (s.72(1)). No Regulator approval is needed for these routes.",
+      "citation": "s.72(1)(a)",
+      "quote": "is subject to a law, binding corporate rules or binding agreement which provide an adequate level of protection"
+    },
+    "transfer.tell-people": {
+      "option": "told",
+      "says": "Yes. When collecting, the organisation must make the person aware, where applicable, that it intends to transfer the data to a third country and the protection level there (s.18(1)(g)). Separate consent is not required.",
+      "citation": "s.18(1)(g)",
+      "quote": "the fact that, where applicable, the responsible party intends to transfer the information to a third country"
+    },
+    "localization.rule": {
+      "option": "no",
+      "says": "No. The Act sets no duty to keep personal information inside South Africa. It restricts sending information abroad instead (s.72(1)).",
+      "citation": "s.72(1)",
+      "quote": "A responsible party in the Republic may not transfer personal information about a data subject to a third party who is in a foreign country"
+    },
+    "records.duty": {
+      "option": "detailed-record",
+      "says": "Yes. The organisation must maintain documentation of all processing operations under its responsibility, with the detail set by the access-to-information manual provisions the Act refers to (ss.14, 51 of PAIA).",
+      "citation": "s.17",
+      "quote": "A responsible party must maintain the documentation of all processing operations under its responsibility"
+    },
+    "vendor.contract": {
+      "option": "contract-with-set-terms",
+      "ownTerm": "operator",
+      "says": "An operator must be engaged under a written contract under which it establishes and maintains the s.19 security measures (s.21(1)). The operator may process only with the organisation's knowledge or authority (s.20).",
+      "citation": "s.21(1)",
+      "quote": "in terms of a written contract between the responsible party and the operator"
+    },
+    "vendor.direct-duties": {
+      "option": "yes",
+      "says": "Yes. An operator, or anyone processing for the organisation, must process only with its knowledge or authorisation and keep information confidential (s.20). It must notify the organisation at once of a suspected compromise (s.21(2)).",
+      "citation": "s.20(a)",
+      "quote": "process such information only with the knowledge or authorisation of the responsible party"
+    },
+    "security.duty": {
+      "option": "named-measures",
+      "says": "A general standard of appropriate, reasonable technical and organisational measures, plus named steps: identify foreseeable risks, establish safeguards, regularly verify they are effectively implemented, and keep them updated (s.19(2)).",
+      "citation": "s.19(2)",
+      "quote": "regularly verify that the safeguards are effectively implemented"
+    },
+    "enforcement.fines": {
+      "option": "fixed-caps",
+      "ownTerm": "administrative fine",
+      "says": "Yes. The Regulator may issue an infringement notice with an administrative fine of up to R10 million, adjustable for inflation by the Minister (s.109). Criminal fines and imprisonment, imposed by courts, are separate (s.107).",
+      "citation": "s.109(2)(c)",
+      "quote": "which amount may, subject to subsection (10), not exceed R10 million"
+    },
+    "enforcement.private-action": {
+      "option": "general",
+      "ownTerm": "civil action for damages",
+      "says": "Yes. A data subject, or the Regulator at their request, may sue for damages for breach of any provision of the Act, whether or not there was intent or negligence (s.99(1)).",
+      "citation": "s.99(1)",
+      "quote": "may institute a civil action for damages in a court having jurisdiction against a responsible party for breach of any provision of this Act"
+    }
+  },
+  "terms": {
+    "organisation": {
+      "term": "responsible party",
+      "citation": "s.1 (\"responsible party\")",
+      "quote": "responsible party’’ means a public or private body or any other person which, alone or in conjunction with others, determines the purpose of and means for processing personal information"
+    },
+    "vendor": {
+      "term": "operator",
+      "citation": "s.1 (\"operator\")",
+      "quote": "operator’’ means a person who processes personal information for a responsible party in terms of a contract or mandate"
+    },
+    "person": {
+      "term": "data subject",
+      "citation": "s.1 (\"data subject\")",
+      "quote": "data subject’’ means the person to whom personal information relates"
+    },
+    "data": {
+      "term": "personal information",
+      "citation": "s.1 (\"personal information\")",
+      "quote": "personal information’’ means information relating to an identifiable, living, natural person"
+    },
+    "sensitive": {
+      "term": "special personal information",
+      "citation": "s.1 (\"special personal information\")",
+      "quote": "special personal information’’ means personal information as referred to in section 26"
+    },
+    "regulator": {
+      "term": "Regulator",
+      "citation": "s.1 (\"Regulator\")",
+      "quote": "Regulator’’ means the Information Regulator established in terms of section 39"
+    }
+  }
+}

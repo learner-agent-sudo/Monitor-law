@@ -1,0 +1,172 @@
+/* ---- Citations that show the law text (app/components/LawCite.tsx) ---- */
+
+.law-cite-wrap {
+  display: inline;
+}
+
+.law-cite {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-muted);
+  line-height: inherit;
+  text-align: inherit;
+  text-transform: none;
+  letter-spacing: normal;
+  text-decoration: underline dotted;
+  text-decoration-color: var(--text-faint);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.law-cite:hover {
+  color: var(--text);
+  text-decoration-color: var(--accent);
+}
+.law-cite:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+.law-cite-mark {
+  color: var(--accent);
+  margin-right: 0.3em;
+}
+
+/* The popover. Positioned by inline top/left/width from the trigger. */
+.law-pop {
+  position: fixed;
+  z-index: 1000;
+  display: block;
+  box-sizing: border-box;
+  width: min(460px, calc(100vw - 32px));
+  max-height: min(60vh, 440px);
+  overflow: auto;
+  padding: 12px 14px;
+  background: var(--bg-elevated);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: normal;
+  text-align: left;
+  text-transform: none;
+  white-space: normal;
+  animation: law-pop-in 120ms ease-out;
+}
+@keyframes law-pop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .law-pop { animation: none; }
+}
+
+.law-pop-sec {
+  display: block;
+  margin-top: 10px;
+}
+.law-pop-sec:first-child,
+.law-pop-bar + .law-pop-sec {
+  margin-top: 0;
+}
+.law-pop-head {
+  display: inline;
+  font-weight: 600;
+}
+.law-pop-prov {
+  display: inline;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.law-pop-prov::before {
+  content: " · ";
+  color: var(--text-faint);
+}
+.law-pop-label {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--text-faint);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.law-pop-finding {
+  display: block;
+}
+.law-pop-excerpt {
+  display: block;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.law-pop-excerpt[lang="zh"] {
+  font-family: "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.law-pop mark {
+  background: rgba(210, 153, 34, 0.3);
+  color: inherit;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+.law-pop-note {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.law-pop-link {
+  display: inline-block;
+  font-size: 13px;
+}
+
+/* Phone width: a bottom sheet with a visible Close button. */
+.law-pop-sheet {
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  max-height: 70vh;
+  padding: 0 16px 16px;
+  border: 1px solid var(--border-strong);
+  border-bottom: 0;
+  border-radius: 14px 14px 0 0;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.45);
+}
+.law-pop-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 -16px 8px;
+  padding: 12px 16px 10px;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+}
+.law-pop-bar-title {
+  font-weight: 600;
+}
+.law-pop-close {
+  min-height: 36px;
+  padding: 6px 14px;
+  background: var(--bg-hover);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+.law-pop-close:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
