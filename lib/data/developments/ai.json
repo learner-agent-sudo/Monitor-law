@@ -1,6 +1,6 @@
 {
   "track": "ai",
-  "checked": "2026-11-14T00:44:54.201Z",
+  "checked": "2026-11-15T01:05:49.012Z",
   "analysis": {
     "mode": "keywords",
     "reason": "no AI model answered (GitHub Models returned a non-JSON reply)"
@@ -38,7 +38,7 @@
       "name": "CNIL (France)",
       "type": "official",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -74,7 +74,7 @@
       "name": "Federal Trade Commission",
       "type": "official",
       "ok": true,
-      "found": 3,
+      "found": 2,
       "read": 10,
       "error": null
     },
@@ -92,8 +92,8 @@
       "name": "Congress bills (GovInfo)",
       "type": "official",
       "ok": true,
-      "found": 99,
-      "read": 99,
+      "found": 100,
+      "read": 100,
       "error": null
     },
     {
@@ -101,7 +101,7 @@
       "name": "California Attorney General",
       "type": "official",
       "ok": true,
-      "found": 9,
+      "found": 2,
       "read": 10,
       "error": null
     },
@@ -146,7 +146,7 @@
       "name": "Inside Global Tech (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 1,
+      "found": 0,
       "read": 10,
       "error": null
     },
@@ -173,7 +173,7 @@
       "name": "Hunton Privacy & Information Security Law",
       "type": "analysis",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -182,7 +182,7 @@
       "name": "Privacy World (Squire Patton Boggs)",
       "type": "analysis",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -191,7 +191,7 @@
       "name": "Debevoise Data Blog",
       "type": "analysis",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 200,
       "error": null
     },
@@ -200,7 +200,7 @@
       "name": "Global Policy Watch (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 4,
+      "found": 3,
       "read": 10,
       "error": null
     },
@@ -227,8 +227,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 31,
-      "read": 31,
+      "found": 29,
+      "read": 29,
       "error": null
     },
     {
@@ -236,12 +236,72 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 60,
-      "read": 60,
+      "found": 57,
+      "read": 57,
       "error": null
     }
   ],
   "items": [
+    {
+      "id": "6d5b631c1655",
+      "track": "ai",
+      "title": "PBBM SIGNS EXECUTIVE ORDER ON AI GOVERNANCE AND COUNCIL President Ferdinand Marcos Jr. has signed the executive order establishing a national artificial intelligence governance framework to promote the safe, ethical, and equitable developm",
+      "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPVXhkSUNzdkFqaWdFa2pPeXNWLXB1bEZlbzJTTlNiQzZOeEJGZ09mdEw2d1NDMXhpaUtVY2JUYlNldmd0RVZYQWJFWlhPZ2lCZ19DamNfbmpHU3VhRjQxNHRIQnRUVWhMRVBJR0o3RWF4aTl0M2VDRWhLenhOSzc4czBJejZlNXF6cWRhV2VDNXFkZks1U05LUW5rYUNVcTFlTFprOVJzWkVsUEt2TlV4cmZQSlgyb2hzZ3Z2V1ZhZkJDcF9QbkZOQ1VrNkNyWXI3NmRubVkxWU1mak9ibXY0?oc=5",
+      "source": "Facebook",
+      "sourceType": "news",
+      "published": "2026-11-14",
+      "found": "2026-11-15",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "standard",
+      "summary": "PBBM SIGNS EXECUTIVE ORDER ON AI GOVERNANCE AND COUNCIL President Ferdinand Marcos Jr. has signed the executive order establishing a national artificial intelligence governance framework to promote the safe, ethical, and equitable developm",
+      "summaryBy": "source"
+    },
+    {
+      "id": "f80f895e109f",
+      "track": "ai",
+      "title": "China Displays AI Robots That Can 'Act Like Policemen': Gaurav Sawant - India Today",
+      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQQmsyZmpyQ19jRThXTl9FRDA0eW1qdV9mVHc0Tjc4Qms0di1fb01HeER3OW5DbHhMZDBGSGxqMUMzTno5WUlwMkhjSlVEN09fWFgtcFZxRnF4M3k1ektsNEpscmxLYjRQekN0ZEd1VERaaDl5cDMwTUdQTXQ2YmE4cGdZcU5jUHJhTW1YTTlWOE1lRWJNSUJzYkRSTFo4MkUxd05mbkhRTDdKdGtCamw3ZW55aUlMYnNjendCcnA2WWtYQVRCVnBaYWRfZGFkZ9IB0wFBVV95cUxQQU00NHNsUHRKN1ZveHFkVU9SM2NqZm9vWWlRUE9CbEkxcWFSUkU4ZFE3SmhTLXpaMGZDRzhwQzBHWmExSXZtRWVwVEpaUzlmUzdtX2todUR3eW1iVTJ2LWJqc0tOcU52d09XY1QtV0cwVzhMYkxhcVlzcDZqVThHNV9lTUI0c0tKY0ZuMWEzYWRmZDNGVzM0WmNjTXp0WTRTaFFIMXBkMGFnd2tGekR0dE5jUkVTeHVBaXdEMGFrTUNmWTJ5QjBJTkVxNWNjVnF6eEJZ?oc=5",
+      "source": "India Today",
+      "sourceType": "news",
+      "published": "2026-11-14",
+      "found": "2026-11-15",
+      "region": "asia",
+      "jurisdiction": "China",
+      "kind": "legislation",
+      "summary": "China Displays AI Robots That Can 'Act Like Policemen': Gaurav Sawant - India Today",
+      "summaryBy": "source"
+    },
+    {
+      "id": "238d0d7dffa9",
+      "track": "ai",
+      "title": "Malaysia plans new law using data center power consumption to catch AI GPU smugglers — but real-world TDP variance and lack of physical audits could undermine it, new law also forces operators to pay for unused electricity capacity",
+      "url": "https://news.google.com/rss/articles/CBMipgNBVV95cUxQM1E5R2dtYU9DSjNZTWYxb3FmVlNIM1E3V0FYS0h0M2tpdGszVG1UTkRIdXRfaFM3eUhmeGdhYTQyeGZ1UnNlUVJaeWFfNVBFcFUxM2Q3Y0N6UHZlLUN5eDd6RXhEYmU3VmU1U3JKcEdnc0RUU0NMbW5oNm5XTWNvcDJpejJzNk1OcVF5R3VjdmJsZlVQc3V3LVRFYTFJVU5Bem5RME1jYkd3aEsxeTAyYzFBeE9XYmVXOTZCZFpFc2hONXMzaUM2QWpSQ01sWUJxYkFRa3lSWjVzckwyTWk0MWI0d19mQXc4VjdZMU1FSGQ5WVV4ZjEtMnpqSUNxSHRtdnpXc2FyWHF2NTRleGxwQXpud1U3WWNrSnNvUDdGSkhsLWcwdzVabHJWMkxmcHBUdFhRWEZCRXlrX2hwSHZGSzN4LVg1b0RiTjZXVmVpQURnWGl5MV9TN3RSSXBkLThEMFB2aGx5WDVmbXVXXzhKeEtFeWVhY1VIZlkwRVhxV3diYVJ2dGVpV2RCbUpaeG5ERk9maGJmbk8wekl3Nm9HOXN6WG85Zw?oc=5",
+      "source": "Tom's Hardware",
+      "sourceType": "news",
+      "published": "2026-11-14",
+      "found": "2026-11-15",
+      "region": "asia",
+      "jurisdiction": "Malaysia",
+      "kind": "legislation",
+      "summary": "Malaysia plans new law using data center power consumption to catch AI GPU smugglers — but real-world TDP variance and lack of physical audits could undermine it, new law also forces operators to pay for unused electricity capacity",
+      "summaryBy": "source"
+    },
+    {
+      "id": "0e9a82aa208d",
+      "track": "ai",
+      "title": "FAA Outage: US rules out cyberattack, rouge AI",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQanZWRnN0ZW5DZy1adC1JMmZNUkhtd3piOXBGdENyR0R2YjQ3Y1dYUjdsRXpxOXpmS3N2Z0ZsQ0lxSUdfaVVCdkhsUjk5bTA2bDN3dm1sRHpPQW14SDB1U2k0WnRlVENONTZMMy1UcVMxNEpnZW5PU3JZOHpKTFRaVEY0YXpOUFlPNmhhWHQwNEdZTE9DTm5j?oc=5",
+      "source": "Rediff",
+      "sourceType": "news",
+      "published": "2026-11-14",
+      "found": "2026-11-15",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "regulation",
+      "summary": "FAA Outage: US rules out cyberattack, rouge AI",
+      "summaryBy": "source"
+    },
     {
       "id": "e0935af648b2",
       "track": "ai",
@@ -405,6 +465,81 @@
       "jurisdiction": "China",
       "kind": "regulation",
       "summary": "China’s Ping An Bank adopts board-level AI rules in a first for listed banks",
+      "summaryBy": "source"
+    },
+    {
+      "id": "f5293e8b70e3",
+      "track": "ai",
+      "title": "The EU AI Act: What it really means for organisations on the ground",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNSl9lSXFhYnlna05VeWNrV3o0TDRiM3BtSWM5T0VkWWVBODZEWTlDMFZJTnBhcWNSZDlzeXh1cjE4V19QQkJxSU1Rd3BOd0lQV0xpNXFiak54Q1pqY0liRE5BRkYxR09NeFJUbU1lMTNvdnd6bUc4RktETkNtQms3Wk1rWlFlZW1SUWVKZzYzWmY1Zw?oc=5",
+      "source": "HR News",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-15",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "legislation",
+      "summary": "The EU AI Act: What it really means for organisations on the ground",
+      "summaryBy": "source"
+    },
+    {
+      "id": "f1db25838319",
+      "track": "ai",
+      "title": "Courts Reject AI Waiver Rule. Chat Use Doesn’t Kill Privilege",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPSkZHa0NEYm1tSE5Ua2ZjS1h4Sk9nZkpDQTlkUElqb0ZjZWFLRHVhWU5OQXV2cjU1RHhPbGctMkhsLTdGXzlVTWJzOGc4aXlfZjc4TlR2MWttejc1UHFzZi1KNnozcHdfY3IwbGs3aGQ2Y19pWkk0c1IzSXBIRHh4MzBrcUhVLUxoNGZZMzlMeDJ1UldmcW01YXFJSDB1blc5UU9zYnRyZVpHNEx0UUFjNm83QnNvcTZsc0djSXRkZ2JmNGRkTkVj?oc=5",
+      "source": "Bloomberg Law News",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-15",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "court",
+      "summary": "Courts Reject AI Waiver Rule. Chat Use Doesn’t Kill Privilege",
+      "summaryBy": "source"
+    },
+    {
+      "id": "6262da555688",
+      "track": "ai",
+      "title": "Delaware Chancery Court Sanctions Attorney for AI Hallucinations",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQcE1VUVR3V0NoV2prelRBb24ybTlYMHNNUTdTNTQ3aThyamd2OVRGWWg0OVFQTEl6OENBVy1XZ0VBYXg1Qi1sdm5NQW9RNlowTVZNLUwwUlZyVUVjN1JaZDlzX1pnUjdyX3R6QVJFRFRzeTlGcnM4Y3VsMjVTbC1zSkxYYms1c202a1MyWkgxVUNIN1BqeGdoZ1drZGFoWFV5UURmeVljdjQ?oc=5",
+      "source": "Bloomberg Law News",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-15",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "enforcement",
+      "summary": "Delaware Chancery Court Sanctions Attorney for AI Hallucinations",
+      "summaryBy": "source"
+    },
+    {
+      "id": "fb758e5977b7",
+      "track": "ai",
+      "title": "Bipartisan Lawmakers Partner On Bill To Avert AI Catastrophes",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPYVJ1elNKOHdLZVdYTEp4a1MzNk9OTjlFVTVWa2Y1dm9KSEVrLUJvSE1hRVg5aEltREJPZE13T2FHM19wenk4SGkzYzhzZEg1ZVlaRWZqYl9sMVZoek5hcVZIQk0wano4OXFZZkd3UTdoM0t0cHlpU1BCVXNLZDJMTVNnS2d5M0NxZC1nWQ?oc=5",
+      "source": "State Affairs Pro",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-15",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "legislation",
+      "summary": "Bipartisan Lawmakers Partner On Bill To Avert AI Catastrophes",
+      "summaryBy": "source"
+    },
+    {
+      "id": "500822dea7f0",
+      "track": "ai",
+      "title": "Bill Gates arrives in Amaravati ahead of AI Impact Summit 2026 in Delhi",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOcWQxRE94MUp6MldTVUEybWpQNm1hODRreFI2X1VqRGplZ0U5YUVvc2FkZEUzTnJXekd6dlNBSVFlQ0tzZlJBNFQ0Zi1DUkNXcDNXcldWR05mOW52c196ZkcwcHZLb0hYeGtUZTdUWEdLMngwZ08tcjZSSThDTEMzblBEUGNGT2YzYXN5aXVOZnU2dDJhTmJHYkVpMzJWdw?oc=5",
+      "source": "DD News",
+      "sourceType": "news",
+      "published": "2026-11-13",
+      "found": "2026-11-15",
+      "region": "asia",
+      "jurisdiction": "Asia",
+      "kind": "legislation",
+      "summary": "Bill Gates arrives in Amaravati ahead of AI Impact Summit 2026 in Delhi",
       "summaryBy": "source"
     },
     {
@@ -768,6 +903,21 @@
       "summaryBy": "source"
     },
     {
+      "id": "4b211e20d942",
+      "track": "ai",
+      "title": "Kenya’s AI Bill 2026: Key Things to Know After Rejection By Senate ICT Committee",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQLW1nOG44ejZLZDZZMU5uRFpyMUpJVmR6SnVKMmo2RnJBd3ZLMUJhVjFha1czNzg0THJOcElQa0NESjd2TWxhV1FHWThmRjhFVllVdXYxTTlzdUFXSklwVTcyMnpkTVFMcmRjS2ROc0t6UUNwSW90VE9oUFh0ekFlSDlmM2d1a3pQa1BLeWxWeGZPOGhZRjc0Wm5HWVk4RHhtbVFxWA?oc=5",
+      "source": "Tech Labari",
+      "sourceType": "news",
+      "published": "2026-11-12",
+      "found": "2026-11-15",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "legislation",
+      "summary": "Kenya’s AI Bill 2026: Key Things to Know After Rejection By Senate ICT Committee",
+      "summaryBy": "source"
+    },
+    {
       "id": "0b05a266f540",
       "track": "ai",
       "title": "Inside Greece's new AI Act framework",
@@ -1035,6 +1185,36 @@
       "jurisdiction": "European Union",
       "kind": "legislation",
       "summary": "EU Draft Cloud and AI Act: Lawmakers Push for Tech Sovereignty - News and Statistics",
+      "summaryBy": "source"
+    },
+    {
+      "id": "48fc46ae37ae",
+      "track": "ai",
+      "title": "Bill Gates Says Next Four Years Are Critical for AI Safety, Calls for Urgent Regulation",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE10RmgwWG1TNk1EMjNWTlBGRkY2YXRKWm5pdXhPZ3lESEczQ1VkTWRDaHdKQlc3MVFrUHNMZEVZeW5uQ3FWUWhKcXdCenJrdU03dlZEUg?oc=5",
+      "source": "bloomingbit",
+      "sourceType": "news",
+      "published": "2026-11-11",
+      "found": "2026-11-15",
+      "region": "asia",
+      "jurisdiction": "Asia",
+      "kind": "legislation",
+      "summary": "Bill Gates Says Next Four Years Are Critical for AI Safety, Calls for Urgent Regulation",
+      "summaryBy": "source"
+    },
+    {
+      "id": "b4bbfffa3ff2",
+      "track": "ai",
+      "title": "Rajah & Tann boosts AI bench with TMT partner from Magellan Law",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPckpZcUozeUNPa3VlVkdWWkNwaEFrb05ScElNVUN4NVQ1aUpsVUlLek1qTXNienZfZnN3bDJOaHBDeDl0YlN6SHcxMS02Wk9FZnFXeVZmTW5selF1YWNRR3ZIZ3B6SUdjT2NtNnM1T190dU54RlBSVGhqREZOV1JUXzI1U0x0V05nQWFhOVhpWUlDaDN6V0NEcU9PbU1QRmdOa2c?oc=5",
+      "source": "| Asian Legal Business",
+      "sourceType": "news",
+      "published": "2026-11-11",
+      "found": "2026-11-15",
+      "region": "asia",
+      "jurisdiction": "Asia",
+      "kind": "legislation",
+      "summary": "Rajah & Tann boosts AI bench with TMT partner from Magellan Law",
       "summaryBy": "source"
     },
     {
