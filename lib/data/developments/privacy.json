@@ -1,6 +1,6 @@
 {
   "track": "privacy",
-  "checked": "2026-11-14T00:44:29.742Z",
+  "checked": "2026-11-15T01:19:54.562Z",
   "analysis": {
     "mode": "keywords",
     "reason": "no AI model answered (GitHub Models returned a non-JSON reply)"
@@ -38,7 +38,7 @@
       "name": "CNIL (France)",
       "type": "official",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -74,7 +74,7 @@
       "name": "Federal Trade Commission",
       "type": "official",
       "ok": true,
-      "found": 3,
+      "found": 2,
       "read": 10,
       "error": null
     },
@@ -92,8 +92,8 @@
       "name": "Congress bills (GovInfo)",
       "type": "official",
       "ok": true,
-      "found": 99,
-      "read": 99,
+      "found": 100,
+      "read": 100,
       "error": null
     },
     {
@@ -101,7 +101,7 @@
       "name": "California Attorney General",
       "type": "official",
       "ok": true,
-      "found": 9,
+      "found": 2,
       "read": 10,
       "error": null
     },
@@ -146,7 +146,7 @@
       "name": "Inside Global Tech (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 1,
+      "found": 0,
       "read": 10,
       "error": null
     },
@@ -173,7 +173,7 @@
       "name": "Hunton Privacy & Information Security Law",
       "type": "analysis",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -182,7 +182,7 @@
       "name": "Privacy World (Squire Patton Boggs)",
       "type": "analysis",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -191,7 +191,7 @@
       "name": "Debevoise Data Blog",
       "type": "analysis",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 200,
       "error": null
     },
@@ -200,7 +200,7 @@
       "name": "Global Policy Watch (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 4,
+      "found": 3,
       "read": 10,
       "error": null
     },
@@ -218,8 +218,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 27,
-      "read": 27,
+      "found": 25,
+      "read": 25,
       "error": null
     },
     {
@@ -227,8 +227,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 19,
-      "read": 19,
+      "found": 17,
+      "read": 17,
       "error": null
     },
     {
@@ -236,12 +236,132 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 67,
-      "read": 67,
+      "found": 75,
+      "read": 75,
       "error": null
     }
   ],
   "items": [
+    {
+      "id": "a7b8c514e708",
+      "track": "privacy",
+      "title": "Facebook: Data Protection Authority fines Meta €805 million. The company says: ‘We will appeal’",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPM25DT2UyLWU1ZkIyV29kemJhaFhCWHB0UHJtemduUFFobVpWYVd4bHpPdmxDYjNrOFBaMVk3djlUdkozbkZydzR2bTVoMzlxVlcyTGNYX1VjaERPeFFMbzAzZ1FULWhOQUVZejJOVFpaalB0ZVFzN1hfalB3WGVtX2FQclFkYWxfWjM1OXJkRm5tZ1pNMm9qZ2w0ckRERzg?oc=5",
+      "source": "Il Sole 24 ORE",
+      "sourceType": "news",
+      "published": "2026-11-14",
+      "found": "2026-11-15",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "enforcement",
+      "summary": "Facebook: Data Protection Authority fines Meta €805 million. The company says: ‘We will appeal’",
+      "summaryBy": "source"
+    },
+    {
+      "id": "999487c6e728",
+      "track": "privacy",
+      "title": "Italy hits Meta with €805m fine over privacy law violation",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPd3luSjI1NXRuVzIzTmJRcEJLVElQZlE1NG8tMEg5WDFoU2NvUktYV0J5NTQ2Zk9KQ2JEUjRIS3BlX0pORGZOZzRvVkkxTC14LUN4ZGNldWRmSF9JblJYRl9JTFFram9IUlU2SDdLWnZoTUs4cG9mdlU4N1NuWDVUVzBLeDZOSmNlcVRGVThTdHA2QUxiVVE?oc=5",
+      "source": "POLITICO.eu",
+      "sourceType": "news",
+      "published": "2026-11-14",
+      "found": "2026-11-15",
+      "region": "eu",
+      "jurisdiction": "Italy",
+      "kind": "enforcement",
+      "summary": "Italy hits Meta with €805m fine over privacy law violation",
+      "summaryBy": "source"
+    },
+    {
+      "id": "d1ab25a80ff3",
+      "track": "privacy",
+      "title": "Digital Personal Data Protection Act, 2023 (DPDP Act): Your Data, Your Privacy — Or The State’s Surveillance?",
+      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNN0xHUGVxTWRBZEVkbTZGdUR5ampHNS1idFcxVG5iekQxWldLQzByUndFTWQ0Q3lpcUx5bTFzWGI5WHllelkwVFVETy1IcXJDZmw5TEhkUENPcUlJRGh6d3puZlViUlZKVERuVU45enhadFcwbGZXTDM3NGN3MFM3c3hXMVUzYjRGNzFxYkY3VzREdlFYcmc3OEstUkg4al9sMFdCSG9HVVlvbVprZHd3aUFkQTNKaEh2d2FidmpScUFRVFQ5eF9FLVhMM3Y3TDVBWWpoNQ?oc=5",
+      "source": "Kashmir Reader",
+      "sourceType": "news",
+      "published": "2026-11-14",
+      "found": "2026-11-15",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "legislation",
+      "summary": "Digital Personal Data Protection Act, 2023 (DPDP Act): Your Data, Your Privacy — Or The State’s Surveillance?",
+      "summaryBy": "source"
+    },
+    {
+      "id": "00ae48a22033",
+      "track": "privacy",
+      "title": "Ireland’s watchdog fines Tinder parent for user data breach",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPUHp6WjJHTEtWQzRwTGNlT0pfaHNhdEVDNGlFdFpELXdoUF9BZFFudFlIdmp1LXZhVkJJbjBSVE9JcVVINjlTLVF3T0Q0aFAxV25RUjFsRmI1aVhoUmJDSlFMY1NpNkhSS2gwTXZsZktSWFQxZkctaFdUWXRua0JCUXVDVTR0ZUk0SzVFSDdienNsQXM4SW14Um5fLVFwdDVncU5Id0M0d3A?oc=5",
+      "source": "Big News Network.com",
+      "sourceType": "news",
+      "published": "2026-11-14",
+      "found": "2026-11-15",
+      "region": "eu",
+      "jurisdiction": "Ireland",
+      "kind": "enforcement",
+      "summary": "Ireland’s watchdog fines Tinder parent for user data breach",
+      "summaryBy": "source"
+    },
+    {
+      "id": "d975f92cb402",
+      "track": "privacy",
+      "title": "Who are Consent Managers? Centre opens registration portal under India’s new Data Protection Law",
+      "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQTVlFUjNVdWdOc2k2b1JOWGZGWmN0Y1ZTMVVHbzhZZURrRVF6R1VfSkNBTnVsbEpPNzVIWnRNcEtqSjRGRGJodC1fb0Y2ai0xRmhfQ1hwejE4ZW90WGFDc1paZS1razRyU01xQ3lELXdCVkVaRmREbnRiTU52VlZJX1ZNQk5tYzBUX2NuYmpEZWFxX2dwbnhUWWw5VEMwdTB4YkhTRGN2WHJqTkRLSkN0al9WQlJnSEJSQkJEY0lGRkhEV2dDQkZZYTlLczViMlFubHNPbkh2LVA3UE13bVhvQ1VYRjlzdlNwQkphSkc2MWxuN09PeGc?oc=5",
+      "source": "Babushahi.com",
+      "sourceType": "news",
+      "published": "2026-11-14",
+      "found": "2026-11-15",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "legislation",
+      "summary": "Who are Consent Managers? Centre opens registration portal under India’s new Data Protection Law",
+      "summaryBy": "source"
+    },
+    {
+      "id": "810df99111d5",
+      "track": "privacy",
+      "title": "Govt opens registration for consent managers under DPDP Act; Rs 2 crore net worth required",
+      "url": "https://news.google.com/rss/articles/CBMipAJBVV95cUxNTWVpMEw5ZTk0TUlqQ01CTG9XNlEzLUJmNVN0VXFKRFR2OUVBWFQyLU5Gd25COWE1SHlBUmIwRktKY1VXSmF0cFNfdER2N3ZySHNra0t5N3k4MUlpSHY2OG92cVZLajROSGdGR0NFcEo4OG40cWdfWHRWaTMwZ1dEcnlLWmZVR1Nwc3ZSTFB0LURHMWpQYklFcW05VUpJOGlaOEI3ZGkzT0VmVEYxaW1rWU9uRkFJUUtPV1BQNXN0MXR3dmUtSEs0bXEtd19EZ0J0UkhKRkFKNnNPOHNJTzJ0cEU3OXhMX3lkSi1hOWRXT1BuaUE3NDlXSE1odTRYWFU3ajdzY3NEOUFSVm9tVHRXMmdRMFcyLUFRMXo4Mi00aFg4S2hL0gGeAkFVX3lxTE8zX1dyOE5Fbk1UZ3ZBUHhJVWFIN09hNE1fWTNfX3h6Q01SUWNKdHRCQ3FNUFk0VzNWcWNLNER2bjFOR2FxRFNRb2t1QXdZYUh6MDY5T0QzMHQ0VE5zY1ZBcnM2MVpIMWc4ZGVlLTctR203R19BdTZCUW1nWmFiR2IyN3FNTkN6ZllpVXdkUXI0MWhwSFFjSTBnRXc3aExXMUJaRUZDallIdTBuNXNBZ0ZIYnFmdlRncFNXUW1fUVBsMnNZTjRVNURmN1c1RUl3clJaUVpMb2ZmX2xVNF9JRTFwN0VXMXJRRjJCcUR4ZTNlNm45ZzlhbVRqQ194eHJOb3dzMm9KMUx1Y0EyN0NNQlhOejJhQmhIOWh3VnBpS1E?oc=5",
+      "source": "The Economic Times",
+      "sourceType": "news",
+      "published": "2026-11-14",
+      "found": "2026-11-15",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "legislation",
+      "summary": "Govt opens registration for consent managers under DPDP Act; Rs 2 crore net worth required",
+      "summaryBy": "source"
+    },
+    {
+      "id": "a4082cf66b36",
+      "track": "privacy",
+      "title": "DPDP Act 2023 : Data Protection Board of India is Live Now",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1TNmxESlBUaXZYclFtM1pyMkpGM1g5dXBsVTkyTFBQWE41bGpMcU5WaDl4UjNJSzlNMG1FVDdUUGZPcDdENVNqa0xrZ2N0UjhVbkt3bmgwZ01ITnhfMHJ3WW03MFlUajQ2MzRrX3pNTlpQUQ?oc=5",
+      "source": "The 420.in",
+      "sourceType": "news",
+      "published": "2026-11-14",
+      "found": "2026-11-15",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "legislation",
+      "summary": "DPDP Act 2023 : Data Protection Board of India is Live Now",
+      "summaryBy": "source"
+    },
+    {
+      "id": "f87bf65c462e",
+      "track": "privacy",
+      "title": "Amendments to the Postal Law: Tightening personal data protection and modernizing management methods.",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPV0VXWjNFZ05YcnNld01iekFsWnpTUzNESWI1YlRjbXlEcldNZDZmMFQ3WkstTzF1TkRod25ETGMyVzFPMEpKbFBBYVg2MHJUcFhYYnZCUExYdFhvUWJ4c0JZR0ZBNXpUUk5oRTJRYzRkLWRLOUNFODE3dkdwSW9Pd0R5a2ktcEM5WU9vRkJQN3BxOV81VEdYUDRZZ1pCV2pXMEoyOFh4SE1jNWZNczN2TGFfNmE?oc=5",
+      "source": "Vietnam.vn",
+      "sourceType": "news",
+      "published": "2026-11-14",
+      "found": "2026-11-15",
+      "region": "asia",
+      "jurisdiction": "Asia",
+      "kind": "legislation",
+      "summary": "Amendments to the Postal Law: Tightening personal data protection and modernizing management methods.",
+      "summaryBy": "source"
+    },
     {
       "id": "68310e9c0d2e",
       "track": "privacy",
@@ -465,6 +585,21 @@
       "jurisdiction": "California",
       "kind": "legislation",
       "summary": "Motorists Allege License Plate Tracking Violates California Privacy Law",
+      "summaryBy": "source"
+    },
+    {
+      "id": "cb1c7d4684fa",
+      "track": "privacy",
+      "title": "When journalism meets adtech: Where does DPDP Act draw the line?",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNTW5MQ3JCRG5XdkhTUG11R19NQmx1MDBubnR3bjFXZ0VGLWpldVlpUjAyWEVXQmVnNTFiTW9oUjlSXzVSS3hpSmVOeXA1Q3FDZWp0bVNmQS1nUDRxQnpNQXczNE9KdkNIbVRfcFBFUUhqVndDWkxZM1lIbVBXeGJ0cVZqWEd5LU1BTm9Obk1IMTRCdXRQQWRsR3EwU25ZX2s4V2xXWjJSQ0ZiU0NKUzJqc0ZyRUN2eThuMVE?oc=5",
+      "source": "Exchange4Media",
+      "sourceType": "news",
+      "published": "2026-11-12",
+      "found": "2026-11-15",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "legislation",
+      "summary": "When journalism meets adtech: Where does DPDP Act draw the line?",
       "summaryBy": "source"
     },
     {
