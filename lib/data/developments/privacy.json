@@ -1,6 +1,6 @@
 {
   "track": "privacy",
-  "checked": "2026-11-15T01:19:54.562Z",
+  "checked": "2026-11-16T01:26:07.637Z",
   "analysis": {
     "mode": "keywords",
     "reason": "no AI model answered (GitHub Models returned a non-JSON reply)"
@@ -19,10 +19,10 @@
       "id": "eur-lex-oj",
       "name": "EU Official Journal (EUR-Lex)",
       "type": "official",
-      "ok": false,
-      "found": 0,
-      "read": 0,
-      "error": "response is not a feed"
+      "ok": true,
+      "found": 31,
+      "read": 100,
+      "error": null
     },
     {
       "id": "edps",
@@ -64,8 +64,8 @@
       "id": "federal-register",
       "name": "Federal Register",
       "type": "official",
-      "ok": true,
-      "found": 2,
+      "ok": false,
+      "found": 0,
       "read": 2,
       "error": "1 of 3 queries failed: unexpected response shape"
     },
@@ -110,7 +110,7 @@
       "name": "Hong Kong Government press releases",
       "type": "official",
       "ok": true,
-      "found": 100,
+      "found": 95,
       "read": 100,
       "error": null
     },
@@ -208,18 +208,18 @@
       "id": "law-asia",
       "name": "Law.asia",
       "type": "analysis",
-      "ok": true,
-      "found": 10,
-      "read": 10,
-      "error": null
+      "ok": false,
+      "found": 0,
+      "read": 0,
+      "error": "HTTP 403"
     },
     {
       "id": "gnews-eu",
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 25,
-      "read": 25,
+      "found": 31,
+      "read": 31,
       "error": null
     },
     {
@@ -236,12 +236,57 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 75,
-      "read": 75,
+      "found": 77,
+      "read": 77,
       "error": null
     }
   ],
   "items": [
+    {
+      "id": "d7108bc900b4",
+      "track": "privacy",
+      "title": "AO3 Security Incident: Do GDPR Breach Rules Apply?",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9kbWxlYkVJSmxGVWRLcGVqb2E3ZHlNMmhfSXhSWG5RRmZZODZVRXQ0SXd5R2JfbDFOM2Q2djhUdXVESXFnbGVNcGNUdFdNVl9HNk1lMzdib1ZwanZ0dGdvXzRFc1pIYWVQS2c?oc=5",
+      "source": "Diplomacy and Law",
+      "sourceType": "news",
+      "published": "2026-11-15",
+      "found": "2026-11-16",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "regulation",
+      "summary": "AO3 Security Incident: Do GDPR Breach Rules Apply?",
+      "summaryBy": "source"
+    },
+    {
+      "id": "89bd0e7a883c",
+      "track": "privacy",
+      "title": "Maldives bill sets MVR 10 million cap on data protection fines",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNSmJuc2g5WUFKSmN2NThBeERuMXcxMy1pbDlKLUlIVC1ZanVMQkhIODFubGYwTi1IZEtnZDVIa0gwOHlsb1R0QUg2X0V1dmlNdk8tVG1hTFU5SlpBbDJaMnhzUDJ3SWdod1lUTVYtaUE0R2JZZTQxQWVWLXZPWmJ6QnV4cmtZbFU?oc=5",
+      "source": "PPC Land",
+      "sourceType": "news",
+      "published": "2026-11-15",
+      "found": "2026-11-16",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "enforcement",
+      "summary": "Maldives bill sets MVR 10 million cap on data protection fines",
+      "summaryBy": "source"
+    },
+    {
+      "id": "74f9c4eef336",
+      "track": "privacy",
+      "title": "High Court questions ODPC's authority to award compensation for data privacy violations",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9BdEFxbnZJbEdHZXlZQzRodkFKMFNRUUNDQTNFdnNrVnVWUWM2VlJtOUdwdVBFM3ZZc3lFR09vZEhnLW93b2lOankzT1hoQ3NxLUtIZUJNMG11cjZRT3l0YTNRQTlkOThqUmlGdTI4NDc?oc=5",
+      "source": "TechTrendsKE",
+      "sourceType": "news",
+      "published": "2026-11-15",
+      "found": "2026-11-16",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "court",
+      "summary": "High Court questions ODPC's authority to award compensation for data privacy violations",
+      "summaryBy": "source"
+    },
     {
       "id": "a7b8c514e708",
       "track": "privacy",
