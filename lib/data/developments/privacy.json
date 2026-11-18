@@ -1,6 +1,6 @@
 {
   "track": "privacy",
-  "checked": "2026-11-17T04:12:17.108Z",
+  "checked": "2026-11-18T03:09:09.573Z",
   "analysis": {
     "mode": "keywords",
     "reason": "no AI model answered (GitHub Models returned a non-JSON reply)"
@@ -11,7 +11,7 @@
       "name": "European Commission (Digital Strategy)",
       "type": "official",
       "ok": true,
-      "found": 0,
+      "found": 2,
       "read": 10,
       "error": null
     },
@@ -29,7 +29,7 @@
       "name": "European Data Protection Supervisor",
       "type": "official",
       "ok": true,
-      "found": 1,
+      "found": 0,
       "read": 10,
       "error": null
     },
@@ -38,7 +38,7 @@
       "name": "CNIL (France)",
       "type": "official",
       "ok": true,
-      "found": 0,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -92,7 +92,7 @@
       "name": "Congress bills (GovInfo)",
       "type": "official",
       "ok": true,
-      "found": 100,
+      "found": 69,
       "read": 100,
       "error": null
     },
@@ -101,7 +101,7 @@
       "name": "California Attorney General",
       "type": "official",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -110,7 +110,7 @@
       "name": "Hong Kong Government press releases",
       "type": "official",
       "ok": true,
-      "found": 90,
+      "found": 86,
       "read": 100,
       "error": null
     },
@@ -121,7 +121,7 @@
       "ok": false,
       "found": 0,
       "read": 0,
-      "error": "HTTP 520"
+      "error": "response is not a feed"
     },
     {
       "id": "fpf",
@@ -173,7 +173,7 @@
       "name": "Hunton Privacy & Information Security Law",
       "type": "analysis",
       "ok": true,
-      "found": 2,
+      "found": 3,
       "read": 10,
       "error": null
     },
@@ -191,7 +191,7 @@
       "name": "Debevoise Data Blog",
       "type": "analysis",
       "ok": true,
-      "found": 1,
+      "found": 0,
       "read": 200,
       "error": null
     },
@@ -200,7 +200,7 @@
       "name": "Global Policy Watch (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 3,
+      "found": 0,
       "read": 10,
       "error": null
     },
@@ -227,8 +227,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 12,
-      "read": 12,
+      "found": 18,
+      "read": 18,
       "error": null
     },
     {
@@ -236,12 +236,117 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 73,
-      "read": 73,
+      "found": 65,
+      "read": 65,
       "error": null
     }
   ],
   "items": [
+    {
+      "id": "1ad4a59c104b",
+      "track": "privacy",
+      "title": "La CNIL a prononcé 38 nouvelles sanctions en procédure simplifiée depuis juin 2026",
+      "url": "https://www.cnil.fr/fr/38-sanctions-simplifiees",
+      "source": "CNIL (France)",
+      "sourceType": "official",
+      "published": "2026-11-17",
+      "found": "2026-11-18",
+      "region": "eu",
+      "jurisdiction": "France",
+      "kind": "enforcement",
+      "summary": "Cookies, sécurité des données, prospection commerciale, non-coopération : entre juin et octobre 2026, la CNIL a prononcé 38 nouvelles sanctions dans le cadre de la procédure simplifiée, dont 23 ont pour origine des plaintes.",
+      "summaryBy": "source"
+    },
+    {
+      "id": "b27b3be6e4d8",
+      "track": "privacy",
+      "title": "California AG Announces $1.8 Million Settlement with Lyft for CCPA Violations",
+      "url": "https://www.hunton.com/privacy-and-cybersecurity-law-blog/california-ag-announces-1-8-million-settlement-with-lyft-for-ccpa-violations",
+      "source": "Hunton Privacy & Information Security Law",
+      "sourceType": "analysis",
+      "published": "2026-11-17",
+      "found": "2026-11-18",
+      "region": "us",
+      "jurisdiction": "California",
+      "kind": "enforcement",
+      "summary": "On October 29, 2026, California Attorney General Rob Bonta announced a $1.8 million settlement with Lyft, Inc. The Attorney General alleged that Lyft did not provide consumers with an in-app mechanism for opting out of the sale of their personal information and instead used a burdensome opt-out pro…",
+      "summaryBy": "source"
+    },
+    {
+      "id": "2f28830f8c42",
+      "track": "privacy",
+      "title": "The Court of Justice rules against the European Data Protection Supervisor: \"It cannot challenge EU laws\"",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPSmpLWkpha1RuNmVzdmt5VWJNbURMQzhIZE1sU3hwMUNoQWFtWEkzSnV1MWRIaEQwaGVSYk41bF83QW5GaTVlUlc2cWh1VWJydWNnQWhzLV9DRVlicHlqbzZaTWVyOGhSeW5qM0dWdF9iZGlvTVdZbDhXODc5dFdlVnI2VUl0WUJycENCYVNEcjl1eExiT1JaOW9OU1g1em5GRURQZk1pMmFZbmNKak13bVBjbUxWSnJuOGlqQ2Zfblc4c3RUY1dMc29aczBfdHQ0bWhLTEpn?oc=5",
+      "source": "Eunews",
+      "sourceType": "news",
+      "published": "2026-11-17",
+      "found": "2026-11-18",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "court",
+      "summary": "The Court of Justice rules against the European Data Protection Supervisor: \"It cannot challenge EU laws\"",
+      "summaryBy": "source"
+    },
+    {
+      "id": "d76d05e7599d",
+      "track": "privacy",
+      "title": "EU GDPR enforcement puts spotlight on AI-driven recruitment",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNdWV4Zi05bjlIUUV3LXpuVzlZT3o0ZUZ3VXZqYUpvM28yZTNTSzA1NlJrdDA3ek1VWHQwN2NiYmFiTGlvaHNEeUl3TVo4eVFwN0hBejkzamotc0xoZDhtaTFkOUFtYWxlOWZSMm9XSm1DVm5RZ3hNTFZ5NFRDdEx5NVFWNUxtOHR5WW04UzNxVkRzci1JZzBjNEtUN2RQRmM1MV85Wg?oc=5",
+      "source": "Pinsent Masons",
+      "sourceType": "news",
+      "published": "2026-11-17",
+      "found": "2026-11-18",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "other",
+      "summary": "EU GDPR enforcement puts spotlight on AI-driven recruitment",
+      "summaryBy": "source"
+    },
+    {
+      "id": "601c05d4f1c4",
+      "track": "privacy",
+      "title": "Service Outages in India – CERT-In Rules, Data Protection and Cloud Regulation",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5lN05obnRwRVhBQ2IwcTFnTm9WVTdJVUlqUUFZVmlyUElWNWpmS2pnbWw3UFgtNHBjSDZ5MmFJTjUwNE9UNmp0UFdOd0tkSkZ0Vk5meUxXSmUtQ1FrQVFKb2ZIZFRpamg3Q2ZFTVRiUG5JTlR6TTVN?oc=5",
+      "source": "Vajiram & Ravi",
+      "sourceType": "news",
+      "published": "2026-11-17",
+      "found": "2026-11-18",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "regulation",
+      "summary": "Service Outages in India – CERT-In Rules, Data Protection and Cloud Regulation",
+      "summaryBy": "source"
+    },
+    {
+      "id": "6679578592d6",
+      "track": "privacy",
+      "title": "California fines Hertz $1.5 million for breaking state data privacy law",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE0taWdaMDVfRmdmT0Q4MzZSYlZ4X1ZINUdxMllwVGpIN3k0UXdWc0xTaU9RMWV6M2Y5T25JMmtnYVdOSWZUME1TZ21GdEdmSjhfazlBbXJydWxCLVoxYVBWb3NuWEk0dU1vWnd5X1kxVDFRR21tVHNHZw?oc=5",
+      "source": "The Record from Recorded Future News",
+      "sourceType": "news",
+      "published": "2026-11-17",
+      "found": "2026-11-18",
+      "region": "us",
+      "jurisdiction": "California",
+      "kind": "enforcement",
+      "summary": "California fines Hertz $1.5 million for breaking state data privacy law",
+      "summaryBy": "source"
+    },
+    {
+      "id": "21dcb9f2276f",
+      "track": "privacy",
+      "title": "Businesses need to avoid violating regulations regarding the protection of personal data.",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQaXM2TzZ5RGJyZTFfQWdkdWNBeEw2REloZ00yeC1oOERyQVhwQnlDaVBMVmxSWWRSWFIzenlhNzh2RHNGeEtBaGJ2UlRMLXc3QU5jckgyVDlXWGprZ093U3RDMTNJQ1dtQVNKdXk5NGZOdjZDT3U3aFM2OTNNUG9BMTZnbG5ERS1RUGYwTWJ1MEVIY0RLcFE?oc=5",
+      "source": "Vietnam.vn",
+      "sourceType": "news",
+      "published": "2026-11-17",
+      "found": "2026-11-18",
+      "region": "asia",
+      "jurisdiction": "Asia",
+      "kind": "regulation",
+      "summary": "Businesses need to avoid violating regulations regarding the protection of personal data.",
+      "summaryBy": "source"
+    },
     {
       "id": "da82926daa69",
       "track": "privacy",
@@ -375,6 +480,21 @@
       "jurisdiction": "India",
       "kind": "regulation",
       "summary": "DPDP rules may boost demand for cybersecurity professionals and security services: Report",
+      "summaryBy": "source"
+    },
+    {
+      "id": "b6f8e47b49d3",
+      "track": "privacy",
+      "title": "India’s Data Protection Law Faces Supreme Court Constitutional Challenge",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNUWgtaS1zSWNlaExIQ05LTHBwX1BCSEs3M1VEcUZhSHM2SEt3bkRHX1ZBbDNKSjdTalJnbUV2TjFrN1BJdE9RY2lkREhqc3BZSk9aWVItbGUteWxZQWxXNDRsSF9PSThIbkhVb1daT2R2Q3dWb3R2UEJZVHR1ZUZuTnhtODhEMldscEl4TFdlTndqa1RveXhiVG0zR3VpOHhLR0E?oc=5",
+      "source": "Elets eGov",
+      "sourceType": "news",
+      "published": "2026-11-16",
+      "found": "2026-11-18",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "court",
+      "summary": "India’s Data Protection Law Faces Supreme Court Constitutional Challenge",
       "summaryBy": "source"
     },
     {
