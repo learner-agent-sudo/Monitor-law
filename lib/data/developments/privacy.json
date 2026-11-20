@@ -1,6 +1,6 @@
 {
   "track": "privacy",
-  "checked": "2026-11-19T02:50:24.225Z",
+  "checked": "2026-11-20T02:39:16.628Z",
   "analysis": {
     "mode": "keywords",
     "reason": "no AI model answered (GitHub Models returned a non-JSON reply)"
@@ -28,19 +28,19 @@
       "id": "edps",
       "name": "European Data Protection Supervisor",
       "type": "official",
-      "ok": false,
+      "ok": true,
       "found": 0,
-      "read": 0,
-      "error": "HTTP 403"
+      "read": 10,
+      "error": null
     },
     {
       "id": "cnil",
       "name": "CNIL (France)",
       "type": "official",
-      "ok": false,
-      "found": 0,
-      "read": 0,
-      "error": "HTTP 503"
+      "ok": true,
+      "found": 3,
+      "read": 10,
+      "error": null
     },
     {
       "id": "govuk-privacy",
@@ -57,17 +57,17 @@
       "type": "official",
       "ok": true,
       "found": 0,
-      "read": 667,
+      "read": 668,
       "error": null
     },
     {
       "id": "federal-register",
       "name": "Federal Register",
       "type": "official",
-      "ok": false,
-      "found": 0,
-      "read": 0,
-      "error": "unexpected response shape"
+      "ok": true,
+      "found": 5,
+      "read": 5,
+      "error": null
     },
     {
       "id": "ftc",
@@ -83,7 +83,7 @@
       "name": "NIST",
       "type": "official",
       "ok": true,
-      "found": 1,
+      "found": 2,
       "read": 40,
       "error": null
     },
@@ -92,7 +92,7 @@
       "name": "Congress bills (GovInfo)",
       "type": "official",
       "ok": true,
-      "found": 56,
+      "found": 100,
       "read": 100,
       "error": null
     },
@@ -101,7 +101,7 @@
       "name": "California Attorney General",
       "type": "official",
       "ok": true,
-      "found": 3,
+      "found": 6,
       "read": 10,
       "error": null
     },
@@ -137,7 +137,7 @@
       "name": "Inside Privacy (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 1,
+      "found": 2,
       "read": 10,
       "error": null
     },
@@ -146,7 +146,7 @@
       "name": "Inside Global Tech (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 1,
+      "found": 2,
       "read": 10,
       "error": null
     },
@@ -173,7 +173,7 @@
       "name": "Hunton Privacy & Information Security Law",
       "type": "analysis",
       "ok": true,
-      "found": 4,
+      "found": 5,
       "read": 10,
       "error": null
     },
@@ -182,7 +182,7 @@
       "name": "Privacy World (Squire Patton Boggs)",
       "type": "analysis",
       "ok": true,
-      "found": 1,
+      "found": 2,
       "read": 10,
       "error": null
     },
@@ -200,7 +200,7 @@
       "name": "Global Policy Watch (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 3,
+      "found": 4,
       "read": 10,
       "error": null
     },
@@ -208,27 +208,27 @@
       "id": "law-asia",
       "name": "Law.asia",
       "type": "analysis",
-      "ok": false,
-      "found": 0,
-      "read": 0,
-      "error": "HTTP 403"
+      "ok": true,
+      "found": 10,
+      "read": 10,
+      "error": null
     },
     {
       "id": "gnews-eu",
       "name": "Google News search",
       "type": "news",
-      "ok": false,
-      "found": 0,
-      "read": 0,
-      "error": "ETIMEDOUT"
+      "ok": true,
+      "found": 27,
+      "read": 27,
+      "error": null
     },
     {
       "id": "gnews-us",
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 18,
-      "read": 18,
+      "found": 27,
+      "read": 27,
       "error": null
     },
     {
@@ -236,12 +236,117 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 55,
-      "read": 55,
+      "found": 59,
+      "read": 59,
       "error": null
     }
   ],
   "items": [
+    {
+      "id": "75cdfcd427a4",
+      "track": "privacy",
+      "title": "HIPAA Privacy Rule: Changes To Support Coordinated Care and Individual Engagement and Reduce Regulatory Burdens",
+      "url": "https://www.federalregister.gov/documents/2026/11/19/2026-23429/hipaa-privacy-rule-changes-to-support-coordinated-care-and-individual-engagement-and-reduce",
+      "source": "Federal Register",
+      "sourceType": "official",
+      "published": "2026-11-19",
+      "found": "2026-11-20",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "legislation",
+      "summary": "The Department of Health and Human Services (HHS or \"Department\") is issuing this final rule to modify the Standards for Privacy of Individually Identifiable Health Information (\"Privacy Rule\") under the Health Insurance Portability and Accountability Act of 1996 (HIPAA) and the Health Information…",
+      "summaryBy": "source"
+    },
+    {
+      "id": "1ca116e716d1",
+      "track": "privacy",
+      "title": "App Store Age Verification Laws: Your Questions, Answered (Updated)",
+      "url": "https://www.privacyworld.blog/2026/11/app-store-age-verification-laws-your-questions-answered-updated/",
+      "source": "Privacy World (Squire Patton Boggs)",
+      "sourceType": "analysis",
+      "published": "2026-11-19",
+      "found": "2026-11-20",
+      "region": "us",
+      "jurisdiction": "Texas",
+      "kind": "legislation",
+      "summary": "We have updated our original post on this topic to address legislative changes that affect both the substance and effective dates of these laws, as well as the litigation challenging them. What changed – the short version: State Effective Covers Key Obligations Enforcement Litigation Texas (SB 2420…",
+      "summaryBy": "source"
+    },
+    {
+      "id": "28c9b1167f9e",
+      "track": "privacy",
+      "title": "How Burdensome, Fragmented State Data Privacy Laws Risk Worsening Scams",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPSGc0R2JfeGVpa1NLakx3bWU4NHd3LVRpNlBBeHpKT1NjMjk5bFpPVEN1dXhLc1F4YkY3MWZWZlc3eWlVOWlBRnVEX3Azc1JvdVIzTElCRGs0LV9xZkRXSk1jcFlycjR1dzNWNzBfMGx5MWtkTk9kenI0dU9UamJBdVRIUENYWGs2endhZDZscUZXYWxDUWZJdUNQRHAwS0p1R2RkTkFrN3Frdw?oc=5",
+      "source": "R Street Institute",
+      "sourceType": "news",
+      "published": "2026-11-19",
+      "found": "2026-11-20",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "legislation",
+      "summary": "How Burdensome, Fragmented State Data Privacy Laws Risk Worsening Scams",
+      "summaryBy": "source"
+    },
+    {
+      "id": "5e72f82b72eb",
+      "track": "privacy",
+      "title": "California’s reproductive privacy law has its first case: a woman investigated after stillbirth",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQbjdWcE5GWTVZT3hKeW5OUjhjYnNORjJrbUNQYWt6WW1wU1RheUI0azNVcXVaZ1VRM3E5TnJ6YWM2OUJQdW8tdV9abWt6U3VsWmpWRl9GS1lHSUlZdFIyZnBmMWgzeHAtNDdDS29QQnluYTFNbElMMDl5c2pIMUZLRkxSOFU1bGViYWx0UktZRy1XVFZDeF8zSFNFVm5qMl84SFdKX3Z4QmJfbnVDaDBIOGRoZWJKY2FUVlVvR29SUzZpM1FHblE?oc=5",
+      "source": "Stateline",
+      "sourceType": "news",
+      "published": "2026-11-19",
+      "found": "2026-11-20",
+      "region": "us",
+      "jurisdiction": "California",
+      "kind": "legislation",
+      "summary": "California’s reproductive privacy law has its first case: a woman investigated after stillbirth",
+      "summaryBy": "source"
+    },
+    {
+      "id": "7a2be6fbf890",
+      "track": "privacy",
+      "title": "Minnesota attorney general reaches $150,000 settlement with Polaris in first enforcement of state data privacy law",
+      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxQdHNIMFpBaWc1RHlhb0FmR0k5bm5zUFB3OWRnaHVKbDdZMzBYSGNmTjVuUkRiUnFGMm1OYXhPNXJtV3o4YTQ0ZEFfQlFOVmpWQkNoZ0s1NUhIZVlJN1hqbjZ4eGxmZV95dnFrSll4X2kxUG5YcFlYaVVrTlVoaFhTSnFqNWlvNHJveHBaS1JyOVF0b3I3VDE4YnBZRVZlNnlMUGtRd0tzTElaZFR6cmJ5M1lqSDJKQi1Ydjlaelp5UEV3ZEtrdXUteDJpMnRCR2xLWHBvaG8yMnpoNjllcEdGRXFVOA?oc=5",
+      "source": "Valley News Live",
+      "sourceType": "news",
+      "published": "2026-11-19",
+      "found": "2026-11-20",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "enforcement",
+      "summary": "Minnesota attorney general reaches $150,000 settlement with Polaris in first enforcement of state data privacy law",
+      "summaryBy": "source"
+    },
+    {
+      "id": "7301e2b8e23c",
+      "track": "privacy",
+      "title": "Supreme Court Defers DPDP Hearing to December 9",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNRDBEYzFnUnFmQi1xemxuREs4NlZkaC02dnRMYnFyT29GdW16MFpoS0NkbGRFV2drTHpMNE5OUjdLUEVUY1BxWEt1Znh3UzR5NmNWUTZjSGxteWljbHllSGZEMEJnOXJ6QjlFM0IyRVZla3Y4cEJmV1VGbHdqUjVZVmQwMA?oc=5",
+      "source": "varindia",
+      "sourceType": "news",
+      "published": "2026-11-19",
+      "found": "2026-11-20",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "court",
+      "summary": "Supreme Court Defers DPDP Hearing to December 9",
+      "summaryBy": "source"
+    },
+    {
+      "id": "6eb4c6506356",
+      "track": "privacy",
+      "title": "Privacy by law, leakage by habit",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNZEFpeEV3alpKM3NENTgxeTVfbUVXSU8tTk5lZWZ5cVNwT0tnNy03WmhTbFRZQm1UajV2XzdBZW5jN3BIbjRfTGhheDVxVlZzdlBnYWFPNU9SUXVaQ182UHBDNjQxbkdoNWhMMWFmQ1k1TWFUZW1GbWk1eEplVkJNd3M1cFoxUlRQ0gGPAUFVX3lxTE83SVJFcVdtVnZualhDOGFiWGVEUjFRbEtJdDlsay1XWXRYRzFNNVVDSGNQc09pLVNpMnRXSk8zM3NwaHp4NWZabkQ0VHBySnlzWTloZGo1RUtUVFhuWU1LUkFhUEw5ekROSXBvcGNaTllmQnd2V0RRNnp0N3F3ZHQ4ZHpGTzY2VGJmNENHSU40?oc=5",
+      "source": "The Financial Express",
+      "sourceType": "news",
+      "published": "2026-11-19",
+      "found": "2026-11-20",
+      "region": "asia",
+      "jurisdiction": "Asia",
+      "kind": "legislation",
+      "summary": "Privacy by law, leakage by habit",
+      "summaryBy": "source"
+    },
     {
       "id": "de6dcbe04320",
       "track": "privacy",
@@ -315,6 +420,51 @@
       "jurisdiction": "India",
       "kind": "enforcement",
       "summary": "University of Delhi Data Breach: Neha Singh Explains Cybersecurity Risks, DPDP Act Penalties and the Importance of Data Protection",
+      "summaryBy": "source"
+    },
+    {
+      "id": "dfbf1b88b06c",
+      "track": "privacy",
+      "title": "Conservation des mots de passe clients en clair : la CNIL prononce une sanction de 5 millions d’euros",
+      "url": "https://www.cnil.fr/fr/conservation-des-mots-de-passe-sanction-5-millions-deuros",
+      "source": "CNIL (France)",
+      "sourceType": "official",
+      "published": "2026-11-18",
+      "found": "2026-11-20",
+      "region": "eu",
+      "jurisdiction": "France",
+      "kind": "enforcement",
+      "summary": "En novembre 2026, la CNIL a infligé une sanction de 5 millions d’euros à une société en raison de l’insuffisance des mesures prises pour assurer la sécurité des données de ses clients et d’une durée excessive de conservation des données.",
+      "summaryBy": "source"
+    },
+    {
+      "id": "8d5f96a0a3f5",
+      "track": "privacy",
+      "title": "Complaints under the General Data Protection Regulation (GDPR)",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQR0VXTTBsNFQydUM0aFQwMVJ3bWliVmpnYXpxY09BQUhQd3VkTENVOU43VElEODRsRnpvdjd0QldzY3ZmRzFKOHJnZ3ZOTzlKcF85M2JYNUc5U2VKa1NublpKc3lpeDBjVUVNYUQta3hlRDVnRFFKYTZGdUJrMXYxLWpKb2ljMGFhUXl2YTVaZ2VMSlBicnRKU3ZnbDNPaEQyZF9lR2NlREUtdTRvNnJZVWZLcw?oc=5",
+      "source": "Business and Human Rights Centre",
+      "sourceType": "news",
+      "published": "2026-11-18",
+      "found": "2026-11-20",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "regulation",
+      "summary": "Complaints under the General Data Protection Regulation (GDPR)",
+      "summaryBy": "source"
+    },
+    {
+      "id": "1e100cb64fb2",
+      "track": "privacy",
+      "title": "Representative actions for GDPR damages in Germany: Next up, the Federal Court of Justice",
+      "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOa01meFZLNEVmZ3JIcnJ5ZWZPNWhYcWpjTnFocjE0VVUzSHlpODBlN2p5ckxSd25VYl93LWNNeWJDMERhZDJWYnlGMDJ0RkpjTjlHN3hwZGlaMGpCZnBIc1pUU1RFcm1yWnMwTHI0eGI2aDNnQkE3TjF2RGVVTzBNMWVPN1B0NXhGNVpkN0VreGw1cjRkUkRVV0ZyVzlZZjVEM2o5MzhsMjhQdGlIVzZkMjlBQkl0TEhfejJVX2F3aEFSZlR4eUtOQ2FSb29ZYTZ4cENpUzE0MmVfTERPa3V4V2NybFJRNTIzNVNOQTFB?oc=5",
+      "source": "Freshfields",
+      "sourceType": "news",
+      "published": "2026-11-18",
+      "found": "2026-11-20",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "court",
+      "summary": "Representative actions for GDPR damages in Germany: Next up, the Federal Court of Justice",
       "summaryBy": "source"
     },
     {
