@@ -1,6 +1,6 @@
 {
   "track": "privacy",
-  "checked": "2026-11-20T02:39:16.628Z",
+  "checked": "2026-11-21T02:51:18.977Z",
   "analysis": {
     "mode": "keywords",
     "reason": "no AI model answered (GitHub Models returned a non-JSON reply)"
@@ -20,7 +20,7 @@
       "name": "EU Official Journal (EUR-Lex)",
       "type": "official",
       "ok": true,
-      "found": 93,
+      "found": 83,
       "read": 100,
       "error": null
     },
@@ -38,7 +38,7 @@
       "name": "CNIL (France)",
       "type": "official",
       "ok": true,
-      "found": 3,
+      "found": 6,
       "read": 10,
       "error": null
     },
@@ -74,7 +74,7 @@
       "name": "Federal Trade Commission",
       "type": "official",
       "ok": true,
-      "found": 1,
+      "found": 2,
       "read": 10,
       "error": null
     },
@@ -128,7 +128,7 @@
       "name": "Future of Privacy Forum",
       "type": "analysis",
       "ok": true,
-      "found": 0,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -182,7 +182,7 @@
       "name": "Privacy World (Squire Patton Boggs)",
       "type": "analysis",
       "ok": true,
-      "found": 2,
+      "found": 3,
       "read": 10,
       "error": null
     },
@@ -200,7 +200,7 @@
       "name": "Global Policy Watch (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 4,
+      "found": 8,
       "read": 10,
       "error": null
     },
@@ -218,8 +218,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 27,
-      "read": 27,
+      "found": 25,
+      "read": 25,
       "error": null
     },
     {
@@ -227,8 +227,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 27,
-      "read": 27,
+      "found": 30,
+      "read": 30,
       "error": null
     },
     {
@@ -236,12 +236,102 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 59,
-      "read": 59,
+      "found": 51,
+      "read": 51,
       "error": null
     }
   ],
   "items": [
+    {
+      "id": "50f89c98c416",
+      "track": "privacy",
+      "title": "CalPrivacy Opens Public Comment Period on Proposed Data Broker Updates and DROP Audit Requirements",
+      "url": "https://www.hunton.com/privacy-and-cybersecurity-law-blog/calprivacy-opens-public-comment-period-on-proposed-data-broker-updates-and-drop-audit-requirements",
+      "source": "Hunton Privacy & Information Security Law",
+      "sourceType": "analysis",
+      "published": "2026-11-20",
+      "found": "2026-11-21",
+      "region": "us",
+      "jurisdiction": "California",
+      "kind": "consultation",
+      "summary": "On November 13, 2026, the California Privacy Protection Agency opened a formal public comment period on proposed data broker regulatory updates and independent third-party audit requirements under the California Delete Act. Written comments are due January 6, 2027. Continue Reading &rsaquo;",
+      "summaryBy": "source"
+    },
+    {
+      "id": "8a55c7bf7bc1",
+      "track": "privacy",
+      "title": "Do We Have the Best Data Protection Regulation in Africa?",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQRWxsd2RucUNWZU9UaE9JT3lqMDh0cXlpRlFnZ1lKRWEzUWFFUWdwWG92TFl2RURBdFBxOV9SekpobVpXSmoxM0hiaWk0M29xdWtKMFcwRDBYU0ZtMzVyWnBRSjZzVkp5Y3RpSmI5ZGVSMV9zbGFQU21iS0FaaWY5RTlSZFoxVmFUMVRNU1hBYnBxRnRNMkE?oc=5",
+      "source": "Techzim",
+      "sourceType": "news",
+      "published": "2026-11-20",
+      "found": "2026-11-21",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "regulation",
+      "summary": "Do We Have the Best Data Protection Regulation in Africa?",
+      "summaryBy": "source"
+    },
+    {
+      "id": "f2c01e689a83",
+      "track": "privacy",
+      "title": "Polaris settles with state over alleged consumer data privacy violations",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNVnpNUk9EeWxoMUxuejJCU1hBdGZ3WVlraGk4dEpHUTdvNnp5NnNGUkU4UTJwemlWamloZjlCem84X014ZEtMLTYzZEFjbEptRFJtYkZaZ3k5Wi1Mc0dWTFRjdkhoc3RiR3ZDcWthbWhNY3BwV2g5UVVCVjBTWEtCQms0T3psUEpEdEVzSGxBbXNmRGlPT0VIMTY1UjhGT1JyNS15VXFaWU5mTHpCVDNF?oc=5",
+      "source": "Star Tribune",
+      "sourceType": "news",
+      "published": "2026-11-20",
+      "found": "2026-11-21",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "enforcement",
+      "summary": "Polaris settles with state over alleged consumer data privacy violations",
+      "summaryBy": "source"
+    },
+    {
+      "id": "0715a7b5a780",
+      "track": "privacy",
+      "title": "Oklahoma to get $4.18M in GM data-privacy settlement after multistate lawsuit",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPUUMtU3lGSmUwRTBwcFZNQnk0YmZJeTZRWlRfMlViSmFlQnU1V1d6dWdGQjNUY0E5WHFoZ1cyRURIU1hZODVEX2FPcVRtWl83RGlGYXdJYkItWmNEcHBqdUpPZzJuaGFrMmhtU1ZnTzRVYV9PZ201NXBoak4zQ3h4T0prVHNsMWdUT20yN3dNRHVZT2tHSW0wWFpJMl9fNFN3Qnl3ejBhUQ?oc=5",
+      "source": "KOKI FOX 23",
+      "sourceType": "news",
+      "published": "2026-11-20",
+      "found": "2026-11-21",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "enforcement",
+      "summary": "Oklahoma to get $4.18M in GM data-privacy settlement after multistate lawsuit",
+      "summaryBy": "source"
+    },
+    {
+      "id": "77833cb33f37",
+      "track": "privacy",
+      "title": "From Localisation Debates To A Negative List: Making Cross Border Data Transfers Work Under India’s DPDP Act",
+      "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxPQUVCQ1N0VEx1a2tSMldUWHZoN3ByWjlYd2c3Ykh3WTZJYWxyVERpX0JfMkZfNFpVS2I4b1lvbG5TT21LTlI4QVh0R0pqaWF2RnYxUlkzb3hxNXNUcHNNbUVNc1JZY1c2SWNVSmF2akhna21wRUZqN0tWUk5JRXdiTVVYNW1pU2ZnSEpwSDRNS1hpX3pZN2Z6ZHl3bkJ2QXJJNnRuX21rbThmYUFZSmYyT0djUTZ0dThrYW5MLU51eTRIQ1NmWkFZWEFzbTlYZEdqdlJLZE03LVlxZi1uN1dsOHRNNEp4YVVmanV3TkpNMTIxMDFRZllpUW1iTQ?oc=5",
+      "source": "Legal 500",
+      "sourceType": "news",
+      "published": "2026-11-20",
+      "found": "2026-11-21",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "legislation",
+      "summary": "From Localisation Debates To A Negative List: Making Cross Border Data Transfers Work Under India’s DPDP Act",
+      "summaryBy": "source"
+    },
+    {
+      "id": "e15f76afc894",
+      "track": "privacy",
+      "title": "Marketing Consent In India: Navigating TRAI’s TCCCPR And The DPDP Act",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQRWtBY21YRzQ4WHdBTjdxRGNXZHZuQm5ENkEwbHNGdnNTV0c0cldOT0lPRlFybTU3MTMyajRZTzJGYTNCbHBBQzhtczRCakxzT1JqejRIWGVJMFk1VUxVVG85TkJDQUJZM2hhcFFPVVpiX2wxNElDakUxdmxWZXhPRTlvTzJOeTJkYmdDRGZ1Q1FTUEFOU2FpME5jR0RhZlFIc3NrdVpqb2RxVmdSbm5BNVhkTjNwWWRaTmhn?oc=5",
+      "source": "Legal 500",
+      "sourceType": "news",
+      "published": "2026-11-20",
+      "found": "2026-11-21",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "legislation",
+      "summary": "Marketing Consent In India: Navigating TRAI’s TCCCPR And The DPDP Act",
+      "summaryBy": "source"
+    },
     {
       "id": "75cdfcd427a4",
       "track": "privacy",
@@ -468,6 +558,21 @@
       "summaryBy": "source"
     },
     {
+      "id": "b3e9288da9b9",
+      "track": "privacy",
+      "title": "Claude User Claims Anthropic Violated Illinois Biometric Privacy Law",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNNVpmRXBRYVJUUGNYWGxqcjdmRDJfVENQX0tkZHViaGlhbVo2dWctejB3MHExamZzVWxsQVNrcG9ZbTFKaDZQdmh5dC1iT0VoS2pjQTlIcTdYZVl3dVpqZGJjaEsxalJLaTczODBZTTk4TFo5MC1JbThUeFZkQS1XNHJHZW1rMXFyclg1RzNmel9zTTRGSEE?oc=5",
+      "source": "Yahoo",
+      "sourceType": "news",
+      "published": "2026-11-18",
+      "found": "2026-11-21",
+      "region": "us",
+      "jurisdiction": "Illinois",
+      "kind": "legislation",
+      "summary": "Claude User Claims Anthropic Violated Illinois Biometric Privacy Law",
+      "summaryBy": "source"
+    },
+    {
       "id": "1ad4a59c104b",
       "track": "privacy",
       "title": "La CNIL a prononcé 38 nouvelles sanctions en procédure simplifiée depuis juin 2026",
@@ -570,6 +675,21 @@
       "jurisdiction": "Asia",
       "kind": "regulation",
       "summary": "Businesses need to avoid violating regulations regarding the protection of personal data.",
+      "summaryBy": "source"
+    },
+    {
+      "id": "8859eb9f71ec",
+      "track": "privacy",
+      "title": "What's In India's New Data Protection Bill?",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPYkpLRWo5azdPLWNDOENrYVB3NVdmMXgtT2xQbFprTUlUMzRLcTd6M21zY0JCQ1VPMnpSM3podmhEZVZJOGZvQ2J3OFZzVHJVSDcxNEhKelRzRV9zYjRxSklnSWh4T2VVMU50VzZQRElGU3hBR1pwRGxtemxGQ0Q3Rm9Ta3FKYll3d18zWUVwcmsxNjR1S2QwWFJB?oc=5",
+      "source": "Legal 500",
+      "sourceType": "news",
+      "published": "2026-11-17",
+      "found": "2026-11-21",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "legislation",
+      "summary": "What's In India's New Data Protection Bill?",
       "summaryBy": "source"
     },
     {
