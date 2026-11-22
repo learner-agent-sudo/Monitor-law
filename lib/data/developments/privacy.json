@@ -1,6 +1,6 @@
 {
   "track": "privacy",
-  "checked": "2026-11-21T02:51:18.977Z",
+  "checked": "2026-11-22T01:38:47.179Z",
   "analysis": {
     "mode": "keywords",
     "reason": "no AI model answered (GitHub Models returned a non-JSON reply)"
@@ -11,7 +11,7 @@
       "name": "European Commission (Digital Strategy)",
       "type": "official",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -20,7 +20,7 @@
       "name": "EU Official Journal (EUR-Lex)",
       "type": "official",
       "ok": true,
-      "found": 83,
+      "found": 73,
       "read": 100,
       "error": null
     },
@@ -38,7 +38,7 @@
       "name": "CNIL (France)",
       "type": "official",
       "ok": true,
-      "found": 6,
+      "found": 5,
       "read": 10,
       "error": null
     },
@@ -74,7 +74,7 @@
       "name": "Federal Trade Commission",
       "type": "official",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -101,7 +101,7 @@
       "name": "California Attorney General",
       "type": "official",
       "ok": true,
-      "found": 6,
+      "found": 5,
       "read": 10,
       "error": null
     },
@@ -173,7 +173,7 @@
       "name": "Hunton Privacy & Information Security Law",
       "type": "analysis",
       "ok": true,
-      "found": 5,
+      "found": 3,
       "read": 10,
       "error": null
     },
@@ -218,8 +218,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 25,
-      "read": 25,
+      "found": 28,
+      "read": 28,
       "error": null
     },
     {
@@ -227,8 +227,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 30,
-      "read": 30,
+      "found": 29,
+      "read": 29,
       "error": null
     },
     {
@@ -236,12 +236,57 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 51,
-      "read": 51,
+      "found": 54,
+      "read": 54,
       "error": null
     }
   ],
   "items": [
+    {
+      "id": "39b80dab0153",
+      "track": "privacy",
+      "title": "EDPB Advances Guidelines 04/2026 on Harmonizing GDPR Administrative Fines and Corrective Powers",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNenlCY1JaNHM0blpMazNrR2xMNWJkSU5DUnBxQ1psVXBmaDFvWlpfWGpETnNjTGVjRklWQ2hMTFRDT0pXSUV5WER1bW1SQmVmandWaU0wbGVvS2tBeVVKTGNTbWFMTEdENXVtZV9nYVZDUkRJdFBwR1FHaW9LeENPQUdKZEo1cFdGZ21nT2JaWXpHYVNfWldKZVBaR2E?oc=5",
+      "source": "CASRAI",
+      "sourceType": "news",
+      "published": "2026-11-21",
+      "found": "2026-11-22",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "enforcement",
+      "summary": "EDPB Advances Guidelines 04/2026 on Harmonizing GDPR Administrative Fines and Corrective Powers",
+      "summaryBy": "source"
+    },
+    {
+      "id": "66ab64fec7c8",
+      "track": "privacy",
+      "title": "The Concept Of Scientific Research In Data Protection Law: Current State And Future Prospects?",
+      "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxObWxkNlhwY003a2I3QWxscTNaWXFUNEdQS2p4OUNTQXo4b0JSRzhYVFlNZWRUZ3cyRTFZczRUcjBLcmNmbGRUUEsxS3UwN05XdTJUS2VXaUhrdDgyQUlzNVl3Vlh4RFg4amxDaml5ajZiZm1mTTlHckRnOUtELU1ta2VqaWJ5M0hzcWJwamNLZEZ6TFV6NDFYOHA5QWtmMUU1TUQ0c1F0ZDhMMVUyeUVkQWtHNFJBYWZXSVRSMmhlR1NQYjVIZE9ULVd2clN2WkNnVm5abUIwdXh5azVnRGJN?oc=5",
+      "source": "Legal 500",
+      "sourceType": "news",
+      "published": "2026-11-21",
+      "found": "2026-11-22",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "legislation",
+      "summary": "The Concept Of Scientific Research In Data Protection Law: Current State And Future Prospects?",
+      "summaryBy": "source"
+    },
+    {
+      "id": "2436db1f15cf",
+      "track": "privacy",
+      "title": "Flock privacy claims remanded to Calif. state court by US federal judge",
+      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOVm9vdW9Hcy1tM2ctMGF4dElfMTdxZFVvVDh0VlJBT2V5OXVRSkhBTEJUbDJ6V29wNW54c3YtbTFnRE1PVU9tVnZYdERHM3VuNHdYZUtPX09odXpvRHROWTA0LVl0N21YU1lDN28zUTk4OGpjQ2c2RExaekNBQ29PRmhYNDJzanpvSThlZnpWdGJZRmtOX19nTVJ3RloyaEhSVmo2UVUxOUVWc19qMDJEV1Q1ZVdxRVE0U2RiMk1oQ3Q4cEdtLTAxRDBNS2RJSTcz0gFaQVVfeXFMUGxEekxwSFNsb3ZyQ1JxNWtGODJ2UW93X2ZhSHlmY1BEdDBFZ2hRREhsZ0VrbDdfWnk5cjFNOVFKSXVrNkNoTjhoR21XbFZ6SkNxOWQ2S2psRU9n?oc=5",
+      "source": "MLex",
+      "sourceType": "news",
+      "published": "2026-11-21",
+      "found": "2026-11-22",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "court",
+      "summary": "Flock privacy claims remanded to Calif. state court by US federal judge",
+      "summaryBy": "source"
+    },
     {
       "id": "50f89c98c416",
       "track": "privacy",
