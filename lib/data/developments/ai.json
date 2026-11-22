@@ -1,6 +1,6 @@
 {
   "track": "ai",
-  "checked": "2026-11-21T02:24:00.221Z",
+  "checked": "2026-11-22T01:23:22.520Z",
   "analysis": {
     "mode": "keywords",
     "reason": "no AI model answered (GitHub Models returned a non-JSON reply)"
@@ -11,7 +11,7 @@
       "name": "European Commission (Digital Strategy)",
       "type": "official",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -20,7 +20,7 @@
       "name": "EU Official Journal (EUR-Lex)",
       "type": "official",
       "ok": true,
-      "found": 83,
+      "found": 73,
       "read": 100,
       "error": null
     },
@@ -38,7 +38,7 @@
       "name": "CNIL (France)",
       "type": "official",
       "ok": true,
-      "found": 6,
+      "found": 5,
       "read": 10,
       "error": null
     },
@@ -65,8 +65,8 @@
       "name": "Federal Register",
       "type": "official",
       "ok": true,
-      "found": 8,
-      "read": 9,
+      "found": 7,
+      "read": 10,
       "error": null
     },
     {
@@ -74,7 +74,7 @@
       "name": "Federal Trade Commission",
       "type": "official",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -101,7 +101,7 @@
       "name": "California Attorney General",
       "type": "official",
       "ok": true,
-      "found": 6,
+      "found": 5,
       "read": 10,
       "error": null
     },
@@ -173,7 +173,7 @@
       "name": "Hunton Privacy & Information Security Law",
       "type": "analysis",
       "ok": true,
-      "found": 5,
+      "found": 3,
       "read": 10,
       "error": null
     },
@@ -218,8 +218,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 52,
-      "read": 52,
+      "found": 30,
+      "read": 30,
       "error": null
     },
     {
@@ -227,8 +227,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 48,
-      "read": 48,
+      "found": 51,
+      "read": 51,
       "error": null
     },
     {
@@ -236,12 +236,27 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 88,
-      "read": 88,
+      "found": 120,
+      "read": 120,
       "error": null
     }
   ],
   "items": [
+    {
+      "id": "63cacc46ec41",
+      "track": "ai",
+      "title": "Pandex MCP: EU Law API for AI Agents (Nov 2026)",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNYmhxSnJLandjNEpwcmtLejM2Umh4dXhEVmJVRE9MaDVvY0FUMHhOUEFub3ZtZUoxQjhyR0tkOERaNy03TVE2eU9aYWE4UEdUMm1MUWR6WVlsT2JlUVV0MkNuQUd5UEFGSlFaUWlhOTNmQW8zcF9NNl9QaHVuekRhb2tDb0ZaaG9aVlRrYU04aDl0QQ?oc=5",
+      "source": "explainx.ai",
+      "sourceType": "news",
+      "published": "2026-11-22",
+      "found": "2026-11-22",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "legislation",
+      "summary": "Pandex MCP: EU Law API for AI Agents (Nov 2026)",
+      "summaryBy": "source"
+    },
     {
       "id": "fb43daee0ffd",
       "track": "ai",
@@ -255,6 +270,96 @@
       "jurisdiction": "European Union",
       "kind": "legislation",
       "summary": "European Union AI Act Leverages Regulatory Power for Strategic Global Influence",
+      "summaryBy": "source"
+    },
+    {
+      "id": "db5e73642fe1",
+      "track": "ai",
+      "title": "London protest calls for stricter AI regulation amid growing safety concerns",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQeEZaS1l1aU9DcGZYNzFvRi1yQVNHMUZuUmdIemxsRERJblhrSmZrUkM3bU8zVFhkZ0JwVnRPSG14cUV4MXNrMER4bm5PYlpaQ29wRENlVFhHUmZNVENDNmg1S1llbE8zS2hmVjVzTFkzVDFPNGlBUy1LM2ZGLVRNc0p3V0lvRVc0bUxRdzhFdWdOMDFuUzZDbU1TWkVQdFh3VzNnN0xJdzFwMmd5c1lmNlVxd3l0VlE?oc=5",
+      "source": "Anadolu Ajansı",
+      "sourceType": "news",
+      "published": "2026-11-21",
+      "found": "2026-11-22",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "regulation",
+      "summary": "London protest calls for stricter AI regulation amid growing safety concerns",
+      "summaryBy": "source"
+    },
+    {
+      "id": "60966752dd24",
+      "track": "ai",
+      "title": "China Plans AI Token Billing Rules as Daily Use Tops 500T",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxORlk5Y1lfUlFFN0dwNFZGXzFXMEo5MklUcUJ6ZktDR1F3eFg0ZTZVWF8yVGQ3d1J6R1FIRXdqSm1NaHJkWGY0dzI2N2lrVWxONnhvcThaQkdDWWhCdU1EOG1KU0pNTXNiNkhpV1diX2xtOGJ4TC11NGdpNFdFaGJzZzFVVWRBRHBmeDAxSEZ3?oc=5",
+      "source": "FourWeekMBA",
+      "sourceType": "news",
+      "published": "2026-11-21",
+      "found": "2026-11-22",
+      "region": "asia",
+      "jurisdiction": "China",
+      "kind": "regulation",
+      "summary": "China Plans AI Token Billing Rules as Daily Use Tops 500T",
+      "summaryBy": "source"
+    },
+    {
+      "id": "438d82056144",
+      "track": "ai",
+      "title": "CJI Calls for Commonwealth AI Disclosure Rules",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQUmxaVDNvaDl0NnJ3QS1Sc0QzNTB0RU04enNhVk1aOFJITDNicl9Cam5mb3N1c2h1OVhNZ2Y0b0ZYcTkxeTdsaGYxU0pjVlJFaEpwVEVlbjdKS2hWV1VQbzIzVllJR1plSUpDV3A1SFhzYm9VMnF2Y3BUSXN1aGdmQWt5QTA1TDBSbHZFVDJtQXZ1Zw?oc=5",
+      "source": "CASRAI",
+      "sourceType": "news",
+      "published": "2026-11-21",
+      "found": "2026-11-22",
+      "region": "asia",
+      "jurisdiction": "Asia",
+      "kind": "regulation",
+      "summary": "CJI Calls for Commonwealth AI Disclosure Rules",
+      "summaryBy": "source"
+    },
+    {
+      "id": "d3a45b63dfe5",
+      "track": "ai",
+      "title": "Will AI raise your electricity bill? What India can learn from America",
+      "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNNERVSC1sLUVnbjVGQTBYZkdMOXlTSzA0enRXUmZLU0Y5SERRR1cyWV9vckk2T2FOcFNxN1JERUZaTzdoZHJjSFA0TEJCNnlDRDVnZVVCc0Z6ZTBSZTRPenJsWUF5bzA0WmVmaFhMNllKVHZWcUxSdTBHZzgxMW1odm9VSnNfdmw0VHQ1VnUwdmFHT05relRWbktPYTBZaHpVVDNGRi1mTmJfcGNfek8yLXJxUjJGY2p1UHpKcFhCV3c5RWgwRWlqdUxQd0RmckprTFF6VFRrQ3o5THpxb1RMUFNfX3gzc0RrRGfSAe8BQVVfeXFMT0xpNEt0TVlxNHFaeHdyQk5UQ3M5UjhlcXdNRWEzZmx3cXE0OV9mS19jbU1HOC1fQzQzckdCTUZheEdIM2I5QllzT21sajE3amtTaVNfbldXdlNPUVMzc3RWOEJTVEM5aVo2NVFGZmxzaHIxSTc5d2dFZXdnQ3hJSFU4M3gyT29KcmZBMzlUUV92ckpQZG5obFpTUy1aTC1TQUJ2MGJkLVJZYkF4aU5pRlA2eEtUOXZzaXJtQmhteW5oX3ZPb3I3cy1QcnVITm5PbHl0SUxHdFJxNkY2ZkFuUEIzdDEyTEVQZDFtNkYtaXM?oc=5",
+      "source": "The Times of India",
+      "sourceType": "news",
+      "published": "2026-11-21",
+      "found": "2026-11-22",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "legislation",
+      "summary": "Will AI raise your electricity bill? What India can learn from America",
+      "summaryBy": "source"
+    },
+    {
+      "id": "f83a5d3a2fbf",
+      "track": "ai",
+      "title": "AI regulation rather than ban is better option: CJI",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPemwwaTFOLWNEQzdNUUpyVGdQeG1fR3NUODZ3NnJiSkZmY1JncFZwTExWLUgyNGZZTGNmXzRnZG5TeEhHSWVBV1JVMkNUMmY5QXBTeWlYVHNUeGJOZVpxNnNFR1pYVlhwR3FRWDNaSjhHajB6QVp0LUY3MmtwNWZQOEJ0dTFXcEFuVVI0ajFtYzZRYXZVUmZjMXVfa21sZ04wT3FtUF9xRllSTmFfclNTX0toMEZaZFNrclhF0gHCAUFVX3lxTFBBRlBDRjRoRG04U1dQYnlDcENrQmtHWm1uaWdGa0ZoSmdQSnhGb0tKY3E3Y1FxQ1VzejNKWlhIaFZGNzA2QXpGSnFfQXRDQW5XcVpXeW5sY2hudnJCUDlDZDRDRlZHTVZMcUR3eWxnZlQxeWh4U1plTk9ZLW1UbG5YMFBmbWs4S0xjQ1I0UlBFMFdELU5udEoyVG50ZDhidnN5UWdjSXdsSEFPNXJ5UC15MkZmRENpWmZ4VDA2Zko2b0hR?oc=5",
+      "source": "The Hindu",
+      "sourceType": "news",
+      "published": "2026-11-21",
+      "found": "2026-11-22",
+      "region": "asia",
+      "jurisdiction": "Asia",
+      "kind": "regulation",
+      "summary": "AI regulation rather than ban is better option: CJI",
+      "summaryBy": "source"
+    },
+    {
+      "id": "84f97177e33e",
+      "track": "ai",
+      "title": "CJI Surya Kant Says Banning AI Tools Is Not Wise; Calls for Rules in Legal Education",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPQ3hDYndkakRtTVd2RWlwd2pxNE1fVmlYdjhaOVNwbWo2SDh2OVdmNklzenZqbDc3UTVpNXZ0M0tvbWRHRE1yVWIzc0dhWHVHdng2eEQya09iVnlqS0xmazkxNWtKTkN5UVQwaW02NGpTNFo1U2VLOTA4STVhbUtKZWlWLXZUUUU?oc=5",
+      "source": "Pragativadi",
+      "sourceType": "news",
+      "published": "2026-11-21",
+      "found": "2026-11-22",
+      "region": "asia",
+      "jurisdiction": "Asia",
+      "kind": "regulation",
+      "summary": "CJI Surya Kant Says Banning AI Tools Is Not Wise; Calls for Rules in Legal Education",
       "summaryBy": "source"
     },
     {
@@ -495,6 +600,51 @@
       "jurisdiction": "India",
       "kind": "regulation",
       "summary": "EC-Council launches industry's first hands-on AI audit certification as India seeks role in shaping global AI rules",
+      "summaryBy": "source"
+    },
+    {
+      "id": "e0d75858cea9",
+      "track": "ai",
+      "title": "EU AI Act and AI agents: how its rules can apply",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFB5d2d1QzRJNkhnS1d0RVNXRS1BYW1rdkNWaU1iVDdnUDlqLTlTZmk3TUxDTzN6S3pnb3UxWlpGaXlvNHlHZXc5TjZvdDBuRTRrVVljSzhKV0ozS2VYN2FWbmkxalZ4TVNadW4wdlFIM3JuUQ?oc=5",
+      "source": "NeoTeo",
+      "sourceType": "news",
+      "published": "2026-11-20",
+      "found": "2026-11-22",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "legislation",
+      "summary": "EU AI Act and AI agents: how its rules can apply",
+      "summaryBy": "source"
+    },
+    {
+      "id": "887645f5c62c",
+      "track": "ai",
+      "title": "New York Creates AI Enforcement Unit as States Step Up Oversight",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPSF9DQmlfMjNRbHFTOGkxYWNRRWpJNEpnNzRwT25qVjFpM2RMNXVCYmpCcG9INm1XUUtBYXNGZ2FFaXNBN1AyY18tLTZfWG85dHg3WGx0ZVBJQ3BDa0EzTDFYelhMclNRUFhSYzUyX29MbmJUYkNCT1E5bWFFNjgxVjB1X1BLMjVlQjN3RjAwZDYwSEwwUThtdWJDVGFQY0E1YWNLZUQ5all3eXNTQlJ3dUdwM0pDNmZLRW0wUmwxWQ?oc=5",
+      "source": "PYMNTS.com",
+      "sourceType": "news",
+      "published": "2026-11-20",
+      "found": "2026-11-22",
+      "region": "us",
+      "jurisdiction": "New York",
+      "kind": "other",
+      "summary": "New York Creates AI Enforcement Unit as States Step Up Oversight",
+      "summaryBy": "source"
+    },
+    {
+      "id": "8cba674c2db2",
+      "track": "ai",
+      "title": "South Korea issues notice on proposed decree for AI data center act",
+      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOeEUyOF96VFIzSkFIMHVUYzdyNUFsamxJN2h2N3RuVEdYOWh3UFdIakxrdlRaQW80OHNDVzB1cGxuNkstYXRMMFhveDd5aFc1X0lFQ1g0NUdWOWFlS1FGWDR3eUkyODBfLWdQWGxCX3JQMkplMkJkWG1telFGeXdaOElIREhDb19wbkhFSGxRUzZsMFFnOWJHMXc1TnB1Q2NUb3VzelQyb0Z0Tk5CZjFvRG0zU2pHb1h0X1U2VlJLS21jbFkyaE1hQjNSQUdTVVnSAVpBVV95cUxPdnlYWG90XzNWYVdWaWZ6N1E2UGUxUVpZNXN3aXN0ZzJmR3lBNmpzUzg0c0VkSktBRFFNZDdqQTRxTHJVM1BVZ0x0X1BCUDRyXzhVVTNOdGp4eXc?oc=5",
+      "source": "MLex",
+      "sourceType": "news",
+      "published": "2026-11-20",
+      "found": "2026-11-22",
+      "region": "asia",
+      "jurisdiction": "South Korea",
+      "kind": "legislation",
+      "summary": "South Korea issues notice on proposed decree for AI data center act",
       "summaryBy": "source"
     },
     {
@@ -960,6 +1110,21 @@
       "jurisdiction": "Asia",
       "kind": "regulation",
       "summary": "Vultr Opens Chennai Cloud Region Amid AI Data Rules",
+      "summaryBy": "source"
+    },
+    {
+      "id": "8934cfce7852",
+      "track": "ai",
+      "title": "How AI Is Changing Law Firm Marketing Strategies",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNckFzZFVBMHVJS2dZOTRGV3lLSFVaQWhfS2dlaUoyMG01X09vX0pSZEJHWDJZZ21CbUxqTUpkOEJjdFZIZ3BuSDI1LVBPTFJfYWFQOHNkQ0RMQmV4ZF9SWnU1eVZ5dGpCVUFSVjE1LV81RzQ4cVlvaHc2RFpVdVN1ZWc3Y1Nmd3UtY3lndkJPVTBTSDNwaFUyaGpR0gFeQVVfeXFMUGE0dnY2a1ExNU5XV0xSUnVfVXEtSnd2YmUxa3hwR3Izb1Nrck5KVlZLTGJiUUktTlZiOHBWTEFSMGYySXJPc0g5VlEwWks3MFFJTjR5YTJjc1pLSnBIdw?oc=5",
+      "source": "Law360",
+      "sourceType": "news",
+      "published": "2026-11-19",
+      "found": "2026-11-22",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "legislation",
+      "summary": "How AI Is Changing Law Firm Marketing Strategies",
       "summaryBy": "source"
     },
     {
@@ -1560,6 +1725,21 @@
       "jurisdiction": "Colorado",
       "kind": "legislation",
       "summary": "Colorado's Updated AI Law",
+      "summaryBy": "source"
+    },
+    {
+      "id": "673926d3f585",
+      "track": "ai",
+      "title": "4th China-Japan-Korea Conference 2026: AI’s Impact on Legal Science in the Field of International Law",
+      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9nbm9QbTUzQTNjT3MwQ1VHZGZ2OFk5Wl9vd1A5dTR5aTRCMFBQRFZHUENDSGtXaE1uak1SVHM1ZGdUYUdvUE1uZ09aUjloWWQt?oc=5",
+      "source": "早稲田大学",
+      "sourceType": "news",
+      "published": "2026-11-18",
+      "found": "2026-11-22",
+      "region": "asia",
+      "jurisdiction": "China",
+      "kind": "legislation",
+      "summary": "4th China-Japan-Korea Conference 2026: AI’s Impact on Legal Science in the Field of International Law",
       "summaryBy": "source"
     },
     {
