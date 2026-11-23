@@ -1,6 +1,6 @@
 {
   "track": "privacy",
-  "checked": "2026-11-22T01:38:47.179Z",
+  "checked": "2026-11-23T01:59:31.419Z",
   "analysis": {
     "mode": "keywords",
     "reason": "no AI model answered (GitHub Models returned a non-JSON reply)"
@@ -20,7 +20,7 @@
       "name": "EU Official Journal (EUR-Lex)",
       "type": "official",
       "ok": true,
-      "found": 73,
+      "found": 34,
       "read": 100,
       "error": null
     },
@@ -38,7 +38,7 @@
       "name": "CNIL (France)",
       "type": "official",
       "ok": true,
-      "found": 5,
+      "found": 3,
       "read": 10,
       "error": null
     },
@@ -65,7 +65,7 @@
       "name": "Federal Register",
       "type": "official",
       "ok": true,
-      "found": 5,
+      "found": 0,
       "read": 5,
       "error": null
     },
@@ -83,7 +83,7 @@
       "name": "NIST",
       "type": "official",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 40,
       "error": null
     },
@@ -101,7 +101,7 @@
       "name": "California Attorney General",
       "type": "official",
       "ok": true,
-      "found": 5,
+      "found": 2,
       "read": 10,
       "error": null
     },
@@ -121,7 +121,7 @@
       "ok": false,
       "found": 0,
       "read": 0,
-      "error": "HTTP 520"
+      "error": "response is not a feed"
     },
     {
       "id": "fpf",
@@ -137,7 +137,7 @@
       "name": "Inside Privacy (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -146,7 +146,7 @@
       "name": "Inside Global Tech (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -173,7 +173,7 @@
       "name": "Hunton Privacy & Information Security Law",
       "type": "analysis",
       "ok": true,
-      "found": 3,
+      "found": 2,
       "read": 10,
       "error": null
     },
@@ -182,7 +182,7 @@
       "name": "Privacy World (Squire Patton Boggs)",
       "type": "analysis",
       "ok": true,
-      "found": 3,
+      "found": 2,
       "read": 10,
       "error": null
     },
@@ -200,7 +200,7 @@
       "name": "Global Policy Watch (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 8,
+      "found": 5,
       "read": 10,
       "error": null
     },
@@ -218,8 +218,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 28,
-      "read": 28,
+      "found": 27,
+      "read": 27,
       "error": null
     },
     {
@@ -227,8 +227,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 29,
-      "read": 29,
+      "found": 28,
+      "read": 28,
       "error": null
     },
     {
@@ -236,12 +236,42 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 54,
-      "read": 54,
+      "found": 58,
+      "read": 58,
       "error": null
     }
   ],
   "items": [
+    {
+      "id": "f948ab9195ae",
+      "track": "privacy",
+      "title": "India’s DPDP Rules Set Registration Regime for Consent Managers",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPTTNjSUtEYW1jQmpULVFoZEQtMF8tcDBqUzU4VEpoa3ZZQU1vTW1aZ2FxTVVDRDBNZ0Fxb3ZMSUF5a0VZLWdBUURtZW5SOFlqUlZlLUVady10ejBzREE2bXA3SWp3alpTc1A3YmdrZFZlR1RSVnQ4aGxGd2NOMjAxRW9Pd0hjMHhVa0YwMURqVS00Y0g4dXdYT1ByUWo1N1Q5Wm5J?oc=5",
+      "source": "Elets eGov",
+      "sourceType": "news",
+      "published": "2026-11-22",
+      "found": "2026-11-23",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "regulation",
+      "summary": "India’s DPDP Rules Set Registration Regime for Consent Managers",
+      "summaryBy": "source"
+    },
+    {
+      "id": "7b7b499ba059",
+      "track": "privacy",
+      "title": "India's Data Protection Law Phases In: Consent Manager Registration Explained",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQQWtyMVlCMmdwUHNuR2RQSVNHdVhxVmRTUHlEbnoyb0d0T0hJNFFoeXkzNkRmUE9WZFA3bmtuTkdHWEMyNHZKT2J5bnZSRU9UbjY1TE9qT1dUM3JmVEZxYzQ4aXB0dEFvZ0l4bWt4Q2k1aWlHOFo1Q3lQblNzcnFtaGtqdjEzU3BQalQ1cl95OEV3MzZUTEQ2SlVqdnU3aVdzV2N1TFFoUkkxNXhDakE?oc=5",
+      "source": "Global Advisory Experts",
+      "sourceType": "news",
+      "published": "2026-11-22",
+      "found": "2026-11-23",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "legislation",
+      "summary": "India's Data Protection Law Phases In: Consent Manager Registration Explained",
+      "summaryBy": "source"
+    },
     {
       "id": "39b80dab0153",
       "track": "privacy",
@@ -375,6 +405,51 @@
       "jurisdiction": "India",
       "kind": "legislation",
       "summary": "Marketing Consent In India: Navigating TRAI’s TCCCPR And The DPDP Act",
+      "summaryBy": "source"
+    },
+    {
+      "id": "94eaf27a6b36",
+      "track": "privacy",
+      "title": "ECJ Con­firms Par­al­lel Legal Pro­tec­tion Un­der The GDPR: Data Pro­tec­tion Com­plaints Are Per­miss­ible Des­pite A Pending Civil Law­suit",
+      "url": "https://news.google.com/rss/articles/CBMijwJBVV95cUxPaG5ldlppYmdteFJteFJuaWFEOHhKdEU3bTRQS0xhMFljTWJacGhqN1JpMHNCeklIXzA2bEMwSWpoYjV6eFF4VHdpZXdETFI2cDdhc182RXAxRjhoNTlfQ1dJQ20tOVQ0Y1dUOERkWmdXMG8wbk4yUVpGZ2lGcDBvZHlVclhpanRXWndELVZENmhlckZVQW9MeEFmT21CdHVyU3VuVGEzMUZHMlZYNmdIcnRJYlRIcE9pbVg1all6aFU4dS1tSXdUangxeVBjelRhQzR4ZUdieGlpdjJMN09odUF5RHVUR3NocWMyemJPRFg5anA3ZUFveks3ZndIUUpick1qT0RuUnV1VnZzMlFZ?oc=5",
+      "source": "Legal 500",
+      "sourceType": "news",
+      "published": "2026-11-20",
+      "found": "2026-11-23",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "legislation",
+      "summary": "ECJ Con­firms Par­al­lel Legal Pro­tec­tion Un­der The GDPR: Data Pro­tec­tion Com­plaints Are Per­miss­ible Des­pite A Pending Civil Law­suit",
+      "summaryBy": "source"
+    },
+    {
+      "id": "7cc4a23872ae",
+      "track": "privacy",
+      "title": "California Proposes CCPA Regulation Updates: Opt-Out Signal Requirements And Broader Consumer Request Reporting",
+      "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxQdWxOdE15RGtFM0NSeU1TakNtV3RTZEs1SGpmZWVHT0x4dHJwLWllWTBjRmFBRnJIZkFpejYwZGNzUjQ0VnNtdFN6LTVBeTNQU1c3LU1wZmtubU1qdzZsbEFhZFJoZXhQa0VOQ1RNYWJUX1F2Z3VGakZleUlJU09YVmVYRmI1RTVHbHVhTDRydTItYndTOGV0eXlwcTBoaDhfaXJTU3RwV0RCbHA4MUN5X0dLNV8ydDhidkNEbl96RFR5N3VDSWNDNTZCbFRNWmxKZXBuSlpDVU96UW9jZVhldHlRaGUtVnA4emNHaC1ZRXVfZDB5VDlIUmlnTUVDczg?oc=5",
+      "source": "Legal 500",
+      "sourceType": "news",
+      "published": "2026-11-20",
+      "found": "2026-11-23",
+      "region": "us",
+      "jurisdiction": "California",
+      "kind": "regulation",
+      "summary": "California Proposes CCPA Regulation Updates: Opt-Out Signal Requirements And Broader Consumer Request Reporting",
+      "summaryBy": "source"
+    },
+    {
+      "id": "129585c9d5c4",
+      "track": "privacy",
+      "title": "Thailand Publishes Draft Personal Data Protection Master Plan 2028–2032",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOQ3Z1ajhpZVhKWW52amhsLVQ3bmE3MHpwUXZlMUhqYnZuME9VU2picV9xYXh0MEpmcUo2bEhpT0dLNnE2YTFFNS1wSkJCYXpRWXpXcWF0MmQtUkdBN2g2TWlHMjVMNTVjVjNncTF1UVNleE9QMFZOTkx5TmFRSlc0cDRucDMyWTk0LTBuZ1FMX01wd1VvS1VDVmJ1amQ1Wm9ZVTlfOFg5dm1RRC1UTTdYOXhaNU1RVzk2TXZuaS1rVHE0MFhY?oc=5",
+      "source": "Legal 500",
+      "sourceType": "news",
+      "published": "2026-11-20",
+      "found": "2026-11-23",
+      "region": "asia",
+      "jurisdiction": "Thailand",
+      "kind": "other",
+      "summary": "Thailand Publishes Draft Personal Data Protection Master Plan 2028–2032",
       "summaryBy": "source"
     },
     {
