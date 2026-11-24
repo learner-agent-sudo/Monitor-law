@@ -1,6 +1,6 @@
 {
   "track": "privacy",
-  "checked": "2026-11-23T01:59:31.419Z",
+  "checked": "2026-11-24T05:35:07.832Z",
   "analysis": {
     "mode": "keywords",
     "reason": "no AI model answered (GitHub Models returned a non-JSON reply)"
@@ -20,7 +20,7 @@
       "name": "EU Official Journal (EUR-Lex)",
       "type": "official",
       "ok": true,
-      "found": 34,
+      "found": 30,
       "read": 100,
       "error": null
     },
@@ -29,7 +29,7 @@
       "name": "European Data Protection Supervisor",
       "type": "official",
       "ok": true,
-      "found": 0,
+      "found": 2,
       "read": 10,
       "error": null
     },
@@ -38,7 +38,7 @@
       "name": "CNIL (France)",
       "type": "official",
       "ok": true,
-      "found": 3,
+      "found": 5,
       "read": 10,
       "error": null
     },
@@ -57,17 +57,17 @@
       "type": "official",
       "ok": true,
       "found": 0,
-      "read": 668,
+      "read": 670,
       "error": null
     },
     {
       "id": "federal-register",
       "name": "Federal Register",
       "type": "official",
-      "ok": true,
+      "ok": false,
       "found": 0,
-      "read": 5,
-      "error": null
+      "read": 0,
+      "error": "unexpected response shape"
     },
     {
       "id": "ftc",
@@ -83,7 +83,7 @@
       "name": "NIST",
       "type": "official",
       "ok": true,
-      "found": 1,
+      "found": 0,
       "read": 40,
       "error": null
     },
@@ -92,7 +92,7 @@
       "name": "Congress bills (GovInfo)",
       "type": "official",
       "ok": true,
-      "found": 100,
+      "found": 85,
       "read": 100,
       "error": null
     },
@@ -101,7 +101,7 @@
       "name": "California Attorney General",
       "type": "official",
       "ok": true,
-      "found": 2,
+      "found": 6,
       "read": 10,
       "error": null
     },
@@ -121,7 +121,7 @@
       "ok": false,
       "found": 0,
       "read": 0,
-      "error": "response is not a feed"
+      "error": "HTTP 520"
     },
     {
       "id": "fpf",
@@ -137,7 +137,7 @@
       "name": "Inside Privacy (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 1,
+      "found": 0,
       "read": 10,
       "error": null
     },
@@ -146,7 +146,7 @@
       "name": "Inside Global Tech (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 1,
+      "found": 0,
       "read": 10,
       "error": null
     },
@@ -173,7 +173,7 @@
       "name": "Hunton Privacy & Information Security Law",
       "type": "analysis",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -182,7 +182,7 @@
       "name": "Privacy World (Squire Patton Boggs)",
       "type": "analysis",
       "ok": true,
-      "found": 2,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -209,7 +209,7 @@
       "name": "Law.asia",
       "type": "analysis",
       "ok": true,
-      "found": 10,
+      "found": 5,
       "read": 10,
       "error": null
     },
@@ -227,8 +227,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 28,
-      "read": 28,
+      "found": 33,
+      "read": 33,
       "error": null
     },
     {
@@ -236,12 +236,72 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 58,
-      "read": 58,
+      "found": 111,
+      "read": 111,
       "error": null
     }
   ],
   "items": [
+    {
+      "id": "45a9a1443532",
+      "track": "privacy",
+      "title": "LaLiga Fan Platform Hacked: Fan and Club Personal Data Leaked, GDPR Sanction Risk Emerges",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE84WWdQcUJUZ1R0TzZBck9iajVxX2dmTlAyUjRlUkNoS1ZNV1BTNmp3SE1GRkdFTXkwZkMwOUdWQmZ4YzhVb1dnQmw3bndEUm9JWEdxTHBuMzdsazZ6V1pHU1N5WEdKaTVZUzkwUG12RkNyM3hMakE?oc=5",
+      "source": "BigGo Finance",
+      "sourceType": "news",
+      "published": "2026-11-23",
+      "found": "2026-11-24",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "enforcement",
+      "summary": "LaLiga Fan Platform Hacked: Fan and Club Personal Data Leaked, GDPR Sanction Risk Emerges",
+      "summaryBy": "source"
+    },
+    {
+      "id": "073d33d05cc2",
+      "track": "privacy",
+      "title": "Lawsuit Targeting Lendistry Will Test Privacy Law",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOXzdqNVBUVW04bG9mRUN6bVMtX0J6eEgxNGtGejNwT3NzME41M0FOdndiWENRWlN3S1ItcjFmMkRGdV9yR3hJb1ZtYnhPT0NMR2NJQkFna3BsUnN5eTZVWXFnOE8yU2dxbkx6NGIzQ3N3OUNUclB1aFNKeG5hekF2T293TldNZnozUV9WUWM0aTNLdw?oc=5",
+      "source": "Los Angeles Business Journal",
+      "sourceType": "news",
+      "published": "2026-11-23",
+      "found": "2026-11-24",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "court",
+      "summary": "Lawsuit Targeting Lendistry Will Test Privacy Law",
+      "summaryBy": "source"
+    },
+    {
+      "id": "61bc6f0880ae",
+      "track": "privacy",
+      "title": "Can Companies Use Your Personal Data to Train AI Models? What India’s DPDP Act Says",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQOHhVMHkyaWF5WGRwdldaa3JFRXBmZFVOTXU4eWR2Qm5Rcmk1YTBYRTNvNDlSQ19hNTZZWHpaSl80RDNzT0x4bURuOHE5Z0dtX1FoQ3R0M1NtSUg5dkZNcGpOTno4Y3Z5WVJ6MnEzTVlCMElVSlNtYnUyT3gycTRpRmJscWRZTlVxcms4ZGdEYi1FUWNLQU1aeGlxYURrY3dnQ3h2Y0k0Zkc2R1Ywd1NuNVB0Z2ktbEJNbjJBanlqbkU4Z1E?oc=5",
+      "source": "Convergence Now",
+      "sourceType": "news",
+      "published": "2026-11-23",
+      "found": "2026-11-24",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "legislation",
+      "summary": "Can Companies Use Your Personal Data to Train AI Models? What India’s DPDP Act Says",
+      "summaryBy": "source"
+    },
+    {
+      "id": "0982f0713a28",
+      "track": "privacy",
+      "title": "From Decree 85 to the Law on Personal Data Protection: VCS accompanies businesses in compliance at each stage.",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNcGVNejhGWGlYbV9kOHlMVUxWR2prSVNPR1JmVjMtMFpSVWh2amVBdjFhZ2d6UnBWNUZVcl9rQ2VzVU01M0hYMHQxcEJXeTZxVzBLYUhLZ0hsY1hCOFlZVTE2eGNNdkR4NHRhaG82YTNlTVhKNW1CV3pCRHVaVVIzblpOQWJEdE1UUTFLaEw1NkxwVThCdzUxNTZtQjM4ejdFeHZGUWN4NVZCVzZNQ2RWRS1NRXhHSG1nNG9VaEkwU255aExX?oc=5",
+      "source": "Vietnam.vn",
+      "sourceType": "news",
+      "published": "2026-11-23",
+      "found": "2026-11-24",
+      "region": "asia",
+      "jurisdiction": "Asia",
+      "kind": "legislation",
+      "summary": "From Decree 85 to the Law on Personal Data Protection: VCS accompanies businesses in compliance at each stage.",
+      "summaryBy": "source"
+    },
     {
       "id": "f948ab9195ae",
       "track": "privacy",
@@ -315,6 +375,21 @@
       "jurisdiction": "United States",
       "kind": "court",
       "summary": "Flock privacy claims remanded to Calif. state court by US federal judge",
+      "summaryBy": "source"
+    },
+    {
+      "id": "4d763c31814d",
+      "track": "privacy",
+      "title": "Bankruptcy court orders privacy ombudsman for Character.AI user data ahead of 1 December auction",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQaU1iR1lQSFBtbFphcmxJMkM1Z3ZfUkcxYkxPT2VINXdjNm5uR2dWcV9JNzI5NHJOZ2VQc3JlcXhNNnRQZGdwT3U2QjJvaWZSU01nOTZwUXlMeTZ1US1NWFAxYktSQ3JmM2tCMTdhaEhlMl9vV0tnbHBwVFBkc2toMThDdGRzemZWMngxQzUxN0NyVmdLNEo0Y0w1cVlLa3ZUdUFpNlJDdVhnamRDWHZ1bEQyNXI0QQ?oc=5",
+      "source": "https://www.lawnews.co.uk/",
+      "sourceType": "news",
+      "published": "2026-11-21",
+      "found": "2026-11-24",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "court",
+      "summary": "Bankruptcy court orders privacy ombudsman for Character.AI user data ahead of 1 December auction",
       "summaryBy": "source"
     },
     {
