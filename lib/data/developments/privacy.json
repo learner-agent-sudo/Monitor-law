@@ -1,6 +1,6 @@
 {
   "track": "privacy",
-  "checked": "2026-11-24T05:35:07.832Z",
+  "checked": "2026-11-25T04:37:35.676Z",
   "analysis": {
     "mode": "keywords",
     "reason": "no AI model answered (GitHub Models returned a non-JSON reply)"
@@ -11,7 +11,7 @@
       "name": "European Commission (Digital Strategy)",
       "type": "official",
       "ok": true,
-      "found": 1,
+      "found": 0,
       "read": 10,
       "error": null
     },
@@ -20,7 +20,7 @@
       "name": "EU Official Journal (EUR-Lex)",
       "type": "official",
       "ok": true,
-      "found": 30,
+      "found": 37,
       "read": 100,
       "error": null
     },
@@ -38,7 +38,7 @@
       "name": "CNIL (France)",
       "type": "official",
       "ok": true,
-      "found": 5,
+      "found": 4,
       "read": 10,
       "error": null
     },
@@ -92,7 +92,7 @@
       "name": "Congress bills (GovInfo)",
       "type": "official",
       "ok": true,
-      "found": 85,
+      "found": 100,
       "read": 100,
       "error": null
     },
@@ -101,7 +101,7 @@
       "name": "California Attorney General",
       "type": "official",
       "ok": true,
-      "found": 6,
+      "found": 9,
       "read": 10,
       "error": null
     },
@@ -128,7 +128,7 @@
       "name": "Future of Privacy Forum",
       "type": "analysis",
       "ok": true,
-      "found": 1,
+      "found": 0,
       "read": 10,
       "error": null
     },
@@ -137,7 +137,7 @@
       "name": "Inside Privacy (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 0,
+      "found": 1,
       "read": 10,
       "error": null
     },
@@ -182,7 +182,7 @@
       "name": "Privacy World (Squire Patton Boggs)",
       "type": "analysis",
       "ok": true,
-      "found": 1,
+      "found": 0,
       "read": 10,
       "error": null
     },
@@ -191,7 +191,7 @@
       "name": "Debevoise Data Blog",
       "type": "analysis",
       "ok": true,
-      "found": 0,
+      "found": 1,
       "read": 200,
       "error": null
     },
@@ -200,7 +200,7 @@
       "name": "Global Policy Watch (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 5,
+      "found": 2,
       "read": 10,
       "error": null
     },
@@ -209,7 +209,7 @@
       "name": "Law.asia",
       "type": "analysis",
       "ok": true,
-      "found": 5,
+      "found": 6,
       "read": 10,
       "error": null
     },
@@ -218,8 +218,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 27,
-      "read": 27,
+      "found": 51,
+      "read": 51,
       "error": null
     },
     {
@@ -227,8 +227,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 33,
-      "read": 33,
+      "found": 32,
+      "read": 32,
       "error": null
     },
     {
@@ -236,12 +236,102 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 111,
-      "read": 111,
+      "found": 52,
+      "read": 52,
       "error": null
     }
   ],
   "items": [
+    {
+      "id": "6547d4a26404",
+      "track": "privacy",
+      "title": "California Regulators Focus on CCPA Opt-Out Compliance",
+      "url": "https://www.insideprivacy.com/state-privacy/california-regulators-focus-on-ccpa-opt-out-compliance/",
+      "source": "Inside Privacy (Covington)",
+      "sourceType": "analysis",
+      "published": "2026-11-24",
+      "found": "2026-11-25",
+      "region": "us",
+      "jurisdiction": "California",
+      "kind": "enforcement",
+      "summary": "Recent enforcement actions by California regulators signal continued scrutiny of businesses’ compliance with opt-out requirements under the California Consumer Privacy Act (“CCPA”). On October 29, 2026, California Attorney General Rob Bonta announced a $1.8 million settlement with Lyft, Inc. (“Lyft…",
+      "summaryBy": "source"
+    },
+    {
+      "id": "1a0b11cb06e0",
+      "track": "privacy",
+      "title": "British regulator to fine Facebook over data protection breaches",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQVkxTZFduMXlSZXowV2JKeFlVS3JSYUF0UTRxOTBGc3otV1RyaFRKLWR5YURWc25IeGpUNVBBRlpESXJRQXlvdmdnVy1wRWE2NlhRU3AxTzY2QS1rTGNvMnZPLWVrQTVILTFQeV9KOXkwNXk0dzZQcG9MVUtKcGloejBaS1dfMWNENG9od2dsLVh4eVVLNnNZMXhuSk5Kc2lrWi1UaFZn?oc=5",
+      "source": "Yeni Safak English",
+      "sourceType": "news",
+      "published": "2026-11-24",
+      "found": "2026-11-25",
+      "region": "other",
+      "jurisdiction": "United Kingdom",
+      "kind": "enforcement",
+      "summary": "British regulator to fine Facebook over data protection breaches",
+      "summaryBy": "source"
+    },
+    {
+      "id": "751c276315e7",
+      "track": "privacy",
+      "title": "Estonia's GDPR Enforcement: Fines and Appeals",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQVWwtZWdLQkZqRERuaUVIci1XbXFvMUVfUHNza1Nmc1FZR0dRVmVOLTBhcVQybTJKRUN2Y2plQXNCZDRzVE5xSXdDR2MySU91dEtGbDlIdkVFMHB1ZVZKSnVLelFVTS1uUDJMTndEcjhIVUNVUFJ4WllDY1J1cUpQZHE3NGtNQW1ZU3RwaGRlZ0V2bFRrMDU2M2dR?oc=5",
+      "source": "Global Advisory Experts",
+      "sourceType": "news",
+      "published": "2026-11-24",
+      "found": "2026-11-25",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "enforcement",
+      "summary": "Estonia's GDPR Enforcement: Fines and Appeals",
+      "summaryBy": "source"
+    },
+    {
+      "id": "8e9d12b82c2c",
+      "track": "privacy",
+      "title": "NDPC urges firms to appoint data protection officers, favours compliance over fines",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE8tR0VqVU1MdTEwWEFBTTZ4UU9EeGFDY1dvM0hFX01XaHc4QWdhX2s3OGNPX3pxaU00cWNWMEdTdFp2TlF0QU9MZElQYTlFY01qaTh3TG1EM3pDSER4M2lTR1BxcVR3aHhBU1A2UA?oc=5",
+      "source": "Techpoint Africa",
+      "sourceType": "news",
+      "published": "2026-11-24",
+      "found": "2026-11-25",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "enforcement",
+      "summary": "NDPC urges firms to appoint data protection officers, favours compliance over fines",
+      "summaryBy": "source"
+    },
+    {
+      "id": "e7a2f7217f56",
+      "track": "privacy",
+      "title": "Balint introduces bill on data privacy protections, tech guidelines for schools",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOVnRDSG8xdnc1UTVrd1B3RnZ6VTZOYjZWb2s4M3ZBVmo4aGxYSGxydzdDSkJIaHhWZzM4eUJGWjUyVFFKNTNTbVFwR2xYcWE0N0E5cElWa1lhcTZtY1FwanpUQVY3cXk2aTBONmpTdURYMmhxMW9WbXFfUTlVWWNScUVNcTR6RlpRMjd4aTRBSEdvNzdwWFhiODk4V0h6emkzRkRWWmJpQjI5VFotQ0FPYg?oc=5",
+      "source": "VTDigger",
+      "sourceType": "news",
+      "published": "2026-11-24",
+      "found": "2026-11-25",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "legislation",
+      "summary": "Balint introduces bill on data privacy protections, tech guidelines for schools",
+      "summaryBy": "source"
+    },
+    {
+      "id": "5034af0737e0",
+      "track": "privacy",
+      "title": "Why businesses must move beyond complying with the Digital Personal Data Protection Act",
+      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxORzFMTjh2VElxZjM4WHZ0UzRReDQyRmthX3BpRlZPNzNSRTVSR1ZQOTdjelQyUXhJMFVkSUkwamFacnBYZWtwU1BaSE9jSERabkJQUlpodnZjazRlUmJrYnQ1MDJQT043Sm0yQmRmeVBoTE9oVEpsUzJfdDNoTDY2TWM3cUlHN05pWEtqZnp2SWxWRHhZbk14d2laU010eEgzbDQzdERDQVFIWVBPaFFwYVhTVnRQbmxZclZxREdOWFUyVElpOHNYZm5xLXliZERNR3dBYmxlTmtaaHhyNF9mNzRJT3N3Vzc40gHuAUFVX3lxTFBidjFXNmNQUll4WWtIcFB4WHVpblFVVmtyX2RHeUtna1YwdmxBZWx6QWZZTnAxRDhRcEpoUXd0UDNzWjBGd2tjc3BOQ0FsVElxMm83MUJCa0FLMDVBQTc5TTFsVG9yQnVBdXJlSWNDZU1HWVczZDRXNjV0MnFid091Wm1HdnNveFN3QUNNeHU4d3JPTTJYb245ZnhvMDAtaDRISWs4ckhxWVRyM0xMN2tfYjN1cjNvRXFpcGFxYXZQcFZraWVaZ3Rvb2dJLTAzbW9TS0FJcFRObGFyYUV0eDNtSU13cW4yV3JvR1VxM1E?oc=5",
+      "source": "Livemint",
+      "sourceType": "news",
+      "published": "2026-11-24",
+      "found": "2026-11-25",
+      "region": "asia",
+      "jurisdiction": "Asia",
+      "kind": "legislation",
+      "summary": "Why businesses must move beyond complying with the Digital Personal Data Protection Act",
+      "summaryBy": "source"
+    },
     {
       "id": "45a9a1443532",
       "track": "privacy",
@@ -303,6 +393,21 @@
       "summaryBy": "source"
     },
     {
+      "id": "ba5bcb413bd0",
+      "track": "privacy",
+      "title": "South Korea to detail AI exemption criteria in privacy law enforcement decree amendment",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQX29SYnkwb09icWlOWERqbzlYak5HTG9MNzdCZjB4WnE2a3FDMUhkVEJQZ3BwMlBFUW1OR0c1XzFKZXBqcjhzaFJjSGcwc0IzT0hHcTl6Smw1dkU1S1dKQ0hzYmlJb2NHSXk4V1hGcWRyMmp2WXQxZ0tYd3FTNUxCbWpxNVFwOUNsbTcyNTFpRE45YkZSOURuMUNoYllRcmdYNmwyZU1vczZ2QzVrWERBN3k3dV9yeDBjVFdkMEZkdUZibnhwWkpaUQ?oc=5",
+      "source": "디지털투데이",
+      "sourceType": "news",
+      "published": "2026-11-23",
+      "found": "2026-11-25",
+      "region": "asia",
+      "jurisdiction": "South Korea",
+      "kind": "legislation",
+      "summary": "South Korea to detail AI exemption criteria in privacy law enforcement decree amendment",
+      "summaryBy": "source"
+    },
+    {
       "id": "f948ab9195ae",
       "track": "privacy",
       "title": "India’s DPDP Rules Set Registration Regime for Consent Managers",
@@ -330,6 +435,21 @@
       "jurisdiction": "India",
       "kind": "legislation",
       "summary": "India's Data Protection Law Phases In: Consent Manager Registration Explained",
+      "summaryBy": "source"
+    },
+    {
+      "id": "f9ca6949a840",
+      "track": "privacy",
+      "title": "California Attorney General Becerra Publishes Final Text Of Proposed CCPA Regulations",
+      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQSFJHTWJHZ3Bja0l6djZVZXg3SmhoWGdpTWhPbHQ1LXl0ZWFFS29wRHQ5ME5WVU1QRlpnZ295TkctUk9TNjRVUzlxa05aR09mTTExalRNaWpISHNBNVI1LUExUXBkUmVoaVRLMFlrWktaNF8tR2FhQ1U0Y3FKM3g3UTQtcXF2RTVKTjVyTER1cmdCcnQyR0NmMTZHeHlCaGxKaUN1MUFXMGdRcHNSX3dROGpoaHVlb09KWFI2OGpkSVozTHBvbVo2X2Z3aHBDbHZGR1hoaUJ6cU8xLUFEMlE?oc=5",
+      "source": "Legal 500",
+      "sourceType": "news",
+      "published": "2026-11-22",
+      "found": "2026-11-25",
+      "region": "us",
+      "jurisdiction": "California",
+      "kind": "regulation",
+      "summary": "California Attorney General Becerra Publishes Final Text Of Proposed CCPA Regulations",
       "summaryBy": "source"
     },
     {
