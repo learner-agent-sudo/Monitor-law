@@ -1,6 +1,6 @@
 {
   "track": "privacy",
-  "checked": "2026-11-27T03:49:08.543Z",
+  "checked": "2026-11-28T03:33:50.815Z",
   "analysis": {
     "mode": "keywords",
     "reason": "no AI model answered (GitHub Models returned a non-JSON reply)"
@@ -20,7 +20,7 @@
       "name": "EU Official Journal (EUR-Lex)",
       "type": "official",
       "ok": true,
-      "found": 47,
+      "found": 32,
       "read": 100,
       "error": null
     },
@@ -29,7 +29,7 @@
       "name": "European Data Protection Supervisor",
       "type": "official",
       "ok": true,
-      "found": 3,
+      "found": 2,
       "read": 10,
       "error": null
     },
@@ -38,7 +38,7 @@
       "name": "CNIL (France)",
       "type": "official",
       "ok": true,
-      "found": 5,
+      "found": 3,
       "read": 10,
       "error": null
     },
@@ -101,7 +101,7 @@
       "name": "California Attorney General",
       "type": "official",
       "ok": true,
-      "found": 9,
+      "found": 4,
       "read": 10,
       "error": null
     },
@@ -200,7 +200,7 @@
       "name": "Global Policy Watch (Covington)",
       "type": "analysis",
       "ok": true,
-      "found": 3,
+      "found": 2,
       "read": 10,
       "error": null
     },
@@ -218,8 +218,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 20,
-      "read": 20,
+      "found": 24,
+      "read": 24,
       "error": null
     },
     {
@@ -227,8 +227,8 @@
       "name": "Google News search",
       "type": "news",
       "ok": true,
-      "found": 23,
-      "read": 23,
+      "found": 22,
+      "read": 22,
       "error": null
     },
     {
@@ -242,6 +242,141 @@
     }
   ],
   "items": [
+    {
+      "id": "3dfb3acbbb28",
+      "track": "privacy",
+      "title": "India Inc tightens third-party vendor checks over data breach liability ahead of DPDP Act deadline",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQNy1mcVNpQjRtLXQ3Z2ludDZVN0RHRk52S0VxS2FXZzFUdnlfTjB1YzZtOVRia3lqNEJnZ09yRnVGLWlDdXpzNE52dnhRckdqZXNTWTAxR2dmd0drMGoxdDh4eXZHOWhPc3B5VVZ5ZElpUlkteHpNdllsOVZIM0VfMUNHRzh1ckFXcHF0OXc4QTZYMHNGSV9JZGVkZVdtYUVjNWtWbE5YOEVfLVlNRnRWOVdoMzfSAboBQVVfeXFMT1Q3YW9Oa3pQMnM1M21yQ2QxOGE2OVZiQm9hOXV0VnFBM0N1WFFsM0x4MVFPbzNHNVM1U0dKTHBRUWJsMXJhSHpOeU5ZUGwtX3RzZGNWc0pFUTI4bV9OMUtMMEQ4Qjl2bU5BM3dNNHBRYW41eHhwVl9GX0VMcnN5b3dad2FMTUxfQUFxR0plcGFGWVJObGdTS2x3aGtuOEt4cWdERVU1QUhyOUhZaDg1YUxFN1FscnBlYm13?oc=5",
+      "source": "Livemint",
+      "sourceType": "news",
+      "published": "2026-11-28",
+      "found": "2026-11-28",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "legislation",
+      "summary": "India Inc tightens third-party vendor checks over data breach liability ahead of DPDP Act deadline",
+      "summaryBy": "source"
+    },
+    {
+      "id": "7f7579a73535",
+      "track": "privacy",
+      "title": "FinregE Analysis Reveals Operational Failures and Data Protection Drive Most Regulatory Fines",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPZWRKT0xQbGhwQy1OUmdjV2ExY1VCdTdMNzhMSFFhQmhlRUItQWg5TUdWWjFWVVlHamR5cWQ3M29XRDI2Q3hGbUU2dE54ZUdJZkwtejhrdS1FVmlwYXF0TnZVaFdrRm1JdGkzamI2dkpyTXM1bVpFT0JVaEItSGJ0NXNITHJrMV8yNk5LR1B5TElkbkxSSC1lYWFDTG0?oc=5",
+      "source": "FF News",
+      "sourceType": "news",
+      "published": "2026-11-27",
+      "found": "2026-11-28",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "enforcement",
+      "summary": "FinregE Analysis Reveals Operational Failures and Data Protection Drive Most Regulatory Fines",
+      "summaryBy": "source"
+    },
+    {
+      "id": "12e2af436ea2",
+      "track": "privacy",
+      "title": "The Interface Between Competition Law and Data Protection : A Need of A More Integrated Approach",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQbWQwN09TcmpzdHpnRzJ0UGlOZDQ5MExFMHdpbGFLcWx5SU9EQ0RLMEtaQ1U1OTE5cDBfeWEzMXFFbVViYzF1cUkyYm1EZnhDWnZGSEc5LTJmS1hNTlVfVGIzeWRVY2RWYVlCR3VSbDBVamJEMEd0b2VQTHRxbHdlUWtmSmNGV1UwNXdxT25nVF9BNk5hNDgwdzRjcW13OHhSNEJiYTZ3Y3BJQkx1N2tjcEFoc3htN3FEVVE?oc=5",
+      "source": "Universitas Airlangga",
+      "sourceType": "news",
+      "published": "2026-11-27",
+      "found": "2026-11-28",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "legislation",
+      "summary": "The Interface Between Competition Law and Data Protection : A Need of A More Integrated Approach",
+      "summaryBy": "source"
+    },
+    {
+      "id": "dd38123fe5f0",
+      "track": "privacy",
+      "title": "Is Bangladesh’s New Data Protection Law Enough?",
+      "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE1nUFM5ZFVvS0NDV3dGQThONUZ6aUhNd083QzhnZ2QtME5RTXg2UjVsMHVPME1qRTFRVmJLRVM4a3l5d1VhRUxUaERR?oc=5",
+      "source": "Daily Observer",
+      "sourceType": "news",
+      "published": "2026-11-27",
+      "found": "2026-11-28",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "legislation",
+      "summary": "Is Bangladesh’s New Data Protection Law Enough?",
+      "summaryBy": "source"
+    },
+    {
+      "id": "52972fd3a910",
+      "track": "privacy",
+      "title": "Ministries, state agencies risk sanctions for data privacy breaches – Sam George",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNMFpkRVU4OUxzaGVFWmh4MFd4blg4bW9Oa0I4NmV1SENtOE9rWElYSnIxelZxbHM1OGlCajh5aWpPMWVOTUJoc3gyMWtVZ3FQQld5N1BsT1ZxVVE3b3lsa0t2dm5nM0VxYUVGV2lEZDNOcEgtWDh6VzdSdTRNaUhrRnVVYXNxLWZuMnE0VHdlX3JENlZtZFpEYXRid9IBmgFBVV95cUxQU1FWRkkyTWE1N0RBMmNIZmUzNmtaZTFTVEU5aE0tSm5XZE4wNzJEeEVlV0x5TVA5eDFsRWcxc3lwclVqVm1reWdrTm1UWGk4Z25CWHNUWFFlc0xmeDRudGI4MjlNSTFCTDZwNDZ1Wjc3MC1wSVJ2YUtNbVJVYzVaWEJqOVR4d0pmMVR1UjN3bjAwejlHVWZYNExB?oc=5",
+      "source": "Modern Ghana",
+      "sourceType": "news",
+      "published": "2026-11-27",
+      "found": "2026-11-28",
+      "region": "us",
+      "jurisdiction": "United States",
+      "kind": "enforcement",
+      "summary": "Ministries, state agencies risk sanctions for data privacy breaches – Sam George",
+      "summaryBy": "source"
+    },
+    {
+      "id": "f2b44ab182f9",
+      "track": "privacy",
+      "title": "Japans threeyear review personal data law: a founder's readiness plan and budget",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQMzkweTBHM3o0YjBLMFNvUEM5cGNWX0pDRm9oVUw4RFc2enY1US1pTzg0ZFFpcW93cEU2WmVXaGV0MHI2QmxQNndESXlSZWtZclZtWm1Eb2hOWVZMT1ZrbUtGZFRHOTE4Tk9qY0k1Z3V3Skw2WXJvWW9sNVJXTmZqdTFpR2JyeXlSVEJVWUx6Q1Y2YUlqbmZRZzItcw?oc=5",
+      "source": "Global Advisory Experts",
+      "sourceType": "news",
+      "published": "2026-11-27",
+      "found": "2026-11-28",
+      "region": "asia",
+      "jurisdiction": "Asia",
+      "kind": "legislation",
+      "summary": "Japans threeyear review personal data law: a founder's readiness plan and budget",
+      "summaryBy": "source"
+    },
+    {
+      "id": "c04c73861e41",
+      "track": "privacy",
+      "title": "Enterprise Resource Planning Software Development: A CIO’s Data Residency Checklist for India’s DPDP Act",
+      "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOREdtOUowcWF2blN6aUs4R2VGYmlYUXB4Mnp4TTZoSFV1NGtlX3RuTFBDV3lzQVprS0V0eVo2c1VzS05YTUt1ZGRqLU9qUGdDaDl1V012LUUtS3JKSGh3ZzZpRm0xRzFIeG5FdUxkdTNacE1xZVptdkdQa2JHZ1NBbjRweFVwTnQxTklwOEpEZ2F3ejVVTDlhNEFGcVl6T25fU05xbU5KNzlpVFEzbGFRX2hsVFYtQWJsc01oeUZ0NThjZF85RklWRUpBZDV3RDUzLUQteXh4aWNOaDhuckxyVmtR?oc=5",
+      "source": "Inter Press Service",
+      "sourceType": "news",
+      "published": "2026-11-27",
+      "found": "2026-11-28",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "legislation",
+      "summary": "Enterprise Resource Planning Software Development: A CIO’s Data Residency Checklist for India’s DPDP Act",
+      "summaryBy": "source"
+    },
+    {
+      "id": "0b4db57243ec",
+      "track": "privacy",
+      "title": "DPDP Act Compliance: What Organizations Must Do Before The November 2026 Consent Manager Deadline",
+      "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPd2JqZXpyOU9SRHphTEpKWnRWeVFpNmQ2bWxhTV9uYndEaFlBbjl4R1A5ejJfMTV4OG5VSjYyZVpKbzNyUmZ3ZzcwcjJhR1g5M29JQmhSTUktdmRWWEQxbzJBdTBnYW9VT09kQ1ZXOVd0MmV2alkzMlM2d2pKWE84RzRXUEVhT2JHLWcyejVjQzJxZXF0MkJTZ29kZEZMU1ZUelktc0pWMHo0REQ1Vll4QmFkQXF4TWZkZVJYQTgyelJvTjRvQnczcXd0NzZrMTdLcnJxdW5HV2lIZS03a0hBVmJB?oc=5",
+      "source": "Legal 500",
+      "sourceType": "news",
+      "published": "2026-11-27",
+      "found": "2026-11-28",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "legislation",
+      "summary": "DPDP Act Compliance: What Organizations Must Do Before The November 2026 Consent Manager Deadline",
+      "summaryBy": "source"
+    },
+    {
+      "id": "770f8ccbe3c5",
+      "track": "privacy",
+      "title": "DPDP Act and GDPR: What global enterprises need to know about data privacy",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPODBvUVZJYjlBczhRVjV3ZjdwdldWbzVDZWxPdnkwbW91WEZpdWhSbF9qRG1LcHFMaTJWWmNYaGpJUk5DbVdvUURPblZEMGwtci1CcDVzRzZwTjcwdUZXRjFVbm5UYmFPY3FNbzExdnE2X2Z6NTBUclk1LThEX3plVkRCWWVidk5LNUJDTzlMUlp6ZHFfaHJRTExvTEZoRnJVd3huc0R6UEVsX2VV?oc=5",
+      "source": "SecurityBrief Australia",
+      "sourceType": "news",
+      "published": "2026-11-27",
+      "found": "2026-11-28",
+      "region": "asia",
+      "jurisdiction": "India",
+      "kind": "legislation",
+      "summary": "DPDP Act and GDPR: What global enterprises need to know about data privacy",
+      "summaryBy": "source"
+    },
     {
       "id": "0a18927c8120",
       "track": "privacy",
@@ -390,6 +525,21 @@
       "jurisdiction": "India",
       "kind": "legislation",
       "summary": "Can India’s Privacy Law Protect Citizens Without Restricting Investigative Journalism?",
+      "summaryBy": "source"
+    },
+    {
+      "id": "2b4fd22cd133",
+      "track": "privacy",
+      "title": "One region, multiple regimes: regulatory divergence in GCC data protection laws",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNSURJNFVvaTlWVkc5bkN0MXNYN2NEM2lWYlYyRTVwbE92U1pURG40bUxyRUJCM3hxZlBvM045VjNqYWs1czlFR3ZGejRGTk5XNmE3V2dOU2sxVW1fLU1CUjhHRDVJVUpYZ0U2M28xRGtUUTZIMldmMDBENVRGTGhNVl9GcWN4NnMxYzJNYVRvV0VmbTNhUGRWT0FacFFxbWcxeGc?oc=5",
+      "source": "Stephenson Harwood",
+      "sourceType": "news",
+      "published": "2026-11-25",
+      "found": "2026-11-28",
+      "region": "eu",
+      "jurisdiction": "European Union",
+      "kind": "legislation",
+      "summary": "One region, multiple regimes: regulatory divergence in GCC data protection laws",
       "summaryBy": "source"
     },
     {
